@@ -1,13 +1,25 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box; 
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* *[lang=ar]{
+  font-family: 'Dima';
+}
+
+[lang=en]{
+  font-family: 'Century Gothic';
+} */
+
+/* import dima font regular with font face */
+
+@font-face {
+  font-family: 'Dima';
+  src: local('./fonts/Dima-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Century Gothic';
+  src: url('./fonts/Century Gothic/CenturyGothic.ttf');
 }

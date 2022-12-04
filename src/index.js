@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './App';
 import './index.css';
-import EntrepreneursJourney from './Components/EntrepreneursJourney';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <EntrepreneursJourney></EntrepreneursJourney>
+    <App />
   </React.StrictMode>
 );

@@ -2,6 +2,33 @@ import React from "react";
 import "../index.css";
 import styled from "styled-components";
 
+function EntrepreneursJourney() {
+  return (
+    <Container className="EntrepreneursJourney">
+      <Title>Entrepreneurs Journey</Title>
+      <CoreDiv>
+        <CircularDiv>
+          <Image animated src="../Images/logo192.png"></Image>
+
+          <Text>Lorem Ipsum is simply dummy text of the printing</Text>
+        </CircularDiv>
+
+        <CircularDiv>
+          <Image animated src="../Images/logo192.png"></Image>
+          <Text>Lorem Ipsum is simply dummy text of the printing</Text>
+        </CircularDiv>
+
+        <CircularDiv>
+          <Image animated src="../Images/logo192.png"></Image>
+          <Text>Lorem Ipsum is simply dummy text of the printing</Text>
+        </CircularDiv>
+      </CoreDiv>
+    </Container>
+  );
+}
+
+export default EntrepreneursJourney;
+
 const Container = styled.div`
   margin-top: 20px;
   margin-left: 90px;
@@ -66,32 +93,3 @@ const CircularDiv = styled.div`
     transition: 1s ease;
   }
 `;
-
-
-
-function EntrepreneursJourney() {
-  return (
-    <Container className="EntrepreneursJourney">
-      <Title>Entrepreneurs Journey</Title>
-      <CoreDiv>
-        <CircularDiv>
-          <Image animated src="../Images/logo192.png"></Image>
-
-          <Text>Lorem Ipsum is simply dummy text of the printing</Text>
-        </CircularDiv>
-
-        <CircularDiv>
-          <Image animated src="../Images/logo192.png"></Image>
-          <Text>Lorem Ipsum is simply dummy text of the printing</Text>
-        </CircularDiv>
-
-        <CircularDiv>
-          <Image animated src="../Images/logo192.png"></Image>
-          <Text>Lorem Ipsum is simply dummy text of the printing</Text>
-        </CircularDiv>
-      </CoreDiv>
-    </Container>
-  );
-}
-
-export default EntrepreneursJourney;

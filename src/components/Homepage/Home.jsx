@@ -7,6 +7,8 @@ function Home() {
   return (
     <>
         <ThisMonth />
+        <EntrepreneursJourney />       
+        <EducateSection/>
     </>
   )
 }

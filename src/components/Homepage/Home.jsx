@@ -1,13 +1,13 @@
 import React from 'react';
-import ThisMonth from './ThisMonth/ThisMonth';
-import EntrepreneursJourney from './EntrepreneursJourney';
 import EducateSection from './EducateSection';
+import EntrepreneursJourney from './EntrepreneursJourney';
+import ThisMonth from './ThisMonth/ThisMonth';
 
 function Home() {
   return (
     <>
-        <ThisMonth />
-        <EntrepreneursJourney />       
+        <ThisMonth  />
+        <EntrepreneursJourney style={greyBg} /> 
         <EducateSection/>
     </>
   )
@@ -15,3 +15,4 @@ function Home() {
 
 export default Home
 
+const greyBg = { backgroundColor: '#ccc' };

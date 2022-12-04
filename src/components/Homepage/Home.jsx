@@ -1,12 +1,13 @@
 import React from 'react'
-import TestSection from './TestSection'
+import ThisMonth from './ThisMonth'
 
 function Home() {
   return (
     <>
-        <TestSection />
+        <ThisMonth />
     </>
   )
 }
 
 export default Home
+

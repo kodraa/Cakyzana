@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export let CONSTANTS = {
     pink: '#F92D88',
-
+    yellow:'#FFFF00'
 }
 
 export const FullScreenSection = styled.section`

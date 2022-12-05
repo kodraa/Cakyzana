@@ -16,7 +16,7 @@ function ThisMonth() {
 
   return (
     <Section>
-    <button onClick={() => setCounter(counter-1)}>minus</button>
+    {/* <button onClick={() => setCounter(counter-1)}>minus</button> */}
       <EngArTitle
         english={"This Month"}
         arabic={"اللي سبق شم الحبق"}

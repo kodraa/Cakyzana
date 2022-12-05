@@ -116,6 +116,7 @@ const Circle = styled.div`
     height: 90%;
     width: 90%;
     object-fit: contain;
+    transition: all 0.5s ease;
   }
 
   &.two:hover {

@@ -7,7 +7,9 @@ export let CONSTANTS = {
     purpleInactive: '#8D57A0',
     yellow: '#EEFF00',
     blue: '#4ECADD',
-    fosfore: '#E4FF00'
+    fosfore: '#E4FF00',
+    graywhite:'#F6F6F6',
+    grayblack:'#545454'
 }
 
 export const FullScreenSection = styled.section`

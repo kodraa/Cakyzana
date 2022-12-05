@@ -5,6 +5,11 @@
   font-family: 'Century Gothic', sans-serif;
 }
 
+::placeholder {
+  opacity: 0.4;
+  font-size: 1.4rem;
+}
+
 /* *[lang=ar]{
   font-family: 'Dima';
 }

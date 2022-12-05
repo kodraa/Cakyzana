@@ -11,12 +11,13 @@ function Navbar() {
       </LogoContainer>
       <NavLinksContainer>
         <NavLink>Home</NavLink>
-        <NavLink>lorem</NavLink>
-        <NavLink>lorem</NavLink>
-        <NavLink>lorem</NavLink>
-        <NavLink>lorem</NavLink>
-        <NavLink>lorem</NavLink>
-        <NavLink>lorem</NavLink>
+        <NavLink>Classes</NavLink>
+        <NavLink>Utensils</NavLink>
+        <NavLink className="white">Educate</NavLink>
+        <NavLink className="white">LogIn</NavLink>
+        <NavLink className="white">
+          <Img src={cartIcon} alt="cart icon"/>
+        </NavLink>
       </NavLinksContainer>
     </Header>
   );
@@ -26,7 +27,7 @@ export default Navbar;
 
 const Header = styled.header`
   height: 70px;
-  width: 85%;
+  width: 87%;
   position: absolute;
   top: 20px;
   left: 50%;
@@ -57,6 +58,16 @@ const NavLinksContainer = styled.ul`
 `;
 
 const NavLink = styled.li`
-  font-size: 1.25rem;
+  font-size: 1rem;
   list-style: none;
+
+  &.white{
+    color: white;
+  }
 `;
+
+const Img = styled.img`
+  height: 75%;
+  width: 75%;
+  object-fit: contain;
+`

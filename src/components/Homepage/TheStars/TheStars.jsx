@@ -10,9 +10,9 @@ function EducateSection() {
       <EngArTitle
         english={"The Stars"}
         arabic={"محبوبين الجماهير"}
-        bottom={"-75%"}
-        right={"-100%"}
-        arColor={CONSTANTS.pink}
+        bottom={"-50%"}
+        right={"-152%"}
+        arColor={CONSTANTS.blue}
       />
       <ContentDiv>
         <Card classTitle="Canvas Your Cake" classDur="75" price="40"/>

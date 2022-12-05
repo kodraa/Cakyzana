@@ -22,7 +22,7 @@ export const FullScreenSection = styled.section`
 
 export const ContentContainer = styled.div`
   height: 100%;
-  width: 85%; //width 85% to match the grid of the XD file
+  width: 87%; //width 85% to match the grid of the XD file
   /* background-color: blue; */
 `;
 

@@ -9,7 +9,7 @@ function Landing() {
   return (
     <LandingSection>
       <Navbar />
-
+      <Image src={MaskGroup3}/>
     </LandingSection>
   );
 }
@@ -17,8 +17,14 @@ function Landing() {
 export default Landing;
 
 const LandingSection = styled(FullScreenSection)`
-  background-image: url(${MaskGroup3});
+  /* background-image: url(${MaskGroup3});
   background-size: cover;
   background-repeat: no-repeat;
-  background-color: ${CONSTANTS.purpleActive};
+  background-color: ${CONSTANTS.purpleActive}; */
 `;
+
+const Image = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+`

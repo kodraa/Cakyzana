@@ -10,7 +10,6 @@ function Home() {
     <>
         <Landing />
         <ThisMonth  />
-        <EntrepreneursJourney /> 
         <TheStars />
         <EntrepreneursJourney /> 
         <EducateSection/>

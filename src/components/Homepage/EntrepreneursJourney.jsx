@@ -115,7 +115,7 @@ export default EntrepreneursJourney;
 
 const ContentWrapper = styled.div`
   width:100%;
-  height: 350px;
+  height: 450px;
   display: flex;
   justify-content: space-between;
 `
@@ -149,8 +149,8 @@ const Text = styled.div`
 
 const CircularDiv = styled.div`
   display: flex;
-  width: 350px;
-  height: 350px;
+  height: 450px;
+  aspect-ratio: 1 / 1;
   background-position: 50% 50%;
   background-size: cover;
   border-radius: 50%;

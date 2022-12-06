@@ -65,49 +65,54 @@ const Circle = styled.div`
 
   /* &[data-index="0"] { */
   &.leftInactive, &.zero {
-    height: 210px;
+    height: 240px;
     z-index: 1;
     top: 50%;
-    right: 75%;
-    translate: 25% -50%;
+    /* right: 84%; */
+    /* translate: 25% -50%; */
+    left: 0;
+    translate: 14% -50%;
     background-color: ${CONSTANTS.purpleInactive};
   }
 
   /* &[data-index="1"] { */
   &.leftSemiActive, &.one {
-    height: 320px;
+    height: 375px;
     z-index: 2;
     top: 50%;
-    right: 65%;
-    translate: 40% -50%;
+    /* right: 70%;
+    translate: 40% -50%; */
+    left: 0;
+    translate: 50% -50%;
     background-color: ${CONSTANTS.purpleSemiActive};
   }
 
   /* &[data-index="2"] { */
   &.active, &.two {
-    height: 433px;
+    height: 500px;
     background-color: ${CONSTANTS.purpleActive};
     z-index: 3;
+    top: 0;
     left: 50%;
-    translate: -50%;
+    translate: -50% 0%;
   }
 
   /* &[data-index="3"] { */
   &.rightSemiActive, &.three {
-    height: 320px;
+    height: 375px;
     z-index: 2;
     top: 50%;
-    left: 65%;
+    left: 70%;
     translate: -40% -50%;
     background-color: ${CONSTANTS.purpleSemiActive};
   }
 
   /* &[data-index="4"] { */
   &.rightInactive, &.four {
-    height: 210px;
+    height: 240px;
     z-index: 1;
     top: 50%;
-    left: 75%;
+    left: 84%;
     translate: -25% -50%;
     background-color: ${CONSTANTS.purpleInactive};
   }
@@ -142,5 +147,13 @@ const WorkshopDescriptionDiv = styled.div`
 `;
 
 const CTAButton = styled.button`
+  width: 224px;
+  text-align: center;
+  padding: 10px;
   background-color: ${CONSTANTS.yellow};
+  color: black;
+  border-radius: 32px;
+  border: none;
+  font-size: 18px;
+  margin: 1rem auto 0;
 `;

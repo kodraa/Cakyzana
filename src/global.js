@@ -27,7 +27,7 @@ export const ContentContainer = styled.div`
 `;
 
 export let BasicContentDiv = styled.div`
-  height: calc(100vh - 10rem); //to complement the 10rem of EngArTitle
+  height: calc(100vh - 12rem); //to complement the 12rem of EngArTitle
 `
 
 export const BasicLandingSection = styled.div`

@@ -21,7 +21,7 @@ export default EngArTitle;
 
 const TitleContainer = styled.div`
   color: white;
-  height: 10rem;
+  height: 12rem;
   width: 100%;
   display: flex;
   align-items: center;

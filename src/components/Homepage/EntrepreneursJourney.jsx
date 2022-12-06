@@ -166,7 +166,7 @@ const CircularDiv = styled.div`
   }
 
   &.left{
-    background-color: ${CONSTANTS.purpleActive};
+    background-color: ${CONSTANTS.purpleInactive};
   }
 
   &.middle{
@@ -174,7 +174,7 @@ const CircularDiv = styled.div`
   }
 
   &.right{
-    background-color: ${CONSTANTS.purpleInactive};
+    background-color: ${CONSTANTS.purpleActive};
   }
 
   &:not(:hover) ${Image} {

@@ -11,7 +11,6 @@ function Home() {
         <Landing />
         <ThisMonth  />
         <TheStars />
-        <EntrepreneursJourney /> 
         <EducateSection/>
         <Footer />
     </>

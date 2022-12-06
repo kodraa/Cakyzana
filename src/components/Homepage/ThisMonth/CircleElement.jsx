@@ -60,7 +60,7 @@ const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.5s ease;
+  transition: all 0.8s ease;
   cursor: pointer;
 
   /* &[data-index="0"] { */

@@ -12,7 +12,6 @@ function Home() {
         <ThisMonth  />
         <EntrepreneursJourney /> 
         <TheStars />
-        <EntrepreneursJourney /> 
         <EducateSection/>
         <Footer />
     </>

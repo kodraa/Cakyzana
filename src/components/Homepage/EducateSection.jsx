@@ -8,6 +8,7 @@ import video2 from "../../designAssets/Homepage/Educate/video2.png";
 import video3 from "../../designAssets/Homepage/Educate/video3.png";
 import ArrowRight from "../../designAssets/Homepage/Educate/ArrowRight.png";
 import ArrowLeft from "../../designAssets/Homepage/Educate/ArrowLeft.png";
+import Carousel from "react-elastic-carousel";
 
 function EducateSection() {
   return (
@@ -20,69 +21,85 @@ function EducateSection() {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
+        <Carousel breakPoints={breakPoints}>
 
-        <VideoCarouselContainer>
-        <Arrow className="left" src={ArrowLeft} alt="" />
+          <VideoCarouselContainer>
+            <VideoHolder>
+              <Image src={video1}></Image>
+            </VideoHolder>
 
-          <VideoHolder>
-            <Image src={video1} alt="" />
-          </VideoHolder>
+            <VideoHolder>
+              <Image src={video2}></Image>
+            </VideoHolder>
 
-          <VideoHolder>
-            <Image src={video2} alt="" />
-          </VideoHolder>
+            <VideoHolder>
+              <Image src={video3}></Image>
+            </VideoHolder>
+          </VideoCarouselContainer>
 
-          <VideoHolder>
-            <Image src={video3} alt="" />
-          </VideoHolder>
+          <VideoCarouselContainer>
+            <VideoHolder>
+              <Image src={video1}></Image>
+            </VideoHolder>
 
-        <Arrow className="right" src={ArrowRight} alt="" />
-        </VideoCarouselContainer>
+            <VideoHolder>
+              <Image src={video2}></Image>
+            </VideoHolder>
 
+            <VideoHolder>
+              <Image src={video3}></Image>
+            </VideoHolder>
+          </VideoCarouselContainer>
+
+        </Carousel>
       </ContentDiv>
     </Section>
-  )
+  );
 }
 
-export default EducateSection
+export default EducateSection;
 
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
-  `
+`;
 
 const VideoCarouselContainer = styled.div`
-    width: 100%;
-    height: 550px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;  
-    position: relative;
-  `
+  width: 100%;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+`;
+
 const VideoHolder = styled.div`
   min-width: 31%;
   height: 100%;
   border-radius: 10px;
-`
+`;
 
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: contain;
-`
-const Arrow = styled.img`
-  width: 25px;
-  top: 50%;
-  position: absolute;
-  transform: translateY(-50%);
-  cursor: pointer;
+`;
+// const Arrow = styled.img`
+//   width: 25px;
+//   top: 50%;
+//   position: absolute;
+//   transform: translateY(-50%);
+//   cursor: pointer;
 
-  &.left{
-    left: 0;
-  }
+//   &.left{
+//     left: 0;
+//   }
 
-  &.right{
-    right: 0;
-  }
-`
+//   &.right{
+//     right: 0;
+//   }
+// `
+const breakPoints = [
+
+];

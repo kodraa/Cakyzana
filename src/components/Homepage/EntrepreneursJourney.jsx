@@ -118,6 +118,7 @@ const ContentWrapper = styled.div`
   height: 450px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 `
 const CoreDiv = styled(BasicContentDiv)`
   display: flex;

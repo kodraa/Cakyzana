@@ -3,7 +3,7 @@ import { ContentContainer, FullScreenSection } from '../../global'
 
 function Section(props) {
   return (
-    <FullScreenSection style={{outline: '1px solid black'}}>
+    <FullScreenSection>
         <ContentContainer>
             {props.children}
         </ContentContainer>

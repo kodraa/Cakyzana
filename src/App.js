@@ -2,6 +2,8 @@ import React from "react";
 import Home from "./components/Homepage/Home";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import SingleStar from "./components/Star/SingleStar";
+import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
+import Utensils from "./components/Utensilspage/Utensils";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
     path: "/star",
     element: <SingleStar />,
   },
+  {
+    path: "/utensils",
+    element: <Utensils />,
+  },
+  {
+    path:'/singleUtenils/:id',
+    element:<UtensilPage/>
+  }
 ]);
 
 function App() {
@@ -20,6 +30,7 @@ function App() {
       <RouterProvider router={router} />
       {/* <Home /> */}
       {/* <Utensils /> */}
+      {/* <SingleUtensil/> */}
     </>
   );
 }

@@ -1,21 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import cartIcon from '../../designAssets/Navbar/cart icon.png'
-
+import cartIcon from "../../designAssets/Navbar/cart icon.png";
+import { Link } from "react-router-dom";
+import { CONSTANTS } from "../../global";
 function Navbar(props) {
   return (
     <Header>
       <LogoContainer>
-        <Logo src={props.logo}/>
+        <Logo src={props.logo} />
       </LogoContainer>
       <NavLinksContainer>
         <NavLink>Home</NavLink>
         <NavLink>Classes</NavLink>
-        <NavLink>Utensils</NavLink>
-        <NavLink className={props.isWhite && 'white' }>Educate</NavLink>
-        <NavLink className={props.isWhite && 'white' }>LogIn</NavLink>
-        <NavLink className={props.isWhite && 'white' }>
-          <Img src={cartIcon} alt="cart icon"/>
+
+        <NavLink>
+          <Link style={{textDecoration:'none',color:`${CONSTANTS.purpleDark}`}} to="/utensils">Utensils</Link>
+        </NavLink>
+        <NavLink className={props.isWhite && "white"}>Educate</NavLink>
+        <NavLink className={props.isWhite && "white"}>LogIn</NavLink>
+        <NavLink className={props.isWhite && "white"}>
+          <Img src={cartIcon} alt="cart icon" />
         </NavLink>
       </NavLinksContainer>
     </Header>
@@ -60,7 +64,7 @@ const NavLink = styled.li`
   font-size: 1.2rem;
   list-style: none;
 
-  &.white{
+  &.white {
     color: white;
   }
 `;
@@ -69,4 +73,5 @@ const Img = styled.img`
   height: 75%;
   width: 75%;
   object-fit: contain;
-`
+`;
+

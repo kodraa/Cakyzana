@@ -5,6 +5,7 @@ import cake from "../../../designAssets/Homepage/TheStars/cake5.png";
 import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
+import { redirect } from "react-router-dom";
 
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -29,6 +30,7 @@ const Card = (props) => {
         </CardIconDiv>
         <CardImage src={cake} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
+        
         <CardText>
           <BoldText>Class Section:</BoldText>
           <CardText>Decoration</CardText>
@@ -39,14 +41,34 @@ const Card = (props) => {
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
             <CardButtonDiv>
-        <CardButton cardBgColor={CONSTANTS.blue}>Buy Now</CardButton>
+        <CardButton cardBgColor={CONSTANTS.blue} btnText="Buy Now"></CardButton>
         </CardButtonDiv>
       </CardBody>
+      <HoverDiv>
+        <CardButton cardBgColor={CONSTANTS.blue} btnText="View More"></CardButton>
+        </HoverDiv>
     </CardContainer>
   );
 };
 
 export default Card;
+
+const HoverDiv = styled.div`
+  opacity: 0;
+  position: absolute;
+  height: 20%;
+  z-index: 10;
+  transition: all 0.5s ease;
+`;
+
+
+const CardBody = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const CardContainer = styled.div`
   width: 400px;
@@ -57,14 +79,20 @@ const CardContainer = styled.div`
   border-radius: 20px;
   background-color: ${CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
+  &:hover   {
+    transform: scale(1.1);
+  }
+  &:hover ${CardBody} {
+    opacity: 0.5;
+    
+    transition: all 1s ease;
+  }
+  &:hover ${HoverDiv} {
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
 `;
-const CardBody = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+
 
 const CardIconDiv = styled.div`
   width: 100%;
@@ -113,4 +141,5 @@ const CardButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+  
 `;

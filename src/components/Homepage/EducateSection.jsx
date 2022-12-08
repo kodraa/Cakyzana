@@ -21,7 +21,7 @@ function EducateSection(props) {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
-        <Carousel breakPoints={breakPoints}>
+        <Carousel>
 
           <VideoCarouselContainer>
             <VideoHolder>
@@ -100,6 +100,4 @@ const Image = styled.img`
 //     right: 0;
 //   }
 // `
-const breakPoints = [
-
-];
+;

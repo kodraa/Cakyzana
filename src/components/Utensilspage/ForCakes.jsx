@@ -19,7 +19,7 @@ function ForCakes() {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
-        <Card  cardBgColor="pink" src={CircleCakeTray} classTitle="Circle Cake Tray" Description=" Ceramic " Set=" 4" price="40"/>
+        <Card  src={CircleCakeTray} classTitle="Circle Cake Tray" Description=" Ceramic " Set=" 4" price="40"/>
         <Card src={SquareCakeTray} classTitle="Square Cake Tray" Description=" Carbon steel" Set=" 5" price="25"/>
         <Card src={TableTurner} classTitle="Table Turner" Description=" Carbon steel" Set=" 4" price="36"/>
       </ContentDiv>

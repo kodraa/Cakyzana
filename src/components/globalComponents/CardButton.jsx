@@ -4,7 +4,7 @@ import { CONSTANTS } from "../../global";
 
 const CardButton = (props) => {
   return (
-        <Cardbtn cardBgColor={props.cardBgColor}>Buy Now</Cardbtn>
+        <Cardbtn cardBgColor={props.cardBgColor} btnText={props.btnText}>{props.btnText}</Cardbtn>
      
   );
 };
@@ -25,4 +25,5 @@ const Cardbtn = styled.button`
   font-weight: bold;
   margin: 0 auto;
   margin-top: 1rem;
+  cursor: pointer;
 `;

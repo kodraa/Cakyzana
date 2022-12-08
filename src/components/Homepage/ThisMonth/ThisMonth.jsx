@@ -12,7 +12,7 @@ import cake5 from "../../../designAssets/Homepage/ThisMonth/cake5.png";
 import ArrowLeft from "../../../designAssets/Homepage/ThisMonth/ArrowLeft.png";
 import ArrowRight from "../../../designAssets/Homepage/ThisMonth/ArrowRight.png";
 
-function ThisMonth() {
+function ThisMonth(props) {
 
   const [counter0, setCounter0] = useState(0);
   const [counter1, setCounter1] = useState(1);
@@ -71,7 +71,7 @@ function ThisMonth() {
   }
 
   return (
-    <Section>
+    <Section isGrey={props.isGrey}>
     {/* <button onClick={() => setCounter(counter-1)}>minus</button> */}
       <EngArTitle
         english={"This Month"}

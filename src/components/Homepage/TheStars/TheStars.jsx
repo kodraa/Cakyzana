@@ -4,9 +4,9 @@ import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardTheStars";
-function EducateSection() {
+function EducateSection(props) {
   return (
-    <Section>
+    <Section isGrey={props.isGrey}>
       <EngArTitle
         english={"The Stars"}
         arabic={"محبوبين الجماهير"}

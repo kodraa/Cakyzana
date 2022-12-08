@@ -10,9 +10,9 @@ import ArrowRight from "../../designAssets/Homepage/Educate/ArrowRight.png";
 import ArrowLeft from "../../designAssets/Homepage/Educate/ArrowLeft.png";
 import Carousel from "react-elastic-carousel";
 
-function EducateSection() {
+function EducateSection(props) {
   return (
-    <Section>
+    <Section isGrey={props.grey}>
       <EngArTitle
         english={"Educate"}
         arabic={"ثقافة كايكية"}

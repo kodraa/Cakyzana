@@ -7,9 +7,9 @@ import beginner from "../../designAssets/Homepage/EntrepreneursJourney/Track1.pn
 import intermediate from "../../designAssets/Homepage/EntrepreneursJourney/Track2.png";
 import professional from "../../designAssets/Homepage/EntrepreneursJourney/Track3.png";
 
-function EntrepreneursJourney() {
+function EntrepreneursJourney(props) {
   return (
-    <Section>
+    <Section isGrey={props.isGrey}>
       <EngArTitle
         english={"Entrepreneurs Journey"}
         arabic={"يلَّا خود أوَّل خطوة"}

@@ -5,6 +5,7 @@ export let CONSTANTS = {
     purpleActive: '#451E5D',
     purpleSemiActive: '#6D2E8C',
     purpleInactive: '#8D57A0',
+    purpleDark: '#2C1346',
     yellow: '#EEFF00',
     blue: '#4ECADD',
     fosfore: '#E4FF00',
@@ -13,6 +14,7 @@ export let CONSTANTS = {
 }
 
 export const FullScreenSection = styled.section`
+  background-color: ${props => props.isGrey ? CONSTANTS.graywhite : 'transparent'};
   height: 100vh;
   width: 100%;
   display: flex;
@@ -31,5 +33,5 @@ export let BasicContentDiv = styled.div`
 `
 
 export const BasicLandingSection = styled.div`
-  height: calc(100vh - 70px); //to complement the 70px of Navbar
+  height: calc(100vh - 90px); //to complement the 70px of Navbar
 `

@@ -8,7 +8,7 @@ import MaskGroup3 from "../../../designAssets/Homepage/Landing/MaskGroup3.png";
 function Landing() {
   return (
     <LandingSection>
-      <Navbar />
+      {/* <Navbar /> */}
       <Image src={MaskGroup3}/>
     </LandingSection>
   );

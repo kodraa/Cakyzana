@@ -15,22 +15,27 @@ const Card = (props) => {
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart size={25} style={{float: "right",marginRight:"25px"}}
-            onClick={(prev)=>setIsLiked(!isLiked)} />
-
-           
+            <FaRegHeart
+              size={25}
+              style={{ float: "right", marginRight: "25px" }}
+              onClick={(prev) => setIsLiked(!isLiked)}
+            />
           ) : (
-            
             <FaHeart
-            style={{ color: "red", border: "none", float: "right",marginRight:"25px"}}
-            size={25}
-            onClick={(prev) => setIsLiked(!isLiked)}
-          />
+              style={{
+                color: "red",
+                border: "none",
+                float: "right",
+                marginRight: "25px",
+              }}
+              size={25}
+              onClick={(prev) => setIsLiked(!isLiked)}
+            />
           )}
         </CardIconDiv>
         <CardImage src={cake} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
-        
+
         <CardText>
           <BoldText>Class Section:</BoldText>
           <CardText>Decoration</CardText>
@@ -40,13 +45,16 @@ const Card = (props) => {
           <CardText classDur={props.classDur}>{props.classDur} mins</CardText>
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
-            <CardButtonDiv>
-        <CardButton cardBgColor={CONSTANTS.blue} btnText="Buy Now"></CardButton>
+        <CardButtonDiv>
+          <CardButton cardBgColor={CONSTANTS.blue}>Buy Now</CardButton>
         </CardButtonDiv>
       </CardBody>
       <HoverDiv>
-        <CardButton cardBgColor={CONSTANTS.blue} btnText="View More"></CardButton>
-        </HoverDiv>
+        <CardButton
+          cardBgColor={CONSTANTS.blue}
+          btnText="View More"
+        ></CardButton>
+      </HoverDiv>
     </CardContainer>
   );
 };
@@ -60,7 +68,6 @@ const HoverDiv = styled.div`
   z-index: 10;
   transition: all 0.5s ease;
 `;
-
 
 const CardBody = styled.div`
   width: 100%;
@@ -79,27 +86,14 @@ const CardContainer = styled.div`
   border-radius: 20px;
   background-color: ${CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
-  &:hover   {
-    transform: scale(1.1);
-  }
-  &:hover ${CardBody} {
-    opacity: 0.5;
-    
-    transition: all 1s ease;
-  }
-  &:hover ${HoverDiv} {
-    opacity: 1;
-    transition: all 0.5s ease;
-  }
 `;
-
 
 const CardIconDiv = styled.div`
   width: 100%;
   position: relative;
   top: 10;
   right: 10;
-  margin-top: 2rem
+  margin-top: 2rem;
 `;
 
 const CardImage = styled.img`
@@ -141,5 +135,4 @@ const CardButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
-  
 `;

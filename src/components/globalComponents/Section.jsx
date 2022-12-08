@@ -3,7 +3,7 @@ import { ContentContainer, FullScreenSection } from '../../global'
 
 function Section(props) {
   return (
-    <FullScreenSection>
+    <FullScreenSection isGrey={props.isGrey}>
         <ContentContainer>
             {props.children}
         </ContentContainer>

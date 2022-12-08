@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import CakyzanaLogo from '../../designAssets/Navbar/NavbarCakyzanaLogo.png'
 import cartIcon from '../../designAssets/Navbar/cart icon.png'
 
-function Navbar() {
+function Navbar(props) {
   return (
     <Header>
       <LogoContainer>
-        <Logo src={CakyzanaLogo}/>
+        <Logo src={props.logo}/>
       </LogoContainer>
       <NavLinksContainer>
         <NavLink>Home</NavLink>
         <NavLink>Classes</NavLink>
         <NavLink>Utensils</NavLink>
-        <NavLink className="white">Educate</NavLink>
-        <NavLink className="white">LogIn</NavLink>
-        <NavLink className="white">
+        <NavLink className={props.isWhite && 'white' }>Educate</NavLink>
+        <NavLink className={props.isWhite && 'white' }>LogIn</NavLink>
+        <NavLink className={props.isWhite && 'white' }>
           <Img src={cartIcon} alt="cart icon"/>
         </NavLink>
       </NavLinksContainer>
@@ -54,11 +53,11 @@ const NavLinksContainer = styled.ul`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 38px;
+  gap: 30px;
 `;
 
 const NavLink = styled.li`
-  font-size: 1rem;
+  font-size: 1.2rem;
   list-style: none;
 
   &.white{

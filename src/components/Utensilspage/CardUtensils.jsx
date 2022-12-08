@@ -55,7 +55,7 @@ const HoverDiv = styled.div`
   position: absolute;
   height: 20%;
   z-index: 10;
-  transition: all 1s ease;
+  transition: all 0.5s ease;
 
 `;
 const CardBody = styled.div`

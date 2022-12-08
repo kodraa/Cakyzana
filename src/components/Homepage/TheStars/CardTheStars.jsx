@@ -15,27 +15,22 @@ const Card = (props) => {
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart
-              size={25}
-              style={{ float: "right", marginRight: "25px" }}
-              onClick={(prev) => setIsLiked(!isLiked)}
-            />
+            <FaRegHeart size={25} style={{float: "right",marginRight:"25px"}}
+            onClick={(prev)=>setIsLiked(!isLiked)} />
+
+           
           ) : (
+            
             <FaHeart
-              style={{
-                color: "red",
-                border: "none",
-                float: "right",
-                marginRight: "25px",
-              }}
-              size={25}
-              onClick={(prev) => setIsLiked(!isLiked)}
-            />
+            style={{ color: "red", border: "none", float: "right",marginRight:"25px"}}
+            size={25}
+            onClick={(prev) => setIsLiked(!isLiked)}
+          />
           )}
         </CardIconDiv>
         <CardImage src={cake} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
-
+        
         <CardText>
           <BoldText>Class Section:</BoldText>
           <CardText>Decoration</CardText>
@@ -45,16 +40,13 @@ const Card = (props) => {
           <CardText classDur={props.classDur}>{props.classDur} mins</CardText>
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
-        <CardButtonDiv>
-          <CardButton cardBgColor={CONSTANTS.blue}>Buy Now</CardButton>
+            <CardButtonDiv>
+        <CardButton cardBgColor={CONSTANTS.blue} btnText="Buy Now"></CardButton>
         </CardButtonDiv>
       </CardBody>
       <HoverDiv>
-        <CardButton
-          cardBgColor={CONSTANTS.blue}
-          btnText="View More"
-        ></CardButton>
-      </HoverDiv>
+        <CardButton cardBgColor={CONSTANTS.blue} btnText="View More"></CardButton>
+        </HoverDiv>
     </CardContainer>
   );
 };
@@ -69,12 +61,21 @@ const HoverDiv = styled.div`
   transition: all 0.5s ease;
 `;
 
+
 const CardBody = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.8s ease;
+`;
+
+const CardImage = styled.img`
+  width: "80%";
+  margin: 0 auto;
+  height: fit-content;
+  object-fit: contain;
 `;
 
 const CardContainer = styled.div`
@@ -86,6 +87,20 @@ const CardContainer = styled.div`
   border-radius: 20px;
   background-color: ${CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
+  transition: all 0.5s ease;
+
+  &:hover   {
+    transform: scale(1.1);
+    transition: all 0.5s ease;
+  };
+  &:hover ${CardBody}{
+    opacity: 0.5;
+    transition: all 0.8s ease;
+  };
+  &:hover ${HoverDiv}{
+    opacity: 1;
+    transition: all 0.8s ease;
+  };
 `;
 
 const CardIconDiv = styled.div`
@@ -93,14 +108,7 @@ const CardIconDiv = styled.div`
   position: relative;
   top: 10;
   right: 10;
-  margin-top: 2rem;
-`;
-
-const CardImage = styled.img`
-  width: "80%";
-  margin: 0 auto;
-  height: fit-content;
-  object-fit: contain;
+  margin-top: 2rem
 `;
 
 const CardTitle = styled.h4`
@@ -117,10 +125,12 @@ const CardText = styled.span`
   text-align: center;
   padding-bottom: 7px;
 `;
+
 const BoldText = styled.span`
   font-weight: bold !important;
   text-align: center;
 `;
+
 const PriceText = styled.h6`
   font-size: 16px;
   font-weight: 700;

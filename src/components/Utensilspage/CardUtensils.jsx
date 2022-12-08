@@ -38,25 +38,26 @@ const Card = (props) => {
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
             <CardButtonDiv>
-        <CardButton cardBgColor={CONSTANTS.pink} btnText="Buy Now"></CardButton>
+        <CardButton cardBgColor={CONSTANTS.pink} btnText="View More"></CardButton>
+
         </CardButtonDiv>
       </CardBody>
-      <HoverDiv>
-        <CardButton cardBgColor={CONSTANTS.blue} btnText="View More"></CardButton>
-        </HoverDiv>
     </CardContainer>
   );
 };
 
 export default Card;
 
-const HoverDiv = styled.div`
-  opacity: 0;
-  position: absolute;
-  height: 20%;
-  z-index: 10;
-  transition: all 0.5s ease;
-
+const CardContainer = styled.div`
+  width: 400px;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: ${CONSTANTS.graywhite};
+  color: ${CONSTANTS.grayblack};
+  
 `;
 const CardBody = styled.div`
   width: 100%;
@@ -80,31 +81,6 @@ const CardImage = styled.img`
   height: 40%;
   object-fit: contain;
 `;
-const CardContainer = styled.div`
-  width: 400px;
-  height: 550px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 20px;
-  background-color: ${CONSTANTS.graywhite};
-  color: ${CONSTANTS.grayblack};
-  transition: all 0.5s ease;
-
-  &:hover   {
-    transform: scale(1.1);
-    transition: all 0.5s ease;
-  };
-  &:hover ${CardBody}{
-    opacity: 0.5;
-    transition: all 0.8s ease;
-  };
-  &:hover ${HoverDiv}{
-    opacity: 1;
-    transition: all 0.8s ease;
-  };
-`;
-
 
 const CardTitle = styled.h4`
   font-size: 24px;

@@ -4,9 +4,9 @@ import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardUtensils";
-import scraper from "../../designAssets/UtensilsPage/ForCoverage/scraper.png";
-import spatula from "../../designAssets/UtensilsPage/ForCoverage/spatula.png";
-import whisk from "../../designAssets/UtensilsPage/ForCoverage/whisk.png";
+import scraper from "../../designAssets/Utensils/ForCoverage/scraper.png";
+import spatula from "../../designAssets/Utensils/ForCoverage/spatula.png";
+import whisk from "../../designAssets/Utensils/ForCoverage/whisk.png";
 
 
 function ForCoverage() {

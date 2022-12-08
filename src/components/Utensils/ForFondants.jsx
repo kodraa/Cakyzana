@@ -4,9 +4,9 @@ import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardUtensils";
-import ModelingPensSet1 from "../../designAssets/UtensilsPage/ForFondants/ModelingPensSet1.png";
-import ModelingPensSet2 from "../../designAssets/UtensilsPage/ForFondants/ModelingPensSet2.png";
-import ModelingPensSet3 from "../../designAssets/UtensilsPage/ForFondants/ModelingPensSet3.png";
+import ModelingPensSet1 from "../../designAssets/Utensils/ForFondants/ModelingPensSet1.png";
+import ModelingPensSet2 from "../../designAssets/Utensils/ForFondants/ModelingPensSet2.png";
+import ModelingPensSet3 from "../../designAssets/Utensils/ForFondants/ModelingPensSet3.png";
 
 
 function ForFondants() {

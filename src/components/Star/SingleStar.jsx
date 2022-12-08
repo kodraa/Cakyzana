@@ -6,7 +6,6 @@ import {
   FullScreenSection,
 } from "../../global";
 import Navbar from "../globalComponents/Navbar";
-import BlackCakyzanaLogo from "../../designAssets/Star/Black Navbar Logo.png";
 import Cake from "../../designAssets/Star/Sample Cake.png";
 
 // TODO add black cart logo
@@ -14,7 +13,7 @@ import Cake from "../../designAssets/Star/Sample Cake.png";
 function SingleStar() {
   return (
     <FullScreenSection>
-      <Navbar logo={BlackCakyzanaLogo} />
+      <Navbar />
       <StarFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
@@ -23,14 +22,13 @@ function SingleStar() {
         </LeftFlexChild>
 
         <RightFlexChild>
-
           <StarTitle>Canvas Your Cake</StarTitle>
-        
+
           <StarSubtitles>
             <Subtitle>Class Section: Cake Recipes</Subtitle>
             <Subtitle>Class Duration: 75 mins</Subtitle>
           </StarSubtitles>
-        
+
           <DescriptionContainer>
             <Paragraph>
               Description: This class gives you the real technique of drawing on
@@ -38,30 +36,26 @@ function SingleStar() {
               technique.
             </Paragraph>
           </DescriptionContainer>
-        
+
           <ToolsContainer>
             <Paragraph>
               Tools Needed: Brushes, Butter cream, food coloring of your choice,
               coloring tray, fondant, reference image.
             </Paragraph>
           </ToolsContainer>
-        
+
           <PrerequisitesContainer>
             <Paragraph>
               Prerequisites: Butter cream making class, cream coloring class,
               fondant class.
             </Paragraph>
           </PrerequisitesContainer>
-        
-          <CTA>
 
+          <CTA>
             <Price>Price: $40</Price>
             <CTABtn>Buy Now!</CTABtn>
-
           </CTA>
-
         </RightFlexChild>
-
       </StarFlexContainer>
     </FullScreenSection>
   );
@@ -110,7 +104,7 @@ const RightFlexChild = styled(FlexChild)`
   position: relative;
   padding-top: 3%;
 
-  & *{
+  & * {
     color: #545454;
     font-weight: 100;
   }
@@ -140,16 +134,16 @@ const Paragraph = styled.p`
 `;
 
 const CTA = styled.div`
-    height: 20%;
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 20px;
+  height: 20%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 20px;
 `;
 
 const Price = styled.p`
-    font-size: 1.2rem;
+  font-size: 1.2rem;
 `;
 
 const CTABtn = styled.button`

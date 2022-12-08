@@ -4,9 +4,9 @@ import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardUtensils";
-import CircleCakeTray from "../../designAssets/UtensilsPage/ForCakes/CircleCakeTray.png";
-import SquareCakeTray from "../../designAssets/UtensilsPage/ForCakes/SquareCakeTray.png";
-import TableTurner from "../../designAssets/UtensilsPage/ForCakes/TableTurner.png";
+import CircleCakeTray from "../../designAssets/Utensils/ForCakes/CircleCakeTray.png";
+import SquareCakeTray from "../../designAssets/Utensils/ForCakes/SquareCakeTray.png";
+import TableTurner from "../../designAssets/Utensils/ForCakes/TableTurner.png";
 
 function ForCakes() {
   return (

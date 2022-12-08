@@ -4,9 +4,9 @@ import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardUtensils";
-import CakeRuler from "../../designAssets/UtensilsPage/ForMeasuring/CakeRuler.png";
-import MeasuringSpoons from "../../designAssets/UtensilsPage/ForMeasuring/MeasuringSpoons.png";
-import MeasuringCups from "../../designAssets/UtensilsPage/ForMeasuring/MeasuringCups.png";
+import CakeRuler from "../../designAssets/Utensils/ForMeasuring/CakeRuler.png";
+import MeasuringSpoons from "../../designAssets/Utensils/ForMeasuring/MeasuringSpoons.png";
+import MeasuringCups from "../../designAssets/Utensils/ForMeasuring/MeasuringCups.png";
 
 
 function ForMeasuring() {

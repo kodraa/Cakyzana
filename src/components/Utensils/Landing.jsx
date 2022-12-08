@@ -1,13 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { BasicLandingSection, CONSTANTS, FullScreenSection } from "../../global";
-import Navbar from "../globalComponents/Navbar";
-import UtensilsLandingPage from "../../designAssets/UtensilsPage/Landing/UtensilsLandingPage.png";
+import UtensilsLandingPage from "../../designAssets/Utensils/Landing/UtensilsLandingPage.png";
 
 function Landing() {
   return (
     <LandingSection>
-      <Navbar />
       <Image src={UtensilsLandingPage}/>
     </LandingSection>
   );
@@ -25,5 +23,5 @@ const LandingSection = styled(FullScreenSection)`
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  object-fit: cover;
+  object-fit: 100%;
 `

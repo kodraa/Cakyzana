@@ -11,10 +11,15 @@ import cake4 from "../../../designAssets/Homepage/Classes/pic4.png";
 import cake5 from "../../../designAssets/Homepage/Classes/pic5.png";
 import ArrowRight from "../../../designAssets/Homepage/Classes/ArrowRight.png";
 import ArrowLeft from "../../../designAssets/Homepage/Classes/ArrowLeft.png";
+import Carousel from "react-elastic-carousel";
+
+
+
+
 
 function TheClasses() {
   return (
-    <Section>
+    <Section >
       <EngArTitle
         english={"Classes"}
         arabic={"يلا عالصف"}
@@ -22,9 +27,14 @@ function TheClasses() {
         right={"-114%"}
         arColor={CONSTANTS.pink}
       />
+      
       <ContentDiv>
-        <Arrow className="left" src={ArrowLeft} />
+      
+        
         <CardWrapper>
+        <Carousel>
+        <CarouselContainer>
+        <Holder>
           <Card
             classTitle="Chocolate Cake Recipe"
             imagesrc={cake1}
@@ -32,6 +42,9 @@ function TheClasses() {
             classDur="30"
             descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated."
           />
+          </Holder>
+          <Holder>
+
           <Card
             classTitle="Chocolate Ganache"
             imagesrc={cake2}
@@ -39,6 +52,8 @@ function TheClasses() {
             classDur="30"
             descr="This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... "
           />
+       </Holder>
+       <Holder>
           <Card
             classTitle="Sugar Fondant"
             imagesrc={cake3}
@@ -46,33 +61,55 @@ function TheClasses() {
             classDur="30"
             descr=" This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... "
           />
+          </Holder>
+          </CarouselContainer>
+
+          <CarouselContainer>
+          <Holder>
+          <Item imagesrc={cake4}/>
+          </Holder>
+          <Holder>
+          <Item imagesrc={cake5}/>
+          </Holder>
+          </CarouselContainer>
+          </Carousel>
+
         </CardWrapper>
-        <Arrow className="right" src={ArrowRight} />
+
+        
       </ContentDiv>
+   
+    
+      
     </Section>
   );
 }
 
 export default TheClasses;
 
+const VideoCarouselContainer = styled.div`
+  width: 100%;
+  height: 550px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+`;
+
+const VideoHolder = styled.div`
+  min-width: 31%;
+  height: 100%;
+  border-radius: 10px;
+`;
+
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
   justify-content: center;
+  
 `;
 
-const Arrow = styled.img`
-  width: 25px;
-  cursor: pointer;
-
-  &.left {
-    left: 0;
-  }
-
-  &.right {
-    right: 0;
-  }
-`;
 
 const CardWrapper = styled.div`
   height: 100%;

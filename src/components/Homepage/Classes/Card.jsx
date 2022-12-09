@@ -13,7 +13,7 @@ const Card = (props) => {
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart size={25} style={{float: "right",marginRight:"25px"}}
+            <FaRegHeart size={25} style={{float: "right", marginRight:"25px"}}
             onClick={(prev)=>setIsLiked(!isLiked)} />
 
            
@@ -46,7 +46,7 @@ const Card = (props) => {
             </CardText2>
           </CardBodyText>
           <CardButtonDiv>
-            <CardButton cardBgColor={CONSTANTS.pink}>Buy Now</CardButton>
+            <CardButton cardBgColor={CONSTANTS.pink} btnText="Buy Now"></CardButton>
           </CardButtonDiv>
         </CardBody>
       
@@ -60,12 +60,12 @@ export default Card;
 
 const CardContainer = styled.div`
   width: 380px;
-  height: 620px;
+  height: 680px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${CONSTANTS.graywhite};
+  background-color: ${CONSTANTS.white};
   color: ${CONSTANTS.grayblack};
 `;
 
@@ -79,10 +79,10 @@ const CardContent = styled.div`
 
 const CardIconDiv = styled.div`
   width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  position: relative;
+  top: 10;
+  right: 10;
+  margin-top: 2rem;
 `;
 
 const CardImage = styled.img`
@@ -114,19 +114,23 @@ const CardTitle = styled.h4`
   font-weight: 800;
   color: ${CONSTANTS.black};
   text-align: left;
+  padding-top: 1.5rem;
 `;
 const CardText = styled.span`
   font-size: 16px;
   font-weight: 400;
   text-align: left;
+  padding-top: 1.5rem;
 `;
 const BoldText = styled.span`
   font-weight: bold !important;
+  text-align: center;
 `;
 const CardText2 = styled.h6`
   font-size: 16px;
   font-weight: 700;
   text-align: left;
+  padding-top: 1.5rem;
 `;
 
 const CardButtonDiv = styled.div`
@@ -135,4 +139,5 @@ const CardButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+  
 `;

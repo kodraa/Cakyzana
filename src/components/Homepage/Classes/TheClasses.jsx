@@ -9,17 +9,14 @@ import cake2 from "../../../designAssets/Homepage/Classes/pic2.png";
 import cake3 from "../../../designAssets/Homepage/Classes/pic3.png";
 import cake4 from "../../../designAssets/Homepage/Classes/pic4.png";
 import cake5 from "../../../designAssets/Homepage/Classes/pic5.png";
-import ArrowRight from "../../../designAssets/Homepage/Classes/ArrowRight.png";
-import ArrowLeft from "../../../designAssets/Homepage/Classes/ArrowLeft.png";
+import video1 from "../../../designAssets/Homepage/Educate/video1.png";
+import video2 from "../../../designAssets/Homepage/Educate/video2.png";
+import video3 from "../../../designAssets/Homepage/Educate/video3.png";
 import Carousel from "react-elastic-carousel";
 
-
-
-
-
-function TheClasses() {
+function TheClasses(props) {
   return (
-    <Section >
+    <Section isGrey={props.grey}>
       <EngArTitle
         english={"Classes"}
         arabic={"يلا عالصف"}
@@ -27,60 +24,40 @@ function TheClasses() {
         right={"-114%"}
         arColor={CONSTANTS.pink}
       />
-      
+
       <ContentDiv>
-      
-        
-        <CardWrapper>
         <Carousel>
-        <CarouselContainer>
-        <Holder>
-          <Card
-            classTitle="Chocolate Cake Recipe"
-            imagesrc={cake1}
-            number="10"
-            classDur="30"
-            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated."
-          />
-          </Holder>
-          <Holder>
 
-          <Card
-            classTitle="Chocolate Ganache"
-            imagesrc={cake2}
-            number="10"
-            classDur="30"
-            descr="This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... "
-          />
-       </Holder>
-       <Holder>
-          <Card
-            classTitle="Sugar Fondant"
-            imagesrc={cake3}
-            number="10"
-            classDur="30"
-            descr=" This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... "
-          />
-          </Holder>
-          </CarouselContainer>
+          <VideoCarouselContainer>
+            <ImgHolder>
+              <Image src={video1}></Image>
+            </ImgHolder>
 
-          <CarouselContainer>
-          <Holder>
-          <Item imagesrc={cake4}/>
-          </Holder>
-          <Holder>
-          <Item imagesrc={cake5}/>
-          </Holder>
-          </CarouselContainer>
-          </Carousel>
+            <ImgHolder>
+              <Image src={video2}></Image>
+            </ImgHolder>
 
-        </CardWrapper>
+            <ImgHolder>
+              <Image src={video3}></Image>
+            </ImgHolder>
+          </VideoCarouselContainer>
 
-        
+          <VideoCarouselContainer>
+            <ImgHolder>
+              <Image src={video1}></Image>
+            </ImgHolder>
+
+            <ImgHolder>
+              <Image src={video2}></Image>
+            </ImgHolder>
+
+            <ImgHolder>
+              <Image src={video3}></Image>
+            </ImgHolder>
+          </VideoCarouselContainer>
+
+        </Carousel>
       </ContentDiv>
-   
-    
-      
     </Section>
   );
 }
@@ -97,7 +74,7 @@ const VideoCarouselContainer = styled.div`
   position: relative;
 `;
 
-const VideoHolder = styled.div`
+const ImgHolder = styled.div`
   min-width: 31%;
   height: 100%;
   border-radius: 10px;
@@ -106,10 +83,7 @@ const VideoHolder = styled.div`
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
-  justify-content: center;
-  
 `;
-
 
 const CardWrapper = styled.div`
   height: 100%;
@@ -117,4 +91,10 @@ const CardWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;

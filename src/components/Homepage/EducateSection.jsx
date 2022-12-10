@@ -6,8 +6,6 @@ import styled from "styled-components";
 import video1 from "../../designAssets/Homepage/Educate/video1.png";
 import video2 from "../../designAssets/Homepage/Educate/video2.png";
 import video3 from "../../designAssets/Homepage/Educate/video3.png";
-import ArrowRight from "../../designAssets/Homepage/Educate/ArrowRight.png";
-import ArrowLeft from "../../designAssets/Homepage/Educate/ArrowLeft.png";
 import Carousel from "react-elastic-carousel";
 
 function EducateSection(props) {
@@ -85,19 +83,4 @@ const Image = styled.img`
   height: 100%;
   object-fit: contain;
 `;
-// const Arrow = styled.img`
-//   width: 25px;
-//   top: 50%;
-//   position: absolute;
-//   transform: translateY(-50%);
-//   cursor: pointer;
 
-//   &.left{
-//     left: 0;
-//   }
-
-//   &.right{
-//     right: 0;
-//   }
-// `
-;

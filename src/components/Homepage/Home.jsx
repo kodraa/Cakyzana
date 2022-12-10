@@ -14,7 +14,7 @@ function Home() {
         <Navbar isHalfWhite={true} isLogoWhite={true} isCartWhite={true}/>
         <Landing />
         <ThisMonth  />
-        <Classes />
+        <Classes isGrey={true} isWhite={true}/>
         <TheStars />
         <EntrepreneursJourney isGrey={true} />
         <EducateSection />

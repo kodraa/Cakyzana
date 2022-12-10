@@ -5,12 +5,15 @@ import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
 
+
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
+
   return (
-    <CardContainer>
+    <CardContainer isWhite={props.isWhite} >
       <CardBody>
+
         <CardIconDiv>
           {!isLiked ? (
             <FaRegHeart size={25} style={{float: "right", marginRight:"25px"}}
@@ -26,8 +29,10 @@ const Card = (props) => {
           />
           )}
         </CardIconDiv>
+        
+            
 
-          <CardImage src={props.imagesrc} />
+    <CardImage src={props.imagesrc} />
           <CardBodyText>
             <CardTitle classTitle={props.classTitle}>
               {props.classTitle}
@@ -48,7 +53,8 @@ const Card = (props) => {
           <CardButtonDiv>
             <CardButton cardBgColor={CONSTANTS.pink} btnText="Buy Now"></CardButton>
           </CardButtonDiv>
-        </CardBody>
+           </CardBody>
+        
       
         </CardContainer>
   );
@@ -58,6 +64,7 @@ const Card = (props) => {
 
 export default Card;
 
+
 const CardContainer = styled.div`
   width: 380px;
   height: 680px;
@@ -65,8 +72,9 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${CONSTANTS.white};
+  background-color: white;
   color: ${CONSTANTS.grayblack};
+  margin-bottom: 5rem;
 `;
 
 const CardContent = styled.div`

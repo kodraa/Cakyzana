@@ -9,14 +9,18 @@ import cake2 from "../../../designAssets/Homepage/Classes/pic2.png";
 import cake3 from "../../../designAssets/Homepage/Classes/pic3.png";
 import cake4 from "../../../designAssets/Homepage/Classes/pic4.png";
 import cake5 from "../../../designAssets/Homepage/Classes/pic5.png";
-import video1 from "../../../designAssets/Homepage/Educate/video1.png";
-import video2 from "../../../designAssets/Homepage/Educate/video2.png";
-import video3 from "../../../designAssets/Homepage/Educate/video3.png";
-import Carousel from "react-elastic-carousel";
+import 'keen-slider/keen-slider.min.css'
+import { useKeenSlider } from 'keen-slider/react'
+
+
+  
 
 function TheClasses(props) {
+
+
   return (
-    <Section isGrey={props.grey}>
+  
+    <Section isGrey={props.isGrey}>
       <EngArTitle
         english={"Classes"}
         arabic={"يلا عالصف"}
@@ -24,55 +28,47 @@ function TheClasses(props) {
         right={"-114%"}
         arColor={CONSTANTS.pink}
       />
+      <ContentDiv >
+     
+        <CardWrapper>
+       
+          <Card 
+            classTitle="Chocolate Cake Recipe"
+            imagesrc={cake1}
+            number="10"
+            classDur="30"
+            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated."
+          />
+          
+          <Card 
+            classTitle="Chocolate Ganache"
+            imagesrc={cake2}
+            number="10"
+            classDur="30"
+            descr="This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... "
+          />
+          
+          <Card 
+            classTitle="Sugar Fondant"
+            imagesrc={cake3}
+            number="10"
+            classDur="30"
+            descr=" This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... "
+          />
 
-      <ContentDiv>
-        <Carousel>
-
-          <VideoCarouselContainer>
-            <ImgHolder>
-              <Image src={video1}></Image>
-            </ImgHolder>
-
-            <ImgHolder>
-              <Image src={video2}></Image>
-            </ImgHolder>
-
-            <ImgHolder>
-              <Image src={video3}></Image>
-            </ImgHolder>
-          </VideoCarouselContainer>
-
-          <VideoCarouselContainer>
-            <ImgHolder>
-              <Image src={video1}></Image>
-            </ImgHolder>
-
-            <ImgHolder>
-              <Image src={video2}></Image>
-            </ImgHolder>
-
-            <ImgHolder>
-              <Image src={video3}></Image>
-            </ImgHolder>
-          </VideoCarouselContainer>
-
-        </Carousel>
+        </CardWrapper>
+        
       </ContentDiv>
+      
     </Section>
-  );
+     );
 }
 
-export default TheClasses;
+   
+         
 
-const VideoCarouselContainer = styled.div`
-  width: 100%;
-  height: 550px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  position: relative;
-`;
+
+ export default TheClasses;
 
 const ImgHolder = styled.div`
   min-width: 31%;
@@ -98,3 +94,4 @@ const Image = styled.img`
   height: 100%;
   object-fit: contain;
 `;
+

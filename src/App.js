@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import SingleStar from "./components/Star/SingleStar";
 import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
 import Utensils from "./components/Utensils/Utensils";
+import Login from "./components/Login/Login";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,11 @@ const router = createBrowserRouter([
   },
   {
     path:'/singleUtenils/:id',
-    element:<UtensilPage/>
+    element:<UtensilPage />
+  },
+  {
+    path:'login',
+    element:<Login />
   }
 ]);
 

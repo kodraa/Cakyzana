@@ -29,3 +29,8 @@
   font-family: 'Century Gothic';
   src: url('./fonts/Century Gothic/CenturyGothic.ttf');
 }
+
+@font-face {
+  font-family: 'Century Gothic Bold';
+  src: url('./fonts/Century Gothic/CenturyGothicBold.TTF');
+}

@@ -5,7 +5,8 @@ import cake from "../../../designAssets/Homepage/TheStars/cake5.png";
 import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
-import { redirect } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
+import Lib from "nuka-carousel";
 
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -45,7 +46,9 @@ const Card = (props) => {
         </CardButtonDiv>
       </CardBody>
       <HoverDiv>
+        <Link to="/star">
         <CardButton cardBgColor={CONSTANTS.blue} btnText="View More"></CardButton>
+        </Link>
         </HoverDiv>
     </CardContainer>
   );

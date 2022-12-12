@@ -5,59 +5,63 @@ import {
   CONSTANTS,
   FullScreenSection,
 } from "../../global";
-import Navbar from "../globalComponents/Navbar";
-import BlackCakyzanaLogo from "../../designAssets/Star/Black Navbar Logo.png";
-import Utensil from "../../designAssets/UtensilsPage/ForMeasuring/MeasuringCups.png";
-import Footer from "../globalComponents/Footer";
+import { utensils } from "../../data/utensils";
+import { useParams } from "react-router-dom";
 
 // TODO add black cart logo
 
 function SingleUntensil() {
+  const params = useParams();
+  const id = params.id;
+  let utensil = utensils.find((utensil) => utensil.id == id);
+
   return (
     <FullScreenSection isGrey>
-      <Navbar logo={BlackCakyzanaLogo} />
       <UtensilFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
-            <Img src={Utensil} alt="utensil" />
+            <Img
+              src={require(`../../designAssets/UtensilsPage/${utensil.image}.png`)}
+              alt="utensil"
+            />
           </LeftChildImgContainer>
         </LeftFlexChild>
 
         <RightFlexChild>
-          <UtensilTitle>Measuring Cups</UtensilTitle>
+          <UtensilTitle>{utensil.name}</UtensilTitle>
 
           <UtensilSubtitles>
             <Price>Price: </Price>
-            <Subtitle>40 $</Subtitle>
+            <Subtitle>{utensil.price}</Subtitle>
           </UtensilSubtitles>
 
           <ShapeContainer>
             <BoldText>Shape:</BoldText>
-            <Paragraph>Circle</Paragraph>
+            <Paragraph>{utensil.shape}</Paragraph>
           </ShapeContainer>
 
           <MaterialContainer>
-            <BoldText>Material: x2</BoldText>
+            <BoldText>Material:x{utensil.material.length}</BoldText>
             <ListItems>
-              <ListItem>Rubber</ListItem>
-              <ListItem>Stainless Steel</ListItem>
+              {utensil.material.map((material) => (
+                <ListItem>{material}</ListItem>
+              ))}
             </ListItems>
           </MaterialContainer>
 
           <MaterialContainer>
-            <BoldText>Diemnsions: x4</BoldText>
+            <BoldText>Diemnsions: x{utensil.Dimensions.length}</BoldText>
             <ListItems>
-              <ListItem>Cup 1: 4*4*4 ~100ml</ListItem>
-              <ListItem>Cup 2: 7*7*6 ~250ml</ListItem>
-              <ListItem>Cup 3: 10*10*9 ~500ml</ListItem>
-              <ListItem>Cup 4: 13*13*11 ~750ml</ListItem>
+              {utensil.Dimensions.map((dimension) => (
+                <ListItem>{dimension}</ListItem>
+              ))}
             </ListItems>
           </MaterialContainer>
 
           <MaterialContainer>
             <BoldText>Packaging</BoldText>
             <ListItems>
-              <ListItem>4pcs/package</ListItem>
+              <ListItem>{utensil.Packaging}</ListItem>
             </ListItems>
           </MaterialContainer>
 
@@ -106,7 +110,7 @@ const LeftChildImgContainer = styled.div`
 const Img = styled.img`
   height: 100%;
   width: 70%;
-  object-fit:contain;
+  object-fit: contain;
 `;
 
 const RightFlexChild = styled.div`
@@ -163,8 +167,8 @@ const ListItem = styled.li`
 `;
 
 const CTA = styled.div`
-position: relative;
-top:2%;
+  position: relative;
+  top: 2%;
   height: 20%;
   width: 70%;
   display: flex;

@@ -19,7 +19,7 @@ const router = createBrowserRouter([
     element: <Utensils />,
   },
   {
-    path:'/singleUtenils/:id',
+    path:'/utensil/:id',
     element:<UtensilPage/>
   }
 ]);

@@ -13,7 +13,7 @@ import Navbar from '../globalComponents/Navbar';
 function Utensils() {
   return (
     <>
-        <Navbar isWhite={true} />
+        <Navbar isLogoWhite={true} isCartWhite={true} isWhite={true} />
         <Landing />
         <ForFondants />
         <ForPiping/>

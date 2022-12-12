@@ -76,7 +76,7 @@ const CardIconDiv = styled.div`
 `;
 
 const CardImage = styled.img`
-  width: "70%";
+  width: 70%;
   margin: 0 auto;
   height: 40%;
   object-fit: contain;

@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import backgroundImage from "../../designAssets/SignUp/background.png";
+import backgroundImage from "../../designAssets/SignUp/background2.png";
 
 function SignUp() {
   return (
     <Body>
+      <Img src={backgroundImage} />
       <Container>
         <Title>Sign Up</Title>
         <Form action="#">
@@ -92,8 +93,8 @@ const Body = styled.body`
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-image: url(${backgroundImage});
-  background-size: auto;
+  /* background-image: url(${backgroundImage});
+  background-size: auto; */
   padding: 10px;
   color:#fff;
 `;
@@ -177,3 +178,11 @@ const Radio = styled.input`
     accent-color:purple;
 `;
 
+const Img = styled.img`
+  position: absolute;
+  z-index: -1;
+  top: 8%;
+  left: 8%;
+  width: 85%;
+  height: 85%;
+`;

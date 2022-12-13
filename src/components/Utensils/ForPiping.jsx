@@ -4,17 +4,12 @@ import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardUtensils";
-import PipingHeadsSet1 from "../../designAssets/UtensilsPage/ForPiping/PipingHeadsSet1.png";
-import PipingHeadsSet2 from "../../designAssets/UtensilsPage/ForPiping/PipingHeadsSet2.png";
-import PipingBag from "../../designAssets/UtensilsPage/ForPiping/PipingBag.png";
-import { useParams, Link } from "react-router-dom";
+import PipingHeadsSet1 from "../../designAssets/Utensils/ForPiping/PipingHeadsSet1.png";
+import PipingHeadsSet2 from "../../designAssets/Utensils/ForPiping/PipingHeadsSet2.png";
+import PipingBag from "../../designAssets/Utensils/ForPiping/PipingBag.png";
+
 
 function ForPiping() {
-  //get id from card and link page to it
-
-  const params = useParams();
-  const id = params.id;
-
   return (
     <Section>
       <EngArTitle
@@ -25,34 +20,9 @@ function ForPiping() {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
-        <Link to="/utensil/7" style={styles.Link}>
-          <Card
-            cardBgColor="pink"
-            src={PipingHeadsSet1}
-            classTitle="Piping HeadsSet 1"
-            Description=" Stainless steel "
-            Set=" 4"
-            price="40"
-          />
-        </Link>
-        <Link to="/utensil/8" style={styles.Link}>
-          <Card
-            src={PipingHeadsSet2}
-            classTitle="Piping HeadsSet 2"
-            Description="Small stainless steel "
-            Set=" 5"
-            price="25"
-          />
-        </Link>
-        <Link to="/utensil/9" style={styles.Link}>
-          <Card
-            src={PipingBag}
-            classTitle="Piping Bag"
-            Description="Washable Bags"
-            Set=" 4"
-            price="36"
-          />
-        </Link>
+        <Card id='7' cardBgColor="pink" src={PipingHeadsSet1} classTitle="Piping HeadsSet 1" Description=" Stainless steel " Set=" 4" price="40"/>
+        <Card id='8' src={PipingHeadsSet2} classTitle="Piping HeadsSet 2" Description="Small stainless steel " Set=" 5" price="25"/>
+        <Card id='9' src={PipingBag} classTitle="Piping Bag" Description="Washable Bags" Set=" 4" price="36"/>
       </ContentDiv>
     </Section>
   );
@@ -66,9 +36,3 @@ const ContentDiv = styled(BasicContentDiv)`
   flex-wrap: wrap;
   justify-content: space-evenly;
 `;
-
-const styles = {
-  Link: {
-    textDecoration: "none",
-  },
-};

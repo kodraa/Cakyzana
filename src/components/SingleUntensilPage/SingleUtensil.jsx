@@ -22,7 +22,7 @@ function SingleUntensil() {
         <LeftFlexChild>
           <LeftChildImgContainer>
             <Img
-              src={require(`../../designAssets/UtensilsPage/${utensil.image}.png`)}
+              src={require(`../../designAssets/Utensils/${utensil.image}.png`)}
               alt="utensil"
             />
           </LeftChildImgContainer>

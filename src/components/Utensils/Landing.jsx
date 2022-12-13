@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BasicLandingSection, CONSTANTS, FullScreenSection } from "../../global";
-import UtensilsLandingPage from "../../designAssets/UtensilsPage/Landing/UtensilsLandingPage.png";
+import UtensilsLandingPage from "../../designAssets/Utensils/Landing/UtensilsLandingPage.png";
 
 function Landing() {
   return (

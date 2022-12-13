@@ -4,6 +4,7 @@ import { CONSTANTS } from "../../global";
 import CardButton from "../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -38,7 +39,9 @@ const Card = (props) => {
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
             <CardButtonDiv>
+              <Link id={props.id} to={`/utensil/${props.id}`}>
         <CardButton cardBgColor={CONSTANTS.pink} btnText="View More"></CardButton>
+        </Link>
 
         </CardButtonDiv>
       </CardBody>

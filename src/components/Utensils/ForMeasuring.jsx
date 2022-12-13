@@ -4,10 +4,10 @@ import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components";
 import Card from "./CardUtensils";
-import CakeRuler from "../../designAssets/UtensilsPage/ForMeasuring/CakeRuler.png";
-import MeasuringSpoons from "../../designAssets/UtensilsPage/ForMeasuring/MeasuringSpoons.png";
-import MeasuringCups from "../../designAssets/UtensilsPage/ForMeasuring/MeasuringCups.png";
-import { Link } from "react-router-dom";
+import CakeRuler from "../../designAssets/Utensils/ForMeasuring/CakeRuler.png";
+import MeasuringSpoons from "../../designAssets/Utensils/ForMeasuring/MeasuringSpoons.png";
+import MeasuringCups from "../../designAssets/Utensils/ForMeasuring/MeasuringCups.png";
+
 
 function ForMeasuring() {
   return (
@@ -20,7 +20,6 @@ function ForMeasuring() {
         arColor={CONSTANTS.blue}
       />
       <ContentDiv>
-        <Link to="/utensil/1" style={styles.Link}>
           <Card
             cardBgColor="pink"
             src={MeasuringSpoons}
@@ -28,26 +27,24 @@ function ForMeasuring() {
             Description=" Stainless steel hand & rubber head "
             Set=" 4"
             price="40"
+            id="1"
           />
-        </Link>
-        <Link to="/utensil/2" style={styles.Link}>
           <Card
             src={MeasuringCups}
             classTitle="Measuring Cups"
             Description="Stainless steel hand & rubber head"
             Set=" 5"
             price="25"
+            id="2"
           />
-        </Link>
-        <Link to="/utensil/3" style={styles.Link}>
           <Card
             src={CakeRuler}
             classTitle="CakeRuler"
             Description=" Plastic-Unit in CMs"
             Set=" 4"
             price="36"
+            id="3"
           />
-        </Link>
       </ContentDiv>
     </Section>
   );
@@ -62,8 +59,3 @@ const ContentDiv = styled(BasicContentDiv)`
   justify-content: space-evenly;
 `;
 
-const styles = {
-  Link: {
-    textDecoration: "none",
-  },
-};

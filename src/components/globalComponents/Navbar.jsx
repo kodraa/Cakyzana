@@ -15,7 +15,9 @@ function Navbar(props) {
       <NavLinksContainer>
         <NavLink className={props.isWhite && 'white'}>Home</NavLink>
         <NavLink className={props.isWhite && 'white'}>Classes</NavLink>
+        <Link to="/utensils">
         <NavLink className={props.isWhite && 'white'}>Utensils</NavLink>
+        </Link>
         <NavLink className={(props.isHalfWhite || props.isWhite ) && 'white' }>Educate</NavLink>
         <NavLink className={(props.isHalfWhite || props.isWhite ) && 'white' }>LogIn</NavLink>
         <NavLink>

@@ -7,10 +7,7 @@ import {
 } from "../../global";
 import { utensils } from "../../data/utensils";
 import { useParams } from "react-router-dom";
-import Navbar from "../globalComponents/Navbar";
-import BlackCakyzanaLogo from "../../designAssets/Star/Black Navbar Logo.png";
-import Utensil from "../../designAssets/Utensils/ForMeasuring/MeasuringCups.png";
-import Footer from "../globalComponents/Footer";
+
 
 // TODO add black cart logo
 

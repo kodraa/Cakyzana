@@ -32,6 +32,8 @@ const router = createBrowserRouter([
   {
     path:'signup',
     element:<SignUp />
+  },
+  {
     path:'/utensil/:id',
     element:<UtensilPage/>
   }

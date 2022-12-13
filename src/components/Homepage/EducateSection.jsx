@@ -6,6 +6,8 @@ import styled from "styled-components";
 import video1 from "../../designAssets/Homepage/Educate/video1.png";
 import video2 from "../../designAssets/Homepage/Educate/video2.png";
 import video3 from "../../designAssets/Homepage/Educate/video3.png";
+import ArrowLeft from "../../../designAssets/Homepage/ThisMonth/ArrowLeft.png";
+import ArrowRight from "../../../designAssets/Homepage/ThisMonth/ArrowRight.png";
 import Carousel from "react-elastic-carousel";
 
 function EducateSection(props) {

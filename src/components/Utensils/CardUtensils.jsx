@@ -13,39 +13,33 @@ const Card = (props) => {
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart
-              size={25}
-              style={{ float: "right", marginRight: "25px" }}
-              onClick={(prev) => setIsLiked(!isLiked)}
-            />
+            <FaRegHeart size={25} style={{float: "right",marginRight:"25px"}}
+            onClick={(prev)=>setIsLiked(!isLiked)} />
+
+           
           ) : (
+            
             <FaHeart
-              style={{
-                color: "red",
-                border: "none",
-                float: "right",
-                marginRight: "25px",
-              }}
-              size={25}
-              onClick={(prev) => setIsLiked(!isLiked)}
-            />
+            style={{ color: "red", border: "none", float: "right",marginRight:"25px"}}
+            size={25}
+            onClick={(prev) => setIsLiked(!isLiked)}
+          />
           )}
         </CardIconDiv>
         <CardImage src={props.src} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
         <CardText>
           <BoldText>Description:</BoldText>
-          <CardText Description={props.Description}>
-            {props.Description}{" "}
-          </CardText>
+          <CardText Description={props.Description}>{props.Description} </CardText>
         </CardText>
         <CardText>
           <BoldText>Set:</BoldText>
           <CardText Set={props.Set}>{props.Set} pcs</CardText>
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
-        <CardButtonDiv>
-          <CardButton cardBgColor={CONSTANTS.pink}>Buy Now</CardButton>
+            <CardButtonDiv>
+        <CardButton cardBgColor={CONSTANTS.pink} btnText="View More"></CardButton>
+
         </CardButtonDiv>
       </CardBody>
     </CardContainer>
@@ -63,6 +57,7 @@ const CardContainer = styled.div`
   border-radius: 20px;
   background-color: ${CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
+  
 `;
 const CardBody = styled.div`
   width: 100%;
@@ -77,11 +72,11 @@ const CardIconDiv = styled.div`
   position: relative;
   top: 10;
   right: 10;
-  margin-top: 2rem;
+  margin-top: 2rem
 `;
 
 const CardImage = styled.img`
-  width: "70%";
+  width: 70%;
   margin: 0 auto;
   height: 40%;
   object-fit: contain;

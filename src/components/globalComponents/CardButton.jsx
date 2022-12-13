@@ -4,7 +4,7 @@ import { CONSTANTS } from "../../global";
 
 const CardButton = (props) => {
   return (
-        <Cardbtn cardBgColor={props.cardBgColor} btnText={props.btnText}>{props.btnText}</Cardbtn>
+        <Cardbtn cardBgColor={props.cardBgColor}>{props.btnText}</Cardbtn>
      
   );
 };

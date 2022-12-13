@@ -1,25 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import cartIcon from "../../designAssets/Navbar/cart icon.png";
 import { Link } from "react-router-dom";
-import { CONSTANTS } from "../../global";
+import WhiteCart from '../../designAssets/Navbar/White Cart.png'
+import BlackCart from '../../designAssets/Navbar/Black Cart.png'
+import WhiteLogo from '../../designAssets/Navbar/White Navbar Logo.png'
+import BlackLogo from '../../designAssets/Navbar/Black Navbar Logo.png'
+
 function Navbar(props) {
   return (
     <Header>
-      <LogoContainer>
-        <Logo src={props.logo} />
+      <LogoContainer>        
+        <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo}/>
       </LogoContainer>
       <NavLinksContainer>
-        <NavLink>Home</NavLink>
-        <NavLink>Classes</NavLink>
-
+        <NavLink className={props.isWhite && 'white'}>Home</NavLink>
+        <NavLink className={props.isWhite && 'white'}>Classes</NavLink>
+        <NavLink className={props.isWhite && 'white'}>Utensils</NavLink>
+        <NavLink className={(props.isHalfWhite || props.isWhite ) && 'white' }>Educate</NavLink>
+        <NavLink className={(props.isHalfWhite || props.isWhite ) && 'white' }>LogIn</NavLink>
         <NavLink>
-          <Link style={{textDecoration:'none',color:`${CONSTANTS.purpleDark}`}} to="/utensils">Utensils</Link>
-        </NavLink>
-        <NavLink className={props.isWhite && "white"}>Educate</NavLink>
-        <NavLink className={props.isWhite && "white"}>LogIn</NavLink>
-        <NavLink className={props.isWhite && "white"}>
-          <Img src={cartIcon} alt="cart icon" />
+          <Img src={props.isCartWhite ? WhiteCart : BlackCart} alt="cart icon"/>
         </NavLink>
       </NavLinksContainer>
     </Header>

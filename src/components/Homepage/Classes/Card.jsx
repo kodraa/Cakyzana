@@ -5,15 +5,18 @@ import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
 
+
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
+
   return (
-    <CardContainer>
+    <CardContainer isWhite={props.isWhite} >
       <CardBody>
+
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart size={25} style={{float: "right",marginRight:"25px"}}
+            <FaRegHeart size={25} style={{float: "right", marginRight:"25px"}}
             onClick={(prev)=>setIsLiked(!isLiked)} />
 
            
@@ -26,38 +29,55 @@ const Card = (props) => {
           />
           )}
         </CardIconDiv>
-        <CardImage src={props.imagesrc} />
-        <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
-        <CardText>
-          <BoldText>Class Number:</BoldText>
-          <CardText>10</CardText>
-        </CardText>
-        <CardText>
-          <BoldText>Approximate Video Duration Duration:</BoldText>
-          <CardText classDur={props.classDur}>{props.classDur} mins</CardText>
-        </CardText>
-        <CardText2 descr={props.descr}>Description: {props.descr} $</CardText2>
-            <CardButtonDiv>
-        <CardButton cardBgColor={CONSTANTS.pink}>Buy Now</CardButton>
-        </CardButtonDiv>
-      </CardBody>
-    </CardContainer>
+        
+            
+
+    <CardImage src={props.imagesrc} />
+          <CardBodyText>
+            <CardTitle classTitle={props.classTitle}>
+              {props.classTitle}
+            </CardTitle>
+            <CardText>
+              <p>
+                <BoldText>Class Number:</BoldText> 10
+              </p>
+              <p>
+                <BoldText>Approximate Video Duration:</BoldText>
+                {props.classDur} mins
+              </p>
+            </CardText>
+            <CardText2 descr={props.descr}>
+              Description: {props.descr}{" "}
+            </CardText2>
+          </CardBodyText>
+          <CardButtonDiv>
+            <CardButton cardBgColor={CONSTANTS.pink} btnText="Buy Now"></CardButton>
+          </CardButtonDiv>
+           </CardBody>
+        
+      
+        </CardContainer>
   );
 };
+ 
+
 
 export default Card;
 
+
 const CardContainer = styled.div`
-  width: 400px;
-  height: 550px;
+  width: 380px;
+  height: 680px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${CONSTANTS.graywhite};
+  background-color: white;
   color: ${CONSTANTS.grayblack};
+  margin-bottom: 5rem;
 `;
-const CardBody = styled.div`
+
+const CardContent = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -70,29 +90,45 @@ const CardIconDiv = styled.div`
   position: relative;
   top: 10;
   right: 10;
-  margin-top: 2rem
+  margin-top: 2rem;
 `;
 
 const CardImage = styled.img`
-  width: "80%";
-  margin: 0 auto;
+  width: 60%;
   height: fit-content;
   object-fit: contain;
+`;
+
+const CardBody = styled.div`
+  height: 90%;
+  width: 83.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  transform: translateY(-7%);
+`;
+
+const CardBodyText = styled.div`
+  width: 100%;
+  flex-grow: 0.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 const CardTitle = styled.h4`
   font-size: 24px;
   font-weight: 800;
   color: ${CONSTANTS.black};
-  text-align: center;
-  margin-bottom: 15px;
-  margin-top: 15px;
+  text-align: left;
+  padding-top: 1.5rem;
 `;
 const CardText = styled.span`
   font-size: 16px;
   font-weight: 400;
-  text-align: center;
-  padding-bottom: 7px;
+  text-align: left;
+  padding-top: 1.5rem;
 `;
 const BoldText = styled.span`
   font-weight: bold !important;
@@ -101,9 +137,8 @@ const BoldText = styled.span`
 const CardText2 = styled.h6`
   font-size: 16px;
   font-weight: 700;
-  padding-bottom: 2px;
+  text-align: left;
   padding-top: 1.5rem;
-  text-align: center;
 `;
 
 const CardButtonDiv = styled.div`
@@ -112,4 +147,5 @@ const CardButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+  
 `;

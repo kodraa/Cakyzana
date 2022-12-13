@@ -9,7 +9,7 @@ import ModelingPensSet2 from "../../designAssets/Utensils/ForFondants/ModelingPe
 import ModelingPensSet3 from "../../designAssets/Utensils/ForFondants/ModelingPensSet3.png";
 import { Link } from "react-router-dom";
 
-function ForFondants() {
+function ForFondants(props) {
   return (
     <Section>
       <EngArTitle
@@ -20,10 +20,31 @@ function ForFondants() {
         arColor={CONSTANTS.blue}
       />
       <ContentDiv>
-        
-        <Card id='4' src={ModelingPensSet1} classTitle="Modeling Pens Set 1" Description=" Stainless steel " Set=" 4" price="40"/>
-        <Card id='5' src={ModelingPensSet2} classTitle="Modeling Pens Set 2" Description="Small stainless steel ball and rubber headed pens" Set=" 5" price="25"/>
-        <Card id='6' src={ModelingPensSet3} classTitle="Modeling Pens Set 3" Description="Wood random shapes modeling pen" Set=" 4" price="36"/>
+        <Card
+          isGrey={props.isGrey}
+          id="4"
+          src={ModelingPensSet1}
+          classTitle="Modeling Pens Set 1"
+          Description=" Stainless steel "
+          Set=" 4"
+          price="40"
+        />
+        <Card
+          id="5"
+          src={ModelingPensSet2}
+          classTitle="Modeling Pens Set 2"
+          Description="Small stainless steel ball "
+          Set=" 5"
+          price="25"
+        />
+        <Card
+          id="6"
+          src={ModelingPensSet3}
+          classTitle="Modeling Pens Set 3"
+          Description="Wood random modeling pen"
+          Set=" 4"
+          price="36"
+        />
       </ContentDiv>
     </Section>
   );

@@ -8,10 +8,9 @@ import PipingHeadsSet1 from "../../designAssets/Utensils/ForPiping/PipingHeadsSe
 import PipingHeadsSet2 from "../../designAssets/Utensils/ForPiping/PipingHeadsSet2.png";
 import PipingBag from "../../designAssets/Utensils/ForPiping/PipingBag.png";
 
-
-function ForPiping() {
+function ForPiping(props) {
   return (
-    <Section>
+    <Section isGrey={props.isGrey}>
       <EngArTitle
         english={" For Piping"}
         arabic={"للتزين يا عيني "}
@@ -20,9 +19,33 @@ function ForPiping() {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
-        <Card id='7' cardBgColor="pink" src={PipingHeadsSet1} classTitle="Piping HeadsSet 1" Description=" Stainless steel " Set=" 4" price="40"/>
-        <Card id='8' src={PipingHeadsSet2} classTitle="Piping HeadsSet 2" Description="Small stainless steel " Set=" 5" price="25"/>
-        <Card id='9' src={PipingBag} classTitle="Piping Bag" Description="Washable Bags" Set=" 4" price="36"/>
+        <Card
+          isGrey={props.isGrey}
+          id="7"
+          src={PipingHeadsSet1}
+          classTitle="Piping HeadsSet 1"
+          Description=" Stainless steel "
+          Set=" 4"
+          price="40"
+        />
+        <Card
+          isGrey={props.isGrey}
+          id="8"
+          src={PipingHeadsSet2}
+          classTitle="Piping HeadsSet 2"
+          Description="Small stainless steel "
+          Set=" 5"
+          price="25"
+        />
+        <Card
+          isGrey={props.isGrey}
+          id="9"
+          src={PipingBag}
+          classTitle="Piping Bag"
+          Description="Washable Bags"
+          Set=" 4"
+          price="36"
+        />
       </ContentDiv>
     </Section>
   );

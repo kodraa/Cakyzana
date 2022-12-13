@@ -8,9 +8,9 @@ import CircleCakeTray from "../../designAssets/Utensils/ForCakes/CircleCakeTray.
 import SquareCakeTray from "../../designAssets/Utensils/ForCakes/SquareCakeTray.png";
 import TableTurner from "../../designAssets/Utensils/ForCakes/TableTurner.png";
 
-function ForCakes() {
+function ForCakes(props) {
   return (
-    <Section>
+    <Section isGrey={props.isGrey}>
       <EngArTitle
         english={"For Cakes"}
         arabic={"الشكل تحت السيطرة"}
@@ -19,10 +19,33 @@ function ForCakes() {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
-        
-        <Card  id='11'src={CircleCakeTray} classTitle="Circle Cake Tray" Description=" Ceramic " Set=" 4" price="40"/>
-        <Card id='12' src={SquareCakeTray} classTitle="Square Cake Tray" Description=" Carbon steel" Set=" 5" price="25"/>
-        <Card id='10'src={TableTurner} classTitle="Table Turner" Description=" Carbon steel" Set=" 4" price="36"/>
+        <Card
+          isGrey={props.isGrey}
+          id="11"
+          src={CircleCakeTray}
+          classTitle="Circle Cake Tray"
+          Description=" Ceramic "
+          Set=" 4"
+          price="40"
+        />
+        <Card
+          isGrey={props.isGrey}
+          id="12"
+          src={SquareCakeTray}
+          classTitle="Square Cake Tray"
+          Description=" Carbon steel"
+          Set=" 5"
+          price="25"
+        />
+        <Card
+          isGrey={props.isGrey}
+          id="10"
+          src={TableTurner}
+          classTitle="Table Turner"
+          Description=" Carbon steel"
+          Set=" 4"
+          price="36"
+        />
       </ContentDiv>
     </Section>
   );

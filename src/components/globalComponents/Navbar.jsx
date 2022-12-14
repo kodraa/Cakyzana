@@ -26,14 +26,13 @@ function Navbar(props) {
           <NavLink className={props.isWhite && "white"}>Classes<BottomBorder></BottomBorder></NavLink>
         </Link>
         <Link to="/utensils" style={styles.Link}>
-          <NavLink className={props.isWhite && "white"}>Utensils<BottomBorder></BottomBorder></NavLink>
+          <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>Utensils<BottomBorder></BottomBorder></NavLink>
         </Link>
-        <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-          Educate<BottomBorder></BottomBorder>
-        </NavLink>
+        <Link to="/login" style={styles.Link}>
         <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
           LogIn<BottomBorder></BottomBorder>
         </NavLink>
+        </Link>
         <Link to="/cart">
           <NavLink>
             <Img

@@ -12,9 +12,9 @@ import cake1 from "../../designAssets/Homepage/Classes/pic5.png";
 import {classesCategories} from "../../data/classes.js"
 
 
-const ClassesComponent = (props) => {
+const categorycomponent = (props) => {
 
-    const [classes, setClasses] = React.useState(classesCategories[0].items);
+    const [classes, setClasses] = React.useState(classescategories[0].items);
     
 
 
@@ -51,7 +51,7 @@ const ClassesComponent = (props) => {
   );
 };
 
-export default ClassesComponent;
+export default categorycomponent;
 
 const SectionContainer = styled.div`
   display: flex;

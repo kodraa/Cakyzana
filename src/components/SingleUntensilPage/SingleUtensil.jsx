@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
   BasicLandingSection,
@@ -12,6 +12,11 @@ import { useParams } from "react-router-dom";
 // TODO add black cart logo
 
 function SingleUntensil() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
+
   const params = useParams();
   const id = params.id;
   let utensil = utensils.find((utensil) => utensil.id == id);

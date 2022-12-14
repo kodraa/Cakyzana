@@ -37,7 +37,7 @@ function TheClasses(props) {
             imagesrc={cake1}
             number="10"
             classDur="30"
-            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated."
+            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts if refrigirated."
           />
           
           <Card 

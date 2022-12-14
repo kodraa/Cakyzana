@@ -9,7 +9,7 @@ import SignUp from "./components/SignUp/SignUp";
 import TheClasses from "./components/Homepage/Classes/TheClasses";
 import { CartContext, ModalContext } from "./context"
 import CartPage from "./components/Cart/CartPage";
-import ClassCategory from "./components/ClassCategory/ClassCategory";
+import ClassCategory from "./components/ClassCategory/classcategory";
 
 const router = createBrowserRouter([
   {

@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryComponent from "./CategoryComponent";
+import CategoryComponent from "./categorycomponent";
 import CategoryComponent2 from "./CategoryComponent2";
 import Footer from '../globalComponents/Footer';
 import Navbar from '../globalComponents/Navbar';
@@ -16,7 +16,6 @@ const ClassCategory = (props) => {
         <Landing />
         <CategoryComponent/>
         <CategoryComponent2  cardBgColor={CONSTANTS.pink} isPadded={true} isGrey={true}/>
-
         <Footer/>
     </>
   )

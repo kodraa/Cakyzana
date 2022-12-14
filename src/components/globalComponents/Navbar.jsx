@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 import WhiteCart from "../../designAssets/Navbar/White Cart.png";
 import BlackCart from "../../designAssets/Navbar/Black Cart.png";
 import WhiteLogo from "../../designAssets/Navbar/White Navbar Logo.png";
@@ -15,7 +15,7 @@ function Navbar(props) {
         <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo} />
       </LogoContainer>
       <NavLinksContainer>
-        <Link to="/" style={styles.Link} className={props.isWhite && "white"}>
+        <Link to="/" style={styles.Link} ac className={props.isWhite && "white"}>
           <NavLink className={props.isWhite && "white"}>Home<BottomBorder></BottomBorder></NavLink>
         </Link>
         <Link

@@ -26,9 +26,9 @@ function CategoryComponent2(props) {
                 <Card
                     isGrey={props.isGrey}
                     id="10"
-                    src={chocolatecake}
+                    src={lemoncake}
                     cardBgColor={props.cardBgColor}
-                    classTitle="Vanilla Cake"
+                    classTitle="Lemon Cake"
                     classSection="Cake Recipes"
                     Duration="30 mins"
                     Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
@@ -37,10 +37,9 @@ function CategoryComponent2(props) {
                 <Card
                     id="11"
                     isGrey={props.isGrey}
-                    src={redvelvet}
+                    src={chocolatecake}
                     cardBgColor={props.cardBgColor}
-                    isPadded={props.isPadded}
-                    classTitle="Red Velvet Cake"
+                    classTitle=" Chocolate Cake"
                     classSection="Cake Recipes"
                     Duration="30 mins"
                     Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
@@ -49,9 +48,9 @@ function CategoryComponent2(props) {
                 <Card
                     id="12"
                     isGrey={props.isGrey}
-                    src={orangecake}
+                    src={darkchocolatecake}
                     cardBgColor={props.cardBgColor}
-                    classTitle="Orange Cake"
+                    classTitle="Dark Chocolate Cake"
                     classSection="Cake Recipes"
                     Duration="30 mins"
                     Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "

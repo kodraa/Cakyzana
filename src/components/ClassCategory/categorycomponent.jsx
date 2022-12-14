@@ -27,7 +27,7 @@ function CategoryComponent(props) {
                 arabic={"طعمة و ريحة ولا أطيب"}
                 bottom={"-80%"}
                 right={"-200%"}
-                top={"25%"}
+                height={"100%"}
                 arColor={CONSTANTS.pink}
             />
             <ContentDiv>
@@ -80,7 +80,9 @@ const ContentDiv = styled(BasicContentDiv)`
   flex-wrap: wrap;
   justify-content: center;
   gap: 4rem;
+  
 `;
+
 
 /*const ItemsWrapper=styled.div`
 height: 100%;
@@ -88,22 +90,5 @@ height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-`
-const SectionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  margin: auto;
-  margin-top: 5%;
-`;
+`*/
 
-const CategoryCard=styled.div`
-background-color: ${props => props.isGrey ? CONSTANTS.graywhite : 'transparent'};
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
- 
-`;*/

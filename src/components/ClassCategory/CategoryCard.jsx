@@ -142,7 +142,8 @@ const Description = styled.h6`
   font-size: 16px;
   font-weight: 700;
   padding-bottom: 2px;
-  padding-top: 1.5rem;
+  padding-top: 2rem;
+  margin-right: 1.5rem;
   text-align: center;
   
 `;

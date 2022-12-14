@@ -6,7 +6,7 @@ export const classesCategories = [
       {
         id: 10,
         title: "Vanilla Cake",
-        image: "Baking/VanillaCake",
+        image: "vanillacake",
         classSection: "Cake Recipes",
         Duration: "30 mins",
         Description:
@@ -15,7 +15,7 @@ export const classesCategories = [
       {
         id: 11,
         title: "Red Velvet Cake",
-        image: "",
+        image: "redvelevet",
         classSection: "Cake Recipes",
         Duration: "30 mins",
         Description:
@@ -24,7 +24,7 @@ export const classesCategories = [
       {
         id: 12,
         title: "Orange Cake",
-        image: "",
+        image: "orangecake",
         classSection: "Cake Recipes",
         Duration: "30 mins",
         Description:
@@ -32,8 +32,8 @@ export const classesCategories = [
       },
       {
         id: 13,
-        title: "Orange Cake",
-        image: "",
+        title: "Lemon Cake",
+        image: "lemoncake",
         classSection: "Cake Recipes",
         Duration: "30 mins",
         Description:
@@ -42,7 +42,7 @@ export const classesCategories = [
       {
         id: 14,
         title: "Chocolate Cake",
-        image: "",
+        image: "chocolatecake",
         classSection: "Cake Recipes",
         Duration: "30 mins",
         Description:
@@ -51,7 +51,7 @@ export const classesCategories = [
       {
         id: 15,
         title: "Dark Chocolate Cake",
-        image: "",
+        image: "darkchocolatecake",
         classSection: "Cake Recipes",
         Duration: "30 mins",
         Description:

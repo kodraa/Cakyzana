@@ -1,5 +1,5 @@
 import React from 'react';
-import CategoryComponent from "./categorycomponent";
+import CategoryComponent from "./CategoryComponent";
 import CategoryComponent2 from "./CategoryComponent2";
 import Footer from '../globalComponents/Footer';
 import Navbar from '../globalComponents/Navbar';

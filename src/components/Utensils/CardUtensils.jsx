@@ -30,8 +30,11 @@ const Card = (props) => {
         <CardImage src={props.src} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
         <CardText>
-          <BoldText>Description:</BoldText>
-          <CardText Description={props.Description}>{props.Description} </CardText>
+            <CardTextContent isPadded={props.isPadded}>
+              <BoldText>Description:</BoldText> {props.Description}
+            </CardTextContent>
+          {/* <BoldText>Description:</BoldText> */}
+          {/* <CardText Description={props.Description}>{props.Description} </CardText> */}
         </CardText>
         <CardText>
           <BoldText>Set:</BoldText>
@@ -40,7 +43,7 @@ const Card = (props) => {
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
         <CardButtonDiv>
           <Link id={props.id} to={`/utensil/${props.id}`}>
-            <CardButton cardBgColor={CONSTANTS.pink} btnText="View More"></CardButton>
+            <CardButton cardBgColor={props.cardBgColor} btnText="View More"></CardButton>
           </Link>
 
         </CardButtonDiv>
@@ -51,15 +54,56 @@ const Card = (props) => {
 
 export default Card;
 
+const CardText = styled.span`
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  padding: 0 7px;
+  transition: all 0.5s ease;
+
+  `;
+  
+  const CardImage = styled.img`
+    width: 70%;
+    margin: 0 auto;
+    height: 40%;
+    object-fit: contain;
+    transition: all 0.5s ease;
+
+  `;
+  
 const CardContainer = styled.div`
-  width: 400px;
-  height: 550px;
+  width: 365px;
+  height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
   background-color: ${props => props.isGrey ? 'white' : CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
+  transition: all 0.8s ease;
+
+
+  &:hover   {
+    transform: scale(1.06);
+    transition: all 0.7s ease;
+    -webkit-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
+  -moz-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
+  box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
+  };
+
+  &:hover ${CardText}{
+    transform: scale(1);
+    transition: all 0.8s ease;
+  };
+
+  
+  &:hover ${CardImage}{
+    transform: scale(1.07);
+    transition: all 0.8s ease;
+  };
+
+  
 `;
 const CardBody = styled.div`
   width: 100%;
@@ -77,13 +121,6 @@ const CardIconDiv = styled.div`
   margin-top: 2rem
 `;
 
-const CardImage = styled.img`
-  width: 70%;
-  margin: 0 auto;
-  height: 40%;
-  object-fit: contain;
-`;
-
 const CardTitle = styled.h4`
   font-size: 24px;
   font-weight: 800;
@@ -92,14 +129,16 @@ const CardTitle = styled.h4`
   margin-bottom: 15px;
   margin-top: 15px;
 `;
-const CardText = styled.span`
-  font-size: 16px;
-  font-weight: 400;
+
+const CardTextContent = styled.p`
   text-align: center;
-  padding: 0 7px;
+  max-width: 100%;
+  padding: ${props => props.isPadded ? '0 12%' : '0'};
+  margin: 0 0 1rem 0;
 `;
+
 const BoldText = styled.span`
-  font-weight: bold !important;
+  font-family: "Century Gothic Bold", sans-serif;
   text-align: center;
 `;
 const PriceText = styled.h6`

@@ -24,25 +24,29 @@ function ForFondants(props) {
           isGrey={props.isGrey}
           id="4"
           src={ModelingPensSet1}
+          cardBgColor={props.cardBgColor}
           classTitle="Modeling Pens Set 1"
           Description=" Stainless steel "
-          Set=" 4"
+          Set="4"
           price="40"
         />
         <Card
           id="5"
           src={ModelingPensSet2}
+          cardBgColor={props.cardBgColor}
+          isPadded={props.isPadded}
           classTitle="Modeling Pens Set 2"
-          Description="Small stainless steel ball "
-          Set=" 5"
+          Description="Small stainless steel ball and rubber headed pens "
+         Set="5"
           price="25"
         />
         <Card
           id="6"
           src={ModelingPensSet3}
+          cardBgColor={props.cardBgColor}
           classTitle="Modeling Pens Set 3"
-          Description="Wood random modeling pen"
-          Set=" 4"
+          Description="Wood random shapes modeling pen"
+          Set="4"
           price="36"
         />
       </ContentDiv>
@@ -56,5 +60,6 @@ const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 4rem;
 `;

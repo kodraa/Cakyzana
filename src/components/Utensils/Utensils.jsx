@@ -18,7 +18,7 @@ function Utensils() {
         <ForFondants/>
         <ForPiping isGrey={true}/>
         <ForMeasuring/>
-        <ForCakes/>
+        <ForCakes isGrey={true}/>
         <ForCoverage/>
         <Footer/>
     </>

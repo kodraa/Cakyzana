@@ -14,17 +14,17 @@ const Card = (props) => {
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart size={25} style={{float: "right",marginRight:"25px"}}
-            onClick={(prev)=>setIsLiked(!isLiked)} />
+            <FaRegHeart size={25} style={{ float: "right", marginRight: "25px" }}
+              onClick={(prev) => setIsLiked(!isLiked)} />
 
-           
+
           ) : (
-            
+
             <FaHeart
-            style={{ color: "red", border: "none", float: "right",marginRight:"25px"}}
-            size={25}
-            onClick={(prev) => setIsLiked(!isLiked)}
-          />
+              style={{ color: "red", border: "none", float: "right", marginRight: "25px" }}
+              size={25}
+              onClick={(prev) => setIsLiked(!isLiked)}
+            />
           )}
         </CardIconDiv>
         <CardImage src={props.src} />
@@ -38,10 +38,10 @@ const Card = (props) => {
           <CardText Set={props.Set}>{props.Set} pcs</CardText>
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
-            <CardButtonDiv>
-              <Link id={props.id} to={`/utensil/${props.id}`}>
-        <CardButton cardBgColor={CONSTANTS.pink} btnText="View More"></CardButton>
-        </Link>
+        <CardButtonDiv>
+          <Link id={props.id} to={`/utensil/${props.id}`}>
+            <CardButton cardBgColor={CONSTANTS.pink} btnText="View More"></CardButton>
+          </Link>
 
         </CardButtonDiv>
       </CardBody>
@@ -60,7 +60,6 @@ const CardContainer = styled.div`
   border-radius: 20px;
   background-color: ${props => props.isGrey ? 'white' : CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
-  
 `;
 const CardBody = styled.div`
   width: 100%;

@@ -1,4 +1,4 @@
-import react,{useState,useContext} from "react";
+import react,{useState,useContext, useEffect} from "react";
 import styled from "styled-components";
 import { CONSTANTS } from "../../global";
 import { Link } from "react-router-dom";
@@ -9,49 +9,114 @@ import { CartContext } from "../../context";
 const Cart = (props) => {
 
   const [cart, setCart] = useContext(CartContext);
+  const [checkout,setCheckout] = useState(false)
+  
+  
+  const [subtotal, setSubTotal] = useState(cart.items.reduce((accumulator, object) => { return  accumulator + (parseInt(object?.qty) * parseInt(object?.price)) } ,0 ))
+  const [shipping, setShipping] = useState(4)
+  const [grandtotal, setGrandTotal] = useState(subtotal + shipping)
+
+
 
   return (
     <Section>
       <Navbar />
-      <Header>Your Cart</Header>
-      <TitleCart>
+      <Header>{checkout?'Checkout' : 'Your Cart'}</Header>
+      {!checkout ?  <TitleCart checkout={checkout}>
         <ItemTitle>Item</ItemTitle>
         <QuantityTitle>Quantity</QuantityTitle>
         <PriceTitle>Price</PriceTitle>
-      </TitleCart>
-      <CartDiv>
-        <CartContainer>
-          {cart.items.map((item) => {
-            return (
-              <CartItem>
-                <CartItemImgContainer>
-                  <CartItemImg src={item.img} />
-                </CartItemImgContainer>
-                <CartItemName>{item.name}</CartItemName>
-                <CartItemQuantity>- 1 +</CartItemQuantity>
-                <CartItemPrice> {item.price} </CartItemPrice>
-              </CartItem>
-            );
-          }
-          )}
-          {/* <CartItem>
-            <CartItemImgContainer>
-            <CartItemImg src={MeasuringCup} />
-            </CartItemImgContainer>
-            <CartItemName>Measuring Cup</CartItemName>
-            <CartItemQuantity>- 1 +</CartItemQuantity>
-            <CartItemPrice> 10$ </CartItemPrice>
-          </CartItem> */}
-        </CartContainer>
-      </CartDiv>
+      </TitleCart> :       <div style={{display:"flex", width: "80%", margin: "auto", flexDirection:"row", alignItems: "right", justifyContent: "flex-end"}}>
+        <h4 style={{width: '50%', textAlign:"center", padding:20}}>
+          Order Summary
+        </h4>
+      </div>}
+
+    <div style={{display: "flex", flexDirection: "row",gap:'2rem'}}>
+
+      {checkout && 
+      <div style={{width:"50%"}}>
+        <InputDiv>
+          <h5>Customer Name</h5>
+          </InputDiv>
+          <InputDivBig>
+          <h5>Address</h5>
+          </InputDivBig>
+          <InputDiv>
+          <h5>Payment</h5>
+          </InputDiv>
+      </div>
+      }
+      <div style={{width:checkout ? "50%" : "100%"}}>
+        <CartDiv>
+          <CartContainer>
+            {cart.items.map((item) => {
+              return (
+                <CartItem checkout={checkout}>
+                  <CartItemImgContainer>
+                    <CartItemImg src={require(`../../designAssets/Utensils/${item?.image}.png`)} />
+                  </CartItemImgContainer>
+                  <CartItemName>{item.name}</CartItemName>
+                  <CartItemQuantity>- {item.qty} +</CartItemQuantity>
+                  <CartItemPrice> {item.price} </CartItemPrice>
+                </CartItem>
+              );
+            }
+            )}
+          </CartContainer>
+        </CartDiv>
+
+        <CartLowerDivContainer checkout={checkout}>
+          <CartLowerDiv>
+            <CartItem lower={true} checkout={checkout}>
+              <CartItemName>Subtotal {subtotal}$</CartItemName>
+            </CartItem>
+
+            <CartItem lower={true} checkout={checkout}>
+              <CartItemName>Shipping {shipping}$</CartItemName>
+            </CartItem>
+
+            <CartItem lower={true} checkout={checkout}>
+              <CartItemName>Grand Total {grandtotal}$</CartItemName>
+            </CartItem>
+
+            <div style={{width: "100%", display: "flex", justifyContent:"space-between"}}>
+            <CTABtn goBack={true} onClick={() => { checkout ? setCheckout(false) : window.location.href = "/" }  }>
+              Continue Shopping
+            </CTABtn>
+            <CTABtn onClick={() => setCheckout(true)}>
+              {checkout ? 'Edit Cart' : 'Checkout'}
+              
+            </CTABtn>
+            </div>
+          </CartLowerDiv>
+        </CartLowerDivContainer>
+      </div>
+    </div>
     </Section>
   );
 };
 
 export default Cart;
 
+const CTABtn = styled.button`
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  background-color: ${(props) => props.goBack ? 'transparent' : CONSTANTS.pink};
+  color: ${(props) => props.goBack ? 'black' : 'white'};
+  border-radius: 32px;
+  border: none;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 1.2rem;
+  text-decoration: none;
+  /* margin-top: 1rem; */
+`;
+
+
 const Header = styled.h1`
-  color: ${CONSTANTS.pink};
+  color: ${(props)=>props.checkout ? CONSTANTS.blue : CONSTANTS.pink};
   font-size: 30px;
   font-weight: 900;
   text-align: center;
@@ -71,11 +136,10 @@ const CartDiv = styled.div`
 const TitleCart = styled.div`
   display: flex;
   justify-content: space-between;
-  
-  align-items: center;
-  width: 80%;
+  align-items: end;
+  width: ${(props) => props.checkout ? '40%' : '80%'};
   margin: auto;
-    margin-bottom: 1rem;
+  margin-bottom: 1rem;
 
 `;
 
@@ -106,25 +170,24 @@ const CartContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: center;
   flex-direction: column;
   gap: 1rem;
 `;
 
 const CartItem = styled.div`
-  width: 100%;
+  width: 100% ;
   height: 4rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(props) => props.lower ? 'flex-end' : 'space-between'};
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding: 0 1rem;
+  padding: ${(props) => props.lower ?  props.checkout ?  '0' :  '0 3.5rem' : '0 1rem'} ;
   background-color: white;
   border-radius: 10px;
   padding-left: 7%;
-
 `;
 
 const CartItemImgContainer = styled.div`
@@ -154,6 +217,56 @@ const CartItemPrice = styled.h3`
 const CartItemQuantity = styled.h3`
   font-size: 1.2rem;
   font-weight: 400;
-    text-align: center;
-    width: 20%;
+  text-align: center;
+  width: 20%;
+`;
+
+const CartLowerDivContainer = styled.div`
+
+width: ${(props) => props.checkout ? '80%' : '40%'};
+/* justify-content: right;
+align-items: end; */
+flex-direction: column;
+display: flex;
+//flex at the end
+align-content: flex-end;
+justify-content: flex-end;
+position: relative;
+left:${(props) => props.checkout ? '10%' : '50%'};
+/* left: 50%; */
+
+`
+
+const CartLowerDiv = styled.div`
+gap: 1rem;
+display: flex;
+align-items: end;
+flex-direction: column;
+justify-content: end;
+margin-top: 2rem;
+`
+
+const InputDiv = styled.div`
+  display: flex;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
+  padding:2rem;
+`;
+
+const InputDivBig = styled.div`
+  display: flex;
+  background-color: white;
+  width: 100%;
+  margin-bottom: 1rem;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
+  padding: 5rem 2rem;
+
 `;

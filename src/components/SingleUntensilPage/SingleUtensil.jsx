@@ -63,7 +63,6 @@ function SingleUntensil() {
     );
     if (nextUtensil) {
       setCurrentUtensil(nextUtensil);
-      setAnimation("slideInRight");
     }
   };
   const prevUtensil = () => {
@@ -72,11 +71,9 @@ function SingleUntensil() {
     );
     if (prevUtensil) {
       setCurrentUtensil(prevUtensil);
-      setAnimation("slideInLeft");
     }
   };
 
-  const [animation, setAnimation] = useState("");
   useEffect(()=>{
     console.log(cart)
 

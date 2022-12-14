@@ -14,7 +14,7 @@ import {classesCategories} from "../../data/classes.js"
 
 const categorycomponent = (props) => {
 
-    const [classes, setClasses] = React.useState(classescategories[0].items);
+    const [classes, setClasses] = React.useState(classesCategories[0].items);
     
 
 

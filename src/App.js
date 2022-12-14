@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Home from "./components/Homepage/Home";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import SingleStar from "./components/Star/SingleStar";
@@ -7,7 +7,8 @@ import Utensils from "./components/Utensils/Utensils";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
 import TheClasses from "./components/Homepage/Classes/TheClasses";
-
+import { CartContext, ModalContext } from "./context"
+import CartPage from "./components/Cart/CartPage";
 
 const router = createBrowserRouter([
   {
@@ -41,13 +42,26 @@ const router = createBrowserRouter([
   {
     path:'/classes',
     element:<TheClasses/>
+  },
+  {
+    path:'/cart',
+    element:<CartPage/>
   }
 ]);
 
 function App() {
+
+  const [cart, setCart] = useState({
+    total: 0,
+    items: []
+  });
+
+
   return (
     <>
-      <RouterProvider router={router} />
+    <CartContext.Provider value={[cart,setCart]}>
+        <RouterProvider router={router} />
+    </CartContext.Provider>
       {/* <Home /> */}
       {/* <Utensils /> */}
       {/* <SingleUtensil/> */}

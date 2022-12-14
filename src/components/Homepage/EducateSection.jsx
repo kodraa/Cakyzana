@@ -20,7 +20,7 @@ function EducateSection(props) {
         right={"-100%"}
         arColor={CONSTANTS.pink}
       />
-      <ContentDiv className="educate-carousel">
+      <ContentDiv>
         <Carousel renderArrow={myArrow}>
           <VideoCarouselContainer>
             <VideoHolder>
@@ -58,8 +58,6 @@ function EducateSection(props) {
 export default EducateSection;
 
 function myArrow({ type, onClick, isEdge }) {
-  // const pointer = {ArrowLeft}
-  // const pointer = type === consts.PREV ? ArrowLeft : ArrowRight;
   const pointer = type === consts.PREV ? ArrowLeft : ArrowRight;
   return (
     <img

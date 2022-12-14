@@ -6,6 +6,7 @@ import BlackCart from "../../designAssets/Navbar/Black Cart.png";
 import WhiteLogo from "../../designAssets/Navbar/White Navbar Logo.png";
 import BlackLogo from "../../designAssets/Navbar/Black Navbar Logo.png";
 import { CartContext } from "../../context";
+import { CONSTANTS } from "../../global";
 function Navbar(props) {
   const [cart, setCart] = useContext(CartContext);
   return (
@@ -39,7 +40,8 @@ function Navbar(props) {
               src={props.isCartWhite ? WhiteCart : BlackCart}
               alt="cart icon"
             />
-            <h5>{cart.total > 0 && cart.total}</h5>
+            <Badge>{cart.total > 0 && cart.total}</Badge>
+            {/* <h5>{cart.total > 0 && cart.total}</h5> */}
           </NavLink>
         </Link>
       </NavLinksContainer>
@@ -94,6 +96,22 @@ const Img = styled.img`
   height: 75%;
   width: 75%;
   object-fit: contain;
+`;
+
+const Badge=styled.div`
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  height: 12px;
+  width: 12px;
+  background-color: ${CONSTANTS.pink};
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 600;
 `;
 
 const styles = {

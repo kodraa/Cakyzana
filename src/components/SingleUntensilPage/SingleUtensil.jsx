@@ -16,6 +16,10 @@ import Modal from "../Modal_Cart";
 
 
 function SingleUntensil() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
   
   const [cart, setCart] = useContext(CartContext);
   const [active, setActive] = useState(true)
@@ -51,8 +55,6 @@ function SingleUntensil() {
       SetAddedToCart(false)
     }, 2000)
   }
-
-  
   const params = useParams();
   const id = params.id;
   let utensil = utensils.find((utensil) => utensil.id == id);
@@ -63,7 +65,6 @@ function SingleUntensil() {
     );
     if (nextUtensil) {
       setCurrentUtensil(nextUtensil);
-      setAnimation("slideInRight");
     }
   };
   const prevUtensil = () => {
@@ -72,11 +73,9 @@ function SingleUntensil() {
     );
     if (prevUtensil) {
       setCurrentUtensil(prevUtensil);
-      setAnimation("slideInLeft");
     }
   };
 
-  const [animation, setAnimation] = useState("");
   useEffect(()=>{
     console.log(cart)
 

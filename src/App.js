@@ -6,6 +6,7 @@ import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
 import Utensils from "./components/Utensils/Utensils";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
+import TheClasses from "./components/Homepage/Classes/TheClasses";
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path:'/utensil/:id',
     element:<UtensilPage/>
+  },
+  {
+    path:'/classes',
+    element:<TheClasses/>
   }
 ]);
 

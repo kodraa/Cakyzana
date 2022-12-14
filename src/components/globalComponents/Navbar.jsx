@@ -13,9 +13,13 @@ function Navbar(props) {
         <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo}/>
       </LogoContainer>
       <NavLinksContainer>
+        <Link to="/" style={styles.Link} className={props.isWhite && 'white'}>
         <NavLink className={props.isWhite && 'white'}>Home</NavLink>
+        </Link>
+        <Link to="/classes" style={styles.Link} className={props.isWhite && 'white'}>
         <NavLink className={props.isWhite && 'white'}>Classes</NavLink>
-        <Link to="/utensils">
+        </Link>
+        <Link to="/utensils" style={styles.Link}>
         <NavLink className={props.isWhite && 'white'}>Utensils</NavLink>
         </Link>
         <NavLink className={(props.isHalfWhite || props.isWhite ) && 'white' }>Educate</NavLink>
@@ -77,3 +81,15 @@ const Img = styled.img`
   object-fit: contain;
 `;
 
+const styles = {
+  Link: {
+    textDecoration: 'none',
+
+    //if classname is white, then color is white else color is black
+    color: 'inherit',
+    
+
+
+
+  },
+}

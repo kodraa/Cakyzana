@@ -2,7 +2,7 @@ import React from "react";
 import SingleUntensil from "./SingleUtensil";
 import Footer from "../globalComponents/Footer";
 import Navbar from "../globalComponents/Navbar";
-import BlackCakyzanaLogo from "../../designAssets/Navbar/Black Navbar Logo.png"
+import BlackCakyzanaLogo from "../../designAssets/Navbar/Black Navbar Logo.png";
 const UtensilPage = () => {
   return (
     <div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   BasicLandingSection,
@@ -7,14 +7,36 @@ import {
 } from "../../global";
 import { utensils } from "../../data/utensils";
 import { useParams } from "react-router-dom";
-
-
+import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { keyframes } from "styled-components";
+import Carousel, { consts } from "react-elastic-carousel";
 // TODO add black cart logo
 
 function SingleUntensil() {
   const params = useParams();
   const id = params.id;
   let utensil = utensils.find((utensil) => utensil.id == id);
+  const [currentUtensil, setCurrentUtensil] = useState(utensil);
+  const nextUtensil = () => {
+    let nextUtensil = utensils.find(
+      (utensil) => utensil.id == currentUtensil.id + 1
+    );
+    if (nextUtensil) {
+      setCurrentUtensil(nextUtensil);
+      setAnimation("slideInRight");
+    }
+  };
+  const prevUtensil = () => {
+    let prevUtensil = utensils.find(
+      (utensil) => utensil.id == currentUtensil.id - 1
+    );
+    if (prevUtensil) {
+      setCurrentUtensil(prevUtensil);
+      setAnimation("slideInLeft");
+    }
+  };
+
+  const [animation, setAnimation] = useState("");
 
   return (
     <FullScreenSection isGrey>
@@ -22,38 +44,38 @@ function SingleUntensil() {
         <LeftFlexChild>
           <LeftChildImgContainer>
             <Img
-              src={require(`../../designAssets/Utensils/${utensil.image}.png`)}
+              src={require(`../../designAssets/Utensils/${currentUtensil.image}.png`)}
               alt="utensil"
             />
           </LeftChildImgContainer>
         </LeftFlexChild>
 
         <RightFlexChild>
-          <UtensilTitle>{utensil.name}</UtensilTitle>
+          <UtensilTitle>{currentUtensil.name}</UtensilTitle>
 
           <UtensilSubtitles>
             <Price>Price: </Price>
-            <Subtitle>{utensil.price}</Subtitle>
+            <Subtitle>{currentUtensil.price}</Subtitle>
           </UtensilSubtitles>
 
           <ShapeContainer>
             <BoldText>Shape:</BoldText>
-            <Paragraph>{utensil.shape}</Paragraph>
+            <Paragraph>{currentUtensil.shape}</Paragraph>
           </ShapeContainer>
 
           <MaterialContainer>
-            <BoldText>Material:x{utensil.material.length}</BoldText>
+            <BoldText>Material:x{currentUtensil.material.length}</BoldText>
             <ListItems>
-              {utensil.material.map((material) => (
+              {currentUtensil.material.map((material) => (
                 <ListItem>{material}</ListItem>
               ))}
             </ListItems>
           </MaterialContainer>
 
           <MaterialContainer>
-            <BoldText>Diemnsions: x{utensil.Dimensions.length}</BoldText>
+            <BoldText>Diemnsions: x{currentUtensil.Dimensions.length}</BoldText>
             <ListItems>
-              {utensil.Dimensions.map((dimension) => (
+              {currentUtensil.Dimensions.map((dimension) => (
                 <ListItem>{dimension}</ListItem>
               ))}
             </ListItems>
@@ -62,7 +84,7 @@ function SingleUntensil() {
           <MaterialContainer>
             <BoldText>Packaging</BoldText>
             <ListItems>
-              <ListItem>{utensil.Packaging}</ListItem>
+              <ListItem>{currentUtensil.Packaging}</ListItem>
             </ListItems>
           </MaterialContainer>
 
@@ -70,6 +92,16 @@ function SingleUntensil() {
             <CTABtn>Add to Cart</CTABtn>
           </CTA>
         </RightFlexChild>
+
+        <ButtonsDiv>
+          <PrevBtn onClick={prevUtensil}>
+            <MdKeyboardArrowLeft size={25} /> Previous Product
+          </PrevBtn>
+          <NextBtn onClick={nextUtensil}>
+            Next Product
+            <MdKeyboardArrowRight size={25} />
+          </NextBtn>
+        </ButtonsDiv>
       </UtensilFlexContainer>
     </FullScreenSection>
   );
@@ -78,13 +110,14 @@ function SingleUntensil() {
 export default SingleUntensil;
 
 const UtensilFlexContainer = styled(BasicLandingSection)`
-  width: 87%;
+  width: 80%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   align-self: flex-end;
   margin-left: auto;
   margin-right: auto;
+  //transition: all 0.3s ease;
 `;
 
 const FlexChild = styled.div`
@@ -106,16 +139,18 @@ const LeftChildImgContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  box-shadow: 4px 25px 25px 4px rgba(0, 0, 0, 0.1);
 `;
 
 const Img = styled.img`
-  height: 100%;
-  width: 70%;
+  height: 80%;
+  width: 50%;
   object-fit: contain;
+  align-self: center;
 `;
 
 const RightFlexChild = styled.div`
-  height: 75%;
+  height: 70%;
   width: 35%;
   display: flex;
   display: flex;
@@ -195,4 +230,60 @@ const CTABtn = styled.button`
   font-weight: bold;
   font-size: 1.2rem;
   /* margin-top: 1rem; */
+`;
+
+const ButtonsDiv = styled.div`
+  position: absolute;
+  width: 75%;
+  bottom: 2%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+const slide = keyframes`
+0% {
+  transform: translateX(0);
+
+}
+100% {
+  transform: translateX(-100%);
+  
+}
+`;
+const NextBtn = styled.button`
+  width: fit-content;
+  text-align: center;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  font-weight: 900;
+  cursor: pointer;
+  display: inline-flex;
+  //on click slide to the left whole container
+  align-self: center;
+  transition: all 0.3s ease-in-out;
+    animation: slide 0.3s ease-in-out 0s 1 normal forwards;
+  
+`;
+
+const PrevBtn = styled.button`
+  width: fit-content;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  background: none;
+  border: none;
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-self: center;
+  transition: all 0.3s ease-in-out;
+  &:click ${UtensilFlexContainer} {
+    animation: ${slide} 0.3s ease-in-out 0s 1 normal forwards;
+  }
+  //animation slide
 `;

@@ -1,22 +1,18 @@
 import React from 'react';
-import categorycomponent from "./categorycomponent";
+import CategoryComponent from "./CategoryComponent";
 import Footer from '../globalComponents/Footer';
 import Navbar from '../globalComponents/Navbar';
 
 
 
-const classcategory = (props) => {
+const ClassCategory = (props) => {
       return (
     <>
-        <Navbar isLogoWhite={true} isCartWhite={true} isWhite={true} />
-        <ForFondants/>
-        <ForPiping isGrey={true}/>
-        <ForMeasuring/>
-        <ForCakes isGrey={true}/>
-        <ForCoverage/>
+        <Navbar  />
+        <CategoryComponent/>
         <Footer/>
     </>
   )
 }
 
-export default classcategory;
+export default ClassCategory;

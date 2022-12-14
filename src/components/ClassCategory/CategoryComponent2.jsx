@@ -16,25 +16,17 @@ import Card from "./CategoryCard";
 
 //import {classesCategories} from "../../data/classes.js"
 
-function CategoryComponent(props) {
+function CategoryComponent2(props) {
 
 
     return (
-        <Section>
-            <EngArTitle
-                style={{ width: "80% !important" }}
-                english={"Baking"}
-                arabic={"طعمة و ريحة ولا أطيب"}
-                bottom={"-80%"}
-                right={"-200%"}
-                top={"25%"}
-                arColor={CONSTANTS.pink}
-            />
-            <ContentDiv>
+        <Section isGrey={props.isGrey}>
+                <ContentDiv>
+                    
                 <Card
                     isGrey={props.isGrey}
                     id="10"
-                    src={vanillacake}
+                    src={chocolatecake}
                     cardBgColor={props.cardBgColor}
                     classTitle="Vanilla Cake"
                     classSection="Cake Recipes"
@@ -44,6 +36,7 @@ function CategoryComponent(props) {
                 />
                 <Card
                     id="11"
+                    isGrey={props.isGrey}
                     src={redvelvet}
                     cardBgColor={props.cardBgColor}
                     isPadded={props.isPadded}
@@ -55,6 +48,7 @@ function CategoryComponent(props) {
                 />
                 <Card
                     id="12"
+                    isGrey={props.isGrey}
                     src={orangecake}
                     cardBgColor={props.cardBgColor}
                     classTitle="Orange Cake"
@@ -63,7 +57,10 @@ function CategoryComponent(props) {
                     Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
 
                 />
-                </ContentDiv>
+                
+            </ContentDiv>
+
+
         </Section>
 
     );
@@ -72,7 +69,7 @@ function CategoryComponent(props) {
 
 
 
-export default CategoryComponent;
+export default CategoryComponent2;
 
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;

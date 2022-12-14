@@ -1,4 +1,5 @@
 import styled from "styled-components";
+//import { keyframes } from "styled-components";
 import { CONSTANTS } from "../../global";
 export const ModalBlock = styled.div`
   bottom: 0;
@@ -11,7 +12,9 @@ export const ModalBlock = styled.div`
   opacity: 1;
   z-index: 400;
   height: fit-content;
-  width: 230px
+  width: 230px;
+  border-radius: 10px;
+
 `;
 
 export const ModalOverlay = styled.a`
@@ -41,9 +44,12 @@ export const ModalContainer = styled.div`
   max-width: 850px;
   padding: 0 0.8rem;
   width: 100%;
-  animation: slide-down 0.2s ease 1;
+  /* animation-name: slideDown;
+  animation-duration: 0.5s;
+  animation-timing-function: ease; */
   z-index: 1;
   box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
+  border-radius: 10px;
 `;
 
 export const ModalBody = styled.div`
@@ -110,3 +116,11 @@ font-size: .9rem;
 color: ${CONSTANTS.pink};
 font-weight: bold;
 `
+
+/* export const slideDown = keyframes`  
+  /* 0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  } */

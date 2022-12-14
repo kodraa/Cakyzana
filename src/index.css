@@ -10,15 +10,9 @@
   font-size: 1.4rem;
 }
 
-/* *[lang=ar]{
-  font-family: 'Dima';
-}
-
-[lang=en]{
-  font-family: 'Century Gothic';
+/* .educate-carousel .rec-dot {
+  display: none;
 } */
-
-/* import dima font regular with font face */
 
 @font-face {
   font-family: 'Dima';
@@ -34,3 +28,4 @@
   font-family: 'Century Gothic Bold';
   src: url('./fonts/Century Gothic/CenturyGothicBold.TTF');
 }
+

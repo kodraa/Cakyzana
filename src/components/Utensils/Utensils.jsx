@@ -15,8 +15,8 @@ function Utensils() {
     <>
         <Navbar isLogoWhite={true} isCartWhite={true} isWhite={true} />
         <Landing />
-        <ForFondants />
-        <ForPiping/>
+        <ForFondants/>
+        <ForPiping isGrey={true}/>
         <ForMeasuring/>
         <ForCakes/>
         <ForCoverage/>

@@ -10,7 +10,7 @@ const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <CardContainer>
+    <CardContainer isGrey={props.isGrey}>
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
@@ -58,7 +58,7 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${CONSTANTS.graywhite};
+  background-color: ${props => props.isGrey ? 'white' : CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
   
 `;

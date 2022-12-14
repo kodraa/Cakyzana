@@ -29,7 +29,7 @@ const TitleContainer = styled.div`
 
 const EngTitle = styled.h2`
   font-size: 2rem;
-  font-family: "Century Gothic", sans-serif;
+  font-family: "Century Gothic Bold", sans-serif;
   font-weight: normal;
   position: relative;
   font-size: 50px;

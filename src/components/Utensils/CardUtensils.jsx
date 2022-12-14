@@ -55,7 +55,7 @@ const Card = (props) => {
 export default Card;
 
 const CardText = styled.span`
-font-size: 16px;
+  font-size: 16px;
   font-weight: 400;
   text-align: center;
   padding: 0 7px;
@@ -73,7 +73,7 @@ font-size: 16px;
   `;
   
 const CardContainer = styled.div`
-  width: 350px;
+  width: 365px;
   height: 600px;
   display: flex;
   align-items: center;
@@ -85,9 +85,11 @@ const CardContainer = styled.div`
 
 
   &:hover   {
-    transform: scale(1.07);
+    transform: scale(1.06);
     transition: all 0.7s ease;
-    box-shadow: 0px 8px 5px 5px rgba(209,209,209,0.38);
+    -webkit-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
+  -moz-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
+  box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
   };
 
   &:hover ${CardText}{

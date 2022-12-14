@@ -21,7 +21,6 @@ function ForMeasuring(props) {
       />
       <ContentDiv>
           <Card
-            cardBgColor="pink"
             src={MeasuringSpoons}
             isPadded={props.isPadded}
             cardBgColor={props.cardBgColor}

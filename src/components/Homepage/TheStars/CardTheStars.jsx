@@ -42,14 +42,11 @@ const Card = (props) => {
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
             <CardButtonDiv>
-        <CardButton cardBgColor={CONSTANTS.blue} btnText="Buy Now"></CardButton>
-        </CardButtonDiv>
-      </CardBody>
-      <HoverDiv>
-        <Link to="/star">
+            <Link to="/star">
         <CardButton cardBgColor={CONSTANTS.blue} btnText="View More"></CardButton>
         </Link>
-        </HoverDiv>
+        </CardButtonDiv>
+      </CardBody>
     </CardContainer>
   );
 };
@@ -94,15 +91,7 @@ const CardContainer = styled.div`
 
   &:hover   {
     transform: scale(1.1);
-    transition: all 0.5s ease;
-  };
-  &:hover ${CardBody}{
-    opacity: 0.5;
-    transition: all 0.8s ease;
-  };
-  &:hover ${HoverDiv}{
-    opacity: 1;
-    transition: all 0.8s ease;
+    transition: all 1s ease;
   };
 `;
 

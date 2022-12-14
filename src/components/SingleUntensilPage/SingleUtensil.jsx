@@ -6,55 +6,55 @@ import {
   FullScreenSection,
 } from "../../global";
 import { utensils } from "../../data/utensils";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { keyframes } from "styled-components";
 import Carousel, { consts } from "react-elastic-carousel";
 // TODO add black cart logo
-import { CartContext } from "../../context"
+import { CartContext } from "../../context";
 import Modal from "../Modal_Cart";
 
-
 function SingleUntensil() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  })
-  
+  });
+
   const [cart, setCart] = useContext(CartContext);
-  const [active, setActive] = useState(true)
-  const [addedToCart, SetAddedToCart] = useState(false)
-  
+  const [active, setActive] = useState(true);
+  const [addedToCart, SetAddedToCart] = useState(false);
 
-  const handleAddToCart = () =>{
-    let total_item = cart.items.filter(item => item.id == currentUtensil.id )
-    
-    total_item = total_item.length > 0 ? total_item[0].qty : 0 
-    
-    if (total_item >= 1){
-      let items = cart.items.map(item => { return { ...item, qty: item.id == currentUtensil.id ? total_item + 1 : item.qty }} )
-      
-      setCart((prev) => ({
-        total:  prev.total + 1,
-        items
-      }))
+  const handleAddToCart = () => {
+    let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
 
-    }else{
+    total_item = total_item.length > 0 ? total_item[0].qty : 0;
+
+    if (total_item >= 1) {
+      let items = cart.items.map((item) => {
+        return {
+          ...item,
+          qty: item.id == currentUtensil.id ? total_item + 1 : item.qty,
+        };
+      });
+
       setCart((prev) => ({
-        total:  prev.total + 1,
-        items: [...prev.items, { ...currentUtensil, qty: total_item + 1 }]
-      }))
+        total: prev.total + 1,
+        items,
+      }));
+    } else {
+      setCart((prev) => ({
+        total: prev.total + 1,
+        items: [...prev.items, { ...currentUtensil, qty: total_item + 1 }],
+      }));
     }
-    
-    SetAddedToCart(true)
-    setActive(true)
 
+    SetAddedToCart(true);
+    setActive(true);
 
-    setTimeout(()=>{
-      setActive(false)
-      SetAddedToCart(false)
-    }, 2000)
-  }
+    setTimeout(() => {
+      setActive(false);
+      SetAddedToCart(false);
+    }, 2000);
+  };
   const params = useParams();
   const id = params.id;
   let utensil = utensils.find((utensil) => utensil.id == id);
@@ -63,32 +63,39 @@ function SingleUntensil() {
     let nextUtensil = utensils.find(
       (utensil) => utensil.id == currentUtensil.id + 1
     );
-    if (nextUtensil) {
+    if (nextUtensil && nextUtensil.id <= utensils.length) {
       setCurrentUtensil(nextUtensil);
+      window.history.replaceState(null, null, `/utensil/${nextUtensil.id}`);
+    } else {
+      setCurrentUtensil(utensils[0]);
     }
   };
   const prevUtensil = () => {
     let prevUtensil = utensils.find(
       (utensil) => utensil.id == currentUtensil.id - 1
     );
-    if (prevUtensil) {
+    if (prevUtensil && prevUtensil.id >= 1) {
       setCurrentUtensil(prevUtensil);
+
+      window.history.replaceState(null, null, `/utensil/${prevUtensil.id}`);
+    } else {
+      setCurrentUtensil(utensils[utensils.length - 1]);
     }
   };
 
-  useEffect(()=>{
-    console.log(cart)
-
-  })
+  useEffect(() => {
+    console.log(cart);
+  });
   return (
     <FullScreenSection isGrey>
-      {addedToCart && <Modal
+      {addedToCart && (
+        <Modal
           active={active}
           hideModal={() => setActive(false)}
           item={currentUtensil}
         />
-      }
-      
+      )}
+
       <UtensilFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
@@ -284,7 +291,7 @@ const CTABtn = styled.button`
 const ButtonsDiv = styled.div`
   position: absolute;
   width: 75%;
-  bottom: 2%;
+  bottom: 4%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -313,9 +320,6 @@ const NextBtn = styled.button`
   display: inline-flex;
   //on click slide to the left whole container
   align-self: center;
-  transition: all 0.3s ease-in-out;
-    animation: slide 0.3s ease-in-out 0s 1 normal forwards;
-  
 `;
 
 const PrevBtn = styled.button`
@@ -331,8 +335,5 @@ const PrevBtn = styled.button`
   display: inline-flex;
   align-self: center;
   transition: all 0.3s ease-in-out;
-  &:click ${UtensilFlexContainer} {
-    animation: ${slide} 0.3s ease-in-out 0s 1 normal forwards;
-  }
   //animation slide
 `;

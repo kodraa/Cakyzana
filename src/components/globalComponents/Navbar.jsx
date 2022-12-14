@@ -16,23 +16,23 @@ function Navbar(props) {
       </LogoContainer>
       <NavLinksContainer>
         <Link to="/" style={styles.Link} className={props.isWhite && "white"}>
-          <NavLink className={props.isWhite && "white"}>Home</NavLink>
+          <NavLink className={props.isWhite && "white"}>Home<BottomBorder></BottomBorder></NavLink>
         </Link>
         <Link
           to="/classes"
           style={styles.Link}
           className={props.isWhite && "white"}
         >
-          <NavLink className={props.isWhite && "white"}>Classes</NavLink>
+          <NavLink className={props.isWhite && "white"}>Classes<BottomBorder></BottomBorder></NavLink>
         </Link>
         <Link to="/utensils" style={styles.Link}>
-          <NavLink className={props.isWhite && "white"}>Utensils</NavLink>
+          <NavLink className={props.isWhite && "white"}>Utensils<BottomBorder></BottomBorder></NavLink>
         </Link>
         <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-          Educate
+          Educate<BottomBorder></BottomBorder>
         </NavLink>
         <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-          LogIn
+          LogIn<BottomBorder></BottomBorder>
         </NavLink>
         <Link to="/cart">
           <NavLink>
@@ -83,12 +83,27 @@ const NavLinksContainer = styled.ul`
   gap: 30px;
 `;
 
+const BottomBorder=styled.div`
+  opacity:0;
+  border-bottom: 3px solid;
+  width: 65%;
+`;
+
 const NavLink = styled.li`
   font-size: 1.2rem;
   list-style: none;
 
   &.white {
     color: white;
+  }
+
+  &:hover {
+    font-weight:bolder;
+    cursor:pointer;
+
+    ${BottomBorder}{
+      opacity:1;
+    }
   }
 `;
 

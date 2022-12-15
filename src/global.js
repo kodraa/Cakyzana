@@ -24,7 +24,7 @@ export const FullScreenSection = styled.section`
 
 export const ContentContainer = styled.div`
   height: 100%;
-  width: 87%; //width 85% to match the grid of the XD file
+  width: 87%; //width 87% to match the grid of the XD file
   /* background-color: blue; */
 `;
 
@@ -33,5 +33,5 @@ export let BasicContentDiv = styled.div`
 `
 
 export const BasicLandingSection = styled.div`
-  height: calc(100vh - 90px); //to complement the 70px of Navbar
+  height: calc(100vh - 90px); //to complement the 90px of Navbar
 `

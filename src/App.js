@@ -6,10 +6,9 @@ import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
 import Utensils from "./components/Utensils/Utensils";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
-import TheClasses from "./components/Homepage/Classes/TheClasses";
 import { CartContext, ModalContext } from "./context"
 import CartPage from "./components/Cart/CartPage";
-import ClassesPage from "./components/Classes/ClassesPage";
+import Classes from "./components/Classes/Classes";
 
 const router = createBrowserRouter([
   {
@@ -42,15 +41,11 @@ const router = createBrowserRouter([
   },
   {
     path:'/classes',
-    element:<TheClasses/>
+    element:<Classes/>
   },
   {
     path:'/cart',
     element:<CartPage/>
-  },
-  {
-    path:'/classCategory',
-    element:<ClassesPage/>
   }
 ]);
 

@@ -11,57 +11,57 @@ import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { keyframes } from "styled-components";
 import Carousel, { consts } from "react-elastic-carousel";
 // TODO add black cart logo
-import { CartContext } from "../../context"
+import { CartContext } from "../../context";
 import Modal from "../Modal_Cart";
 
-
 function SingleUntensil() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  })
-  
+  });
+
   const [cart, setCart] = useContext(CartContext);
-  const [active, setActive] = useState(true)
-  const [addedToCart, SetAddedToCart] = useState(false)
-  
+  const [active, setActive] = useState(true);
+  const [addedToCart, SetAddedToCart] = useState(false);
 
-  const handleAddToCart = () =>{
-    let total_item = cart.items.filter(item => item.id == currentUtensil.id )
-    
-    total_item = total_item.length > 0 ? total_item[0].qty : 0 
-    
-    if (total_item >= 1){
-      let items = cart.items.map(item => { return { ...item, qty: item.id == currentUtensil.id ? total_item + 1 : item.qty }} )
-      
-      setCart((prev) => ({
-        total:  prev.total + 1,
-        items
-      }))
+  const handleAddToCart = () => {
+    let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
 
-    }else{
+    total_item = total_item.length > 0 ? total_item[0].qty : 0;
+
+    if (total_item >= 1) {
+      let items = cart.items.map((item) => {
+        return {
+          ...item,
+          qty: item.id === currentUtensil.id ? total_item + 1 : item.qty,
+        };
+      });
+
       setCart((prev) => ({
-        total:  prev.total + 1,
-        items: [...prev.items, { ...currentUtensil, qty: total_item + 1 }]
-      }))
+        total: prev.total + 1,
+        items,
+      }));
+    } else {
+      setCart((prev) => ({
+        total: prev.total + 1,
+        items: [...prev.items, { ...currentUtensil, qty: total_item + 1 }],
+      }));
     }
-    
-    SetAddedToCart(true)
-    setActive(true)
 
+    SetAddedToCart(true);
+    setActive(true);
 
-    setTimeout(()=>{
-      setActive(false)
-      SetAddedToCart(false)
-    }, 2000)
-  }
+    setTimeout(() => {
+      setActive(false);
+      SetAddedToCart(false);
+    }, 2000);
+  };
   const params = useParams();
   const id = params.id;
-  let utensil = utensils.find((utensil) => utensil.id == id);
+  let utensil = utensils.find((utensil) => utensil.id === id);
   const [currentUtensil, setCurrentUtensil] = useState(utensil);
   const nextUtensil = () => {
     let nextUtensil = utensils.find(
-      (utensil) => utensil.id == currentUtensil.id + 1
+      (utensil) => utensil.id === currentUtensil.id + 1
     );
     if (nextUtensil) {
       setCurrentUtensil(nextUtensil);
@@ -69,26 +69,26 @@ function SingleUntensil() {
   };
   const prevUtensil = () => {
     let prevUtensil = utensils.find(
-      (utensil) => utensil.id == currentUtensil.id - 1
+      (utensil) => utensil.id === currentUtensil.id - 1
     );
     if (prevUtensil) {
       setCurrentUtensil(prevUtensil);
     }
   };
 
-  useEffect(()=>{
-    console.log(cart)
-
-  })
+  useEffect(() => {
+    console.log(cart);
+  });
   return (
     <FullScreenSection isGrey>
-      {addedToCart && <Modal
+      {addedToCart && (
+        <Modal
           active={active}
           hideModal={() => setActive(false)}
           item={currentUtensil}
         />
-      }
-      
+      )}
+
       <UtensilFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
@@ -314,8 +314,7 @@ const NextBtn = styled.button`
   //on click slide to the left whole container
   align-self: center;
   transition: all 0.3s ease-in-out;
-    animation: slide 0.3s ease-in-out 0s 1 normal forwards;
-  
+  animation: slide 0.3s ease-in-out 0s 1 normal forwards;
 `;
 
 const PrevBtn = styled.button`

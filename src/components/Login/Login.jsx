@@ -9,6 +9,7 @@ import BTL from "../../designAssets/Login/Bottom-TopLeft.png";
 import LBL from "../../designAssets/Login/Left-BottomLeft.png";
 import Stars from "../../designAssets/Login/Stars.png";
 import BackArrow from "../../designAssets/Login/Left Arrow.png";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [isActive, setIsActive] = useState(false);
@@ -39,8 +40,12 @@ function Login() {
                 <Cardbtn>Log In</Cardbtn>
                 <FlexBottomChild>
                   <p style={{fontSize: '1.1rem'}}>New here?</p>
-                  <p style={{ fontFamily: "Century Gothic Bold", fontSize: '1.1rem' }}>
-                    Create an Account
+                  <p style={{  }}>
+
+                    <ToSignup to={"/signup"} >
+                      Create an Account
+                    </ToSignup>
+
                   </p>
                 </FlexBottomChild>
               </LoginFormContainer>
@@ -335,4 +340,17 @@ const BackArrowImg = styled.img`
     height: 100%;
     aspect-ratio: 1 / 1;
     object-fit: contain;
+`;
+
+const ToSignup = styled(Link)`
+  color: black;
+  text-decoration: none;
+  font-family: "Century Gothic Bold";
+  font-size: 1.1rem;
+  display: inline-block;
+
+  &:hover {
+    transform: translateY(10%);
+  };
+
 `;

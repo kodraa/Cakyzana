@@ -22,29 +22,31 @@ function ForPiping(props) {
         <Card
           id="7"
           isGrey={props.isGrey}
-          cardBgColor="pink"
+          cardBgColor={props.cardBgColor}
           src={PipingHeadsSet1}
           classTitle="Piping HeadsSet 1"
           Description=" Stainless steel "
-          Set=" 4"
+          Set="4"
           price="40"
         />
         <Card
           id="8"
           isGrey={props.isGrey}
           src={PipingHeadsSet2}
+          cardBgColor={props.cardBgColor}
           classTitle="Piping HeadsSet 2"
           Description="Small stainless steel "
-          Set=" 5"
+          Set="5"
           price="25"
         />
         <Card
           id="9"
           isGrey={props.isGrey}
           src={PipingBag}
+          cardBgColor={props.cardBgColor}
           classTitle="Piping Bag"
           Description="Washable Bags"
-          Set=" 4"
+          Set="4"
           price="36"
         />
       </ContentDiv>
@@ -58,5 +60,6 @@ const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 4rem;
 `;

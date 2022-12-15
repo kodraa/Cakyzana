@@ -8,7 +8,7 @@ import scraper from "../../designAssets/Utensils/ForCoverage/scraper.png";
 import spatula from "../../designAssets/Utensils/ForCoverage/spatula.png";
 import whisk from "../../designAssets/Utensils/ForCoverage/whisk.png";
 
-function ForCoverage() {
+function ForCoverage(props) {
   return (
     <Section>
       <EngArTitle
@@ -19,9 +19,33 @@ function ForCoverage() {
         arColor={CONSTANTS.blue}
       />
       <ContentDiv>
-        <Card  id='15' cardBgColor="pink" src={scraper} classTitle="Scraper" Description=" Stainless steel " Set=" 4" price="40"/>
-        <Card id='14'src={spatula} classTitle="Spatula" Description="Stainless steel" Set=" 5" price="25"/>
-        <Card id='13'src={whisk} classTitle="Whisk" Description="Stainless steel" Set=" 4" price="36"/>
+        <Card
+          id="15"
+          cardBgColor={props.cardBgColor}
+          src={scraper}
+          classTitle="Scraper"
+          Description=" Stainless steel "
+          Set="4"
+          price="40"
+        />
+        <Card
+          id="14"
+          cardBgColor={props.cardBgColor}
+          src={spatula}
+          classTitle="Spatula"
+          Description="Stainless steel"
+          Set="5"
+          price="25"
+        />
+        <Card
+          id="13"
+          cardBgColor={props.cardBgColor}
+          src={whisk}
+          classTitle="Whisk"
+          Description="Stainless steel"
+          Set="4"
+          price="36"
+        />
       </ContentDiv>
     </Section>
   );
@@ -33,5 +57,6 @@ const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 4rem;
 `;

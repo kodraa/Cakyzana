@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { CONSTANTS } from "../../global";
+import { CONSTANTS, BasicContentDiv } from "../../global";
 import CardButton from "../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
@@ -30,20 +30,19 @@ const Card = (props) => {
         <CardImage src={props.src} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
         <CardText>
+          <BoldText>Class Section:</BoldText>
+          <CardText classSection={props.classSection}>{props.classSection}</CardText>
+        </CardText>
+        <BoldText>Approximate Video Duration:</BoldText>
+        <CardText Duration={props.Duration}>{props.Duration}</CardText>
+        <CardText>
             <CardTextContent isPadded={props.isPadded}>
               <BoldText>Description:</BoldText> {props.Description}
             </CardTextContent>
-          {/* <BoldText>Description:</BoldText> */}
-          {/* <CardText Description={props.Description}>{props.Description} </CardText> */}
         </CardText>
-        <CardText>
-          <BoldText>Set:</BoldText>
-          <CardText Set={props.Set}>{props.Set} pcs</CardText>
-        </CardText>
-        <PriceText price={props.price}>Price: {props.price} $</PriceText>
         <CardButtonDiv>
-          <Link id={props.id} to={`/utensil/${props.id}`}>
-            <CardButton cardBgColor={props.cardBgColor} btnText="View More"></CardButton>
+          <Link id={props.id} to={`/classes/${props.id}`}>
+            <CardButton cardBgColor={CONSTANTS.pink} btnText="Buy Now"></CardButton>
           </Link>
 
         </CardButtonDiv>
@@ -55,7 +54,7 @@ const Card = (props) => {
 export default Card;
 
 const CardText = styled.span`
-  font-size: 16px;
+font-size: 16px;
   font-weight: 400;
   text-align: center;
   padding: 0 7px;
@@ -73,7 +72,7 @@ const CardText = styled.span`
   `;
   
 const CardContainer = styled.div`
-  width: 365px;
+  width: 350px;
   height: 600px;
   display: flex;
   align-items: center;
@@ -85,11 +84,9 @@ const CardContainer = styled.div`
 
 
   &:hover   {
-    transform: scale(1.06);
+    transform: scale(1.07);
     transition: all 0.7s ease;
-    -webkit-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
-  -moz-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
-  box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
+    box-shadow: 0px 8px 5px 5px rgba(209,209,209,0.38);
   };
 
   &:hover ${CardText}{
@@ -141,12 +138,14 @@ const BoldText = styled.span`
   font-family: "Century Gothic Bold", sans-serif;
   text-align: center;
 `;
-const PriceText = styled.h6`
+const Description = styled.h6`
   font-size: 16px;
   font-weight: 700;
   padding-bottom: 2px;
-  padding-top: 1.5rem;
+  padding-top: 2rem;
+  margin-right: 1.5rem;
   text-align: center;
+  
 `;
 
 const CardButtonDiv = styled.div`
@@ -155,4 +154,5 @@ const CardButtonDiv = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1.5rem;
+
 `;

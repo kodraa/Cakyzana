@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink as Link } from "react-router-dom";
 import WhiteCart from "../../designAssets/Navbar/White Cart.png";
 import BlackCart from "../../designAssets/Navbar/Black Cart.png";
 import WhiteLogo from "../../designAssets/Navbar/White Navbar Logo.png";
@@ -15,25 +15,24 @@ function Navbar(props) {
         <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo} />
       </LogoContainer>
       <NavLinksContainer>
-        <Link to="/" style={styles.Link} className={props.isWhite && "white"}>
-          <NavLink className={props.isWhite && "white"}>Home</NavLink>
+        <Link to="/" style={styles.Link} ac className={props.isWhite && "white"}>
+          <NavLink className={props.isWhite && "white"}>Home<BottomBorder></BottomBorder></NavLink>
         </Link>
         <Link
           to="/classes"
           style={styles.Link}
           className={props.isWhite && "white"}
         >
-          <NavLink className={props.isWhite && "white"}>Classes</NavLink>
+          <NavLink className={props.isWhite && "white"}>Classes<BottomBorder></BottomBorder></NavLink>
         </Link>
         <Link to="/utensils" style={styles.Link}>
-          <NavLink className={props.isWhite && "white"}>Utensils</NavLink>
+          <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>Utensils<BottomBorder></BottomBorder></NavLink>
         </Link>
+        <Link to="/login" style={styles.Link}>
         <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-          Educate
+          LogIn<BottomBorder></BottomBorder>
         </NavLink>
-        <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-          LogIn
-        </NavLink>
+        </Link>
         <Link to="/cart">
           <NavLink>
             <Img
@@ -83,12 +82,27 @@ const NavLinksContainer = styled.ul`
   gap: 30px;
 `;
 
+const BottomBorder=styled.div`
+  opacity:0;
+  border-bottom: 3px solid;
+  width: 65%;
+`;
+
 const NavLink = styled.li`
   font-size: 1.2rem;
   list-style: none;
 
   &.white {
     color: white;
+  }
+
+  &:hover {
+    font-weight:bolder;
+    cursor:pointer;
+
+    ${BottomBorder}{
+      opacity:1;
+    }
   }
 `;
 

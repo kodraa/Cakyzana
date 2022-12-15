@@ -6,7 +6,7 @@ import {
   FullScreenSection,
 } from "../../global";
 import { utensils } from "../../data/utensils";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { keyframes } from "styled-components";
 import Carousel, { consts } from "react-elastic-carousel";
@@ -20,22 +20,18 @@ function SingleUntensil() {
   });
 
   const [cart, setCart] = useContext(CartContext);
-  const [active, setActive] = useState(true);
-  const [addedToCart, SetAddedToCart] = useState(false);
+  const [active, setActive] = useState(true)
+  const [addedToCart, SetAddedToCart] = useState(false)
+  
 
-  const handleAddToCart = () => {
-    let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
-
-    total_item = total_item.length > 0 ? total_item[0].qty : 0;
-
-    if (total_item >= 1) {
-      let items = cart.items.map((item) => {
-        return {
-          ...item,
-          qty: item.id === currentUtensil.id ? total_item + 1 : item.qty,
-        };
-      });
-
+  const handleAddToCart = () =>{
+    let total_item = cart.items.filter(item => item.id == currentUtensil.id )
+    
+    total_item = total_item.length > 0 ? total_item[0].qty : 0 
+    
+    if (total_item >= 1){
+      let items = cart.items.map(item => { return { ...item, qty: item.id == currentUtensil.id ? total_item + 1 : item.qty }} )
+      
       setCart((prev) => ({
         total: prev.total + 1,
         items,
@@ -63,16 +59,23 @@ function SingleUntensil() {
     let nextUtensil = utensils.find(
       (utensil) => utensil.id === currentUtensil.id + 1
     );
-    if (nextUtensil) {
+    if (nextUtensil && nextUtensil.id <= utensils.length) {
       setCurrentUtensil(nextUtensil);
+      window.history.replaceState(null, null, `/utensil/${nextUtensil.id}`);
+    } else {
+      setCurrentUtensil(utensils[0]);
     }
   };
   const prevUtensil = () => {
     let prevUtensil = utensils.find(
       (utensil) => utensil.id === currentUtensil.id - 1
     );
-    if (prevUtensil) {
+    if (prevUtensil && prevUtensil.id >= 1) {
       setCurrentUtensil(prevUtensil);
+
+      window.history.replaceState(null, null, `/utensil/${prevUtensil.id}`);
+    } else {
+      setCurrentUtensil(utensils[utensils.length - 1]);
     }
   };
 
@@ -284,7 +287,7 @@ const CTABtn = styled.button`
 const ButtonsDiv = styled.div`
   position: absolute;
   width: 75%;
-  bottom: 2%;
+  bottom: 4%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -314,7 +317,8 @@ const NextBtn = styled.button`
   //on click slide to the left whole container
   align-self: center;
   transition: all 0.3s ease-in-out;
-  animation: slide 0.3s ease-in-out 0s 1 normal forwards;
+    animation: slide 0.3s ease-in-out 0s 1 normal forwards;
+  
 `;
 
 const PrevBtn = styled.button`
@@ -330,8 +334,5 @@ const PrevBtn = styled.button`
   display: inline-flex;
   align-self: center;
   transition: all 0.3s ease-in-out;
-  &:click ${UtensilFlexContainer} {
-    animation: ${slide} 0.3s ease-in-out 0s 1 normal forwards;
-  }
   //animation slide
 `;

@@ -20,7 +20,7 @@ function CategoryComponent2(props) {
 
 
     return (
-        <Section isGrey={props.isGrey}>
+        <ContentDiv isGrey={props.isGrey}>
                 <ContentDiv>
                     
                 <Card
@@ -60,7 +60,7 @@ function CategoryComponent2(props) {
             </ContentDiv>
 
 
-        </Section>
+        </ContentDiv>
 
     );
 };
@@ -76,6 +76,7 @@ const ContentDiv = styled(BasicContentDiv)`
   flex-wrap: wrap;
   justify-content: center;
   gap: 4rem;
+  background-color: ${CONSTANTS.graywhite}
 `;
 
 /*const ItemsWrapper=styled.div`

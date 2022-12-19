@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function EngArTitle(props) {
   return (
-    <TitleContainer>
+    <TitleContainer isTransformed>
       <EngTitle
         arabic={props.arabic}
         arColor={props.arColor}
@@ -25,6 +25,7 @@ const TitleContainer = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  transform: ${(props) => props.isTransformed && "translateY(40px)"};
 `;
 
 const EngTitle = styled.h2`

@@ -20,18 +20,22 @@ function SingleUntensil() {
   });
 
   const [cart, setCart] = useContext(CartContext);
-  const [active, setActive] = useState(true)
-  const [addedToCart, SetAddedToCart] = useState(false)
-  
+  const [active, setActive] = useState(true);
+  const [addedToCart, SetAddedToCart] = useState(false);
 
-  const handleAddToCart = () =>{
-    let total_item = cart.items.filter(item => item.id == currentUtensil.id )
-    
-    total_item = total_item.length > 0 ? total_item[0].qty : 0 
-    
-    if (total_item >= 1){
-      let items = cart.items.map(item => { return { ...item, qty: item.id == currentUtensil.id ? total_item + 1 : item.qty }} )
-      
+  const handleAddToCart = () => {
+    let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
+
+    total_item = total_item.length > 0 ? total_item[0].qty : 0;
+
+    if (total_item >= 1) {
+      let items = cart.items.map((item) => {
+        return {
+          ...item,
+          qty: item.id == currentUtensil.id ? total_item + 1 : item.qty,
+        };
+      });
+
       setCart((prev) => ({
         total: prev.total + 1,
         items,
@@ -53,11 +57,11 @@ function SingleUntensil() {
   };
   const params = useParams();
   const id = params.id;
-  let utensil = utensils.find((utensil) => utensil.id === id);
+  let utensil = utensils.find((utensil) => utensil.id == id);
   const [currentUtensil, setCurrentUtensil] = useState(utensil);
   const nextUtensil = () => {
     let nextUtensil = utensils.find(
-      (utensil) => utensil.id === currentUtensil.id + 1
+      (utensil) => utensil.id == currentUtensil.id + 1
     );
     if (nextUtensil && nextUtensil.id <= utensils.length) {
       setCurrentUtensil(nextUtensil);
@@ -68,7 +72,7 @@ function SingleUntensil() {
   };
   const prevUtensil = () => {
     let prevUtensil = utensils.find(
-      (utensil) => utensil.id === currentUtensil.id - 1
+      (utensil) => utensil.id == currentUtensil.id - 1
     );
     if (prevUtensil && prevUtensil.id >= 1) {
       setCurrentUtensil(prevUtensil);
@@ -316,9 +320,6 @@ const NextBtn = styled.button`
   display: inline-flex;
   //on click slide to the left whole container
   align-self: center;
-  transition: all 0.3s ease-in-out;
-    animation: slide 0.3s ease-in-out 0s 1 normal forwards;
-  
 `;
 
 const PrevBtn = styled.button`

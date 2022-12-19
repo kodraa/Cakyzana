@@ -39,39 +39,39 @@ function Login() {
                 </LoginForm>
                 <Cardbtn>Log In</Cardbtn>
                 <FlexBottomChild>
-                  <p style={{fontSize: '1.1rem'}}>New here?</p>
-                  <p style={{  }}>
-
-                    <ToSignup to={"/signup"} >
-                      Create an Account
-                    </ToSignup>
-
+                  <p style={{ fontSize: "1.1rem" }}>New here?</p>
+                  <p style={{}}>
+                    <ToSignup to={"/signup"}>Create an Account</ToSignup>
                   </p>
                 </FlexBottomChild>
               </LoginFormContainer>
             </LoginRectangle>
             <Back onClick={() => setIsActive((prev) => !prev)}>
-                <BackArrowImg src={BackArrow} />
-                <p>Back</p>
+              <BackArrowImg src={BackArrow} />
+              <p>Back</p>
             </Back>
           </WhiteRectangleContent>
         </WhiteRectangle>
         <CakeImg
+          draggable={false}
           src={TTR}
           className={"ttr"}
           onClick={() => setIsActive((prev) => !prev)}
         />
         <CakeImg
+          draggable={false}
           src={RBR}
           className={"rbr"}
           onClick={() => setIsActive((prev) => !prev)}
         />
         <CakeImg
+          draggable={false}
           src={BTL}
           className={"btl"}
           onClick={() => setIsActive((prev) => !prev)}
         />
         <CakeImg
+          draggable={false}
           src={LBL}
           className={"lbl"}
           onClick={() => setIsActive((prev) => !prev)}
@@ -330,16 +330,16 @@ const Back = styled.div`
   margin-bottom: 3%;
   cursor: pointer;
 
-  & p{
+  & p {
     font-size: 1.1rem;
     font-weight: 900;
   }
 `;
 
 const BackArrowImg = styled.img`
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
 `;
 
 const ToSignup = styled(Link)`
@@ -351,6 +351,5 @@ const ToSignup = styled(Link)`
 
   &:hover {
     transform: translateY(10%);
-  };
-
+  }
 `;

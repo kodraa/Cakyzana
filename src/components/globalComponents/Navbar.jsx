@@ -15,23 +15,34 @@ function Navbar(props) {
         <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo} />
       </LogoContainer>
       <NavLinksContainer>
-        <Link to="/" style={styles.Link} ac className={props.isWhite && "white"}>
-          <NavLink className={props.isWhite && "white"}>Home<BottomBorder></BottomBorder></NavLink>
+        <Link
+          to="/"
+          style={styles.Link}
+          ac
+          className={props.isWhite && "white"}
+        >
+          <NavLink className={props.isWhite && "white"}>
+            Home<BottomBorder></BottomBorder>
+          </NavLink>
         </Link>
         <Link
           to="/classes"
           style={styles.Link}
           className={props.isWhite && "white"}
         >
-          <NavLink className={props.isWhite && "white"}>Classes<BottomBorder></BottomBorder></NavLink>
+          <NavLink className={props.isWhite && "white"}>
+            Classes<BottomBorder></BottomBorder>
+          </NavLink>
         </Link>
         <Link to="/utensils" style={styles.Link}>
-          <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>Utensils<BottomBorder></BottomBorder></NavLink>
+          <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
+            Utensils<BottomBorder></BottomBorder>
+          </NavLink>
         </Link>
         <Link to="/login" style={styles.Link}>
-        <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-          LogIn<BottomBorder></BottomBorder>
-        </NavLink>
+          <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
+            LogIn<BottomBorder></BottomBorder>
+          </NavLink>
         </Link>
         <Link to="/cart">
           <NavLink>
@@ -82,26 +93,31 @@ const NavLinksContainer = styled.ul`
   gap: 30px;
 `;
 
-const BottomBorder=styled.div`
-  opacity:0;
+const BottomBorder = styled.div`
+  opacity: 0;
   border-bottom: 3px solid;
   width: 65%;
+  transition: all 1s ease;
 `;
 
 const NavLink = styled.li`
   font-size: 1.2rem;
   list-style: none;
+  transition: all 1s ease;
 
   &.white {
+    transition: all 1s ease;
     color: white;
   }
 
   &:hover {
-    font-weight:bolder;
-    cursor:pointer;
+    font-weight: bolder;
+    cursor: pointer;
+    transition: all 1s ease;
 
-    ${BottomBorder}{
-      opacity:1;
+    ${BottomBorder} {
+      opacity: 1;
+      transition: all 1s ease;
     }
   }
 `;
@@ -112,7 +128,7 @@ const Img = styled.img`
   object-fit: contain;
 `;
 
-const Badge=styled.div`
+const Badge = styled.div`
   position: absolute;
   top: 18px;
   right: 22px;

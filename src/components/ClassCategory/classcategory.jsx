@@ -12,8 +12,8 @@ import { CONSTANTS } from '../../global';
 const ClassCategory = (props) => {
       return (
     <>
-        <Navbar isLogoWhite={true} isCartWhite={true} isWhite={true} />
-        <Landing />
+        <Navbar  />
+        {/* <Landing /> */}
         <CategoryComponent/>
         <CategoryComponent2  cardBgColor={CONSTANTS.pink} isPadded={true} isGrey={true}/>
         <Footer/>

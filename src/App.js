@@ -11,7 +11,8 @@ import { CartContext } from "./context"
 // import { CartContext, ModalContext } from "./context"
 import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
-import ClassCategory from "./components/ClassCategory/ClassCategory";
+// import ClassCategory from "./components/ClassCategory/ClassCategory";
+import ClassCategory from './components/ClassCategory/ClassCategory'
 
 const router = createBrowserRouter([
   {

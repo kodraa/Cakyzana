@@ -8,7 +8,7 @@ import ArrowRight from "../../designAssets/Homepage/ThisMonth/ArrowRight.png";
 import video1 from "../../designAssets/Homepage/Educate/video1.png";
 import video2 from "../../designAssets/Homepage/Educate/video2.png";
 import video3 from "../../designAssets/Homepage/Educate/video3.png";
-import Carousel, { consts } from "react-elastic-carousel";
+// import Carousel, { consts } from "react-elastic-carousel";
 
 function EducateSection(props) {
   return (
@@ -21,7 +21,21 @@ function EducateSection(props) {
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
-        <Carousel renderArrow={myArrow}>
+        {/* <Carousel renderArrow={myArrow}> */}
+          {/* <VideoCarouselContainer>
+            <VideoHolder>
+              <Image src={video1}></Image>
+            </VideoHolder>
+
+            <VideoHolder>
+              <Image src={video2}></Image>
+            </VideoHolder>
+
+            <VideoHolder>
+              <Image src={video3}></Image>
+            </VideoHolder>
+          </VideoCarouselContainer> */}
+
           <VideoCarouselContainer>
             <VideoHolder>
               <Image src={video1}></Image>
@@ -35,21 +49,7 @@ function EducateSection(props) {
               <Image src={video3}></Image>
             </VideoHolder>
           </VideoCarouselContainer>
-
-          <VideoCarouselContainer>
-            <VideoHolder>
-              <Image src={video1}></Image>
-            </VideoHolder>
-
-            <VideoHolder>
-              <Image src={video2}></Image>
-            </VideoHolder>
-
-            <VideoHolder>
-              <Image src={video3}></Image>
-            </VideoHolder>
-          </VideoCarouselContainer>
-        </Carousel>
+        {/* </Carousel> */}
       </ContentDiv>
     </Section>
   );
@@ -57,18 +57,18 @@ function EducateSection(props) {
 
 export default EducateSection;
 
-function myArrow({ type, onClick, isEdge }) {
-  const pointer = type === consts.PREV ? ArrowLeft : ArrowRight;
-  return (
-    <img
-      src={pointer}
-      onClick={onClick}
-      disabled={isEdge}
-      style={{ width: "25px", height: "40px", cursor: "pointer", alignSelf: "center" }}
-      alt="arrow"
-    />
-  );
-}
+// function myArrow({ type, onClick, isEdge }) {
+//   const pointer = type === consts.PREV ? ArrowLeft : ArrowRight;
+//   return (
+//     <img
+//       src={pointer}
+//       onClick={onClick}
+//       disabled={isEdge}
+//       style={{ width: "25px", height: "40px", cursor: "pointer", alignSelf: "center" }}
+//       alt="arrow"
+//     />
+//   );
+// }
 
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;

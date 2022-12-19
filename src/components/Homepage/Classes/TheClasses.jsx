@@ -9,8 +9,6 @@ import cake2 from "../../../designAssets/Homepage/Classes/pic2.png";
 import cake3 from "../../../designAssets/Homepage/Classes/pic3.png";
 import cake4 from "../../../designAssets/Homepage/Classes/pic4.png";
 import cake5 from "../../../designAssets/Homepage/Classes/pic5.png";
-import 'keen-slider/keen-slider.min.css'
-import { useKeenSlider } from 'keen-slider/react'
 
 
   

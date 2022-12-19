@@ -6,7 +6,6 @@ import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
 import { Link, redirect } from "react-router-dom";
-import Lib from "nuka-carousel";
 
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);

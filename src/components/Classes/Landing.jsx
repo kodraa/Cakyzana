@@ -11,7 +11,7 @@ import Navbar from "../globalComponents/Navbar";
 import WhiteLeftArrow from "../../designAssets/Classes/Landing/White Left Arrow.png";
 import WhiteRightArrow from "../../designAssets/Classes/Landing/White Right Arrow.png";
 import LandingCake from "./LandingCake";
-import Carousel, { consts } from "react-elastic-carousel";
+// import Carousel, { consts } from "react-elastic-carousel";
 
 function Landing() {
   return (
@@ -19,7 +19,7 @@ function Landing() {
       <Navbar isLogoWhite isWhite isCartWhite />
       <LandingBackground src={ClassesLanding} alt="Classes Landing" />
       <ContentContainerWrapper>
-        <Carousel itemsToShow={1} renderArrow={myArrow}>
+        {/* <Carousel itemsToShow={1} renderArrow={myArrow}> */}
           {/* <img src={WhiteLeftArrow} alt="White Left Arrow" /> */}
           <LandingCake 
             Title="Ahlan Bel Eid Cake Workshop"
@@ -29,7 +29,7 @@ function Landing() {
             Place= "Hamra - The Olive Grove"
             WorkshopFees= "$70"
           />
-          <LandingCake 
+          {/* <LandingCake 
             Title="Summer Breeze Cake Workshop"
             Subtitle="Knife Coloring & Ikebana Tutorial"
             Date= "Saturday - Dec 10 - 2022"
@@ -44,9 +44,9 @@ function Landing() {
             Time= "From 11:00 am till 2:00 pm"
             Place= "Hamra - The Olive Grove"
             WorkshopFees= "$100"
-          />
+          /> */}
           {/* <img src={WhiteRightArrow} alt="White Right Arrow" /> */}
-        </Carousel>
+        {/* </Carousel> */}
       </ContentContainerWrapper>
     </LandingSection>
   );
@@ -54,23 +54,23 @@ function Landing() {
 
 export default Landing;
 
-function myArrow({ type, onClick, isEdge }) {
-  const pointer = type === consts.PREV ? WhiteLeftArrow : WhiteRightArrow;
-  return (
-    <img
-      src={pointer}
-      onClick={onClick}
-      disabled={isEdge}
-      style={{
-        width: "25px",
-        height: "40px",
-        cursor: "pointer",
-        alignSelf: "center",
-      }}
-      alt="arrow"
-    />
-  );
-}
+// function myArrow({ type, onClick, isEdge }) {
+//   const pointer = type === consts.PREV ? WhiteLeftArrow : WhiteRightArrow;
+//   return (
+//     <img
+//       src={pointer}
+//       onClick={onClick}
+//       disabled={isEdge}
+//       style={{
+//         width: "25px",
+//         height: "40px",
+//         cursor: "pointer",
+//         alignSelf: "center",
+//       }}
+//       alt="arrow"
+//     />
+//   );
+// }
 
 const LandingSection = styled(FullScreenSection)`
   position: relative;

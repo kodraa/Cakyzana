@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import Home from "./components/Homepage/Home";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import SingleStar from "./components/Star/SingleStar";
 import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
 import Utensils from "./components/Utensils/Utensils";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
-import { CartContext, ModalContext } from "./context"
+import { CartContext } from "./context"
+// import { CartContext, ModalContext } from "./context"
 import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";

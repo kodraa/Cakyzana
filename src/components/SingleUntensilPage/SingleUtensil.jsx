@@ -6,7 +6,8 @@ import {
   FullScreenSection,
 } from "../../global";
 import { utensils } from "../../data/utensils";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { keyframes } from "styled-components";
 // import Carousel, { consts } from "react-elastic-carousel";
@@ -24,7 +25,7 @@ function SingleUntensil() {
   const [addedToCart, SetAddedToCart] = useState(false);
 
   const handleAddToCart = () => {
-    let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
+    let total_item = cart.items.filter((item) => item.id === currentUtensil.id);
 
     total_item = total_item.length > 0 ? total_item[0].qty : 0;
 
@@ -32,7 +33,7 @@ function SingleUntensil() {
       let items = cart.items.map((item) => {
         return {
           ...item,
-          qty: item.id == currentUtensil.id ? total_item + 1 : item.qty,
+          qty: item.id === currentUtensil.id ? total_item + 1 : item.qty,
         };
       });
 
@@ -57,11 +58,11 @@ function SingleUntensil() {
   };
   const params = useParams();
   const id = params.id;
-  let utensil = utensils.find((utensil) => utensil.id == id);
+  let utensil = utensils.find((utensil) => utensil.id === id);
   const [currentUtensil, setCurrentUtensil] = useState(utensil);
   const nextUtensil = () => {
     let nextUtensil = utensils.find(
-      (utensil) => utensil.id == currentUtensil.id + 1
+      (utensil) => utensil.id === currentUtensil.id + 1
     );
     if (nextUtensil && nextUtensil.id <= utensils.length) {
       setCurrentUtensil(nextUtensil);
@@ -72,7 +73,7 @@ function SingleUntensil() {
   };
   const prevUtensil = () => {
     let prevUtensil = utensils.find(
-      (utensil) => utensil.id == currentUtensil.id - 1
+      (utensil) => utensil.id === currentUtensil.id - 1
     );
     if (prevUtensil && prevUtensil.id >= 1) {
       setCurrentUtensil(prevUtensil);
@@ -297,14 +298,15 @@ const ButtonsDiv = styled.div`
   justify-content: space-between;
 `;
 
-const slide = keyframes`
-0% {
-  transform: translateX(0);
-}
-100% {
-  transform: translateX(-100%);
-}
-`;
+// const slide = keyframes`
+// 0% {
+//   transform: translateX(0);
+// }
+// 100% {
+//   transform: translateX(-100%);
+// }
+// `;
+
 const NextBtn = styled.button`
   width: fit-content;
   text-align: center;

@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 import {
-  CONSTANTS,
-  BasicLandingSection,
+  // CONSTANTS,
+  // BasicLandingSection,
   FullScreenSection,
 } from "../../global";
 import ClassesLanding from "../../designAssets/Classes/Landing/Classes Landing.png";
 // import EngArTitle from "../globalComponents/EngArTitle";
 import Navbar from "../globalComponents/Navbar";
-import WhiteLeftArrow from "../../designAssets/Classes/Landing/White Left Arrow.png";
-import WhiteRightArrow from "../../designAssets/Classes/Landing/White Right Arrow.png";
+// import WhiteLeftArrow from "../../designAssets/Classes/Landing/White Left Arrow.png";
+// import WhiteRightArrow from "../../designAssets/Classes/Landing/White Right Arrow.png";
 import LandingCake from "./LandingCake";
 // import Carousel, { consts } from "react-elastic-carousel";
 

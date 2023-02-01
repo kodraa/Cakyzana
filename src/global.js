@@ -28,10 +28,15 @@ export const ContentContainer = styled.div`
   /* background-color: blue; */
 `;
 
-export let BasicContentDiv = styled.div`
-  height: calc(100vh - 12rem); //to complement the 12rem of EngArTitle
+export const BasicContentDiv = styled.div`
+  height: calc(100vh - 18vh); //to complement the 12rem of EngArTitle
 `
 
 export const BasicLandingSection = styled.div`
   height: calc(100vh - 90px); //to complement the 90px of Navbar
 `
+
+export const BoldText = styled.span`
+  font-family: "Century Gothic Bold";
+  font-weight: 800;
+`;

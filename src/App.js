@@ -66,12 +66,9 @@ function App() {
 
   return (
     <>
-    <CartContext.Provider value={[cart,setCart]}>
-        <RouterProvider router={router} />
-    </CartContext.Provider>
-      {/* <Home /> */}
-      {/* <Utensils /> */}
-      {/* <SingleUtensil/> */}
+      <CartContext.Provider value={[cart,setCart]}>
+          <RouterProvider router={router} />
+      </CartContext.Provider>
     </>
   );
 }

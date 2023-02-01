@@ -114,12 +114,14 @@ function EntrepreneursJourney(props) {
 export default EntrepreneursJourney;
 
 const ContentWrapper = styled.div`
-  width:100%;
-  height: 450px;
+  /* height: 450px; */
+  width: 100%;
+  height: 56.5%;
   display: flex;
   justify-content: space-between;
-  
-  `
+  gap: 4%; 
+`;
+
 const CoreDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
@@ -150,10 +152,9 @@ const Text = styled.div`
 
 const CircularDiv = styled.div`
   display: flex;
-  height: 450px;
+  /* height: 450px; */
+  /* flex-basis: 100%; */
   aspect-ratio: 1 / 1;
-  background-position: 50% 50%;
-  background-size: cover;
   border-radius: 50%;
   position: relative;
   text-align: center;

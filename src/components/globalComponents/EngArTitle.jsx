@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 function EngArTitle(props) {
   return (
-    <TitleContainer isTransformed>
+    <TitleContainer >
       <EngTitle
         arabic={props.arabic}
         arColor={props.arColor}
@@ -21,7 +21,8 @@ export default EngArTitle;
 
 const TitleContainer = styled.div`
   color: white;
-  height: 12rem;
+  /* height: 12rem; */
+  height: 18vh;
   width: 100%;
   display: flex;
   align-items: center;

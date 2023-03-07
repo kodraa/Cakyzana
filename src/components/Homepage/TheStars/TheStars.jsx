@@ -12,7 +12,7 @@ function EducateSection(props) {
         english={"The Stars"}
         arabic={"محبوبين الجماهير"}
         bottom={"-50%"}
-        right={"-152%"}
+        right={"-75%"}
         arColor={CONSTANTS.blue}
       />
       <ContentDiv>

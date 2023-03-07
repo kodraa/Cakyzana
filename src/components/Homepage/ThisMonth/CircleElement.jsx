@@ -54,7 +54,7 @@ const HoverDiv = styled.div`
 `;
 
 const Circle = styled.div`
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
   border-radius: 50%;
   position: absolute;
   display: flex;
@@ -65,7 +65,8 @@ const Circle = styled.div`
 
   /* &[data-index="0"] { */
   &.leftInactive, &.zero {
-    height: 240px;
+    height: 48%;
+    width: 17.1%;
     z-index: 1;
     top: 50%;
     /* right: 84%; */
@@ -77,7 +78,8 @@ const Circle = styled.div`
 
   /* &[data-index="1"] { */
   &.leftSemiActive, &.one {
-    height: 375px;
+    height: 75%;
+    width: 26.78%;
     z-index: 2;
     top: 50%;
     /* right: 70%;
@@ -89,7 +91,9 @@ const Circle = styled.div`
 
   /* &[data-index="2"] { */
   &.active, &.two {
-    height: 500px;
+    /* height: 500px; */
+    height: 100%;
+    width: 35.71%;
     background-color: ${CONSTANTS.purpleActive};
     z-index: 3;
     top: 0;
@@ -99,7 +103,8 @@ const Circle = styled.div`
 
   /* &[data-index="3"] { */
   &.rightSemiActive, &.three {
-    height: 375px;
+    height: 75%;
+    width: 26.78%;
     z-index: 2;
     top: 50%;
     left: 70%;
@@ -109,7 +114,8 @@ const Circle = styled.div`
 
   /* &[data-index="4"] { */
   &.rightInactive, &.four {
-    height: 240px;
+    height: 48%;
+    width: 17.1%;
     z-index: 1;
     top: 50%;
     left: 84%;

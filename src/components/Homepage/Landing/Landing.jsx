@@ -21,6 +21,7 @@ const LandingSection = styled(FullScreenSection)`
   background-size: cover;
   background-repeat: no-repeat;
   background-color: ${CONSTANTS.purpleActive}; */
+  background-color: ${CONSTANTS.purpleActive};
 `;
 
 const Image = styled.img`
@@ -28,4 +29,3 @@ const Image = styled.img`
   width: 100%;
   object-fit: 100%;
 `
-

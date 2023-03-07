@@ -91,8 +91,7 @@ import { CONSTANTS, BasicContentDiv } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
 import styled from "styled-components";
-import Card from "./Card";
-// import { pic1 } from "designAssets/Homepage/Classes/pic1.png";
+// import { pic1 } from "/designAssets/Homepage/Classes/pic1.png";
 import cake1 from "../../../designAssets/Homepage/Classes/cake1.png";
 import cake2 from "../../../designAssets/Homepage/Classes/cake2.png";
 import cake3 from "../../../designAssets/Homepage/Classes/cake3.png";
@@ -101,6 +100,7 @@ import cake5 from "../../../designAssets/Homepage/Classes/cake5.png";
 import ArrowRight from "../../../designAssets/Homepage/Classes/ArrowRight.png";
 import ArrowLeft from "../../../designAssets/Homepage/Classes/ArrowLeft.png";
 import { highlightedClasses } from "../../../data/highlightedClasses";
+import DescriptionCard from "../../globalComponents/DescriptonCard";
 
 function TheClasses() {
   console.log(window.innerHeight, window.innerWidth);
@@ -111,7 +111,7 @@ function TheClasses() {
         english={"Classes"}
         arabic={"يلا عالصف"}
         bottom={"-50%"}
-        right={"-114%"}
+        right={"-62%"}
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
@@ -119,9 +119,11 @@ function TheClasses() {
         <CardWrapper>
           {highlightedClasses.map((item) => {
             return (
-              <Card
+              <DescriptionCard
+                key={item.id}
                 classTitle={item.classTitle}
                 imagesrc={require(`../../../designAssets/Homepage/Classes/${item.imagesrc}.png`)}
+                // imagesrc={pic1}
                 // imagesrc={item.imagesrc}
                 number={item.number}
                 classDur={item.classDur}

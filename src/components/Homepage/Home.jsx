@@ -18,7 +18,7 @@ function Home() {
         <Classes isGrey={true} isWhite={true}/>
         <TheStars />
         <EntrepreneursJourney isGrey={true} />
-        <EducateSection />
+        {/* <EducateSection /> */}
         <Footer />
     </>
   )

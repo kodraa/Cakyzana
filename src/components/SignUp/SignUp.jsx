@@ -1,73 +1,78 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import backgroundImage from "../../designAssets/SignUp/background2.png";
+import Navbar from "../globalComponents/Navbar";
 
 function SignUp() {
   return (
-    <Body>
-      <Img src={backgroundImage} />
-      <Container>
-        <Title>Sign Up</Title>
-        <Form action="#">
-          <UserDetails>
-            <InputBox>
-              <Details>First Name</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+    <>
+      <Navbar />
+      <Body>
+        <Img src={backgroundImage} />
+        <Container>
+          <Title>Sign Up</Title>
+          <Form action="#">
+            <UserDetails>
+              <InputBox>
+                <Details>First Name</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>Phone number</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+              <InputBox>
+                <Details>Phone number</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>Last Name</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+              <InputBox>
+                <Details>Last Name</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>User Name</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+              <InputBox>
+                <Details>User Name</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>Email Address</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+              <InputBox>
+                <Details>Email Address</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>Password</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+              <InputBox>
+                <Details>Password</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>Birth Date</Details>
-              <Input type="text" required></Input>
-            </InputBox>
+              <InputBox>
+                <Details>Birth Date</Details>
+                <Input type="text" required></Input>
+              </InputBox>
 
-            <InputBox>
-              <Details>Confirm Password</Details>
-              <Input type="text" required></Input>
-            </InputBox>
-          </UserDetails>
+              <InputBox>
+                <Details>Confirm Password</Details>
+                <Input type="text" required></Input>
+              </InputBox>
+            </UserDetails>
 
-          <GenderDetails>
-            <Category>
-              <GenderTitle>Gender:</GenderTitle>
-              <Label>
-                <Radio type="radio" name="gender"></Radio>
-                <Gender>Male</Gender>
-              </Label>
-              <Label>
-                <Radio type="radio" name="gender"></Radio>
-                <Gender>Female</Gender>
-              </Label>
-              <Button>Submit</Button>
-            </Category>
-          </GenderDetails>
-        </Form>
-      </Container>
-    </Body>
+            <GenderDetails>
+              <Category>
+                <GenderTitle>Gender:</GenderTitle>
+                <Label>
+                  <Radio type="radio" name="gender"></Radio>
+                  <Gender>Male</Gender>
+                </Label>
+                <Label>
+                  <Radio type="radio" name="gender"></Radio>
+                  <Gender>Female</Gender>
+                </Label>
+                <Button>Submit</Button>
+              </Category>
+            </GenderDetails>
+          </Form>
+        </Container>
+      </Body>
+    </>
   );
 }
 
@@ -83,7 +88,7 @@ const Container = styled.div`
 const Title = styled.div`
   font-size: 55px;
   font-weight: bolder;
-  text-align:center;
+  text-align: center;
 `;
 
 const Form = styled.form``;
@@ -96,7 +101,7 @@ const Body = styled.body`
   /* background-image: url(${backgroundImage});
   background-size: auto; */
   padding: 10px;
-  color:#fff;
+  color: #fff;
 `;
 
 const UserDetails = styled.div`
@@ -113,7 +118,7 @@ const InputBox = styled.div`
 
 const Details = styled.span`
   display: block;
-  font-size:20px;
+  font-size: 20px;
 `;
 
 const Input = styled.input`
@@ -128,13 +133,12 @@ const Input = styled.input`
 `;
 
 const GenderDetails = styled.div`
-  position:relative;
-
+  position: relative;
 `;
 
 const GenderTitle = styled.span`
   font-weight: bold;
-  font-size:20px;
+  font-size: 20px;
 `;
 
 const Category = styled.div`
@@ -142,7 +146,7 @@ const Category = styled.div`
   width: 40%;
   justify-content: space-between;
   margin: 14px 0;
-  align-items:center;
+  align-items: center;
 `;
 
 const Label = styled.label`
@@ -156,33 +160,36 @@ const Gender = styled.span`
 `;
 
 const Button = styled.button`
-    position:absolute;
-    right:0%;
-    background-color: #FA2D8A;
-    border: none;
-    border-radius: 18px;
-    font-weight: bold;
-    width: 22.5%;
-    padding: 12.5px;
-    color:#fff;
-    font-size:16px;
+  position: absolute;
+  right: 0%;
+  background-color: #fa2d8a;
+  border: none;
+  border-radius: 18px;
+  font-weight: bold;
+  width: 22.5%;
+  padding: 12.5px;
+  color: #fff;
+  font-size: 16px;
 
-    &:hover {
+  &:hover {
     cursor: pointer;
-    }
+  }
 `;
 
 const Radio = styled.input`
-    width:20px;
-    height:20px;
-    accent-color:purple;
+  width: 20px;
+  height: 20px;
+  accent-color: purple;
 `;
 
 const Img = styled.img`
   position: absolute;
   z-index: -1;
-  top: 8%;
-  left: 8%;
+  /* top: 8%; */
+  /* left: 8%; */
+  top: 52.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 85%;
   height: 85%;
 `;

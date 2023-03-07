@@ -73,8 +73,8 @@ function ThisMonth(props) {
       <EngArTitle
         english={"This Month"}
         arabic={"اللي سبق شم الحبق"}
-        bottom={"-95%"}
-        right={"-120%"}
+        bottom={"-65%"}
+        right={"-90%"}
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
@@ -100,7 +100,8 @@ const ContentDiv = styled(BasicContentDiv)`
 `;
 
 const CircleCarouselContainer = styled.div`
-  height: 500px;
+  /* height: 500px; */
+  height: 62.8%;
   width: 100%;
   position: relative;
 `;

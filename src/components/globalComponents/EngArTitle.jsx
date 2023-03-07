@@ -30,20 +30,22 @@ const TitleContainer = styled.div`
 `;
 
 const EngTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 3.125rem;
   font-family: "Century Gothic Bold", sans-serif;
   font-weight: normal;
   position: relative;
-  font-size: 50px;
+  /* border: 1px solid black; */
+  /* font-size: 50px; */
   color: ${(props) => props.enColor};
 
   &:after {
+    /* display: none; */
     content: "${(props) => props.arabic}";
     width: max-content;
-    font-size: 2rem;
+    font-size: 2.75rem;
     font-family: "Dima";
     font-weight: normal;
-    font-size: 60px;
+    /* font-size: 2.2rem; */
     position: absolute;
     bottom: ${(props) => props.bottom};
     right: ${(props) => props.right};

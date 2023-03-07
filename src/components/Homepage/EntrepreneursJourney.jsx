@@ -13,9 +13,9 @@ function EntrepreneursJourney(props) {
       <EngArTitle
         english={"Entrepreneurs Journey"}
         arabic={"يلَّا خود أوَّل خطوة"}
-        bottom={"-90%"}
-        right={"-50%"}
-        arColor={CONSTANTS.yellow}
+        bottom={"-65%"}
+        right={"-25%"}
+        arColor={CONSTANTS.pink}
       />
       <CoreDiv>
         <ContentWrapper>
@@ -151,15 +151,14 @@ const Text = styled.div`
 `;
 
 const CircularDiv = styled.div`
-  display: flex;
   /* height: 450px; */
-  /* flex-basis: 100%; */
-  aspect-ratio: 1 / 1;
+  /* aspect-ratio: 1 / 1; */
+  display: flex;
+  flex-basis: 100%;
   border-radius: 50%;
   position: relative;
   text-align: center;
   align-items: center;
-  transform: translate(0%);
 
   &:hover ${Image} {
     transition: 1s ease;

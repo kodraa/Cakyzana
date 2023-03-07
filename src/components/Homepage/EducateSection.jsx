@@ -16,8 +16,8 @@ function EducateSection(props) {
       <EngArTitle
         english={"Educate"}
         arabic={"ثقافة كايكية"}
-        bottom={"-75%"}
-        right={"-100%"}
+        bottom={"-60%"}
+        right={"-40%"}
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>

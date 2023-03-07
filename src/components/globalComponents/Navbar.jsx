@@ -12,7 +12,9 @@ function Navbar(props) {
   return (
     <Header>
       <LogoContainer>
-        <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo} />
+        <Link to="/">
+          <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo} />
+        </Link>
       </LogoContainer>
       <NavLinksContainer>
         <Link
@@ -22,7 +24,7 @@ function Navbar(props) {
           className={props.isWhite && "white"}
         >
           <NavLink className={props.isWhite && "white"}>
-            Home<BottomBorder></BottomBorder>
+            Home
           </NavLink>
         </Link>
         <Link
@@ -31,17 +33,17 @@ function Navbar(props) {
           className={props.isWhite && "white"}
         >
           <NavLink className={props.isWhite && "white"}>
-            Classes<BottomBorder></BottomBorder>
+            Classes
           </NavLink>
         </Link>
         <Link to="/utensils" style={styles.Link}>
           <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-            Utensils<BottomBorder></BottomBorder>
+            Utensils
           </NavLink>
         </Link>
         <Link to="/login" style={styles.Link}>
           <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
-            LogIn<BottomBorder></BottomBorder>
+            LogIn
           </NavLink>
         </Link>
         <Link to="/cart">
@@ -90,7 +92,8 @@ const NavLinksContainer = styled.ul`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 30px;
+  /* gap: 30px; */
+  gap: 4%;
 `;
 
 const BottomBorder = styled.div`
@@ -100,10 +103,21 @@ const BottomBorder = styled.div`
   transition: all 1s ease;
 `;
 
+const HyperLink = styled(Link)`
+  img {
+    filter: brightness(100%) grayscale(0%) opacity(100%) invert(0%);
+  }
+
+  img:hover {
+    filter: brightness(100%) grayscale(0%) opacity(100%) invert(100%);
+  }
+`;
+
 const NavLink = styled.li`
   font-size: 1.2rem;
   list-style: none;
   transition: all 1s ease;
+  mix-blend-mode: difference;
 
   &.white {
     transition: all 1s ease;

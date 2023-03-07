@@ -100,6 +100,7 @@ const CakeImg = styled.img`
   position: absolute;
   transition: all 1.5s ease;
   transform: scale(0.9);
+  cursor: pointer;
 
   &.ttr {
     top: -5%;

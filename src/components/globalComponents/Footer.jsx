@@ -51,7 +51,7 @@ function Footer() {
           </FooterChildContent>
         </FooterFlexChild>
         <FooterFlexChild>
-          <FooterChildContent>
+          <FooterChildContent className="padded">
             <FooterChildTitle>Subscribe to our newsletter</FooterChildTitle>
             <NewsletterInput type="text" placeholder="Enter your email here" />
           </FooterChildContent>
@@ -64,9 +64,11 @@ function Footer() {
 export default Footer;
 
 const FooterContainer = styled.footer`
-  height: 300px;
+  min-height: 300px;
+  /* max-height: max-content; */
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: center;
   background-color: ${CONSTANTS.purpleActive};
 `;
@@ -75,21 +77,36 @@ const FooterContent = styled.div`
   height: 100%;
   width: 87%;
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const FooterFlexChild = styled.div`
   height: 100%;
   width: 25%;
   display: flex;
-
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `;
 
 const FooterChildContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  &.padded {
+    @media (max-width: 768px) {
+      padding-bottom: 10%;
+    }
+  }
 `;
 
 const LogoContainer = styled.div``;

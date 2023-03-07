@@ -69,6 +69,14 @@ const StarFlexContainer = styled(BasicLandingSection)`
   align-items: center;
   justify-content: space-between;
   align-self: flex-end;
+
+  /* flex direction column on mobile */
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    /* align-items: center; */
+    /* justify-content: center; */
+  }
 `;
 
 const FlexChild = styled.div`
@@ -107,6 +115,13 @@ const RightFlexChild = styled(FlexChild)`
   & * {
     color: #545454;
     font-weight: 100;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    padding-top: 0;
+    justify-content: center;
   }
 `;
 

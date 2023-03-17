@@ -20,7 +20,6 @@ function Navbar(props) {
         <Link
           to="/"
           style={styles.Link}
-          ac
           className={props.isWhite && "white"}
         >
           <NavLink className={props.isWhite && "white"}>Home</NavLink>

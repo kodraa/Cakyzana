@@ -1,7 +1,9 @@
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import backgroundImage from "../../designAssets/SignUp/background2.png";
+import { auth } from "../../firebase";
 import Navbar from "../globalComponents/Navbar";
 
 function SignUp() {
@@ -34,6 +36,39 @@ function SignUp() {
     });
   };
 
+  // const signUp = (userInfo) => {
+  //   const { email, password, firstName, lastName, userName } = userInfo;
+  //   auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((userCredential) => {
+  //       // Signed up
+  //       const user = userCredential.user;
+  //       console.log(user);
+  //       // Update user profile
+  //       user.updateProfile({
+  //         displayName: `${firstName} ${lastName}`,
+  //       });
+  //       // Update user email
+  //       user.updateEmail(email);
+  //       // Update user username
+  //       user.updateProfile({
+  //         displayName: userName,
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       console.log(errorCode, errorMessage);
+  //     });
+  // };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // signUp(userInfo);
+    await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password);
+    console.log(userInfo);
+  };
+
   return (
     <>
       <Navbar />
@@ -41,7 +76,7 @@ function SignUp() {
         <Img src={backgroundImage} />
         <Container>
           <Title>Sign Up</Title>
-          <Form action="#">
+          <Form onSubmit={handleSubmit} action="#">
             <UserDetails>
               <InputBox>
                 <Details>First Name</Details>
@@ -49,7 +84,7 @@ function SignUp() {
                   type="text"
                   name="firstName"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -59,7 +94,7 @@ function SignUp() {
                   type="text"
                   name="phoneNumber"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -69,7 +104,7 @@ function SignUp() {
                   type="text"
                   name="lastName"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -79,7 +114,7 @@ function SignUp() {
                   type="text"
                   name="userName"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -89,7 +124,7 @@ function SignUp() {
                   type="text"
                   name="email"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -99,7 +134,7 @@ function SignUp() {
                   type="text"
                   name="password"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -109,7 +144,7 @@ function SignUp() {
                   type="text"
                   name="birthDate"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
 
@@ -119,7 +154,7 @@ function SignUp() {
                   type="text"
                   name="confirmPassword"
                   required
-                  onClick={handleChange}
+                  onChange={handleChange}
                 ></Input>
               </InputBox>
             </UserDetails>
@@ -172,7 +207,7 @@ const Title = styled.div`
 
 const Form = styled.form``;
 
-const Body = styled.body`
+const Body = styled.div`
   display: flex;
   height: 100vh;
   justify-content: center;

@@ -12,12 +12,12 @@ import SignUp from '../SignUp/SignUp'
 function Home() {
   return (
     <>
-        <Navbar isHalfWhite={true} isLogoWhite={true} isCartWhite={true}/>
+        <Navbar isHalfWhite isLogoWhite isCartWhite/>
         <Landing />
         <ThisMonth  />
-        <Classes isGrey={true} isWhite={true}/>
+        <Classes isGrey isWhite/>
         <TheStars />
-        <EntrepreneursJourney isGrey={true} />
+        <EntrepreneursJourney isGrey />
         {/* <EducateSection /> */}
         <Footer />
     </>

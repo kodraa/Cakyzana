@@ -100,7 +100,7 @@ const CardImage = styled.div`
 const CardContainer = styled.div`
   /* width: 400px;
   height: 550px; */
-  flex-basis: 280px;
+  /* flex-basis: 280px; */
   height: 85.02%;
   width: 29.16%;
   display: flex;

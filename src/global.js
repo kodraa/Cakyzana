@@ -20,7 +20,6 @@ export const FullScreenSection = styled.section`
   display: flex;
   justify-content: center; //to center ContentContainer in the middle of the screen
   /* background-color: pink; */
-  border: 1px solid red;
 `;
 
 export const ContentContainer = styled.div`

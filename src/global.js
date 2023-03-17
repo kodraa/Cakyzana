@@ -15,15 +15,16 @@ export let CONSTANTS = {
 
 export const FullScreenSection = styled.section`
   background-color: ${props => props.isGrey ? CONSTANTS.graywhite : 'transparent'};
-  height: 100vh;
+  min-height: 100vh; //edited from height to min-height
   width: 100%;
   display: flex;
   justify-content: center; //to center ContentContainer in the middle of the screen
   /* background-color: pink; */
+  border: 1px solid red;
 `;
 
 export const ContentContainer = styled.div`
-  height: 100%;
+  min-height: 100%;
   width: 87%; //width 87% to match the grid of the XD file
   /* background-color: blue; */
 `;

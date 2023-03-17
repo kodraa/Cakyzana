@@ -17,6 +17,7 @@ function Footer() {
             <FooterLogo src={CakyzanaFooterLogo} />
           </LogoContainer>
         </FooterFlexChild>
+
         <FooterFlexChild>
           <FooterChildContent>
             <FooterChildTitle>Menu</FooterChildTitle>
@@ -28,6 +29,7 @@ function Footer() {
             </FooterNavLinksContainer>
           </FooterChildContent>
         </FooterFlexChild>
+
         <FooterFlexChild>
           <FooterChildContent>
             <FooterChildTitle>Follow Us</FooterChildTitle>
@@ -50,12 +52,14 @@ function Footer() {
             </FooterSocialsContainer>
           </FooterChildContent>
         </FooterFlexChild>
+
         <FooterFlexChild>
           <FooterChildContent className="padded">
             <FooterChildTitle>Subscribe to our newsletter</FooterChildTitle>
             <NewsletterInput type="text" placeholder="Enter your email here" />
           </FooterChildContent>
         </FooterFlexChild>
+
       </FooterContent>
     </FooterContainer>
   );
@@ -109,9 +113,16 @@ const FooterChildContent = styled.div`
   }
 `;
 
-const LogoContainer = styled.div``;
+const LogoContainer = styled.div`
+  height: 100%;
+  width: 100%;
+`;
 
-const FooterLogo = styled.img``;
+const FooterLogo = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+`;
 
 const FooterChildTitle = styled.h3`
   font-size: 1.65rem;

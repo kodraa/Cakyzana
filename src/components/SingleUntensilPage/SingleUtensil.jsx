@@ -173,6 +173,13 @@ const UtensilFlexContainer = styled(BasicLandingSection)`
   align-self: flex-end;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
   //transition: all 0.3s ease;
 `;
 
@@ -181,6 +188,11 @@ const FlexChild = styled.div`
   height: 75%;
   width: 55%;
   display: flex;
+
+  @media (max-width: 768px) {
+    width: 50%;
+    height: 50%;
+  }
 `;
 
 const LeftFlexChild = styled(FlexChild)``;
@@ -196,6 +208,13 @@ const LeftChildImgContainer = styled.div`
   display: flex;
   justify-content: center;
   box-shadow: 4px 25px 25px 4px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+  }
+
 `;
 
 const Img = styled.img`
@@ -209,7 +228,6 @@ const RightFlexChild = styled.div`
   height: 70%;
   width: 35%;
   display: flex;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1.4rem;
@@ -217,6 +235,14 @@ const RightFlexChild = styled.div`
   & * {
     color: #545454;
     font-weight: 100;
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 50%;
+    height: 50%;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 

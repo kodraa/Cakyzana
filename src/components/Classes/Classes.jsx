@@ -9,9 +9,9 @@ function Classes() {
   return (
     <>
       <Landing />
-      <Category isGrey={true} />
+      <Category isGrey />
       <TheStars />
-      <EntrepreneursJourney />
+      <EntrepreneursJourney isGrey/>
       <Footer />
     </>
   );

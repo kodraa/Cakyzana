@@ -1,10 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import backgroundImage from "../../designAssets/SignUp/background2.png";
 import Navbar from "../globalComponents/Navbar";
 
 function SignUp() {
+  const [userInfo, setUserInfo] = useState({
+    firstName: "",
+    lastName: "",
+    userName: "",
+    email: "",
+    password: "",
+    birthDate: "",
+    confirmPassword: "",
+    phoneNumber: "",
+    gender: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    if (name === "gender") {
+      setUserInfo({ ...userInfo, gender: value });
+    } else {
+      setUserInfo({ ...userInfo, [name]: value });
+    }
+
+    setUserInfo((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -16,42 +45,82 @@ function SignUp() {
             <UserDetails>
               <InputBox>
                 <Details>First Name</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="firstName"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>Phone number</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="phoneNumber"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>Last Name</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="lastName"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>User Name</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="userName"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>Email Address</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="email"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>Password</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="password"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>Birth Date</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="birthDate"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
 
               <InputBox>
                 <Details>Confirm Password</Details>
-                <Input type="text" required></Input>
+                <Input
+                  type="text"
+                  name="confirmPassword"
+                  required
+                  onClick={handleChange}
+                ></Input>
               </InputBox>
             </UserDetails>
 
@@ -59,11 +128,21 @@ function SignUp() {
               <Category>
                 <GenderTitle>Gender:</GenderTitle>
                 <Label>
-                  <Radio type="radio" name="gender"></Radio>
+                  <Radio
+                    type="radio"
+                    name="gender"
+                    value="male"
+                    onChange={handleChange}
+                  />
                   <Gender>Male</Gender>
                 </Label>
                 <Label>
-                  <Radio type="radio" name="gender"></Radio>
+                  <Radio
+                    type="radio"
+                    name="gender"
+                    value="female"
+                    onChange={handleChange}
+                  />
                   <Gender>Female</Gender>
                 </Label>
                 <Button>Submit</Button>

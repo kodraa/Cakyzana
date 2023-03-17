@@ -23,18 +23,14 @@ function Navbar(props) {
           ac
           className={props.isWhite && "white"}
         >
-          <NavLink className={props.isWhite && "white"}>
-            Home
-          </NavLink>
+          <NavLink className={props.isWhite && "white"}>Home</NavLink>
         </Link>
         <Link
           to="/classes"
           style={styles.Link}
           className={props.isWhite && "white"}
         >
-          <NavLink className={props.isWhite && "white"}>
-            Classes
-          </NavLink>
+          <NavLink className={props.isWhite && "white"}>Classes</NavLink>
         </Link>
         <Link to="/utensils" style={styles.Link}>
           <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
@@ -96,42 +92,47 @@ const NavLinksContainer = styled.ul`
   gap: 4%;
 `;
 
-const BottomBorder = styled.div`
-  opacity: 0;
-  border-bottom: 3px solid;
-  width: 65%;
-  transition: all 1s ease;
-`;
+// const HyperLink = styled(Link)`
+//   img {
+//     filter: brightness(100%) grayscale(0%) opacity(100%) invert(0%);
+//   }
 
-const HyperLink = styled(Link)`
-  img {
-    filter: brightness(100%) grayscale(0%) opacity(100%) invert(0%);
-  }
-
-  img:hover {
-    filter: brightness(100%) grayscale(0%) opacity(100%) invert(100%);
-  }
-`;
+//   img:hover {
+//     filter: brightness(100%) grayscale(0%) opacity(100%) invert(100%);
+//   }
+// `;
 
 const NavLink = styled.li`
   font-size: 1.2rem;
+  font-weight: bold;
   list-style: none;
   transition: all 1s ease;
-  mix-blend-mode: difference;
+  color: white;
+  -webkit-text-stroke: 0.01vw black;
+  position: relative;
 
-  &.white {
+  ::after {
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: ${CONSTANTS.pink};
+    transition: all 0.5s ease;
+  }
+
+  /* &.white {
     transition: all 1s ease;
     color: white;
-  }
+  } */
 
   &:hover {
     font-weight: bolder;
     cursor: pointer;
     transition: all 1s ease;
 
-    ${BottomBorder} {
-      opacity: 1;
-      transition: all 1s ease;
+    ::after {
+      content: "";
     }
   }
 `;
@@ -144,8 +145,8 @@ const Img = styled.img`
 
 const Badge = styled.div`
   position: absolute;
-  top: 18px;
-  right: 22px;
+  top: 0;
+  left: -10%;
   height: 12px;
   width: 12px;
   background-color: ${CONSTANTS.pink};

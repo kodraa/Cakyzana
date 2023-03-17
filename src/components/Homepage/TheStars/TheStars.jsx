@@ -29,15 +29,17 @@ function EducateSection(props) {
 export default EducateSection;
 
 const ContentDiv = styled(BasicContentDiv)`
+  min-height: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 const CardWrapper = styled.div`
-  height: 100%;
+  min-height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 `;

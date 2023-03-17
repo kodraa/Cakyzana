@@ -17,7 +17,7 @@ function Category(props) {
         english={"Category"}
         arabic={"طوّر مهارتك الكايكية"}
         bottom={"-65%"}
-        right={"-157%"}
+        right={"-11 7%"}
         arColor={CONSTANTS.pink}
       />
       <ContentDiv>
@@ -70,6 +70,10 @@ const ItemsWrapper = styled.div`
   align-content: center;
   gap: 8%;
   row-gap: 6%;
+
+  /* @media (max-width: 768px) {
+    gap: 10%;
+  } */
 `;
 
 const Img = styled.img`
@@ -92,6 +96,7 @@ const CircleTitle = styled.h2`
   transform: translate(-25%, -25%);
   transition: all 0.5s ease-in-out;
   opacity: 0;
+  user-select: none;
 `;
 
 const Circle = styled.div`
@@ -114,5 +119,25 @@ const Circle = styled.div`
     left: 72%;
     transform: translate(-50%, -50%);
     transition: all 0.5s ease-in-out;
+  }
+
+  @media (max-width: 768px) {
+    width: 40%;
+
+    & ${CircleTitle} {
+      font-size: 2.5rem;
+      top: 50%;
+      left: 35%;
+      transform: translate(-35%, -50%);
+      opacity: 1;
+      transition: all 0.5s ease-in-out;
+    }
+
+    & ${Img} {
+      top: 68%;
+      left: 72%;
+      transform: translate(-50%, -50%);
+      transition: all 0.5s ease-in-out;
+    }
   }
 `;

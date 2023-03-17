@@ -6,10 +6,11 @@ import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
 import Utensils from "./components/Utensils/Utensils";
 import Login from "./components/Login/Login";
 import SignUp from "./components/SignUp/SignUp";
-import { CartContext, ModalContext } from "./context"
+import { CartContext, ModalContext } from "./context";
 import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";
+import { AuthProvider } from "./AuthContext";
 
 const router = createBrowserRouter([
   {
@@ -25,50 +26,48 @@ const router = createBrowserRouter([
     element: <Utensils />,
   },
   {
-    path:'/singleUtensil/:id',
-    element:<UtensilPage />
+    path: "/singleUtensil/:id",
+    element: <UtensilPage />,
   },
   {
-    path:'login',
-    element:<Login />
+    path: "login",
+    element: <Login />,
   },
   {
-    path:'signup',
-    element:<SignUp />
+    path: "signup",
+    element: <SignUp />,
   },
   {
-    path:'/utensil/:id',
-    element:<UtensilPage/>
+    path: "/utensil/:id",
+    element: <UtensilPage />,
   },
   {
-    path:'/classes',
-    element:<Classes/>
-
+    path: "/classes",
+    element: <Classes />,
   },
   {
-    path:'/classcategory',
-    element:<ClassCategory/>
+    path: "/classcategory",
+    element: <ClassCategory />,
   },
   {
-    path:'/cart',
-    element:<CartPage/>
-  }
-
+    path: "/cart",
+    element: <CartPage />,
+  },
 ]);
 
 function App() {
-
   const [cart, setCart] = useState({
     total: 0,
-    items: []
+    items: [],
   });
-
 
   return (
     <>
-      <CartContext.Provider value={[cart,setCart]}>
+      <AuthProvider>
+        <CartContext.Provider value={[cart, setCart]}>
           <RouterProvider router={router} />
-      </CartContext.Provider>
+        </CartContext.Provider>
+      </AuthProvider>
     </>
   );
 }

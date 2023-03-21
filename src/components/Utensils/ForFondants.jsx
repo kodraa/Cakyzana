@@ -37,7 +37,7 @@ function ForFondants(props) {
           isPadded={props.isPadded}
           classTitle="Modeling Pens Set 2"
           Description="Small stainless steel ball and rubber headed pens "
-         Set="5"
+          Set="5"
           price="25"
         />
         <Card

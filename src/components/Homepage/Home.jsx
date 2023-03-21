@@ -1,5 +1,4 @@
 import React from 'react';
-import EducateSection from './EducateSection';
 import EntrepreneursJourney from './EntrepreneursJourney';
 import Landing from './Landing/Landing';
 import ThisMonth from './ThisMonth/ThisMonth';
@@ -18,7 +17,6 @@ function Home() {
         <Classes isGrey isWhite/>
         <TheStars />
         <EntrepreneursJourney isGrey />
-        {/* <EducateSection /> */}
         <Footer />
     </>
   )

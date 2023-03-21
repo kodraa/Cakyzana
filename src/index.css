@@ -41,3 +41,7 @@ html {
   src: url('./fonts/Century Gothic/CenturyGothicBold.TTF');
 }
 
+.carousel-slide-style{
+  display: flex;
+  justify-content: center;
+}

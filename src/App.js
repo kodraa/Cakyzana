@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Home from "./components/Homepage/Home";
+import TestCarousel from "./components/Homepage/Classes/TestCarousel";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import SingleStar from "./components/Star/SingleStar";
 import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <CartPage />,
+  },
+  {
+    path: "/test",
+    element: <TestCarousel />,
   },
 ]);
 

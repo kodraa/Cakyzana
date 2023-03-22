@@ -9,7 +9,6 @@ import { utensils } from "../../data/utensils";
 import { Link, useParams } from "react-router-dom";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { keyframes } from "styled-components";
-import Carousel, { consts } from "react-elastic-carousel";
 // TODO add black cart logo
 import { CartContext } from "../../context";
 import Modal from "../Modal_Cart";

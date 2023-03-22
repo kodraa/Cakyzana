@@ -103,7 +103,6 @@ import { highlightedClasses } from "../../../data/highlightedClasses";
 import DescriptionCard from "../../globalComponents/DescriptonCard";
 
 function TheClasses() {
-  console.log(window.innerHeight, window.innerWidth);
 
   return (
     <Section isGrey>

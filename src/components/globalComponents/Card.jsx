@@ -51,7 +51,7 @@ const Card = (props) => {
         <CardButtonDiv>
           <Link 
           style={{width: "48%"}}
-          to="/star">
+          to="/singleClass">
             <CardButton cardBgColor={CONSTANTS.blue}>View More</CardButton>
           </Link>
         </CardButtonDiv>

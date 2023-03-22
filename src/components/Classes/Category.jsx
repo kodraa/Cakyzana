@@ -9,6 +9,7 @@ import PipingBag from "../../designAssets/Classes/Categories/Piping Bag.png";
 import Scraper from "../../designAssets/Classes/Categories/Scraper.png";
 import SmoothingTool from "../../designAssets/Classes/Categories/Smoothing Tool.png";
 import Spatula from "../../designAssets/Classes/Categories/Spatula.png";
+import { Link } from "react-router-dom";
 
 function Category(props) {
   return (
@@ -43,8 +44,10 @@ function Category(props) {
             <Img src={Scraper} alt="Scraper" />
           </Circle>
           <Circle>
-            <CircleTitle>Filling</CircleTitle>
-            <Img src={PipingBag} alt="Piping Bag" />
+            <CircleLink to={"/classes/filling"}>
+              <CircleTitle>Filling</CircleTitle>
+              <Img src={PipingBag} alt="Piping Bag" />
+            </CircleLink>
           </Circle>
         </ItemsWrapper>
       </ContentDiv>
@@ -74,6 +77,11 @@ const ItemsWrapper = styled.div`
   /* @media (max-width: 768px) {
     gap: 10%;
   } */
+`;
+
+const CircleLink = styled(Link)`
+  color: unset;
+  text-decoration: none;
 `;
 
 const Img = styled.img`

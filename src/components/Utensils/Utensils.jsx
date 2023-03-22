@@ -13,6 +13,8 @@ import { db } from "../../firebase";
 function Utensils() {
   useEffect(() => {
     getUtensils();
+    setCategories(groupUtensilsByCategory());
+
   }, []);
 
   const [utensilList, setUtensilList] = useState([]);
@@ -35,11 +37,8 @@ function Utensils() {
         // console.log("");
       })
       .then(() => {
-        filteredCategories();
+      
       })
-      .then(() => {
-        // console.log(categories);
-      });
     return;
   };
 
@@ -47,17 +46,33 @@ function Utensils() {
 
   const filteredCategories = () => {
     utensilList.forEach((utensil) => {
-      if (categories.includes(utensil.Category) === false) {
+      if (!categories.includes(utensil.Category)) {
         categories.push(utensil.Category);
       }
     });
-    console.log(categories);
   };
+
+  function groupUtensilsByCategory() {
+    console.log("is being groupped")
+    const categories = [];
+    utensilList.forEach(utensil => {
+      const categoryIndex = categories.findIndex(category => category.Category === utensil.Category);
+      if (categoryIndex === -1) {
+        categories.push({ Category: utensil.Category, items: [utensil] });
+      } else {
+        categories[categoryIndex].items.push(utensil);
+      }
+    });
+    console.log(categories);
+    return categories;
+  }
 
   return (
     <>
       <Navbar isLogoWhite={true} isCartWhite={true} isWhite={true} />
       <Landing />
+      <button onClick={() => console.log(utensilList)}>Log UtensilList</button>
+      <button onClick={() => console.log(categories)}>Log Categories</button>
       <ForFondants
         cardBgColor={CONSTANTS.blue}
         isPadded={true}

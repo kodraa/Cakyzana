@@ -12,7 +12,7 @@ import redvelvet from "../../designAssets/ClassCategory/redvelvet.png";
 import darkchocolatecake from "../../designAssets/ClassCategory/darkchocolatecake.png";
 import orangecake from "../../designAssets/ClassCategory/orangecake.png";
 import lemoncake from "../../designAssets/ClassCategory/lemoncake.png";
-import Card from "./CategoryCard";
+import DescriptionCard from "../globalComponents/DescriptonCard";
 
 //import {classesCategories} from "../../data/classes.js"
 
@@ -23,43 +23,45 @@ function CategoryComponent(props) {
         english={"Baking"}
         arabic={"طعمة و ريحة ولا أطيب"}
         bottom={"-80%"}
-        right={"-200%"}
+        right={"-150%"}
         height={"100%"}
         arColor={CONSTANTS.pink}
         isTransformed
       />
       <ContentDiv>
-        <ItemWrapper>
-          <Card
-            isGrey={props.isGrey}
+        <CardWrapper>
+          <DescriptionCard
+            isGrey={true}
             id="10"
-            src={vanillacake}
+            imagesrc={vanillacake}
             cardBgColor={props.cardBgColor}
             classTitle="Vanilla Cake"
             classSection="Cake Recipes"
-            Duration="30 mins"
-            Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
+            classDur="30 mins"
+            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
           />
-          <Card
+          <DescriptionCard
+            isGrey={true}
             id="11"
-            src={redvelvet}
+            imagesrc={redvelvet}
             cardBgColor={props.cardBgColor}
             isPadded={props.isPadded}
             classTitle="Red Velvet Cake"
             classSection="Cake Recipes"
-            Duration="30 mins"
-            Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
+            classDur="30 mins"
+            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
           />
-          <Card
+          <DescriptionCard
+            isGrey={true}
             id="12"
-            src={orangecake}
+            imagesrc={orangecake}
             cardBgColor={props.cardBgColor}
             classTitle="Orange Cake"
             classSection="Cake Recipes"
-            Duration="30 mins"
-            Description=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
+            classDur="30 mins"
+            descr=" In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.  "
           />
-        </ItemWrapper>
+        </CardWrapper>
       </ContentDiv>
     </Section>
   );
@@ -68,18 +70,18 @@ function CategoryComponent(props) {
 export default CategoryComponent;
 
 const ContentDiv = styled(BasicContentDiv)`
-  height: calc(100vh - 12rem - 90px);
+  height: calc(100vh - 18vh - 90px);
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const ItemWrapper = styled.div`
+const CardWrapper = styled.div`
+  height: 100%;
+  width: 100%;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4rem;
+  justify-content: space-evenly;
 `;
 
 /*const ItemsWrapper=styled.div`

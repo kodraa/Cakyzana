@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Home from "./components/Homepage/Home";
 import TestCarousel from "./components/Homepage/Classes/TestCarousel";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
-import SingleStar from "./components/Star/SingleStar";
+import SingleClass from "./components/Star/SingleClass";
 import UtensilPage from "./components/SingleUntensilPage/UtensilPage";
 import Utensils from "./components/Utensils/Utensils";
 import Login from "./components/Login/Login";
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/star",
-    element: <SingleStar />,
+    path: "/singleClass",
+    element: <SingleClass />,
   },
   {
     path: "/utensils",
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
     element: <Classes />,
   },
   {
-    path: "/classcategory",
+    path: "/classes/:name",
     element: <ClassCategory />,
   },
   {

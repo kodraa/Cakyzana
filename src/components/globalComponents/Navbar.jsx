@@ -10,7 +10,7 @@ import { CONSTANTS } from "../../global";
 function Navbar(props) {
   const [cart, setCart] = useContext(CartContext);
   return (
-    <Header>
+    <Header isRelative={props.isRelative}>
       <LogoContainer>
         <Link to="/">
           <Logo src={props.isLogoWhite ? WhiteLogo : BlackLogo} />
@@ -61,7 +61,7 @@ export default Navbar;
 const Header = styled.header`
   height: 70px;
   width: 87%;
-  position: absolute;
+  position: ${props => props.isRelative ? "relative" : "absolute"};
   top: 20px;
   left: 50%;
   transform: translateX(-50%);

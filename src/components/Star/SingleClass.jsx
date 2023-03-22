@@ -10,7 +10,7 @@ import Cake from "../../designAssets/Star/Sample Cake.png";
 
 // TODO add black cart logo
 
-function SingleStar() {
+function SingleClass() {
   return (
     <FullScreenSection>
       <Navbar />
@@ -61,7 +61,7 @@ function SingleStar() {
   );
 }
 
-export default SingleStar;
+export default SingleClass;
 
 const StarFlexContainer = styled(BasicLandingSection)`
   width: 87%;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { CONSTANTS, FullScreenSection } from "../../global";
 import LoginBg from "../../designAssets/Login/LoginBg.png";
 import LoginWordImg from "../../designAssets/Login/LOG IN.png";

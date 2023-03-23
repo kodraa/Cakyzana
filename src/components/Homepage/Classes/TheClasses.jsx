@@ -2,7 +2,7 @@
 // import { CONSTANTS, BasicContentDiv } from "../../../global";
 // import EngArTitle from "../../globalComponents/EngArTitle";
 // import Section from "../../globalComponents/Section";
-// import styled from "styled-components";
+// import styled from "styled-components/macro";
 // import Card from "./Card";
 // import cake1 from "../../../designAssets/Homepage/Classes/pic1.png";
 // import cake2 from "../../../designAssets/Homepage/Classes/pic2.png";
@@ -90,7 +90,7 @@ import React from "react";
 import { CONSTANTS, BasicContentDiv } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 // import { pic1 } from "/designAssets/Homepage/Classes/pic1.png";
 import cake1 from "../../../designAssets/Homepage/Classes/cake1.png";
 import cake2 from "../../../designAssets/Homepage/Classes/cake2.png";
@@ -164,6 +164,7 @@ const CardWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background-color: blue;
 `;
 
 // {/* <Card

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { BasicLandingSection, CONSTANTS } from "../../global";
 import Cake1 from "../../designAssets/Classes/Landing/Cake1.png";
 

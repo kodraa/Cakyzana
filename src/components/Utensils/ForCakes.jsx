@@ -2,7 +2,7 @@ import React from "react";
 import { CONSTANTS, BasicContentDiv } from "../../global";
 import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Card from "./CardUtensils";
 import CircleCakeTray from "../../designAssets/Utensils/ForCakes/CircleCakeTray.png";
 import SquareCakeTray from "../../designAssets/Utensils/ForCakes/SquareCakeTray.png";

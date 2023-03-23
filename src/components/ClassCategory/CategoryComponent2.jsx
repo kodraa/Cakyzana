@@ -5,7 +5,7 @@ import Navbar from "../globalComponents/Navbar";
 import Footer from "../globalComponents/Footer";
 import Section from "../globalComponents/Section";
 import EngArTitle from "../globalComponents/EngArTitle";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import vanillacake from "../../designAssets/ClassCategory/vanillacake.png";
 import chocolatecake from "../../designAssets/ClassCategory/chocolatecake.png";
 import redvelvet from "../../designAssets/ClassCategory/redvelvet.png";

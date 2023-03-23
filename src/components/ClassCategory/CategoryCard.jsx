@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { CONSTANTS, BasicContentDiv } from "../../global";
 import CardButton from "../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";

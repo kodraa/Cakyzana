@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { BasicLandingSection, CONSTANTS, FullScreenSection } from "../../global";
 import UtensilsLandingPage from "../../designAssets/Utensils/Landing/UtensilsLandingPage.png";
 

@@ -11,13 +11,16 @@ import { CONSTANTS } from "../../global";
 import { db } from "../../firebase";
 
 function Utensils() {
+  const [utensilList, setUtensilList] = useState([]);
+  const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     getUtensils();
-    setCategories(groupUtensilsByCategory());
-
   }, []);
 
-  const [utensilList, setUtensilList] = useState([]);
+  // useEffect(() => {
+  //   setCategories(groupUtensilsByCategory());
+  // }, [utensilList]);
 
   const getUtensils = () => {
     const AllUtensils = [];
@@ -31,39 +34,35 @@ function Utensils() {
           AllUtensils.push(utensil);
         });
         setUtensilList(AllUtensils);
+        console.log("All Utensils", AllUtensils);
 
-        // console.log(AllUtensils);
-
-        // console.log("");
+        // const categories = groupUtensilsByCategory();
+        // setCategories(categories);
       })
       .then(() => {
-      
+        setCategories(groupUtensilsByCategory(AllUtensils));
       })
-    return;
+      .catch((error) => {
+        console.log("Error getting documents: ", error);
+      });
   };
 
-  const [categories, setCategories] = useState([]);
-
-  const filteredCategories = () => {
-    utensilList.forEach((utensil) => {
-      if (!categories.includes(utensil.Category)) {
-        categories.push(utensil.Category);
-      }
-    });
-  };
-
-  function groupUtensilsByCategory() {
-    console.log("is being groupped")
+  // function groupUtensilsByCategory([...utensilsParameter]) {
+  function groupUtensilsByCategory(utensilsParameter=[]) {
+    console.log("is being groupped");
     const categories = [];
-    utensilList.forEach(utensil => {
-      const categoryIndex = categories.findIndex(category => category.Category === utensil.Category);
+    // utensilList.forEach((utensil) => {
+      [...utensilsParameter].forEach((utensil) => {
+      const categoryIndex = categories.findIndex(
+        (category) => category.Category === utensil.Category
+      );
       if (categoryIndex === -1) {
         categories.push({ Category: utensil.Category, items: [utensil] });
       } else {
         categories[categoryIndex].items.push(utensil);
       }
     });
-    console.log(categories);
+    console.log("categories", categories);
     return categories;
   }
 
@@ -88,3 +87,30 @@ function Utensils() {
 }
 
 export default Utensils;
+
+// const fetchUtensilsAndCategories = async () => {
+//   await getUtensils();
+//   await setCategories(groupUtensilsByCategory());
+// }
+// fetchUtensilsAndCategories();
+
+// const getUtensils = () => {
+//   const AllUtensils = [];
+//   setUtensilList(AllUtensils);
+
+//   db.collection("Utensil")
+//     .get()
+//     .then((querySnapshot) => {
+//       querySnapshot.forEach((doc) => {
+//         const utensil = doc.data();
+//         AllUtensils.push(utensil);
+//       });
+//       setUtensilList(AllUtensils);
+//       console.log(AllUtensils);
+
+//     })
+//     .then(() => {
+//       setCategories(groupUtensilsByCategory());
+//     })
+//   return;
+// };

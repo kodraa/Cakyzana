@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { BoldText, CONSTANTS } from "../../global";
 import cake from "../../designAssets/Homepage/TheStars/cake5.png";
 // import CardButton from "../../globalComponents/CardButton";

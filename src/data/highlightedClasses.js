@@ -16,6 +16,14 @@ export const highlightedClasses = [
     descr: "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
   },
   {
+    id: 2,
+    classTitle: "Chocolate Ganache",
+    imagesrc: "cake2",
+    number: "10",
+    classDur: "30",
+    descr: "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+  },
+  {
     id: 3,
     classTitle: "Sugar Fondant",
     imagesrc: "cake3",

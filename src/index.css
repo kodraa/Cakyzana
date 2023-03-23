@@ -45,3 +45,9 @@ html {
   display: flex;
   justify-content: center;
 }
+
+div.keen-slider__slide {
+  /* min-width: unset !important; */
+  min-width: 29% !important;
+  transform: translate(0,0);
+}

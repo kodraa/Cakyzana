@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components/macro";
 import { BasicContentDiv, CONSTANTS } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
@@ -12,48 +12,87 @@ import ArrowRight from "../../../designAssets/Homepage/Classes/ArrowRight.png";
 import ArrowLeft from "../../../designAssets/Homepage/Classes/ArrowLeft.png";
 import { highlightedClasses } from "../../../data/highlightedClasses";
 import DescriptionCard from "../../globalComponents/DescriptonCard";
-import {
-  CarouselProvider,
-  Slider,
-  Slide,
-  ButtonBack,
-  ButtonNext,
-  Image
-} from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
+import "swiper/css";
+import "swiper/swiper-bundle.css";
+import "swiper/css/hash-navigation";
 
 function ExampleComponent() {
+  const sliderRef = useRef(null);
+
+  const handlePrev = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slidePrev();
+  }, []);
+
+  const handleNext = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slideNext();
+  }, []);
+
   return (
-    <Section isGrey>
-      <EngArTitle
-        english={"Classes"}
-        arabic={"يلا عالصف"}
-        bottom={"-50%"}
-        right={"-62%"}
-        arColor={CONSTANTS.pink}
-      />
-      <ContentDiv>
-        <CardWrapper>
-          <CarouselProvider
-            naturalSlideWidth={100}
-            naturalSlideHeight={125}
-            totalSlides={6}
-            visibleSlides={3}
-          >
-            <ButtonBack><Image src={ArrowLeft}></Image></ButtonBack>
-            <Slider>
-              <Slide index={0} innerClassName='carousel-slide-style'><Image src={cake1}></Image></Slide>
-              <Slide index={1} innerClassName='carousel-slide-style'><Image src={cake2}></Image></Slide>
-              <Slide index={2} innerClassName='carousel-slide-style'><Image src={cake3}></Image></Slide>
-              <Slide index={3} innerClassName='carousel-slide-style'><Image src={cake4}></Image></Slide>
-              <Slide index={4} innerClassName='carousel-slide-style'><Image src={cake5}></Image></Slide>
-              <Slide index={5} innerClassName='carousel-slide-style'><Image src={cake5}></Image></Slide>
-            </Slider>
-            <ButtonNext><Image src={ArrowRight}></Image></ButtonNext>
-          </CarouselProvider>
-        </CardWrapper>
-      </ContentDiv>
-    </Section>
+    <>
+      <Section isGrey>
+        <EngArTitle
+          english={"Classes"}
+          arabic={"يلا عالصف"}
+          bottom={"-50%"}
+          right={"-62%"}
+          arColor={CONSTANTS.pink}
+        />
+        <ContentDiv>
+          <CardWrapper>
+            <Arrow
+              className="left-arrow"
+              src={ArrowLeft}
+              onClick={handlePrev}
+              // className="left"
+            />
+            <Swiper
+              className="global-swiper"
+              ref={sliderRef}
+              spaceBetween={50}
+              // TODO breakpoints
+              slidesPerView={3}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+              modules={[Navigation]}
+              navigation={{
+                nextEl: ".right-arrow",
+                prevEl: ".left-arrow",
+                clickable: true,
+              }}
+            >
+              {highlightedClasses.map((item) => {
+                return (
+                  <SwiperSlide>
+                    <DescriptionCard
+                      key={item.id}
+                      classTitle={item.classTitle}
+                      imagesrc={require(`../../../designAssets/Homepage/Classes/${item.imagesrc}.png`)}
+                      // imagesrc={pic1}
+                      // imagesrc={item.imagesrc}
+                      number={item.number}
+                      classDur={item.classDur}
+                      descr={item.descr}
+                    />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+            <div>
+              <Arrow
+                className="right-arrow"
+                onClick={handleNext}
+                src={ArrowRight}
+                // className="right"
+              />
+            </div>
+          </CardWrapper>
+        </ContentDiv>
+      </Section>
+    </>
   );
 }
 
@@ -63,6 +102,16 @@ const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  & .left-arrow, & .right-arrow {
+    width: 25px;
+    cursor: pointer;
+  }
+
+  & .global-swiper {
+    height: 85.02%;
+    /* background-color: red; */
+  }
 `;
 
 const Arrow = styled.img`
@@ -85,14 +134,31 @@ const CardWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
-  & > .carousel {
-    height: 100%;
-    width: 100%;
+  h2 {
+    background-color: red;
+    width: 30%;
   }
-
-  & > .carousel > .slideInner___2mfX9{
-    display: flex;
-    justify-content: center;
-  }
+  /* background-color: blue; */
 `;
 // We extend the BasicContentDiv with ContentDiv and add display: flex; align-items: center; to center the content vertically in the section
+
+// function Arrow(props) {
+//   const disabeld = props.disabled ? " arrow--disabled" : ""
+//   return (
+//     <svg
+//       onClick={props.onClick}
+//       className={`arrow ${
+//         props.left ? "arrow--left" : "arrow--right"
+//       } ${disabeld}`}
+//       xmlns="http://www.w3.org/2000/svg"
+//       viewBox="0 0 24 24"
+//     >
+//       {props.left && (
+//         <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
+//       )}
+//       {!props.left && (
+//         <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+//       )}
+//     </svg>
+//   )
+// }

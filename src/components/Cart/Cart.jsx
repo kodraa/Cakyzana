@@ -1,5 +1,5 @@
 import react, { useState, useContext, useEffect } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { CONSTANTS } from "../../global";
 import { Link } from "react-router-dom";
 import Section from "../globalComponents/Section";

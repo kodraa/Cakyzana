@@ -88,10 +88,13 @@ export const classes = [
   },
 ];
 
+// TODO fix items disappearing when resizing
+
 const mappedElements = classes.map((item) => {
   return (
     <SwiperSlide>
-      <DescriptionCard
+      <DescriptionCard        
+        isInCarousel={true}
         key={item.id}
         classTitle={item.classTitle}
         imagesrc={require(`./designAssets/Homepage/Classes/${item.imagesrc}.png`)}
@@ -123,6 +126,7 @@ function TestDynamicCarousel() {
   return (
     <>
       <CarouselComponent
+        isGrey
         title={title}
         mappedElements={mappedElements}
       />

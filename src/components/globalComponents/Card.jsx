@@ -11,7 +11,7 @@ const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <CardContainer>
+    <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
@@ -49,9 +49,7 @@ const Card = (props) => {
         </CardText>
         <PriceText>Price: ${props.price}</PriceText>
         <CardButtonDiv>
-          <Link 
-          style={{width: "48%"}}
-          to="/singleClass">
+          <Link style={{ width: "48%" }} to="/singleClass">
             <CardButton cardBgColor={CONSTANTS.blue}>View More</CardButton>
           </Link>
         </CardButtonDiv>
@@ -101,13 +99,18 @@ const CardContainer = styled.div`
   /* width: 400px;
   height: 550px; */
   /* flex-basis: 280px; */
-  height: 85.02%;
-  width: 29.16%;
+
+  /* height: 85.02%;
+  width: 29.16%; */
+
+  height: ${(props) => (!props.isInCarousel ? "85.02%" : "100%")};
+  width: ${(props) => (!props.isInCarousel ? "29.16%" : "100%")};
+
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${CONSTANTS.graywhite};
+  background-color: ${(props) => props.isGrey ? CONSTANTS.graywhite : "white"};
   color: ${CONSTANTS.grayblack};
   transition: all 0.8s ease;
 

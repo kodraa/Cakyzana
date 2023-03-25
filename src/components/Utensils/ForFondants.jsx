@@ -3,7 +3,7 @@ import { CONSTANTS, BasicContentDiv } from "../../global";
 import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
 import styled from "styled-components/macro";
-import Card from "./CardUtensils";
+import Card from "../globalComponents/Card";
 import ModelingPensSet1 from "../../designAssets/Utensils/ForFondants/ModelingPensSet1.png";
 import ModelingPensSet2 from "../../designAssets/Utensils/ForFondants/ModelingPensSet2.png";
 import ModelingPensSet3 from "../../designAssets/Utensils/ForFondants/ModelingPensSet3.png";

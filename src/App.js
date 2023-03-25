@@ -13,6 +13,7 @@ import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";
 import AuthProvider from "./AuthContext";
 import TestDynamicCarousel from "./TestDynamicCarousel";
+import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
 
 
 const router = createBrowserRouter([
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
   {
     path: "/testDynamic",
     element: <TestDynamicCarousel />,
+  },
+  {
+    path: "/multipleRow",
+    element: <MultipleRowComponent />,
   },
 ]);
 

@@ -18,7 +18,7 @@ import "swiper/css";
 import "swiper/swiper-bundle.css";
 import "swiper/css/hash-navigation";
 
-function CarouselComponent({title, mappedElements}) {
+function CarouselComponent({title, mappedElements, isGrey}) {
   const sliderRef = useRef(null);
   console.log("x")
   const handlePrev = useCallback(() => {
@@ -33,7 +33,7 @@ function CarouselComponent({title, mappedElements}) {
 
   return (
     <>
-      <Section isGrey>
+      <Section isGrey={isGrey}>
         {/* <EngArTitle
           english={"Classes"}
           arabic={"يلا عالصف"}

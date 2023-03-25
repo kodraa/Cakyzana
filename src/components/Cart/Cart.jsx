@@ -1,9 +1,7 @@
-import react, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components/macro";
 import { CONSTANTS } from "../../global";
-import { Link } from "react-router-dom";
 import Section from "../globalComponents/Section";
-import MeasuringCup from "../../designAssets/Utensils/ForMeasuring/MeasuringCups.png";
 import Navbar from "../globalComponents/Navbar";
 import { CartContext } from "../../context";
 const Cart = (props) => {

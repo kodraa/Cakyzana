@@ -1,26 +1,26 @@
 import React, { useCallback, useRef, useState } from "react";
 import styled from "styled-components/macro";
-import { BasicContentDiv, CONSTANTS } from "../../../global";
-import EngArTitle from "../../globalComponents/EngArTitle";
-import Section from "../../globalComponents/Section";
-import cake1 from "../../../designAssets/Homepage/Classes/cake1.png";
-import cake2 from "../../../designAssets/Homepage/Classes/cake2.png";
-import cake3 from "../../../designAssets/Homepage/Classes/cake3.png";
-import cake4 from "../../../designAssets/Homepage/Classes/cake4.png";
-import cake5 from "../../../designAssets/Homepage/Classes/cake5.png";
-import ArrowRight from "../../../designAssets/Homepage/Classes/ArrowRight.png";
-import ArrowLeft from "../../../designAssets/Homepage/Classes/ArrowLeft.png";
-import { highlightedClasses } from "../../../data/highlightedClasses";
-import DescriptionCard from "../../globalComponents/DescriptonCard";
+import { BasicContentDiv, CONSTANTS } from "../../global";
+import EngArTitle from "./EngArTitle";
+import Section from "./Section";
+import cake1 from "../../designAssets/Homepage/Classes/cake1.png";
+import cake2 from "../../designAssets/Homepage/Classes/cake2.png";
+import cake3 from "../../designAssets/Homepage/Classes/cake3.png";
+import cake4 from "../../designAssets/Homepage/Classes/cake4.png";
+import cake5 from "../../designAssets/Homepage/Classes/cake5.png";
+import ArrowRight from "../../designAssets/Homepage/Classes/ArrowRight.png";
+import ArrowLeft from "../../designAssets/Homepage/Classes/ArrowLeft.png";
+import { highlightedClasses } from "../../data/highlightedClasses";
+import DescriptionCard from "./DescriptonCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/swiper-bundle.css";
 import "swiper/css/hash-navigation";
 
-function TestCarousel() {
+function CarouselComponent({title, mappedElements}) {
   const sliderRef = useRef(null);
-
+  console.log("x")
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slidePrev();
@@ -34,13 +34,14 @@ function TestCarousel() {
   return (
     <>
       <Section isGrey>
-        <EngArTitle
+        {/* <EngArTitle
           english={"Classes"}
           arabic={"يلا عالصف"}
           bottom={"-50%"}
           right={"-62%"}
           arColor={CONSTANTS.pink}
-        />
+        /> */}
+        {title}
         <ContentDiv>
           <CardWrapper>
             <Arrow
@@ -74,7 +75,7 @@ function TestCarousel() {
                 },
                 640: {
                   slidesPerView: 2,
-                  spaceBetween: 40,
+                  spaceBetween: 50,
                 },
                 768: {
                   slidesPerView: 2,
@@ -87,7 +88,7 @@ function TestCarousel() {
 
               }}
             >
-              {highlightedClasses.map((item) => {
+              {/* {highlightedClasses.map((item) => {
                 return (
                   <SwiperSlide>
                     <DescriptionCard
@@ -102,16 +103,15 @@ function TestCarousel() {
                     />
                   </SwiperSlide>
                 );
-              })}
+              })} */}
+              {mappedElements}
             </Swiper>
-            <div>
               <Arrow
                 className="right-arrow"
                 onClick={handleNext}
                 src={ArrowRight}
                 // className="right"
               />
-            </div>
           </CardWrapper>
         </ContentDiv>
       </Section>
@@ -119,7 +119,7 @@ function TestCarousel() {
   );
 }
 
-export default TestCarousel;
+export default CarouselComponent;
 
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;
@@ -158,31 +158,10 @@ const CardWrapper = styled.div`
   justify-content: space-evenly;
   gap: 0.5rem;
 
+
   h2 {
     background-color: red;
     width: 30%;
   }
   /* background-color: blue; */
 `;
-// We extend the BasicContentDiv with ContentDiv and add display: flex; align-items: center; to center the content vertically in the section
-
-// function Arrow(props) {
-//   const disabeld = props.disabled ? " arrow--disabled" : ""
-//   return (
-//     <svg
-//       onClick={props.onClick}
-//       className={`arrow ${
-//         props.left ? "arrow--left" : "arrow--right"
-//       } ${disabeld}`}
-//       xmlns="http://www.w3.org/2000/svg"
-//       viewBox="0 0 24 24"
-//     >
-//       {props.left && (
-//         <path d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z" />
-//       )}
-//       {!props.left && (
-//         <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
-//       )}
-//     </svg>
-//   )
-// }

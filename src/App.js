@@ -12,6 +12,7 @@ import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";
 import { AuthProvider } from "./AuthContext";
+import TestDynamicCarousel from "./TestDynamicCarousel";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/test",
     element: <TestCarousel />,
+  },
+  {
+    path: "/testDynamic",
+    element: <TestDynamicCarousel />,
   },
 ]);
 

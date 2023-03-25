@@ -6,7 +6,7 @@ import {
   FullScreenSection,
 } from "../../global";
 import { utensils } from "../../data/utensils";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { keyframes } from "styled-components/macro";
 // TODO add black cart logo

@@ -10,9 +10,40 @@ import LBL from "../../designAssets/Login/Left-BottomLeft.png";
 import Stars from "../../designAssets/Login/Stars.png";
 import BackArrow from "../../designAssets/Login/Left Arrow.png";
 import { Link } from "react-router-dom";
+import { auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [isActive, setIsActive] = useState(false);
+  const [userInfo, setUserInfo] = useState({
+    email: "",
+    password: "",
+  });
+  const [catchError, setCatchError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleError = (error) => {
+    if (error.code === "auth/user-not-found") {
+      setCatchError("User not found.");
+    } else if (error.code === "auth/wrong-password") {
+      setCatchError("Wrong password.");
+    } else {
+      setCatchError("Something went wrong. Please try again later.");
+    }
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    auth
+      .signInWithEmailAndPassword(userInfo.email, userInfo.password)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        handleError(error);
+      });
+  };
 
   return (
     <LoginAnimationPage>
@@ -27,17 +58,41 @@ function Login() {
                 <LoginForm>
                   <InputsGroup>
                     <FormGroup>
-                      <Label>Username</Label>
-                      <Input type="text" />
+                      <Label>E-mail</Label>
+                      <Input
+                        type="text"
+                        value={userInfo.email}
+                        onChange={(e) =>
+                          setUserInfo({ ...userInfo, email: e.target.value })
+                        }
+                      />
                     </FormGroup>
                     <FormGroup>
                       <Label>Password</Label>
-                      <Input type="password" />
+                      <Input
+                        type="password"
+                        value={userInfo.password}
+                        onChange={(e) =>
+                          setUserInfo({ ...userInfo, password: e.target.value })
+                        }
+                      />
                     </FormGroup>
                   </InputsGroup>
                   <p style={{ marginTop: "3%" }}>Forgot password?</p>
                 </LoginForm>
-                <Cardbtn>Log In</Cardbtn>
+                <Cardbtn onClick={handleLogin}>Log In</Cardbtn>
+                {catchError && (
+                  <p
+                    style={{
+                      fontSize: "0.8rem",
+                      textAlign: "justify",
+                      color: "red",
+                    }}
+                  >
+                    {catchError}
+                  </p>
+                )}
+
                 <FlexBottomChild>
                   <p style={{ fontSize: "1.1rem" }}>New here?</p>
                   <p style={{}}>

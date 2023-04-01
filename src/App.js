@@ -11,7 +11,10 @@ import { CartContext, ModalContext } from "./context";
 import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";
-import { AuthProvider } from "./AuthContext";
+import AuthProvider from "./AuthContext";
+import TestDynamicCarousel from "./TestDynamicCarousel";
+import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
+
 
 const router = createBrowserRouter([
   {
@@ -58,6 +61,14 @@ const router = createBrowserRouter([
     path: "/test",
     element: <TestCarousel />,
   },
+  {
+    path: "/testDynamic",
+    element: <TestDynamicCarousel />,
+  },
+  {
+    path: "/multipleRow",
+    element: <MultipleRowComponent />,
+  },
 ]);
 
 function App() {
@@ -68,11 +79,11 @@ function App() {
 
   return (
     <>
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <CartContext.Provider value={[cart, setCart]}>
           <RouterProvider router={router} />
         </CartContext.Provider>
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </>
   );
 }

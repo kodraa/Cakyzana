@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { NavLink as Link } from "react-router-dom";
 import WhiteCart from "../../designAssets/Navbar/White Cart.png";
 import BlackCart from "../../designAssets/Navbar/Black Cart.png";

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { BasicLandingSection, CONSTANTS, FullScreenSection } from "../../../global";
 import Navbar from "../../globalComponents/Navbar";
 import MaskGroup3 from "../../../designAssets/Homepage/Landing/MaskGroup3.png";
@@ -27,5 +27,5 @@ const LandingSection = styled(FullScreenSection)`
 const Image = styled.img`
   height: 100%;
   width: 100%;
-  object-fit: 100%;
+  object-fit: cover;
 `

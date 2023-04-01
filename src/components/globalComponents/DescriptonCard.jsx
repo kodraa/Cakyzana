@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { CONSTANTS } from "../../global";
 // import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -9,14 +9,14 @@ const DescriptionCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <CardContainer isGrey={props.isGrey}>
+    <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
       <CardContent>
         <CardIconDiv>
           {!isLiked ? (
             <FaRegHeart
               size={25}
               style={{ marginRight: "25px" }}
-              onClick={() => setIsLiked(prev => !prev)}
+              onClick={() => setIsLiked((prev) => !prev)}
             />
           ) : (
             <FaHeart
@@ -26,7 +26,7 @@ const DescriptionCard = (props) => {
                 marginRight: "25px",
               }}
               size={25}
-              onClick={() => setIsLiked(prev => !prev)}
+              onClick={() => setIsLiked((prev) => !prev)}
             />
           )}
         </CardIconDiv>
@@ -60,21 +60,34 @@ const DescriptionCard = (props) => {
 
 export default DescriptionCard;
 
+// function CardContainer() {
+
+// }
+
 const CardContainer = styled.div`
   /* width: 380px; */
   /* height: 620px; */
   /* height: max(77.02%, 600px); */
   /* height: 77.02%; */
-  height: 85.02%;
-  width: 29.16%;
+
+  /* if isInCarousel, height = 85.02% and width = 29.16%, otherwise, height and width = 100% */
+
+  height: ${(props) => (!props.isInCarousel ? "85.02%" : "100%")};
+  width: ${(props) => (!props.isInCarousel ? "29.16%" : "100%")};
+
+  /* height: 85.02%;
+  width: 29.16%; */
+  /* width: 100%;  
+  height: 100%; */
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
   color: ${CONSTANTS.grayblack};
-  background-color: ${props => props.isGrey ? CONSTANTS.graywhite : "white"};
+  background-color: ${(props) => props.isGrey ? CONSTANTS.graywhite : "white"};
 
-  @media (max-width: 768px) {}
+  @media (max-width: 768px) {
+  }
 `;
 
 const CardContent = styled.div`
@@ -127,7 +140,7 @@ const CardBodyText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: .5rem;
+  gap: 0.5rem;
 `;
 
 const CardTitle = styled.h4`

@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import CakyzanaFooterLogo from "../../designAssets/Footer/CakyzanaFooterLogo.png";
 import { CONSTANTS } from "../../global";
 import Facebook from "../../designAssets/Footer/FacebookFooterLogo.png";

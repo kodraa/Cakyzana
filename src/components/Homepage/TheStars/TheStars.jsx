@@ -2,7 +2,7 @@ import React from "react";
 import { CONSTANTS, BasicContentDiv } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Card from "../../globalComponents/Card";
 // import Card from "./CardTheStars";
 function EducateSection(props) {

@@ -1,14 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import {
   BasicLandingSection,
   CONSTANTS,
   FullScreenSection,
 } from "../../global";
 import { utensils } from "../../data/utensils";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
-import { keyframes } from "styled-components";
+import { keyframes } from "styled-components/macro";
 // TODO add black cart logo
 import { CartContext } from "../../context";
 import Modal from "../Modal_Cart";

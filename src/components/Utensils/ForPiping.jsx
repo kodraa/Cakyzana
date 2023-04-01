@@ -2,7 +2,7 @@ import React from "react";
 import { CONSTANTS, BasicContentDiv } from "../../global";
 import EngArTitle from "../globalComponents/EngArTitle";
 import Section from "../globalComponents/Section";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Card from "./CardUtensils";
 import PipingHeadsSet1 from "../../designAssets/Utensils/ForPiping/PipingHeadsSet1.png";
 import PipingHeadsSet2 from "../../designAssets/Utensils/ForPiping/PipingHeadsSet2.png";

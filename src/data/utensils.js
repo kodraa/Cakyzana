@@ -3,7 +3,7 @@ export const utensils = [
     {
         id: 1,
         name: 'Measuring Spoons',
-        category:'For Measuring',
+        category:'ForMeasuring',
         image:'ForMeasuring/MeasuringSpoons',
         price:'36 $',
         shape:'Circle',
@@ -21,7 +21,7 @@ export const utensils = [
     {
         id: 2,
         name: 'Measuring Cups',
-        category:'For Measuring',
+        category:'ForMeasuring',
         image:'ForMeasuring/MeasuringCups',
         price:'48 $',
         shape:'Circle',
@@ -39,7 +39,7 @@ export const utensils = [
     {
         id: 3,
         name: 'Cake Ruler',
-        category:'For Measuring',
+        category:'ForMeasuring',
         image:'ForMeasuring/CakeRuler',
         price:'23 $',
         shape:'Circle',
@@ -55,7 +55,7 @@ export const utensils = [
     {
         id: 4,
         name:'Modeling Pens Set 1',
-        category:'For Fondants',
+        category:'ForFondants',
         image:'ForFondants/ModelingPensSet1',
         price:'15 $',
         shape:'Circle',
@@ -73,7 +73,7 @@ export const utensils = [
     {
         id: 5,
         name:'Modeling Pens Set 2',
-        category:'For Fondants',
+        category:'ForFondants',
         image:'ForFondants/ModelingPensSet2',
         price:'20 $',
         shape:'Rubber Head',
@@ -88,7 +88,7 @@ export const utensils = [
     {
         id: 6,
         name:'Modeling Pens Set 3',
-        category:'For Fondants',
+        category:'ForFondants',
         image:'ForFondants/ModelingPensSet3',
         price:'16 $',
         shape:'Multiple-Head',
@@ -103,7 +103,7 @@ export const utensils = [
     {
         id: 7,
         name:'Piping Heads Set 1',
-        category:'For Piping',
+        category:'ForPiping',
         image:'ForPiping/PipingHeadsSet1',
         price:'15 $',
         shape:'Multiple-Head',
@@ -117,7 +117,7 @@ export const utensils = [
     {
         id: 8,
         name:'Piping Heads Set 2',
-        category:'For Piping',
+        category:'ForPiping',
         image:'ForPiping/PipingHeadsSet2',
         price:'36 $',
         shape:'Multiple-Head',
@@ -131,7 +131,7 @@ export const utensils = [
     {
         id: 9,
         name:'Piping Bags',
-        category:'For Piping',
+        category:'ForPiping',
         image:'ForPiping/PipingBag',
         price:'18 $',
         shape:'',
@@ -142,7 +142,7 @@ export const utensils = [
     {
         id: 10,
         name:'Table Turner',
-        category:'For Cakes',
+        category:'ForCakes',
         image:'ForCakes/TableTurner',
         price:'105 $',
         shape:'Round',
@@ -156,7 +156,7 @@ export const utensils = [
     {
         id: 11,
         name:'Circle Cake Tray',
-        category:'For Cakes',
+        category:'ForCakes',
         image:'ForCakes/CircleCakeTray',
         price:'62 $',
         shape:'Round',
@@ -170,7 +170,7 @@ export const utensils = [
     {
         id: 12,
         name:'Square Cake Tray',
-        category:'For Cakes',
+        category:'ForCakes',
         image:'ForCakes/SquareCakeTray',
         price:'18 $',
         shape:'Square',
@@ -185,7 +185,7 @@ export const utensils = [
     {
         id: 13,
         name:'Whisk',
-        category:'For Coverage',
+        category:'ForCoverage',
         image:'ForCoverage/whisk',
         price:'18 $',
         shape:'Round',
@@ -196,7 +196,7 @@ export const utensils = [
     {
         id: 14,
         name:'Spatula',
-        category:'For Coverage',
+        category:'ForCoverage',
         image:'ForCoverage/spatula',
         price:'21 $',
         shape:'Round',
@@ -207,7 +207,7 @@ export const utensils = [
     {
         id: 15,
         name:'Scraper',
-        category:'For Coverage',
+        category:'ForCoverage',
         image:'ForCoverage/scraper',
         price:'13 $',
         shape:'Round',
@@ -217,9 +217,6 @@ export const utensils = [
 
     },
 ]
-
-
-
 
 
 

@@ -100,7 +100,7 @@ export const classesCategories = [
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
-        i: 24,
+        id: 24,
         title: "Dark Chocolate Cream",
         image: "Baking/VanillaCake",
         classSection: "Cake Recipes",

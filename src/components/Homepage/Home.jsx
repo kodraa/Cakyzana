@@ -16,11 +16,11 @@ function Home() {
         <ThisMonth  />
         <Classes isGrey isWhite/>
         <TheStars />
-        <EntrepreneursJourney isGrey />
+        {/* <EntrepreneursJourney isGrey /> */}
         <Footer />
     </>
   )
 }
 
-export default Home
+export default Home;
 

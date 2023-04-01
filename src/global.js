@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export let CONSTANTS = {
     pink: '#F92D88',

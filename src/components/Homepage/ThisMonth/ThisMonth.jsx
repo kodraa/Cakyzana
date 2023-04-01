@@ -3,7 +3,7 @@ import { CONSTANTS, BasicContentDiv } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
 import CircleElement from "./CircleElement";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import cake1 from "../../../designAssets/Homepage/ThisMonth/cake1.png";
 import cake2 from "../../../designAssets/Homepage/ThisMonth/cake2.png";
 import cake3 from "../../../designAssets/Homepage/ThisMonth/cake3.png";

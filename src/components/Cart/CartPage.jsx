@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import Navbar from "../globalComponents/Navbar";
 import Footer from "../globalComponents/Footer";
 import { CONSTANTS } from "../../global";

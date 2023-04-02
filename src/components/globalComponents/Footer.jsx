@@ -170,8 +170,12 @@ const NewsletterInput = styled.input`
   height: 50px;
   width: 100%;
   border-radius: 9999px;
+  /* font-size: 0.75rem; */
+  font-size: clamp(0.5rem, 1.75vw, 1.25rem);
   border: none;
   outline: none;
   padding-left: 10%;
-  padding-top: 3%;
+  /* padding-top: 3%; */
+  display: flex;
+  align-items: center;
 `;

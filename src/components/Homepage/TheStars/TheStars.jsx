@@ -17,9 +17,9 @@ function EducateSection(props) {
       />
       <ContentDiv>
         <CardWrapper>
-          <Card classTitle="Canvas Your Cake" classDur="75" price="40" />
-          <Card classTitle="Crystal Effect" classDur="50" price="25" />
-          <Card classTitle="Space Effect" classDur="30" price="36" />
+          <Card isGrey classTitle="Canvas Your Cake" classDur="75" price="40" />
+          <Card isGrey classTitle="Crystal Effect" classDur="50" price="25" />
+          <Card isGrey classTitle="Space Effect" classDur="30" price="36" />
         </CardWrapper>
       </ContentDiv>
     </Section>

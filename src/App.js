@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
-    path: "/singleClass",
+    path: "/singleClass/:id",
     element: <SingleClass />,
   },
   {
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
     element: <Classes />,
   },
   {
-    path: "/classes/:name",
+    path: "/classes/:title",
     element: <ClassCategory />,
   },
   {

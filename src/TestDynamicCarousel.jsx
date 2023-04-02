@@ -4,96 +4,33 @@ import CarouselComponent from "./components/globalComponents/CarouselComponent";
 import DescriptionCard from "./components/globalComponents/DescriptonCard";
 import EngArTitle from "./components/globalComponents/EngArTitle";
 import { CONSTANTS } from "./global";
-
-export const classes = [
-  {
-    id: 1,
-    classTitle: "Chocolate Cake Recipe",
-    imagesrc: "cake1",
-    number: "10",
-    classDur: "30",
-    descr: " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts if refrigirated.",
-  },
-  {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr: "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr: "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr: " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr: " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 1,
-    classTitle: "Chocolate Cake Recipe",
-    imagesrc: "cake1",
-    number: "10",
-    classDur: "30",
-    descr: " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts if refrigirated.",
-  },
-  {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr: "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr: "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr: " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr: " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-];
+import { highlightedClasses } from "./data/highlightedClasses";
+import { classesCategories as classes } from "./data/classes";
+import { db } from "./firebase";
 
 // TODO fix items disappearing when resizing
 
-const mappedElements = classes.map((item) => {
+// classes.forEach((item) => {
+//   console.log("is being added");
+//   db.collection("classes")
+//     .add(item)
+//     .then((docRef) => {
+//       console.log("Document written with ID: ", docRef.id);
+//     })
+//     .catch((error) => {
+//       console.error("Error adding document: ", error);
+//     });
+// });
+
+db.collection("classes").where("category", "==", "Baking").get().then((querySnapshot) => {
+  const data = querySnapshot.docs.map((doc) => doc.data());
+  console.log(data);
+});
+
+const mappedElements = highlightedClasses.map((item) => {
   return (
     <SwiperSlide>
-      <DescriptionCard        
+      <DescriptionCard
         isInCarousel={true}
         key={item.id}
         classTitle={item.classTitle}
@@ -103,7 +40,7 @@ const mappedElements = classes.map((item) => {
         number={item.number}
         classDur={item.classDur}
         descr={item.descr}
-      />      
+      />
     </SwiperSlide>
   );
 });
@@ -121,15 +58,9 @@ function TestDynamicCarousel() {
     </>
   );
 
-  
-
   return (
     <>
-      <CarouselComponent
-        isGrey
-        title={title}
-        mappedElements={mappedElements}
-      />
+      <CarouselComponent isGrey title={title} mappedElements={mappedElements} />
     </>
   );
 }

@@ -37,9 +37,9 @@ const DescriptionCard = (props) => {
               {props.classTitle}
             </CardTitle>
             <CardText>
-              <p>
+              {/* <p>
                 <BoldText>Class Number:</BoldText> 10
-              </p>
+              </p> */}
               <p>
                 <BoldText>Approximate Video Duration: </BoldText>
                 {props.classDur} mins
@@ -72,7 +72,8 @@ const CardContainer = styled.div`
 
   /* if isInCarousel, height = 85.02% and width = 29.16%, otherwise, height and width = 100% */
 
-  height: ${(props) => (!props.isInCarousel ? "85.02%" : "100%")};
+  /* height: ${(props) => (!props.isInCarousel ? "85.02%" : "100%")}; */
+  height: ${(props) => (!props.isInCarousel ? "85.02%" : "90%")};
   width: ${(props) => (!props.isInCarousel ? "29.16%" : "100%")};
 
   /* height: 85.02%;

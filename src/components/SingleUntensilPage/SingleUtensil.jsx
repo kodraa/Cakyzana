@@ -58,29 +58,29 @@ function SingleUntensil() {
   const id = params.id;
   let utensil = utensils.find((utensil) => utensil.id == id);
   const [currentUtensil, setCurrentUtensil] = useState(utensil);
-  const nextUtensil = () => {
-    let nextUtensil = utensils.find(
-      (utensil) => utensil.id == currentUtensil.id + 1
-    );
-    if (nextUtensil && nextUtensil.id <= utensils.length) {
-      setCurrentUtensil(nextUtensil);
-      window.history.replaceState(null, null, `/utensil/${nextUtensil.id}`);
-    } else {
-      setCurrentUtensil(utensils[0]);
-    }
-  };
-  const prevUtensil = () => {
-    let prevUtensil = utensils.find(
-      (utensil) => utensil.id == currentUtensil.id - 1
-    );
-    if (prevUtensil && prevUtensil.id >= 1) {
-      setCurrentUtensil(prevUtensil);
+  // const nextUtensil = () => {
+  //   let nextUtensil = utensils.find(
+  //     (utensil) => utensil.id == currentUtensil.id + 1
+  //   );
+  //   if (nextUtensil && nextUtensil.id <= utensils.length) {
+  //     setCurrentUtensil(nextUtensil);
+  //     window.history.replaceState(null, null, `/utensil/${nextUtensil.id}`);
+  //   } else {
+  //     setCurrentUtensil(utensils[0]);
+  //   }
+  // };
+  // const prevUtensil = () => {
+  //   let prevUtensil = utensils.find(
+  //     (utensil) => utensil.id == currentUtensil.id - 1
+  //   );
+  //   if (prevUtensil && prevUtensil.id >= 1) {
+  //     setCurrentUtensil(prevUtensil);
 
-      window.history.replaceState(null, null, `/utensil/${prevUtensil.id}`);
-    } else {
-      setCurrentUtensil(utensils[utensils.length - 1]);
-    }
-  };
+  //     window.history.replaceState(null, null, `/utensil/${prevUtensil.id}`);
+  //   } else {
+  //     setCurrentUtensil(utensils[utensils.length - 1]);
+  //   }
+  // };
 
   useEffect(() => {
     console.log(cart);
@@ -148,7 +148,7 @@ function SingleUntensil() {
           </CTA>
         </RightFlexChild>
 
-        <ButtonsDiv>
+        {/* <ButtonsDiv>
           <PrevBtn onClick={prevUtensil}>
             <MdKeyboardArrowLeft size={25} /> Previous Product
           </PrevBtn>
@@ -156,7 +156,7 @@ function SingleUntensil() {
             Next Product
             <MdKeyboardArrowRight size={25} />
           </NextBtn>
-        </ButtonsDiv>
+        </ButtonsDiv> */}
       </UtensilFlexContainer>
     </FullScreenSection>
   );
@@ -213,7 +213,6 @@ const LeftChildImgContainer = styled.div`
     width: 100%;
     box-shadow: none;
   }
-
 `;
 
 const Img = styled.img`

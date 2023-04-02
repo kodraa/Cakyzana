@@ -6,11 +6,11 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Card = (props) => {
+const UtensilCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
   return (
-    <CardContainer isGrey={props.isGrey}>
+    <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
@@ -28,7 +28,7 @@ const Card = (props) => {
           )}
         </CardIconDiv>
         <CardImage src={props.src} />
-        <CardTitle>{props.classTitle}</CardTitle>
+        <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
         <CardText>
             <CardTextContent isPadded={props.isPadded}>
               <BoldText>Description:</BoldText> {props.Description}
@@ -38,11 +38,11 @@ const Card = (props) => {
         </CardText>
         <CardText>
           <BoldText>Set:</BoldText>
-          <CardText>{props.Set} pcs</CardText>
+          <CardText Set={props.Set}>{props.Set} pcs</CardText>
         </CardText>
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
         <CardButtonDiv>
-          <Link to={`/utensil/${props.id}`}>
+          <Link id={props.id} to={`/utensil/${props.id}`}>
             <CardButton cardBgColor={props.cardBgColor} btnText="View More"></CardButton>
           </Link>
 
@@ -52,7 +52,7 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default UtensilCard;
 
 const CardText = styled.span`
   font-size: 16px;
@@ -73,8 +73,12 @@ const CardText = styled.span`
   `;
   
 const CardContainer = styled.div`
-  width: 365px;
-  height: 600px;
+  /* width: 365px;
+  height: 600px; */
+  /* height: ${(props) => (!props.isInCarousel ? "85.02%" : "100%")}; */
+  /* width: ${(props) => (!props.isInCarousel ? "29.16%" : "100%")}; */
+  width: ${(props) => (!props.isInCarousel ? "29.16%" : "95%")};
+  height: ${(props) => (!props.isInCarousel ? "85.02%" : "90%")};
   display: flex;
   align-items: center;
   justify-content: center;

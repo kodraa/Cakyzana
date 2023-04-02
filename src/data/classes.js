@@ -1,7 +1,7 @@
 export const classesCategories = [
   {
     id: 1,
-    title: "Baking",
+    classCategory: "Baking",
     items: [
       {
         id: 10,
@@ -61,7 +61,7 @@ export const classesCategories = [
   },
   {
     id: 2,
-    title: "Filling",
+    classCategory: "Filling",
     items: [
       {
         id: 20,
@@ -121,7 +121,7 @@ export const classesCategories = [
   },
   {
     id: 3,
-    title: "Fondant",
+    classCategory: "Fondant",
     items: [
       {
         id: 30,
@@ -181,7 +181,7 @@ export const classesCategories = [
   },
   {
     id: 4,
-    title: "Ganache",
+    classCategory: "Ganache",
     items: [
       {
         id: 40,
@@ -214,7 +214,7 @@ export const classesCategories = [
   },
   {
     id: 5,
-    title: "Butter Cream",
+    classCategory: "Butter Cream",
     items: [
       {
         id: 50,
@@ -242,6 +242,66 @@ export const classesCategories = [
         Duration: "40 mins",
         Description:
           "In this class you will learn how to create a buttery and thick butter cream, and how to use it for crumb coating.",
+      },
+    ],
+  },
+  {
+    id: 6,
+    classCategory: "Decoration",
+    items: [
+      {
+        id: 53,
+        title: "Canvas Your Cake",
+        image: "",
+        classSection: "Decoration",
+        Duration: "15 mins",
+        Description:
+          "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
+      },
+      {
+        id: 31,
+        title: "All about Blue Fondant",
+        image: "",
+        classSection: "Fondant",
+        Duration: "15 mins",
+        Description:
+          "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
+      },
+      {
+        id: 32,
+        title: "All about Pink Fondant",
+        image: "",
+        classSection: "Fondant",
+        Duration: "15 mins",
+        Description:
+          "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
+      },
+      {
+        id: 33,
+        title: "All about White Fondant",
+        image: "",
+        classSection: "Fondant",
+        Duration: "15 mins",
+        Description:
+          "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
+      },
+      {
+        id: 34,
+        title: "All about Pearl Fondant",
+        image: "",
+        classSection: "Fondant",
+        Duration: "15 mins",
+        Description:
+          "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
+      },
+      {
+        id: 35,
+        title: "All about Black Fondant",
+        image: "",
+        classSection: "Fondant",
+        Duration: "15 mins",
+        Description:
+          "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
     ],
   },

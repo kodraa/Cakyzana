@@ -20,7 +20,6 @@ import "swiper/css/hash-navigation";
 
 function CarouselComponent({title, mappedElements, isGrey}) {
   const sliderRef = useRef(null);
-  console.log("x")
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
     sliderRef.current.swiper.slidePrev();
@@ -53,7 +52,6 @@ function CarouselComponent({title, mappedElements, isGrey}) {
             <Swiper
               className="global-swiper"
               ref={sliderRef}
-              // TODO breakpoints
               // spaceBetween={50}
               // slidesPerView={3}
               onSlideChange={() => console.log("slide change")}
@@ -68,10 +66,6 @@ function CarouselComponent({title, mappedElements, isGrey}) {
                 320: {
                   slidesPerView: 1,
                   spaceBetween: 20,
-                },
-                480: {
-                  slidesPerView: 1,
-                  spaceBetween: 30,
                 },
                 640: {
                   slidesPerView: 2,

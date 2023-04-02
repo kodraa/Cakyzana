@@ -15,97 +15,190 @@ import { utensils } from "../../data/utensils";
 import Card from "../globalComponents/Card";
 import CarouselComponent from "../globalComponents/CarouselComponent";
 import DescriptionCard from "../globalComponents/DescriptonCard";
+import UtensilCard from "../globalComponents/UtensilCard";
 
-export const classes = [
+
+
+export const utensilsArray = [
   {
     id: 1,
-    classTitle: "Chocolate Cake Recipe",
-    imagesrc: "cake1",
-    number: "10",
-    classDur: "30",
-    descr:
-      " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts if refrigirated.",
+    name: "Measuring Spoons",
+    category: "ForMeasuring",
+    image: "ForMeasuring/MeasuringSpoons",
+    price: "36 $",
+    shape: "Circle",
+    material: ["Stainless Steel", "Rubber"],
+    Dimensions: [
+      "Cup 1: 1*1*1 ~1/4 tbsp.",
+      "Cup 2: 1.5*1.5*1.5 ~1/2 tbsp.",
+      "Cup 3: 2*2*2 ~3/4 tbsp.",
+      "Cup 4: 3*3*3 ~1tbsp.",
+    ],
+    Packaging: "4pcs/package",
   },
   {
     id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr:
-      "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr:
-      "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
-  },
-  {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr:
-      " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+    name: "Measuring Cups",
+    category: "ForMeasuring",
+    image: "ForMeasuring/MeasuringCups",
+    price: "48 $",
+    shape: "Circle",
+    material: ["Stainless Steel", "Rubber"],
+    Dimensions: [
+      "Cup 1: 1*1*1 ~1/4 cup.",
+      "Cup 2: 1.5*1.5*1.5 ~1/2 cup.",
+      "Cup 3: 2*2*2 ~3/4 cup.",
+      "Cup 4: 3*3*3 ~1 cup.",
+    ],
+    Packaging: "4pcs/package",
   },
   {
     id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr:
-      " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+    name: "Cake Ruler",
+    category: "ForMeasuring",
+    image: "ForMeasuring/CakeRuler",
+    price: "23 $",
+    shape: "Circle",
+    material: ["Plastic"],
+    Dimensions: ["Length: 30cm", "Width: 5cm"],
+    Packaging: "1pc/package",
   },
   {
-    id: 1,
-    classTitle: "Chocolate Cake Recipe",
-    imagesrc: "cake1",
-    number: "10",
-    classDur: "30",
-    descr:
-      " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts if refrigirated.",
+    id: 4,
+    name: "Modeling Pens Set 1",
+    category: "ForFondants",
+    image: "ForFondants/ModelingPensSet1",
+    price: "15 $",
+    shape: "Circle",
+    material: ["Stainless Steel"],
+    Dimensions: [
+      "Cup 1: 1*1*1 ~1/4 tbsp.",
+      "Cup 2: 1.5*1.5*1.5 ~1/2 tbsp.",
+      "Cup 3: 2*2*2 ~3/4 tbsp.",
+      "Cup 4: 3*3*3 ~1tbsp.",
+    ],
+    Packaging: "4pcs/package",
   },
   {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr:
-      "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+    id: 5,
+    name: "Modeling Pens Set 2",
+    category: "ForFondants",
+    image: "ForFondants/ModelingPensSet2",
+    price: "20 $",
+    shape: "Rubber Head",
+    material: ["Stainless Steel"],
+    Dimensions: [],
+    Packaging: "5pcs/package",
   },
   {
-    id: 2,
-    classTitle: "Chocolate Ganache",
-    imagesrc: "cake2",
-    number: "10",
-    classDur: "30",
-    descr:
-      "This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+    id: 6,
+    name: "Modeling Pens Set 3",
+    category: "ForFondants",
+    image: "ForFondants/ModelingPensSet3",
+    price: "16 $",
+    shape: "Multiple-Head",
+    material: ["Wooden"],
+    Dimensions: ["Length: 15cm"],
+    Packaging: "4pcs/package",
   },
   {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr:
-      " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+    id: 7,
+    name: "Piping Heads Set 1",
+    category: "ForPiping",
+    image: "ForPiping/PipingHeadsSet1",
+    price: "15 $",
+    shape: "Multiple-Head",
+    material: ["Stainless Steel"],
+    Dimensions: [],
+    Packaging: "5pcs/package",
   },
   {
-    id: 3,
-    classTitle: "Sugar Fondant",
-    imagesrc: "cake3",
-    number: "10",
-    classDur: "30",
-    descr:
-      " This workshop includes recipe, crumb coating, sugar coating, bubbles making, coloring rules... ",
+    id: 8,
+    name: "Piping Heads Set 2",
+    category: "ForPiping",
+    image: "ForPiping/PipingHeadsSet2",
+    price: "36 $",
+    shape: "Multiple-Head",
+    material: ["Stainless Steel"],
+    Dimensions: [],
+    Packaging: "10pcs/package",
+  },
+  {
+    id: 9,
+    name: "Piping Bags",
+    category: "ForPiping",
+    image: "ForPiping/PipingBag",
+    price: "18 $",
+    shape: "",
+    material: [],
+    Dimensions: [],
+    Packaging: "3pcs/package",
+  },
+  {
+    id: 10,
+    name: "Table Turner",
+    category: "ForCakes",
+    image: "ForCakes/TableTurner",
+    price: "105 $",
+    shape: "Round",
+    material: ["Ceramic"],
+    Dimensions: ["Diameter: 30cm", "Height: 5cm"],
+    Packaging: "1pc/package",
+  },
+  {
+    id: 11,
+    name: "Circle Cake Tray",
+    category: "ForCakes",
+    image: "ForCakes/CircleCakeTray",
+    price: "62 $",
+    shape: "Round",
+    material: ["Carbon Steel"],
+    Dimensions: ["Diameter: 30cm", "Height: 5cm"],
+    Packaging: "1pc/package",
+  },
+  {
+    id: 12,
+    name: "Square Cake Tray",
+    category: "ForCakes",
+    image: "ForCakes/SquareCakeTray",
+    price: "18 $",
+    shape: "Square",
+    material: ["Carbon Steel"],
+    Dimensions: ["Length: 30cm", "Width: 30cm", "Height: 5cm"],
+    Packaging: "3pc/package",
+  },
+  {
+    id: 13,
+    name: "Whisk",
+    category: "ForCoverage",
+    image: "ForCoverage/whisk",
+    price: "18 $",
+    shape: "Round",
+    material: ["Stainless Steel"],
+    Dimensions: [],
+    Packaging: "1pc/package",
+  },
+  {
+    id: 14,
+    name: "Spatula",
+    category: "ForCoverage",
+    image: "ForCoverage/spatula",
+    price: "21 $",
+    shape: "Round",
+    material: ["Stainless Steel"],
+    Dimensions: [],
+    Packaging: "1pc/package",
+  },
+  {
+    id: 15,
+    name: "Scraper",
+    category: "ForCoverage",
+    image: "ForCoverage/scraper",
+    price: "13 $",
+    shape: "Round",
+    material: ["Stainless Steel"],
+    Dimensions: [],
+    Packaging: "1pc/package",
   },
 ];
 
@@ -115,6 +208,10 @@ function Utensils() {
 
   useEffect(() => {
     getUtensils();
+    db.collection("utensils").where("category", "==", "ForCakes").get().then((querySnapshot) => {
+      const data = querySnapshot.docs.map((doc) => doc.data());
+      console.log(data);
+    });
   }, []);
 
   const titles = {
@@ -169,7 +266,7 @@ function Utensils() {
     const AllUtensils = [];
     setUtensilList(AllUtensils);
 
-    db.collection("fruits")
+    db.collection("utensils")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -190,6 +287,8 @@ function Utensils() {
       });
   };
 
+  console.log(categories);
+
   // function groupUtensilsByCategory([...utensilsParameter]) {
   function groupUtensilsByCategory(utensilsParameter = []) {
     console.log("is being groupped");
@@ -209,8 +308,9 @@ function Utensils() {
     return categories;
   }
 
-  // utensils.forEach((fruit) => {
-  //   db.collection("fruits").add(fruit)
+  // classes.forEach((item) => {
+  //     console.log("is being added")
+  //   db.collection("classes").add(item)
   //     .then((docRef) => {
   //       console.log("Document written with ID: ", docRef.id);
   //     })
@@ -223,17 +323,6 @@ function Utensils() {
     <>
       <Navbar isLogoWhite={true} isCartWhite={true} isWhite={true} />
       <Landing />
-      {/* <button onClick={() => console.log(utensilList)}>Log UtensilList</button>
-      <button onClick={() => console.log(categories)}>Log Categories</button>
-      <ForFondants
-        cardBgColor={CONSTANTS.blue}
-        isPadded={true}
-        data={utensilList}
-      />
-      <ForPiping cardBgColor={CONSTANTS.pink} isPadded={true} isGrey={true} />
-      <ForMeasuring cardBgColor={CONSTANTS.blue} isPadded={true} />
-      <ForCakes cardBgColor={CONSTANTS.pink} isPadded={true} isGrey={true} />
-      <ForCoverage cardBgColor={CONSTANTS.blue} isPadded={true} /> */}
       {/* <Card
           isGrey={props.isGrey}
           id="4"
@@ -249,27 +338,20 @@ function Utensils() {
           isGrey
           title={titles[category.category]}
           mappedElements={category.items.map((utensil) => {
-            console.log("utensil", utensil);
             return (
               <SwiperSlide>
-                {/* <Card
-                isGrey={props.isGrey}
-                id={utensil.id}
-                src={utensil.src}
-                cardBgColor={props.cardBgColor}
-                classTitle={utensil.classTitle}
-                Description={utensil.Description}
-                Set={utensil.Set}
-                price={utensil.price}
-              /> */}
-                {/* <Card                  
-                  id="4"                  
-                  classTitle="Modeling Pens Set 1"
-                  Description=" Stainless steel "
+                <UtensilCard
+                  isGrey
+                  isInCarousel
+                  id={utensil.id}
+                  src={utensil.src}
+                  // cardBgColor={props.cardBgColor}
+                  classTitle={utensil.classTitle}
+                  Description={utensil.Description}
                   Set="4"
-                  price="40"
-                /> */}
-                <DescriptionCard
+                  price={utensil.price}
+                />
+                {/* <DescriptionCard
                   isInCarousel
                   key={utensil.id}
                   classTitle={utensil.classTitle}
@@ -279,7 +361,7 @@ function Utensils() {
                   number={utensil.number}
                   classDur={utensil.classDur}
                   descr={utensil.descr}
-                />
+                /> */}
               </SwiperSlide>
             );
           })}

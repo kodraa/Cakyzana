@@ -47,13 +47,60 @@ export const titles = {
       arColor={CONSTANTS.pink}
     />
   ),
-  ForFilling: (
-    <EngArTitle 
+  Baking: (
+    <EngArTitle
+      english={"Baking"}
+      arabic={"طعمة و ريحة ولا أطيب"}
+      bottom={"-80%"}
+      right={"-150%"}
+      height={"100%"}
+      arColor={CONSTANTS.pink}
+      isTransformed
+    />
+  ),
+  Filling: (
+    <EngArTitle
       english={"For Filling"}
       arabic={"من برا هالله هالله ومن جوا يعلم الله"}
       bottom={"-60%"}
       right={"-85%"}
+      arColor={CONSTANTS.blue}
+    />
+  ),
+  Fondant: (
+    <EngArTitle 
+      english={"Fondant"}
+      arabic={"بتغمر الكيك غمر"}
+      bottom={"-60%"}
+      right={"-85%"}
       arColor={CONSTANTS.pink}
     />
-  )
+  ),
+  Ganache: (
+    <EngArTitle 
+      english={"Ganache"}
+      arabic={"بتغمر الكيك غمر"}
+      bottom={"-60%"}
+      right={"-85%"}
+      arColor={CONSTANTS.pink}
+    />
+  ),
+  Buttercream: (
+    <EngArTitle 
+      english={"Butter Cream"}
+      arabic={"بتغمر الكيك غمر"}
+      bottom={"-60%"}
+      right={"-85%"}
+      arColor={CONSTANTS.pink}
+    />
+  ),
+  Decoration: (
+    <EngArTitle 
+      english={"Decoration"}
+      arabic={"جمالو جمال"}
+      bottom={"-60%"}
+      right={"-85%"}
+      arColor={CONSTANTS.blue}
+    />
+  ),
 };

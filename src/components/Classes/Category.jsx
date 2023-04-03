@@ -24,24 +24,34 @@ function Category(props) {
       <ContentDiv>
         <ItemsWrapper>
           <Circle>
-            <CircleTitle>Baking</CircleTitle>
-            <Img src={Whisk} alt="Whisk" />
+            <CircleLink to={"baking"}>
+              <CircleTitle>Baking</CircleTitle>
+              <Img src={Whisk} alt="Whisk" />
+            </CircleLink>
           </Circle>
           <Circle>
-            <CircleTitle>Butter Cream</CircleTitle>
-            <Img src={Spatula} alt="Spatula" />
+            <CircleLink to={"butterCream"}>
+              <CircleTitle>Butter Cream</CircleTitle>
+              <Img src={Spatula} alt="Spatula" />
+            </CircleLink>
           </Circle>
           <Circle>
-            <CircleTitle>Deco- ration</CircleTitle>
-            <Img src={Deco} alt="Deco" />
+            <CircleLink to={"decoration"}>
+              <CircleTitle>Deco- ration</CircleTitle>
+              <Img src={Deco} alt="Deco" />
+            </CircleLink>
           </Circle>
           <Circle>
-            <CircleTitle>Fondant</CircleTitle>
-            <Img src={SmoothingTool} alt="Smoothing Tool" />
+            <CircleLink to={"fondant"}>
+              <CircleTitle>Fondant</CircleTitle>
+              <Img src={SmoothingTool} alt="Smoothing Tool" />
+            </CircleLink>
           </Circle>
           <Circle>
-            <CircleTitle>Gan- ache</CircleTitle>
-            <Img src={Scraper} alt="Scraper" />
+            <CircleLink to={"ganache"}>
+              <CircleTitle>Gan- ache</CircleTitle>
+              <Img src={Scraper} alt="Scraper" />
+            </CircleLink>
           </Circle>
           <Circle>
             <CircleLink to={"/classes/filling"}>
@@ -60,6 +70,10 @@ export default Category;
 const ContentDiv = styled(BasicContentDiv)`
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `;
 
 const ItemsWrapper = styled.div`
@@ -72,7 +86,8 @@ const ItemsWrapper = styled.div`
   flex-wrap: wrap;
   align-content: center;
   gap: 8%;
-  row-gap: 6%;
+  /* row-gap: 6%; */
+  row-gap: 0.7rem;
 
   /* @media (max-width: 768px) {
     gap: 10%;
@@ -96,7 +111,8 @@ const Img = styled.img`
 `;
 
 const CircleTitle = styled.h2`
-  font-size: 3.5rem;
+  /* font-size: 3.5rem; */
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
   font-family: "Century Gothic Bold", sans-serif;
   position: absolute;
   top: 30%;
@@ -133,7 +149,6 @@ const Circle = styled.div`
     width: 40%;
 
     & ${CircleTitle} {
-      font-size: 2.5rem;
       top: 50%;
       left: 35%;
       transform: translate(-35%, -50%);

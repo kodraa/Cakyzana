@@ -42,7 +42,7 @@ const DescriptionCard = (props) => {
               </p> */}
               <p>
                 <BoldText>Approximate Video Duration: </BoldText>
-                {props.classDur} mins
+                {props.classDur}
               </p>
             </CardText>
             <CardText2 descr={props.descr}>
@@ -50,7 +50,7 @@ const DescriptionCard = (props) => {
             </CardText2>
           </CardBodyText>
           <CardButtonDiv>
-            <CardButton cardBgColor={CONSTANTS.pink}>Buy Now</CardButton>
+            <CardButton buttonBgColor={props.buttonBgColor}>Buy Now</CardButton>
           </CardButtonDiv>
         </CardBody>
       </CardContent>
@@ -175,7 +175,7 @@ const CardButton = styled.button`
   width: 65%;
   text-align: center;
   padding: 2.5%;
-  background-color: ${(props) => props.cardBgColor};
+  background-color: ${(props) => props.buttonBgColor ? props.buttonBgColor : CONSTANTS.pink};
   color: white;
   border-radius: 32px;
   border: none;

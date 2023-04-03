@@ -18,7 +18,7 @@ import "swiper/css";
 import "swiper/swiper-bundle.css";
 import "swiper/css/hash-navigation";
 
-function CarouselComponent({title, mappedElements, isGrey}) {
+function CarouselComponent({ title, mappedElements, isGrey }) {
   const sliderRef = useRef(null);
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -79,7 +79,6 @@ function CarouselComponent({title, mappedElements, isGrey}) {
                   slidesPerView: 3,
                   spaceBetween: 50,
                 },
-
               }}
             >
               {/* {highlightedClasses.map((item) => {
@@ -100,12 +99,12 @@ function CarouselComponent({title, mappedElements, isGrey}) {
               })} */}
               {mappedElements}
             </Swiper>
-              <Arrow
-                className="right-arrow"
-                onClick={handleNext}
-                src={ArrowRight}
-                // className="right"
-              />
+            <Arrow
+              className="right-arrow"
+              onClick={handleNext}
+              src={ArrowRight}
+              // className="right"
+            />
           </CardWrapper>
         </ContentDiv>
       </Section>
@@ -120,7 +119,8 @@ const ContentDiv = styled(BasicContentDiv)`
   align-items: center;
   justify-content: center;
 
-  & .left-arrow, & .right-arrow {
+  & .left-arrow,
+  & .right-arrow {
     width: 25px;
     cursor: pointer;
   }
@@ -151,7 +151,6 @@ const CardWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
   gap: 0.5rem;
-
 
   h2 {
     background-color: red;

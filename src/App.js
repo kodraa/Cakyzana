@@ -15,6 +15,7 @@ import AuthProvider from "./AuthContext";
 import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
 
+// todo profile
 
 const router = createBrowserRouter([
   {
@@ -50,7 +51,7 @@ const router = createBrowserRouter([
     element: <Classes />,
   },
   {
-    path: "/classes/:title",
+    path: "/classes/:category",
     element: <ClassCategory />,
   },
   {

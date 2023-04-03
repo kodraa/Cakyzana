@@ -116,6 +116,7 @@ const FooterChildContent = styled.div`
 const LogoContainer = styled.div`
   height: 100%;
   width: 100%;
+  max-width: 400px;
 `;
 
 const FooterLogo = styled.img`

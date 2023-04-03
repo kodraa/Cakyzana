@@ -16,6 +16,7 @@ import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
 import ModifyClasses from "./components/AdminPanel/ModifyClasses";
 
+// todo profile
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,7 @@ const router = createBrowserRouter([
     element: <Classes />,
   },
   {
-    path: "/classes/:title",
+    path: "/classes/:category",
     element: <ClassCategory />,
   },
   {

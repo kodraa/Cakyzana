@@ -132,13 +132,11 @@ function MultipleRowComponent({ title, mappedElements }) {
         />
 
         {/* map over newClasses */}
-        {newClasses.map((item, index) => {
-          const row = Math.floor(index / 3);
-          const bgColor = row % 2 === 0 ? "white" : CONSTANTS.graywhite;
+        {newClasses.map((classItem, index) => {
           return (
-            <ContentDiv>
+            <ContentDiv key={classItem.id} >
               <CardWrapper>
-                {item.map((item) => {
+                {classItem.map((item) => {
                   return (
                     <DescriptionCard
                       key={item.id}

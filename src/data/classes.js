@@ -8,8 +8,8 @@ export const classesCategories = [
         title: "Vanilla Cake",
         image: "vanillacake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -17,8 +17,8 @@ export const classesCategories = [
         title: "Red Velvet Cake",
         image: "redvelevet",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -26,8 +26,8 @@ export const classesCategories = [
         title: "Orange Cake",
         image: "orangecake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -35,8 +35,8 @@ export const classesCategories = [
         title: "Lemon Cake",
         image: "lemoncake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -44,8 +44,8 @@ export const classesCategories = [
         title: "Chocolate Cake",
         image: "chocolatecake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -53,8 +53,8 @@ export const classesCategories = [
         title: "Dark Chocolate Cake",
         image: "darkchocolatecake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
     ],
@@ -68,8 +68,8 @@ export const classesCategories = [
         title: "Coffee Cream",
         image: "Baking/VanillaCake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -77,8 +77,8 @@ export const classesCategories = [
         title: "Toffee Cream",
         image: "",
         classSection: "Cream",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -86,8 +86,8 @@ export const classesCategories = [
         title: "Vanilla Cream",
         image: "Baking/VanillaCake",
         classSection: "Cream",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -95,8 +95,8 @@ export const classesCategories = [
         title: "Strawberry Cream",
         image: "Baking/VanillaCake",
         classSection: "Cream",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -104,8 +104,8 @@ export const classesCategories = [
         title: "Dark Chocolate Cream",
         image: "Baking/VanillaCake",
         classSection: "Cake Recipes",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
       {
@@ -113,8 +113,8 @@ export const classesCategories = [
         title: "Bubble Cream",
         image: "Baking/VanillaCake",
         classSection: "Cream",
-        Duration: "30 mins",
-        Description:
+        duration: "30 mins",
+        description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
       },
     ],
@@ -128,8 +128,8 @@ export const classesCategories = [
         title: "All about Orange Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -137,8 +137,8 @@ export const classesCategories = [
         title: "All about Blue Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -146,8 +146,8 @@ export const classesCategories = [
         title: "All about Pink Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -155,8 +155,8 @@ export const classesCategories = [
         title: "All about White Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -164,8 +164,8 @@ export const classesCategories = [
         title: "All about Pearl Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -173,8 +173,8 @@ export const classesCategories = [
         title: "All about Black Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
     ],
@@ -188,8 +188,8 @@ export const classesCategories = [
         title: " Chocolate Ganache",
         image: "",
         classSection: "Ganache",
-        Duration: "45 mins",
-        Description:
+        duration: "45 mins",
+        description:
           "In this class you will learn how to create a buttery and thick ganache cream, and how to use it for crumb coating.",
       },
       {
@@ -197,8 +197,8 @@ export const classesCategories = [
         title: " White Ganache",
         image: "",
         classSection: "Ganache",
-        Duration: "45 mins",
-        Description:
+        duration: "45 mins",
+        description:
           "In this class you will learn how to create a buttery and thick ganache cream, and how to use it for crumb coating.",
       },
       {
@@ -206,41 +206,41 @@ export const classesCategories = [
         title: " Dark Chocolate Ganache",
         image: "",
         classSection: "Ganache",
-        Duration: "45 mins",
-        Description:
+        duration: "45 mins",
+        description:
           "In this class you will learn how to create a buttery and thick ganache cream, and how to use it for crumb coating.",
       },
     ],
   },
   {
     id: 5,
-    classCategory: "Butter Cream",
+    classCategory: "ButterCream",
     items: [
       {
         id: 50,
         title: "Vanilla Butter Cream",
         image: "",
-        classSection: "Butter Cream",
-        Duration: "40 mins",
-        Description:
+        classSection: "ButterCream",
+        duration: "40 mins",
+        description:
           "In this class you will learn how to create a buttery and thick butter cream, and how to use it for crumb coating.",
       },
       {
         id: 51,
         title: "Chocolate Butter Cream",
         image: "",
-        classSection: "Butter Cream",
-        Duration: "40 mins",
-        Description:
+        classSection: "ButterCream",
+        duration: "40 mins",
+        description:
           "In this class you will learn how to create a buttery and thick butter cream, and how to use it for crumb coating.",
       },
       {
         id: 52,
         title: "Strawberry Butter Cream",
         image: "",
-        classSection: "Butter Cream",
-        Duration: "40 mins",
-        Description:
+        classSection: "ButterCream",
+        duration: "40 mins",
+        description:
           "In this class you will learn how to create a buttery and thick butter cream, and how to use it for crumb coating.",
       },
     ],
@@ -254,8 +254,8 @@ export const classesCategories = [
         title: "Canvas Your Cake",
         image: "",
         classSection: "Decoration",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -263,8 +263,8 @@ export const classesCategories = [
         title: "All about Blue Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -272,8 +272,8 @@ export const classesCategories = [
         title: "All about Pink Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -281,8 +281,8 @@ export const classesCategories = [
         title: "All about White Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -290,8 +290,8 @@ export const classesCategories = [
         title: "All about Pearl Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
       {
@@ -299,8 +299,8 @@ export const classesCategories = [
         title: "All about Black Fondant",
         image: "",
         classSection: "Fondant",
-        Duration: "15 mins",
-        Description:
+        duration: "15 mins",
+        description:
           "In this class you will learn how to match colors with the fondant, in addition to how to color and tint it the right way.",
       },
     ],

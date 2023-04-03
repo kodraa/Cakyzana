@@ -94,7 +94,7 @@ function CategoryComponent(props) {
                   isInCarousel
                   key={utensil.id}
                   classTitle={utensil.classTitle}
-                  imagesrc={require(`../../designAssets/Homepage/Classes/${classes[0].imagesrc}.png`)}
+                  //imagesrc={require(`../../designAssets/Homepage/Classes/${classes[0].imagesrc}.png`)}
                   // imagesrc={pic1}
                   // imagesrc={utensil.imagesrc}
                   number={utensil.number}

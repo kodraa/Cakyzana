@@ -14,7 +14,7 @@ import ClassCategory from "./components/ClassCategory/ClassCategory";
 import AuthProvider from "./AuthContext";
 import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
-import ModifyClasses from "./components/ModifyClasses/ModifyClasses";
+import ModifyClasses from "./components/AdminPanel/ModifyClasses";
 
 
 const router = createBrowserRouter([

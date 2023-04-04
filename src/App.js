@@ -14,6 +14,7 @@ import ClassCategory from "./components/ClassCategory/ClassCategory";
 import AuthProvider from "./AuthContext";
 import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
+import Watch from "./components/Watching/Watch";
 
 // todo profile
 

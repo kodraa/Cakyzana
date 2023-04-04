@@ -85,7 +85,8 @@ const CardContainer = styled.div`
   justify-content: center;
   border-radius: 20px;
   color: ${CONSTANTS.grayblack};
-  background-color: ${(props) => props.isGrey ? CONSTANTS.graywhite : "white"};
+  background-color: ${(props) =>
+    props.isGrey ? CONSTANTS.graywhite : "white"};
 
   @media (max-width: 768px) {
   }
@@ -175,7 +176,8 @@ const CardButton = styled.button`
   width: 65%;
   text-align: center;
   padding: 2.5%;
-  background-color: ${(props) => props.buttonBgColor ? props.buttonBgColor : CONSTANTS.pink};
+  background-color: ${(props) =>
+    props.buttonBgColor ? props.buttonBgColor : CONSTANTS.pink};
   color: white;
   border-radius: 32px;
   border: none;

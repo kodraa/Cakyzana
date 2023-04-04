@@ -12,7 +12,7 @@ import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";
 import AuthProvider from "./AuthContext";
-import TestDynamicCarousel from "./TestDynamicCarousel"; 
+import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
 
 // todo profile
@@ -30,10 +30,10 @@ const router = createBrowserRouter([
   //   path: "/video",
   //   element: <WatchVideo />,
   //  },
-   {
-    path: "/watching",
-    element: <Watch />,
-  },
+  //  {
+  //   path: "/watching",
+  //   element: <Watch />,
+  // },
   {
     path: "/utensils",
     element: <Utensils />,
@@ -77,7 +77,7 @@ const router = createBrowserRouter([
   {
     path: "/multipleRow",
     element: <MultipleRowComponent />,
-  }
+  },
 ]);
 
 function App() {
@@ -89,9 +89,9 @@ function App() {
   return (
     <>
       {/* <AuthProvider> */}
-        <CartContext.Provider value={[cart, setCart]}>
-          <RouterProvider router={router} />
-        </CartContext.Provider>
+      <CartContext.Provider value={[cart, setCart]}>
+        <RouterProvider router={router} />
+      </CartContext.Provider>
       {/* </AuthProvider> */}
     </>
   );

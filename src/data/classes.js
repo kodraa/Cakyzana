@@ -11,6 +11,15 @@ export const classesCategories = [
         duration: "30 mins",
         description:
           " In this class you will learn how to bake a fluffy and moist chocolate cake that lasts 3 days or more if refrigirated.",
+        videos: [
+          {
+            id: 1,
+            url: "https://www.youtube.com/watch?v=Q8TXgCzxEnw&list=PLzV58Zm8FuBJFfQN5il3ujx6FDAY8Ds3u&index=1",
+            title: "Vanilla Cake",
+            description: "",
+            duration: "25 mins",
+          },
+        ],
       },
       {
         id: 11,

@@ -9,6 +9,58 @@ import cake3 from "../../designAssets/WatchVideo/cake3.jpg";
 import av1 from "../../designAssets/WatchVideo/av1.png";
 import { Link } from "react-router-dom";
 
+
+// todo fix video src
+
+const Card = ({ type, onClick, videoProp }) => {
+  return (
+    <Container type={type}>
+      {videoData.map((video) => (
+        <Wrapper key={video.id} onClick={() => onClick(video.vid)}>
+          <Img type={type} src={video.thumbnail} />
+          <Details type={type}>
+            <ChannelImage type={type} src={av1} />
+            <Texts>
+              <Title>{video.title}</Title>
+              <ChannelName> Sawsan Habbal </ChannelName>
+              <Info> 70,000 views * 1 day ago</Info>
+            </Texts>
+          </Details>
+        </Wrapper>
+      ))}
+    </Container>
+  );
+};
+
+export default Card;
+
+const videoData = [
+  {
+    id: "1",
+    title: "Buttercream Tutorial",
+    url: "../../designAssets/WatchVideo/vid1.mp4",
+    extension: "vid1.mp4",
+    vid: vid1,
+    thumbnail: cake1,
+  },
+  {
+    id: "2",
+    title: "Sugar Paper Tutorial",
+    url: "../../designAssets/WatchVideo/vid2.mp4",
+    extension: "vid2.mp4",
+    vid: vid2,
+    thumbnail: cake2,
+  },
+  {
+    id: "3",
+    title: "Piping Tutorial",
+    url: "../../designAssets/WatchVideo/vid3.mp4",
+    extension: "vid3.mp4",
+    vid: vid3,
+    thumbnail: cake3,
+  },
+];
+
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
@@ -55,53 +107,3 @@ const Info = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.textSoft};
 `;
-// todo fix video src
-
-const Card = ({ type, onClick, videoProp }) => {
-  return (
-    <Container type={type}>
-      {videoData.map((video) => (
-        <Wrapper key={video.id}>
-          <Img type={type} src={video.thumbnail} />
-          <Details type={type}>
-            <ChannelImage type={type} src={av1} />
-            <Texts>
-              <Title>{video.title}</Title>
-              <ChannelName> Sawsan Habbal </ChannelName>
-              <Info> 70,000 views * 1 day ago</Info>
-            </Texts>
-          </Details>
-        </Wrapper>
-      ))}
-    </Container>
-  );
-};
-
-export default Card;
-
-const videoData = [
-  {
-    id: "1",
-    title: "Buttercream Tutorial",
-    url: "../../designAssets/WatchVideo/vid1.mp4",
-    extension: "vid1.mp4",
-    vid: vid1,
-    thumbnail: cake1,
-  },
-  {
-    id: "2",
-    title: "Sugar Paper Tutorial",
-    url: "../../designAssets/WatchVideo/vid2.mp4",
-    extension: "vid2.mp4",
-    vid: vid3,
-    thumbnail: cake2,
-  },
-  {
-    id: "3",
-    title: "Piping Tutorial",
-    url: "../../designAssets/WatchVideo/vid3.mp4",
-    extension: "vid3.mp4",
-    vid: vid3,
-    thumbnail: cake3,
-  },
-];

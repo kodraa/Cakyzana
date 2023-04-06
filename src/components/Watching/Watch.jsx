@@ -46,6 +46,11 @@ const Watch = (props) => {
     console.log("videoP", videoP);
   }, [videoP, videoRef]);
 
+  const handleVideoChange = newVid => {
+    setVideoP(newVid);
+    console.log("newVid", newVid);
+  }
+
   return (
     <>
       <Container>
@@ -109,23 +114,23 @@ const Watch = (props) => {
           <Comments />
         </Content>
         <Playlist>
-          <Card type="sm" onClick={setVideoP} videoProp={vid2} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
-          <Card type="sm" onClick={setVideoP} />
+          <Card type="sm" onClick={handleVideoChange} videoProp={vid2} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
         </Playlist>
       </Container>
     </>

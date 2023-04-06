@@ -15,7 +15,7 @@ const Container = styled.div`
   display: ${(props) => props.type === "sm" && "flex"};
   gap: 10px;
 `;
-const img = styled.img`
+const Img = styled.img`
   width: 100%;
   height: ${(props) => (props.type === "sm" ? "120px" : "202px")};
   background-color: #999;
@@ -50,8 +50,9 @@ const Info = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.textSoft};
 `;
+// todo fix video src
 
-const Card = ({ type }) => {
+const Card = ({ type, onClick, videoProp }) => {
   return (
     //  <Link to="/watching/test" style={{textDecoration:"none"}}>
     <Container type={type}>
@@ -60,11 +61,13 @@ const Card = ({ type }) => {
           <div
             key={video.id}
             onClick={() => {
-              setVideoP(video.vid);
+              // setVideoP(video.vid);
+              onClick(video.vid);
+              // onClick(videoProp);
               console.log("clicked" + video.vid);
             }}
           >
-            <img type={type} src={video.thumbnail} />
+            <Img type={type} src={video.thumbnail} />
             <Details type={type}>
               <ChannelImage type={type} src={av1} />
               <Texts>

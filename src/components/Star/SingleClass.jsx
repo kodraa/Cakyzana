@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import {
   BasicLandingSection,
@@ -7,10 +7,30 @@ import {
 } from "../../global";
 import Navbar from "../globalComponents/Navbar";
 import Cake from "../../designAssets/Star/Sample Cake.png";
+import { useParams } from "react-router-dom";
+import { db } from "../../firebase";
 
 // TODO add black cart logo
 
 function SingleClass() {
+  const { id } = useParams();
+  const [itemData, setItemData] = useState(null);
+
+  useEffect(() => {
+    const getItemById = async () => {
+      const itemRef = db.collection("Classes").doc(id);
+      const itemDoc = await itemRef.get();
+      if (itemDoc.exists) {
+        const itemData = itemDoc.data();
+        setItemData(itemData);
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    getItemById();
+  }, [id]);
+
   return (
     <FullScreenSection>
       <Navbar />

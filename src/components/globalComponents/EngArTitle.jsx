@@ -30,7 +30,8 @@ const TitleContainer = styled.div`
 `;
 
 const EngTitle = styled.h2`
-  font-size: 3.125rem;
+  /* font-size: 3.125rem; */
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-family: "Century Gothic Bold", sans-serif;
   font-weight: normal;
   position: relative;
@@ -42,7 +43,8 @@ const EngTitle = styled.h2`
     /* display: none; */
     content: "${(props) => props.arabic}";
     width: max-content;
-    font-size: 2.75rem;
+    /* font-size: 2.75rem; */
+    font-size: clamp(1.5rem, 5vw, 3rem);
     font-family: "Dima";
     font-weight: normal;
     /* font-size: 2.2rem; */

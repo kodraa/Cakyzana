@@ -4,6 +4,7 @@ import { CONSTANTS } from "../../global";
 // import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const DescriptionCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
@@ -50,7 +51,8 @@ const DescriptionCard = (props) => {
             </CardText2>
           </CardBodyText>
           <CardButtonDiv>
-            <CardButton buttonBgColor={props.buttonBgColor}>Buy Now</CardButton>
+            {/* <CardButton buttonBgColor={props.buttonBgColor}>Buy Now</CardButton> */}
+            <CardButton buttonBgColor={props.buttonBgColor} to={props.to}>View More</CardButton>
           </CardButtonDiv>
         </CardBody>
       </CardContent>
@@ -71,8 +73,8 @@ const CardContainer = styled.div`
   /* height: 77.02%; */
 
   /* if isInCarousel, height = 85.02% and width = 29.16%, otherwise, height and width = 100% */
-
   /* height: ${(props) => (!props.isInCarousel ? "85.02%" : "100%")}; */
+
   height: ${(props) => (!props.isInCarousel ? "85.02%" : "90%")};
   width: ${(props) => (!props.isInCarousel ? "29.16%" : "100%")};
 
@@ -172,7 +174,22 @@ const CardButtonDiv = styled.div`
   align-items: center;
 `;
 
-const CardButton = styled.button`
+// const CardButton = styled.button`
+//   width: 65%;
+//   text-align: center;
+//   padding: 2.5%;
+//   background-color: ${(props) =>
+//     props.buttonBgColor ? props.buttonBgColor : CONSTANTS.pink};
+//   color: white;
+//   border-radius: 32px;
+//   border: none;
+//   font-size: 18px;
+//   cursor: pointer;
+//   font-weight: bold;
+// `;
+
+const CardButton = styled(Link)`
+  text-decoration: none;
   width: 65%;
   text-align: center;
   padding: 2.5%;
@@ -184,4 +201,5 @@ const CardButton = styled.button`
   font-size: 18px;
   cursor: pointer;
   font-weight: bold;
+  font-family: "Century Gothic Bold"
 `;

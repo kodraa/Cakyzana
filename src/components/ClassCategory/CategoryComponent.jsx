@@ -25,6 +25,9 @@ import { classesCategories } from "../../data/classes.js";
 import ArrowRight from "../../designAssets/Homepage/Classes/ArrowRight.png";
 import ArrowLeft from "../../designAssets/Homepage/Classes/ArrowLeft.png";
 
+// todo navbar mobile responsive
+// todo single utensil mobile responsive
+
 const titles = {
   Baking: {
     title: (
@@ -45,8 +48,9 @@ const titles = {
       <EngArTitle
         english={"For Filling"}
         arabic={"من برا هالله هالله ومن جوا يعلم الله"}
-        bottom={"-60%"}
-        right={"-85%"}
+        bottom={"-70%"}
+        right={"-125%"}
+        // right={"-185%"}
         arColor={CONSTANTS.blue}
       />
     ),
@@ -101,6 +105,8 @@ const titles = {
     color: CONSTANTS.blue,
   },
 };
+
+// todo fix title spacing
 
 function CategoryComponent(props) {
 
@@ -224,7 +230,6 @@ function CategoryComponent(props) {
                   }}
                 >
                   {item.map((item) => {
-                    console.log("item", item);
                     return (
                       <SwiperSlide>
                         <DescriptionCard

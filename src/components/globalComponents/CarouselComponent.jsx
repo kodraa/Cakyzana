@@ -127,6 +127,7 @@ const ContentDiv = styled(BasicContentDiv)`
 
   & .global-swiper {
     height: 85.02%;
+    /* width: 100%; */
     /* background-color: red; */
   }
 `;

@@ -31,10 +31,10 @@ const router = createBrowserRouter([
   //   path: "/video",
   //   element: <WatchVideo />,
   //  },
-  //  {
-  //   path: "/watching",
-  //   element: <Watch />,
-  // },
+   {
+    path: "/watching",
+    element: <Watch />,
+  },
   {
     path: "/utensils",
     element: <Utensils />,

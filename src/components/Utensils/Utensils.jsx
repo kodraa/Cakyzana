@@ -16,6 +16,7 @@ import Card from "../globalComponents/Card";
 import CarouselComponent from "../globalComponents/CarouselComponent";
 import DescriptionCard from "../globalComponents/DescriptonCard";
 import UtensilCard from "../globalComponents/UtensilCard";
+import { classesCategories } from "../../data/classes";
 
 
 
@@ -308,9 +309,9 @@ function Utensils() {
     return categories;
   }
 
-  // classes.forEach((item) => {
+  // classesCategories.forEach((item) => {
   //     console.log("is being added")
-  //   db.collection("classes").add(item)
+  //   db.collection("classCategories").add(item)
   //     .then((docRef) => {
   //       console.log("Document written with ID: ", docRef.id);
   //     })

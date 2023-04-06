@@ -4,7 +4,6 @@ import { BasicLandingSection, CONSTANTS, FullScreenSection } from "../../../glob
 import Navbar from "../../globalComponents/Navbar";
 import MaskGroup3 from "../../../designAssets/Homepage/Landing/MaskGroup3.png";
 
-
 function Landing() {
   return (
     <LandingSection>

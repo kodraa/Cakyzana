@@ -16,6 +16,10 @@ import CarouselComponent from "../../globalComponents/CarouselComponent";
 import { SwiperSlide } from "swiper/react";
 import { db } from "../../../firebase";
 
+let mappedElements;
+
+// todo lessen height and width for hover scale issues, and add auto generated class id to the to attribute
+
 function TheClasses() {
   const classes = [];
   const [classesData, setClassesData] = useState([]);
@@ -25,11 +29,36 @@ function TheClasses() {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          classes.push(doc.data());
+          classes.push({ id: doc.id, ...doc.data() });
+        });
+      })
+      .then(() => {
+        console.log("classes", classes);
+        setClassesData(classes);
+      })
+      .then(() => {
+        mappedElements = classes.map((item) => {
+          console.log("item", item.id);
+          return (
+            <React.Fragment key={item.id}>
+              <SwiperSlide>
+                <DescriptionCard
+                  isInCarousel
+                  isGrey
+                  classTitle={item.title}
+                  // imagesrc={item.image}
+                  // imagesrc={cake1}
+                  // imagesrc={item.imagesrc}
+                  number={2}
+                  classDur={item.duration}
+                  descr={item.description}
+                  to={`/singleClass/${item.id}`}
+                />
+              </SwiperSlide>
+            </React.Fragment>
+          );
         });
       });
-    setClassesData(classes);
-    console.log(classes);
   }, []);
 
   const title = (
@@ -42,89 +71,9 @@ function TheClasses() {
     />
   );
 
-  const mappedElements = classes.map((item) => {
-    console.log("item", item);
-    return (
-      <SwiperSlide>
-        <DescriptionCard
-          isInCarousel
-          key={1}
-          classTitle={item.title}
-          imagesrc={item.image}
-          // imagesrc={pic1}
-          // imagesrc={item.imagesrc}
-          number={2}
-          classDur={item.duration}
-          descr={item.description}
-        />
-      </SwiperSlide>
-    );
-  });
-
-  // const mappedElements = highlightedClasses.map((item) => {
-  //   return (
-  //     <SwiperSlide>
-  //       <DescriptionCard
-  //         key={item.id}
-  //         classTitle={item.classTitle}
-  //         imagesrc={require(`../../../designAssets/Homepage/Classes/${item.imagesrc}.png`)}
-  //         // imagesrc={pic1}
-  //         // imagesrc={item.imagesrc}
-  //         number={item.number}
-  //         classDur={item.classDur}
-  //         descr={item.descr}
-  //       />
-  //     </SwiperSlide>
-  //   );
-  // });
-
   return (
     <>
-      <button onClick={() => console.log(mappedElements)}>log elements</button>
-      <button onClick={() => console.log(classesData)}>log classes</button>
-      {/* <ContentDiv>
-        <Arrow className="left" src={ArrowLeft} />
-        <CardWrapper>
-          {highlightedClasses.map((item) => {
-            return (
-              <DescriptionCard
-                key={item.id}
-                classTitle={item.classTitle}
-                imagesrc={require(`../../../designAssets/Homepage/Classes/${item.imagesrc}.png`)}
-                // imagesrc={pic1}
-                // imagesrc={item.imagesrc}
-                number={item.number}
-                classDur={item.classDur}
-                descr={item.descr}
-              />
-            );
-          })}
-        </CardWrapper>
-        <Arrow className="right" src={ArrowRight} />
-      </ContentDiv> */}
-      {/* TODO: fix the carousel */}
-      <CarouselComponent
-        title={title}
-        //  mappedElements={mappedElements} />
-        mappedElements={classesData.map((item) => {
-          console.log("item", item);
-          return (
-            <SwiperSlide>
-              <DescriptionCard
-                isInCarousel
-                key={1}
-                classTitle={item.title}
-                imagesrc={item.image}
-                // imagesrc={pic1}
-                // imagesrc={item.imagesrc}
-                number={2}
-                classDur={item.duration}
-                descr={item.description}
-              />
-            </SwiperSlide>
-          );
-        })}
-      />
+      <CarouselComponent title={title} mappedElements={mappedElements} />
       {/* </Section> */}
     </>
   );

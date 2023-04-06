@@ -27,14 +27,11 @@ const router = createBrowserRouter([
     path: "/singleClass/:id",
     element: <SingleClass />,
   },
-  // {
-  //   path: "/video",
-  //   element: <WatchVideo />,
-  //  },
-  //  {
-  //   path: "/watching",
-  //   element: <Watch />,
-  // },
+
+   {
+     path: "/watching",
+     element: <Watch />,
+   },
   {
     path: "/utensils",
     element: <Utensils />,

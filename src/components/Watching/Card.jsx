@@ -7,26 +7,31 @@ import cake1 from "../../designAssets/WatchVideo/cake1.jpg";
 import cake2 from "../../designAssets/WatchVideo/cake2.jpg";
 import cake3 from "../../designAssets/WatchVideo/cake3.jpg";
 import av1 from "../../designAssets/WatchVideo/av1.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
   margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
   cursor: pointer;
-  display: ${(props) => props.type === "sm" && "flex"};
-  gap: 10px;
+  display: ${(props) => props.type === "sm" ? "flex" : "block"};
+  gap: 25px;
+  flex-wrap: wrap;
+`;
+const Wrapper = styled.div`
+  display: flex;
 `;
 const Img = styled.img`
-  width: 100%;
-  height: ${(props) => (props.type === "sm" ? "120px" : "202px")};
+  width: ${(props) => props.type === "sm" ? "100%" : "260px"};
+  height: ${(props) => (props.type === "sm" ? "150px" : "202px")};
   background-color: #999;
   border-radius: 7%;
-  flex: 1;
+  object-fit: cover;
 `;
 const Details = styled.div`
   display: flex;
-  margin-top: ${(props) => props.type !== "sm" && "16px"};
-  gap: 12px;
-  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12px;
 `;
 const ChannelImage = styled.img`
   width: 36px;
@@ -54,33 +59,21 @@ const Info = styled.div`
 
 const Card = ({ type, onClick, videoProp }) => {
   return (
-    //  <Link to="/watching/test" style={{textDecoration:"none"}}>
     <Container type={type}>
-      <ul>
-        {videoData.map((video) => (
-          <div
-            key={video.id}
-            onClick={() => {
-              // setVideoP(video.vid);
-              onClick(video.vid);
-              // onClick(videoProp);
-              console.log("clicked" + video.vid);
-            }}
-          >
-            <Img type={type} src={video.thumbnail} />
-            <Details type={type}>
-              <ChannelImage type={type} src={av1} />
-              <Texts>
-                <Title>{video.title}</Title>
-                <ChannelName> Sawsan Habbal </ChannelName>
-                <Info> 70,000 views * 1 day ago</Info>
-              </Texts>
-            </Details>
-          </div>
-        ))}
-      </ul>
+      {videoData.map((video) => (
+        <Wrapper key={video.id}>
+          <Img type={type} src={video.thumbnail} />
+          <Details type={type}>
+            <ChannelImage type={type} src={av1} />
+            <Texts>
+              <Title>{video.title}</Title>
+              <ChannelName> Sawsan Habbal </ChannelName>
+              <Info> 70,000 views * 1 day ago</Info>
+            </Texts>
+          </Details>
+        </Wrapper>
+      ))}
     </Container>
-    // </Link>
   );
 };
 

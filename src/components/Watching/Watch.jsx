@@ -199,7 +199,5 @@ const ChannelName = styled.span`
 `;
 
 const Description = styled.p`
-  // margin-top: 5px;
-  // margin-bottom: 20px;
   font-size: 14px;
 `;

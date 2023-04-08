@@ -46,7 +46,7 @@ function CarouselComponent({ title, mappedElements, isGrey }) {
             <Arrow
               className="left-arrow"
               src={ArrowLeft}
-              onClick={handlePrev}
+              // onClick={handlePrev}
               // className="left"
             />
             <Swiper
@@ -80,6 +80,8 @@ function CarouselComponent({ title, mappedElements, isGrey }) {
                   spaceBetween: 50,
                 },
               }}
+              slidesPerGroup={1}
+              // slidesPerView={'auto'}
             >
               {/* {highlightedClasses.map((item) => {
                 return (
@@ -101,7 +103,7 @@ function CarouselComponent({ title, mappedElements, isGrey }) {
             </Swiper>
             <Arrow
               className="right-arrow"
-              onClick={handleNext}
+              // onClick={handleNext}
               src={ArrowRight}
               // className="right"
             />

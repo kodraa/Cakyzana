@@ -16,6 +16,8 @@ import Comments from "./Comments";
 import Comment from "./Comment";
 import Card from "./Card";
 
+// todo make this page responsive
+
 const Watch = (props) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);

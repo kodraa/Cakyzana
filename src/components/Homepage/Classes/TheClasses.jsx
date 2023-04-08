@@ -44,7 +44,45 @@ function TheClasses() {
               <SwiperSlide>
                 <DescriptionCard
                   isInCarousel
-                  isGrey
+                  classTitle={item.title}
+                  // imagesrc={item.image}
+                  // imagesrc={cake1}
+                  // imagesrc={item.imagesrc}
+                  number={2}
+                  classDur={item.duration}
+                  descr={item.description}
+                  to={`/singleClass/${item.id}`}
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <DescriptionCard
+                  isInCarousel
+                  classTitle={item.title}
+                  // imagesrc={item.image}
+                  // imagesrc={cake1}
+                  // imagesrc={item.imagesrc}
+                  number={2}
+                  classDur={item.duration}
+                  descr={item.description}
+                  to={`/singleClass/${item.id}`}
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <DescriptionCard
+                  isInCarousel
+                  classTitle={item.title}
+                  // imagesrc={item.image}
+                  // imagesrc={cake1}
+                  // imagesrc={item.imagesrc}
+                  number={2}
+                  classDur={item.duration}
+                  descr={item.description}
+                  to={`/singleClass/${item.id}`}
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <DescriptionCard
+                  isInCarousel
                   classTitle={item.title}
                   // imagesrc={item.image}
                   // imagesrc={cake1}
@@ -73,7 +111,7 @@ function TheClasses() {
 
   return (
     <>
-      <CarouselComponent title={title} mappedElements={mappedElements} />
+      <CarouselComponent isGrey title={title} mappedElements={mappedElements} />
       {/* </Section> */}
     </>
   );

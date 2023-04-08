@@ -8,7 +8,6 @@ import { highlightedClasses } from "./data/highlightedClasses";
 import { classesCategories as classes } from "./data/classes";
 import { db } from "./firebase";
 
-// TODO fix items disappearing when resizing
 
 // classes.forEach((item) => {
 //   console.log("is being added");

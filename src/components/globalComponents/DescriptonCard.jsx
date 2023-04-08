@@ -52,7 +52,9 @@ const DescriptionCard = (props) => {
           </CardBodyText>
           <CardButtonDiv>
             {/* <CardButton buttonBgColor={props.buttonBgColor}>Buy Now</CardButton> */}
-            <CardButton buttonBgColor={props.buttonBgColor} to={props.to}>View More</CardButton>
+            <CardButton buttonBgColor={props.buttonBgColor} to={props.to}>
+              View More
+            </CardButton>
           </CardButtonDiv>
         </CardBody>
       </CardContent>
@@ -86,6 +88,7 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
+  padding-bottom: 10px;
   color: ${CONSTANTS.grayblack};
   background-color: ${(props) =>
     props.isGrey ? CONSTANTS.graywhite : "white"};
@@ -104,10 +107,12 @@ const CardContent = styled.div`
 
 const CardIconDiv = styled.div`
   width: 100%;
-  height: 8%;
+  /* height: 8%; */
+  height: 10%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  /* background-color: red; */
 `;
 
 const CardImage = styled.div`
@@ -201,5 +206,5 @@ const CardButton = styled(Link)`
   font-size: 18px;
   cursor: pointer;
   font-weight: bold;
-  font-family: "Century Gothic Bold"
+  font-family: "Century Gothic Bold";
 `;

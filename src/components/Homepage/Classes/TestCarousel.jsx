@@ -52,7 +52,6 @@ function TestCarousel() {
             <Swiper
               className="global-swiper"
               ref={sliderRef}
-              // TODO breakpoints
               // spaceBetween={50}
               // slidesPerView={3}
               onSlideChange={() => console.log("slide change")}

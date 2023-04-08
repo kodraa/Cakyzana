@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import {
   BasicLandingSection,
@@ -9,12 +9,17 @@ import Navbar from "../globalComponents/Navbar";
 import Cake from "../../designAssets/Star/Sample Cake.png";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase";
+import { CartContext } from "../../context";
+import Modal from "../Modal_Cart"
 
-// TODO add black cart logo
+// TODO add to cart functionality
 
 function SingleClass() {
   const { id } = useParams();
   const [itemData, setItemData] = useState(null);
+  const [cart, setCart] = useContext(CartContext);
+  const [active, setActive] = useState(true);
+  const [addedToCart, SetAddedToCart] = useState(false);
 
   useEffect(() => {
     const getItemById = async () => {
@@ -22,6 +27,7 @@ function SingleClass() {
       const itemDoc = await itemRef.get();
       if (itemDoc.exists) {
         const itemData = itemDoc.data();
+        console.log("itemData", itemData);
         setItemData(itemData);
       } else {
         console.log("No such document!");
@@ -31,9 +37,52 @@ function SingleClass() {
     getItemById();
   }, [id]);
 
+  const handleAddToCart = () => {
+    // let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
+    let total_item = cart.items.filter((item) => item.id == itemData.id);
+
+    total_item = total_item.length > 0 ? total_item[0].qty : 0;
+
+    if (total_item >= 1) {
+      let items = cart.items.map((item) => {
+        return {
+          ...item,
+          // qty: item.id == currentUtensil.id ? total_item + 1 : item.qty,
+          qty: item.id == itemData.id ? total_item + 1 : item.qty,
+        };
+      });
+
+      setCart((prev) => ({
+        total: prev.total + 1,
+        items,
+      }));
+    } else {
+      setCart((prev) => ({
+        total: prev.total + 1,
+        // items: [...prev.items, { ...currentUtensil, qty: total_item + 1 }],
+        items: [...prev.items, { ...itemData, qty: total_item + 1 }],
+      }));
+    }
+
+    SetAddedToCart(true);
+    setActive(true);
+
+    setTimeout(() => {
+      setActive(false);
+      SetAddedToCart(false);
+    }, 2000);
+  };
+
   return (
     <FullScreenSection>
       <Navbar />
+      {addedToCart && (
+        <Modal
+          active={active}
+          hideModal={() => setActive(false)}
+          item={itemData}
+        />
+      )}
       <StarFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
@@ -42,38 +91,49 @@ function SingleClass() {
         </LeftFlexChild>
 
         <RightFlexChild>
-          <StarTitle>Canvas Your Cake</StarTitle>
+          {/* <StarTitle>Canvas Your Cake</StarTitle> */}
+          <StarTitle>{itemData?.title}</StarTitle>
 
           <StarSubtitles>
-            <Subtitle>Class Section: Cake Recipes</Subtitle>
+            {/* <Subtitle>Class Section: Cake Recipes</Subtitle> */}
+            <Subtitle>Class Section: {itemData?.classSection}</Subtitle>
             <Subtitle>Class Duration: 75 mins</Subtitle>
           </StarSubtitles>
 
           <DescriptionContainer>
-            <Paragraph>
+            {/* <Paragraph>
               Description: This class gives you the real technique of drawing on
               fondant. It includes color combination and character drawing
               technique.
+            </Paragraph> */}
+            <Paragraph>
+              Description: {itemData?.description}
             </Paragraph>
           </DescriptionContainer>
 
           <ToolsContainer>
-            <Paragraph>
+            {/* <Paragraph>
               Tools Needed: Brushes, Butter cream, food coloring of your choice,
               coloring tray, fondant, reference image.
+            </Paragraph> */}
+            <Paragraph>
+              Tools Needed: {itemData?.tools}
             </Paragraph>
           </ToolsContainer>
 
           <PrerequisitesContainer>
-            <Paragraph>
+            {/* <Paragraph>
               Prerequisites: Butter cream making class, cream coloring class,
               fondant class.
+            </Paragraph> */}
+            <Paragraph>
+              Prerequisites: {itemData?.prerequisites || "None"}
             </Paragraph>
           </PrerequisitesContainer>
 
           <CTA>
-            <Price>Price: $40</Price>
-            <CTABtn>Buy Now!</CTABtn>
+            <Price>Price: ${itemData?.price}</Price>
+            <CTABtn onClick={handleAddToCart}>Add to Cart</CTABtn>
           </CTA>
         </RightFlexChild>
       </StarFlexContainer>
@@ -142,19 +202,23 @@ const RightFlexChild = styled(FlexChild)`
     height: 100%;
     padding-top: 0;
     justify-content: center;
+    gap: 10px;
   }
 `;
 
 const StarTitle = styled.h2`
-  font-size: 2.2rem;
+  /* font-size: 2.2rem; */
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
 `;
 
 const StarSubtitles = styled.div`
-  font-size: 1.8rem;
+  /* font-size: 1.8rem; */
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
 `;
 
 const Subtitle = styled.h3`
-  font-size: 1.4rem;
+  /* font-size: 1.4rem; */
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
 `;
 
 const DescriptionContainer = styled.div``;
@@ -164,7 +228,8 @@ const ToolsContainer = styled.div``;
 const PrerequisitesContainer = styled.div``;
 
 const Paragraph = styled.p`
-  font-size: 1.4rem;
+  /* font-size: 1.4rem; */
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
   font-weight: lighter !important;
 `;
 

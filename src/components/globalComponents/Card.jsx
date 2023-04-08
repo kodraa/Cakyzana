@@ -122,10 +122,11 @@ const CardContainer = styled.div`
 
 const CardIconDiv = styled.div`
   width: 100%;
-  height: 8%;
+  height: 10%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: red;
 `;
 
 const CardTitle = styled.h4`

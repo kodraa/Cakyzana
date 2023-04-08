@@ -8,6 +8,8 @@ import Instagram from "../../designAssets/Footer/InstagramFooterLogo.png";
 import Youtube from "../../designAssets/Footer/YoutubeFooterLogo.png";
 import LinkedIn from "../../designAssets/Footer/LinkedInFooterLogo.png";
 
+// todo fix links
+
 function Footer() {
   return (
     <FooterContainer>

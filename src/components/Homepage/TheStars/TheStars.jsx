@@ -43,3 +43,4 @@ const CardWrapper = styled.div`
   justify-content: space-evenly;
   flex-wrap: wrap;
 `;
+

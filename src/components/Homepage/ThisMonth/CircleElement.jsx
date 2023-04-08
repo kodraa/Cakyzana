@@ -3,41 +3,89 @@ import styled from "styled-components/macro";
 import { CONSTANTS } from "../../../global";
 
 function CircleElement(props) {
-
   const translation = {
-    0: 'zero',
-    1: 'one',
-    2: 'two',
-    3: 'three',
-    4: 'four'   
-  }
-
+    0: "zero",
+    1: "one",
+    2: "two",
+    3: "three",
+    4: "four",
+  };
 
   return (
     // <Circle className={props.class}>
-    <Circle className={translation[props.index]}>
-      <img src={props.src} alt="" />
-      <HoverDiv>
-        <h2>Eid Cake Workshop</h2>
-        <div>
-          <p>Date: Saturday, December 3, 2022</p>
-          <p>Time: 11:00 am 2:00 pm</p>
-          <p>Hamra, Beirut - The Olive Grove</p>
-        </div>
-        <WorkshopDescriptionDiv>
-          <p>
-            In this workshop you will be learning how to bake a cake and how to
-            cover it with sugar dough, in addition to 3d techniques and drawing
-            a 2D character on a sugar dough.
-          </p>
-        </WorkshopDescriptionDiv>
-        <CTAButton>Book a Seat NOW!</CTAButton>
-      </HoverDiv>
-    </Circle>
+    <>
+      {window.innerWidth > 768 ? (
+        <>
+          <Circle className={translation[props.index] + " desktop"}>
+            <img src={props.src} alt="" />
+            <HoverDiv>
+              <h2>Eid Cake Workshop</h2>
+              <div>
+                <p>Date: Saturday, December 3, 2022</p>
+                <p>Time: 11:00 am 2:00 pm</p>
+                <p>Hamra, Beirut - The Olive Grove</p>
+              </div>
+              <WorkshopDescriptionDiv>
+                <p>
+                  In this workshop you will be learning how to bake a cake and
+                  how to cover it with sugar dough, in addition to 3d techniques
+                  and drawing a 2D character on a sugar dough.
+                </p>
+              </WorkshopDescriptionDiv>
+              <CTAButton>Book a Seat NOW!</CTAButton>
+            </HoverDiv>
+          </Circle>
+        </>
+      ) : (
+        <>
+          <Container>
+            <Circle className={translation[props.index] + " mobile"}>
+              <img src={props.src} alt="" className="mobile" />
+            </Circle>
+            <InfoDiv className="info">
+              <h2>Eid Cake Workshop</h2>
+              <div>
+                <p>Date: Saturday, December 3, 2022</p>
+                <p>Time: 11:00 am 2:00 pm</p>
+                <p>Hamra, Beirut - The Olive Grove</p>
+              </div>
+              <WorkshopDescriptionDiv>
+                <p>
+                  In this workshop you will be learning how to bake a cake and
+                  how to cover it with sugar dough, in addition to 3d techniques
+                  and drawing a 2D character on a sugar dough.
+                </p>
+              </WorkshopDescriptionDiv>
+              <CTAButton>Book a Seat NOW!</CTAButton>
+            </InfoDiv>
+          </Container>
+        </>
+      )}
+    </>
   );
 }
 
 export default CircleElement;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  height: 100%;
+`;
+
+const InfoDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  & > div {
+    width: 90%;
+  }
+`;
 
 const HoverDiv = styled.div`
   opacity: 0;
@@ -54,17 +102,29 @@ const HoverDiv = styled.div`
 `;
 
 const Circle = styled.div`
-  /* aspect-ratio: 1 / 1; */
   border-radius: 50%;
-  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: clamp(0.75rem, 1.5vmin, 1.45rem);
   transition: all 0.8s ease;
   cursor: pointer;
+  height: 100%;
+  background-color: ${CONSTANTS.purpleActive};
+  z-index: 3;
+
+  &.desktop {
+    position: absolute;
+  }
+
+  &.mobile {
+    aspect-ratio: 1 / 1;
+    max-height: 45.7%;
+  }
 
   /* &[data-index="0"] { */
-  &.leftInactive, &.zero {
+  &.leftInactive,
+  &.zero {
     height: 48%;
     width: 17.1%;
     z-index: 1;
@@ -77,7 +137,8 @@ const Circle = styled.div`
   }
 
   /* &[data-index="1"] { */
-  &.leftSemiActive, &.one {
+  &.leftSemiActive,
+  &.one {
     height: 75%;
     width: 26.78%;
     z-index: 2;
@@ -90,7 +151,8 @@ const Circle = styled.div`
   }
 
   /* &[data-index="2"] { */
-  &.active, &.two {
+  &.active,
+  &.two {
     /* height: 500px; */
     height: 100%;
     width: 35.71%;
@@ -102,7 +164,8 @@ const Circle = styled.div`
   }
 
   /* &[data-index="3"] { */
-  &.rightSemiActive, &.three {
+  &.rightSemiActive,
+  &.three {
     height: 75%;
     width: 26.78%;
     z-index: 2;
@@ -113,7 +176,8 @@ const Circle = styled.div`
   }
 
   /* &[data-index="4"] { */
-  &.rightInactive, &.four {
+  &.rightInactive,
+  &.four {
     height: 48%;
     width: 17.1%;
     z-index: 1;
@@ -136,12 +200,13 @@ const Circle = styled.div`
     transition: all 0.5s ease;
   }
 
-  &.two:hover img {
+  &.two:hover img,
+  &.mobile:hover img {
     opacity: 0.5;
     transition: all 0.5s ease;
   }
 
-  &.two:hover ${HoverDiv} {
+  &.two:hover ${HoverDiv}, &.mobile:hover ${HoverDiv} {
     opacity: 1;
     transition: all 0.5s ease;
     cursor: default;
@@ -154,6 +219,7 @@ const WorkshopDescriptionDiv = styled.div`
 
 const CTAButton = styled.button`
   width: 224px;
+  cursor: pointer;
   text-align: center;
   padding: 10px;
   background-color: ${CONSTANTS.yellow};

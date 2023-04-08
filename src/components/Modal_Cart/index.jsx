@@ -11,6 +11,7 @@ import {
 } from "./modal.styles";
 import { Link } from "react-router-dom";
 const Modal = ({ title, footer, active, hideModal, item }) => {
+  // todo fix item img (get it from db)
   return (
     <Fragment>
       {active && (
@@ -21,7 +22,7 @@ const Modal = ({ title, footer, active, hideModal, item }) => {
             </ModalHeader>
             <ModalBody>
               <ModalImage
-                src={require(`../../designAssets/Utensils/${item?.image}.png`)}
+                // src={require(`../../designAssets/Utensils/${item?.image}.png`)}
                 alt="utensil"
               />
               <div>

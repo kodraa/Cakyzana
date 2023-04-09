@@ -16,6 +16,58 @@ const Cart = (props) => {
   const [shipping, setShipping] = useState(4);
   const [grandtotal, setGrandTotal] = useState(subtotal + shipping);
 
+  const handleIncreaseQuantity = (itemId) => {
+    const updatedItems = cart.items.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          qty: item.qty + 1,
+        };
+      }
+      return item;
+    });
+
+    setCart((prevCart) => ({
+      ...prevCart,
+      items: updatedItems,
+    }));
+
+    // Update subtotal, shipping and grand total
+    const updatedSubtotal = updatedItems.reduce((accumulator, object) => {
+      return accumulator + parseInt(object?.qty) * parseInt(object?.price);
+    }, 0);
+    setSubTotal(updatedSubtotal);
+
+    const updatedGrandTotal = updatedSubtotal + shipping;
+    setGrandTotal(updatedGrandTotal);
+  };
+
+  const handleSubtractQuantity = (itemId) => {
+    const updatedItems = cart.items.map((item) => {
+      if (item.id === itemId) {
+        return {
+          ...item,
+          qty: item.qty - 1,
+        };
+      }
+      return item;
+    });
+
+    setCart((prevCart) => ({
+      ...prevCart,
+      items: updatedItems,
+    }));
+
+    // Update subtotal, shipping and grand total
+    const updatedSubtotal = updatedItems.reduce((accumulator, object) => {
+      return accumulator + parseInt(object?.qty) * parseInt(object?.price);
+    }, 0);
+    setSubTotal(updatedSubtotal);
+
+    const updatedGrandTotal = updatedSubtotal + shipping;
+    setGrandTotal(updatedGrandTotal);
+  };
+
   return (
     <Section>
       <Navbar />
@@ -61,15 +113,28 @@ const Cart = (props) => {
           <CartDiv>
             <CartContainer>
               {cart.items.map((item) => {
+                console.log(item);
                 return (
                   <CartItem checkout={checkout}>
                     <CartItemImgContainer>
-                      <CartItemImg
-                        src={require(`../../designAssets/Utensils/${item?.image}.png`)}
-                      />
+                      <CartItemImg src={item.image} />
                     </CartItemImgContainer>
                     <CartItemName>{item.name}</CartItemName>
-                    <CartItemQuantity>- {item.qty} +</CartItemQuantity>
+                    <CartItemQuantity>
+                      <span
+                        onClick={() => handleSubtractQuantity(item.id)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        -
+                      </span>{" "}
+                      {item.qty}{" "}
+                      <span
+                        onClick={() => handleIncreaseQuantity(item.id)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        +
+                      </span>
+                    </CartItemQuantity>
                     <CartItemPrice> {item.price} </CartItemPrice>
                   </CartItem>
                 );
@@ -79,16 +144,19 @@ const Cart = (props) => {
 
           <CartLowerDivContainer checkout={checkout}>
             <CartLowerDiv>
-              <CartItem lower={true} checkout={checkout}>
-                <CartItemName>Subtotal {subtotal}$</CartItemName>
+              <CartItem lower={false} checkout={checkout}>
+                <CartItemName>Subtotal</CartItemName>
+                <CartItemName>{subtotal}$</CartItemName>
               </CartItem>
 
-              <CartItem lower={true} checkout={checkout}>
-                <CartItemName>Shipping {shipping}$</CartItemName>
+              <CartItem lower={false} checkout={checkout}>
+                <CartItemName>Shipping</CartItemName>
+                <CartItemName>{shipping}$</CartItemName>
               </CartItem>
 
-              <CartItem lower={true} checkout={checkout}>
-                <CartItemName>Grand Total {grandtotal}$</CartItemName>
+              <CartItem lower={false} checkout={checkout}>
+                <CartItemName>Grand Total</CartItemName>
+                <CartItemName>{grandtotal}$</CartItemName>
               </CartItem>
 
               <div
@@ -203,7 +271,7 @@ const CartItem = styled.div`
   height: 4rem;
   display: flex;
   align-items: center;
-  justify-content: ${(props) => (props.lower ? "flex-end" : "space-between")};
+  justify-content: ${(props) => (props.lower ? "flex-start" : "space-between")};
   border: none;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   padding: ${(props) =>
@@ -241,6 +309,7 @@ const CartItemQuantity = styled.h3`
   font-weight: 400;
   text-align: center;
   width: 20%;
+  user-select: none;
 `;
 
 const CartLowerDivContainer = styled.div`

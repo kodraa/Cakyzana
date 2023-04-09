@@ -39,54 +39,16 @@ function TheClasses() {
       .then(() => {
         mappedElements = classes.map((item) => {
           console.log("item", item.id);
+          console.log("image", item.image);
           return (
             <React.Fragment key={item.id}>
               <SwiperSlide>
                 <DescriptionCard
                   isInCarousel
                   classTitle={item.title}
-                  // imagesrc={item.image}
+                  imagesrc={item?.image}
                   // imagesrc={cake1}
-                  // imagesrc={item.imagesrc}
-                  number={2}
-                  classDur={item.duration}
-                  descr={item.description}
-                  to={`/singleClass/${item.id}`}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DescriptionCard
-                  isInCarousel
-                  classTitle={item.title}
-                  // imagesrc={item.image}
-                  // imagesrc={cake1}
-                  // imagesrc={item.imagesrc}
-                  number={2}
-                  classDur={item.duration}
-                  descr={item.description}
-                  to={`/singleClass/${item.id}`}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DescriptionCard
-                  isInCarousel
-                  classTitle={item.title}
-                  // imagesrc={item.image}
-                  // imagesrc={cake1}
-                  // imagesrc={item.imagesrc}
-                  number={2}
-                  classDur={item.duration}
-                  descr={item.description}
-                  to={`/singleClass/${item.id}`}
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <DescriptionCard
-                  isInCarousel
-                  classTitle={item.title}
-                  // imagesrc={item.image}
-                  // imagesrc={cake1}
-                  // imagesrc={item.imagesrc}
+                  // imagesrc={item?.imagesrc}
                   number={2}
                   classDur={item.duration}
                   descr={item.description}

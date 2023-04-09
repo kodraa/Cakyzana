@@ -51,8 +51,8 @@ const DescriptionCard = (props) => {
             </CardText2>
           </CardBodyText>
           <CardButtonDiv>
-            {/* <CardButton buttonBgColor={props.buttonBgColor}>Buy Now</CardButton> */}
-            <CardButton buttonBgColor={props.buttonBgColor} to={props.to}>
+            {/* <CardButton buttonbgcolor={props.buttonbgcolor}>Buy Now</CardButton> */}
+            <CardButton buttonbgcolor={props.buttonbgcolor} to={props.to}>
               View More
             </CardButton>
           </CardButtonDiv>
@@ -184,7 +184,7 @@ const CardButtonDiv = styled.div`
 //   text-align: center;
 //   padding: 2.5%;
 //   background-color: ${(props) =>
-//     props.buttonBgColor ? props.buttonBgColor : CONSTANTS.pink};
+//     props.buttonbgcolor ? props.buttonbgcolor : CONSTANTS.pink};
 //   color: white;
 //   border-radius: 32px;
 //   border: none;
@@ -199,7 +199,7 @@ const CardButton = styled(Link)`
   text-align: center;
   padding: 2.5%;
   background-color: ${(props) =>
-    props.buttonBgColor ? props.buttonBgColor : CONSTANTS.pink};
+    props.buttonbgcolor ? props.buttonbgcolor : CONSTANTS.pink};
   color: white;
   border-radius: 32px;
   border: none;

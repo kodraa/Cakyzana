@@ -243,7 +243,7 @@ function CategoryComponent(props) {
                           classSection={item.classSection}
                           classDur={item.duration}
                           descr={item.description}
-                          buttonBgColor={titles[capitalizedCategory].color}
+                          buttonbgcolor={titles[capitalizedCategory].color}
                         />
                       </SwiperSlide>
                     );

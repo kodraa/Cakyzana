@@ -11,10 +11,12 @@ import { CartContext, ModalContext } from "./context";
 import CartPage from "./components/Cart/CartPage";
 import Classes from "./components/Classes/Classes";
 import ClassCategory from "./components/ClassCategory/ClassCategory";
-import AuthProvider from "./AuthContext";
 import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
 import Watch from "./components/Watching/Watch";
+import TestGpt from "./TestGpt";
+import { AuthProvider } from "./AuthContext";
+import Profile from "./Profile/Profile";
 
 // todo profile
 
@@ -31,7 +33,7 @@ const router = createBrowserRouter([
   //   path: "/video",
   //   element: <WatchVideo />,
   //  },
-   {
+  {
     path: "/watching",
     element: <Watch />,
   },
@@ -50,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "signup",
     element: <SignUp />,
+  },
+  {
+    path: "profile",
+    element: <Profile />,
   },
   {
     path: "/utensil/:id",
@@ -79,6 +85,10 @@ const router = createBrowserRouter([
     path: "/multipleRow",
     element: <MultipleRowComponent />,
   },
+  {
+    path: "/testGpt",
+    element: <TestGpt />,
+  },
 ]);
 
 function App() {
@@ -89,11 +99,11 @@ function App() {
 
   return (
     <>
-      {/* <AuthProvider> */}
-      <CartContext.Provider value={[cart, setCart]}>
-        <RouterProvider router={router} />
-      </CartContext.Provider>
-      {/* </AuthProvider> */}
+      <AuthProvider>
+        <CartContext.Provider value={[cart, setCart]}>
+          <RouterProvider router={router} />
+        </CartContext.Provider>
+      </AuthProvider>
     </>
   );
 }

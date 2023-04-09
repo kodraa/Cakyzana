@@ -24,6 +24,7 @@ function SingleUntensil() {
 
   const handleAddToCart = () => {
     let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
+    console.log("total_item", total_item);
 
     total_item = total_item.length > 0 ? total_item[0].qty : 0;
 

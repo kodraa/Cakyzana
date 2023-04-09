@@ -7,7 +7,12 @@ import WhiteLogo from "../../designAssets/Navbar/White Navbar Logo.png";
 import BlackLogo from "../../designAssets/Navbar/Black Navbar Logo.png";
 import { CartContext } from "../../context";
 import { CONSTANTS } from "../../global";
+import { AuthContext } from "../../AuthContext";
+
 function Navbar(props) {
+
+  const { currentUser } = useContext(AuthContext);
+
   const [cart, setCart] = useContext(CartContext);
   return (
     <Header isRelative={props.isRelative}>
@@ -17,11 +22,7 @@ function Navbar(props) {
         </Link>
       </LogoContainer>
       <NavLinksContainer>
-        <Link
-          to="/"
-          style={styles.Link}
-          className={props.isWhite && "white"}
-        >
+        <Link to="/" style={styles.Link} className={props.isWhite && "white"}>
           <NavLink className={props.isWhite && "white"}>Home</NavLink>
         </Link>
         <Link
@@ -36,7 +37,14 @@ function Navbar(props) {
             Utensils
           </NavLink>
         </Link>
-        <Link to="/login" style={styles.Link}>
+        <NavLink
+          className={(props.isHalfWhite || props.isWhite) && "white"}
+          onClick={() => console.log("currentUser", currentUser)}
+        >
+          Auth Log
+        </NavLink>
+        <Link 
+          to={!currentUser ? "/login" : "/profile"} style={styles.Link}>
           <NavLink className={(props.isHalfWhite || props.isWhite) && "white"}>
             LogIn
           </NavLink>
@@ -61,7 +69,7 @@ export default Navbar;
 const Header = styled.header`
   height: 70px;
   width: 87%;
-  position: ${props => props.isRelative ? "relative" : "absolute"};
+  position: ${(props) => (props.isRelative ? "relative" : "absolute")};
   top: 20px;
   left: 50%;
   transform: translateX(-50%);

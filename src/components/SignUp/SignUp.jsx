@@ -35,6 +35,8 @@ function SignUp() {
           birthDate: userInfo.birthDate,
           phoneNumber: userInfo.phoneNumber,
           gender: userInfo.gender,
+          favClasses: [],
+          favUtensils: [],
         });
       })
       .then(() => {

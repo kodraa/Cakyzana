@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState, useEffect } from "react";
 import { CONSTANTS, BasicContentDiv } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
@@ -11,13 +11,15 @@ import cake4 from "../../../designAssets/Homepage/ThisMonth/cake4.png";
 import cake5 from "../../../designAssets/Homepage/ThisMonth/cake5.png";
 import ArrowLeft from "../../../designAssets/Homepage/ThisMonth/ArrowLeft.png";
 import ArrowRight from "../../../designAssets/Homepage/ThisMonth/ArrowRight.png";
+import { db } from "../../../firebase";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, EffectCoverflow } from "swiper";
-
 import "swiper/css";
 import "swiper/swiper-bundle.css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
+
+let mappedElements;
 
 function ThisMonth(props) {
   const [counter0, setCounter0] = useState(0);
@@ -25,6 +27,25 @@ function ThisMonth(props) {
   const [counter2, setCounter2] = useState(2);
   const [counter3, setCounter3] = useState(3);
   const [counter4, setCounter4] = useState(4);
+  const [workshops, setWorkshops] = useState([]);
+
+  useEffect(() => {
+    db.collection("Workshops")
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          workshops.push({ id: doc.id, ...doc.data() });
+        });
+      })
+      .then(() => {
+        console.log("workshops", workshops);
+      })
+      .then(() => {
+        mappedElements = workshops.map((item) => {
+          console.log("item", item.id);
+        });
+      });
+  }, []);
 
   const sliderRef = useRef(null);
   const handlePrev = useCallback(() => {
@@ -88,6 +109,7 @@ function ThisMonth(props) {
   // todo make workshops dynamic, have an attribute in its table that says if it's featured or not
 
   return (
+    // TDDO: make the workshops dynamic.
     <Section isGrey={props.isGrey}>
       {/* <button onClick={() => setCounter(counter-1)}>minus</button> */}
       <EngArTitle

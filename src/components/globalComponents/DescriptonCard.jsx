@@ -1,14 +1,101 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { CONSTANTS } from "../../global";
 // import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthContext";
+// import { db } from "../../firebase";
+import firebase from "firebase/compat/app";
 
 const DescriptionCard = (props) => {
-  console.log("item.imagesrc", props.imagesrc);
   const [isLiked, setIsLiked] = useState(false);
+
+  const { userData, userRef } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (userData?.favClasses) {
+      setIsLiked(userData.favClasses.includes(props.id));
+    }
+  },[])
+
+  // const handleFavorite = () => {
+  //   userRef
+  //     .update({
+  //       favClasses: firebase.firestore.FieldValue.arrayUnion(props.id),
+  //     })
+  //     .then(() => {
+  //       console.log(
+  //         `Class ${props.id} added to favorites for user ${userData.id}`
+  //       );
+  //     })
+  //     .then(() => {
+  //       setIsLiked(true);
+  //     })
+  //     .catch((error) => {
+  //       console.error(
+  //         `Error adding class ${props.id} to favorites for user ${userData.id}:`,
+  //         error
+  //       );
+  //     });
+  // };
+
+  // console.log("favClasses", favClasses)
+  const handleFavorite = () => {
+    userRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const favClasses = doc.data().favClasses;
+          console.log("favClasses", favClasses);
+          if (Array.isArray(favClasses) && favClasses.includes(props.id)) {
+            userRef
+              .update({
+                favClasses: favClasses.filter((id) => id !== props.id),
+              })
+              .then(() => {
+                console.log(
+                  `Class ${props.id} removed from favorites for user ${userData.id}`
+                );
+              })
+              .then(() => {
+                setIsLiked(false);
+              })
+              .catch((error) => {
+                console.error(
+                  `Error removing class ${props.id} from favorites for user ${userData.id}:`,
+                  error
+                );
+              });
+          } else {
+            userRef
+              .update({
+                favClasses: firebase.firestore.FieldValue.arrayUnion(props.id),
+              })
+              .then(() => {
+                console.log(
+                  `Class ${props.id} added to favorites for user ${userData.id}`
+                );
+              })
+              .then(() => {
+                setIsLiked(true);
+              })
+              .catch((error) => {
+                console.error(
+                  `Error adding class ${props.id} to favorites for user ${userData.id}:`,
+                  error
+                );
+              });
+          }
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  };
 
   return (
     <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
@@ -18,7 +105,9 @@ const DescriptionCard = (props) => {
             <FaRegHeart
               size={25}
               style={{ marginRight: "25px" }}
-              onClick={() => setIsLiked((prev) => !prev)}
+              onClick={() => {
+                handleFavorite();                
+              }}
             />
           ) : (
             <FaHeart
@@ -28,7 +117,9 @@ const DescriptionCard = (props) => {
                 marginRight: "25px",
               }}
               size={25}
-              onClick={() => setIsLiked((prev) => !prev)}
+              onClick={() => {
+                handleFavorite();
+              }}
             />
           )}
         </CardIconDiv>

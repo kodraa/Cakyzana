@@ -10,6 +10,8 @@ import { Link, redirect } from "react-router-dom";
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
+  console.log("item.imagesrc", props.imagesrc);
+
   return (
     <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
       <CardBody>
@@ -33,7 +35,8 @@ const Card = (props) => {
           )}
         </CardIconDiv>
 
-        <CardImage src={cake}></CardImage>
+        {/* <CardImage src={cake}></CardImage> */}
+        <CardImage src={props.imagesrc}></CardImage>
 
         <CardTitle>
           <BoldText>{props.classTitle}</BoldText>
@@ -45,7 +48,7 @@ const Card = (props) => {
         </CardText>
         <CardText>
           <BoldText>Class Duration: </BoldText>
-          <CardText>{props.classDur} mins</CardText>
+          <CardText>{props.classDur}</CardText>
         </CardText>
         <PriceText>Price: ${props.price}</PriceText>
         <CardButtonDiv>
@@ -89,7 +92,7 @@ const CardImage = styled.div`
   aspect-ratio: 0.74 / 1;
   /* object-fit: contain; */
   background-size: contain;
-  background-image: url(${(props) => props.src});
+  background-image: url("${(props) => props.src}");
   /* background-color: red; */
   background-repeat: no-repeat;
   background-position: center;
@@ -115,10 +118,10 @@ const CardContainer = styled.div`
   color: ${CONSTANTS.grayblack};
   transition: all 0.8s ease;
 
-  &:hover {
+  /* &:hover {
     transform: scale(1.1);
     transition: all 0.8s ease;
-  }
+  } */
 `;
 
 const CardIconDiv = styled.div`
@@ -127,6 +130,7 @@ const CardIconDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  /* background-color: red; */
 `;
 
 const CardTitle = styled.h4`

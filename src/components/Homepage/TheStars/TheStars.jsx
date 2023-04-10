@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { CONSTANTS, BasicContentDiv } from "../../../global";
 import EngArTitle from "../../globalComponents/EngArTitle";
 import Section from "../../globalComponents/Section";
@@ -11,44 +11,46 @@ import CarouselComponent from "../../globalComponents/CarouselComponent";
 let mappedElements;
 // import Card from "./CardTheStars";
 function EducateSection(props) {
+  const [classesData, setClassesData] = useState([]);
   let topClasses = [];
 
-  db.collection("Classes")
-    .orderBy("numberSold", "desc")
-    .limit(3)
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        topClasses.push({ id: doc.id, ...doc.data() });
+  useEffect(() => {
+    db.collection("Classes")
+      .orderBy("numberSold", "desc")
+      .limit(3)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          topClasses.push({ id: doc.id, ...doc.data() });
+        });
+        console.log("topClasses", topClasses);
+      })
+      .then(() => {
+        setClassesData(topClasses);
+      })
+      .then(() => {
+        mappedElements = topClasses.map((item) => {
+          console.log("item", item.id);
+          return (
+            // <SwiperSlide>
+            <SwiperSlide key={item?.id}>
+              <Card
+                isGrey
+                isInCarousel
+                imagesrc={item?.image}
+                classTitle={item?.title}
+                classDur={item?.duration}
+                price={item?.price}
+              />
+            </SwiperSlide>
+          );
+        });
+      })
+      .catch((error) => {
+        console.error(error);
       });
-      console.log("topClasses", topClasses);
-    })
-    .then(() => {
-      mappedElements = topClasses.map((item) => {
-        console.log("item", item);
-        return (
-          <SwiperSlide>
-            {/* <Card
-              isGrey
-              isInCarousel
-              classTitle={item.title}
-              classDur={item.duration}
-              price={item.price}
-            /> */}
-            <div
-              style={{
-                height: "100px",
-                width: "100px",
-                backgroundColor: "red",
-              }}
-            ></div>
-          </SwiperSlide>
-        );
-      });
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+  }, []);
+
   const title = (
     <EngArTitle
       english={"The Stars"}
@@ -60,26 +62,9 @@ function EducateSection(props) {
   );
   // TODO: fix the carousel
 
-  mappedElements = [
-    <SwiperSlide>
-      <Card
-        isInCarousel
-        classTitle="Canvas Your Cake"
-        classDur="75"
-        price="40"
-      />
-    </SwiperSlide>,
-    <SwiperSlide>
-      <Card isInCarousel classTitle="Crystal Effect" classDur="50" price="25" />
-    </SwiperSlide>,
-    <SwiperSlide>
-      <Card isInCarousel classTitle="Space Effect" classDur="30" price="36" />
-    </SwiperSlide>,
-  ];
-
   return (
     <>
-      <CarouselComponent isGrey title={title} mappedElements={mappedElements} />
+      <CarouselComponent title={title} mappedElements={mappedElements} />
       {/* </Section> */}
     </>
   );

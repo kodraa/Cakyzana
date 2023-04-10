@@ -42,7 +42,7 @@ function ThisMonth(props) {
       })
       .then(() => {
         mappedElements = workshops.map((item) => {
-          console.log("item", item.id);
+          // console.log("item", item.id);
         });
       });
   }, []);

@@ -19,8 +19,9 @@ import { db } from "../../../firebase";
 let mappedElements;
 
 // todo lessen height and width for hover scale issues, and add auto generated class id to the to attribute
+// todo form for booking a seat
 
-function TheClasses() {
+function TheClasses() {  
   const classes = [];
   const [classesData, setClassesData] = useState([]);
 
@@ -38,28 +39,25 @@ function TheClasses() {
       })
       .then(() => {
         mappedElements = classes.map((item) => {
-          console.log("item", item.id);
-          console.log("image", item.image);
           return (
-            <React.Fragment key={item.id}>
-              <SwiperSlide>
-                <DescriptionCard
-                  isInCarousel
-                  classTitle={item?.title}
-                  imagesrc={item?.image}
-                  // imagesrc={cake1}
-                  // imagesrc={item??.imagesrc}
-                  number={2}
-                  classDur={item?.duration}
-                  descr={item?.description}
-                  to={`/singleClass/${item?.id}`}
-                />
-              </SwiperSlide>
-            </React.Fragment>
+            <SwiperSlide key={item?.id}>
+              <DescriptionCard
+                isInCarousel
+                id={item?.id}
+                classTitle={item?.title}
+                imagesrc={item?.image}
+                // imagesrc={cake1}
+                // imagesrc={item??.imagesrc}
+                number={2}
+                classDur={item?.duration}
+                descr={item?.description}
+                to={`/singleClass/${item?.id}`}
+              />
+            </SwiperSlide>
           );
         });
       });
-  }, []);
+  }, []);  
 
   const title = (
     <EngArTitle

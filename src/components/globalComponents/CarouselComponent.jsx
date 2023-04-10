@@ -101,6 +101,7 @@ function CarouselComponent({ title, mappedElements, isGrey }) {
               })} */}
               {mappedElements}
             </Swiper>
+              {/* <button onClick={() => console.log(mappedElements)}>log elements</button> */}
             <Arrow
               className="right-arrow"
               // onClick={handleNext}

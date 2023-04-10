@@ -6,15 +6,17 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [userData, setUserData] = useState(null);
+  const [userRef, setUserRef] = useState(null);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
 
       if (user) {
-        const userRef = db.collection("Users").doc(user.uid);
+        const currentUserRef = db.collection("Users").doc(user.uid);
+        setUserRef(currentUserRef);
 
-        userRef.get().then((doc) => {
+        currentUserRef.get().then((doc) => {
           if (doc.exists) {
             setUserData({ id: doc.id, ...doc.data()});
           } else {
@@ -26,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, userData }}>
+    <AuthContext.Provider value={{ currentUser, userData, userRef }}>
       {children}
     </AuthContext.Provider>
   );

@@ -7,7 +7,7 @@ import {
   Btn,
   ModalFooter,
   ModalHeader,
-  Title
+  Title,
 } from "./modal.styles";
 import { Link } from "react-router-dom";
 const Modal = ({ title, footer, active, hideModal, item }) => {
@@ -21,21 +21,15 @@ const Modal = ({ title, footer, active, hideModal, item }) => {
               <Title>{item.name}</Title>
             </ModalHeader>
             <ModalBody>
-              <ModalImage
-                // src={require(`../../designAssets/Utensils/${item?.image}.png`)}
-                alt="utensil"
-              />
+              <ModalImage src={item.image} alt="utensil" />
               <div>
                 <h4>Quantity: 1</h4>
                 <h4>Price: {item.price}</h4>
               </div>
-
             </ModalBody>
             <ModalFooter>
               <Link to="/cart">
-            <Btn>
-              View Cart
-              </Btn>
+                <Btn>View Cart</Btn>
               </Link>
             </ModalFooter>
           </ModalContainer>

@@ -110,7 +110,8 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${(props) => props.isGrey ? CONSTANTS.graywhite : "white"};
+  background-color: ${(props) =>
+    props.isGrey ? CONSTANTS.graywhite : "white"};
   color: ${CONSTANTS.grayblack};
   transition: all 0.8s ease;
 
@@ -126,7 +127,6 @@ const CardIconDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: red;
 `;
 
 const CardTitle = styled.h4`

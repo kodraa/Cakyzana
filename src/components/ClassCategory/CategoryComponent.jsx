@@ -109,7 +109,6 @@ const titles = {
 // todo fix title spacing
 
 function CategoryComponent(props) {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   });
@@ -182,7 +181,7 @@ function CategoryComponent(props) {
           </CardWrapper>
         </ContentDiv> */}
         {titles[capitalizedCategory].title}
-        
+
         {newClasses.map((item, index) => {
           const row = Math.floor(index / 3);
           const bgColor = row % 2 === 0 ? "white" : CONSTANTS.graywhite;

@@ -7,6 +7,7 @@ import { FaFontAwesome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const DescriptionCard = (props) => {
+  console.log("item.imagesrc", props.imagesrc);
   const [isLiked, setIsLiked] = useState(false);
 
   return (
@@ -119,13 +120,15 @@ const CardImage = styled.div`
   width: 60%;
   aspect-ratio: 0.74 / 1;
   /* object-fit: contain; */
-  background-size: contain;
-  background-image: url(${(props) => props.src});
-  /* background-color: red; */
-  background-repeat: no-repeat;
-  background-position: center;
+  background: url("${(props) => props.src}") center/contain no-repeat;
 `;
+// background-size: contain;
+// background-image: url(${(props) => props.src});
+// /* background-color: red; */
+// background-repeat: no-repeat;
+// background-position: center;
 
+// background-image: url(${(props) => props.imagesrc});
 // const CardImage = styled.img`
 //   width: 50%;
 //   height: auto;

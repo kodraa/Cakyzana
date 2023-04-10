@@ -10,7 +10,7 @@ import Cake from "../../designAssets/Star/Sample Cake.png";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { CartContext } from "../../context";
-import Modal from "../Modal_Cart"
+import Modal from "../Modal_Cart";
 
 // TODO add to cart functionality
 
@@ -86,7 +86,7 @@ function SingleClass() {
       <StarFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
-            <Img src={Cake} alt="cake" />
+            <Img src={itemData?.image} alt="cake" />
           </LeftChildImgContainer>
         </LeftFlexChild>
 
@@ -106,9 +106,7 @@ function SingleClass() {
               fondant. It includes color combination and character drawing
               technique.
             </Paragraph> */}
-            <Paragraph>
-              Description: {itemData?.description}
-            </Paragraph>
+            <Paragraph>Description: {itemData?.description}</Paragraph>
           </DescriptionContainer>
 
           <ToolsContainer>
@@ -116,9 +114,7 @@ function SingleClass() {
               Tools Needed: Brushes, Butter cream, food coloring of your choice,
               coloring tray, fondant, reference image.
             </Paragraph> */}
-            <Paragraph>
-              Tools Needed: {itemData?.tools}
-            </Paragraph>
+            <Paragraph>Tools Needed: {itemData?.tools}</Paragraph>
           </ToolsContainer>
 
           <PrerequisitesContainer>

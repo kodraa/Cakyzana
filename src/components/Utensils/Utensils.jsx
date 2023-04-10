@@ -18,8 +18,6 @@ import DescriptionCard from "../globalComponents/DescriptonCard";
 import UtensilCard from "../globalComponents/UtensilCard";
 import { classesCategories } from "../../data/classes";
 
-
-
 export const utensilsArray = [
   {
     id: 1,
@@ -203,65 +201,68 @@ export const utensilsArray = [
   },
 ];
 
+const titles = {
+  ForCakes: (
+    <EngArTitle
+      english={"For Cakes"}
+      arabic={"الشكل تحت السيطرة"}
+      bottom={"-75%"}
+      right={"-155%"}
+      arColor={CONSTANTS.pink}
+    />
+  ),
+  ForCoverage: (
+    <EngArTitle
+      english={"For Coverage"}
+      arabic={"متل الكوي والمسح والتعزيل"}
+      bottom={"-75%"}
+      right={"-155%"}
+      arColor={CONSTANTS.blue}
+    />
+  ),
+  ForFondants: (
+    <EngArTitle
+      english={"For Fondants"}
+      arabic={"لعجينة السّكر يا سكّر "}
+      bottom={"-85%"}
+      right={"-110%"}
+      arColor={CONSTANTS.blue}
+    />
+  ),
+  ForMeasuring: (
+    <EngArTitle
+      english={"For Measuring"}
+      arabic={"عالعيار او بتخبص"}
+      bottom={"-60%"}
+      right={"-85%"}
+      arColor={CONSTANTS.blue}
+    />
+  ),
+  ForPiping: (
+    <EngArTitle
+      english={" For Piping"}
+      arabic={"للتزين يا عيني "}
+      bottom={"-60%"}
+      right={"-85%"}
+      arColor={CONSTANTS.pink}
+    />
+  ),
+};
+
 function Utensils() {
   const [utensilList, setUtensilList] = useState([]);
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     getUtensils();
-    db.collection("utensils").where("category", "==", "ForCakes").get().then((querySnapshot) => {
-      const data = querySnapshot.docs.map((doc) => doc.data());
-      console.log(data);
-    });
+    db.collection("utensils")
+      .where("category", "==", "ForCakes")
+      .get()
+      .then((querySnapshot) => {
+        const data = querySnapshot.docs.map((doc) => doc.data());
+        console.log(data);
+      });
   }, []);
-
-  const titles = {
-    ForCakes: (
-      <EngArTitle
-        english={"For Cakes"}
-        arabic={"الشكل تحت السيطرة"}
-        bottom={"-75%"}
-        right={"-155%"}
-        arColor={CONSTANTS.pink}
-      />
-    ),
-    ForCoverage: (
-      <EngArTitle
-        english={"For Coverage"}
-        arabic={"متل الكوي والمسح والتعزيل"}
-        bottom={"-75%"}
-        right={"-155%"}
-        arColor={CONSTANTS.blue}
-      />
-    ),
-    ForFondants: (
-      <EngArTitle
-        english={"For Fondants"}
-        arabic={"لعجينة السّكر يا سكّر "}
-        bottom={"-85%"}
-        right={"-110%"}
-        arColor={CONSTANTS.blue}
-      />
-    ),
-    ForMeasuring: (
-      <EngArTitle
-        english={"For Measuring"}
-        arabic={"عالعيار او بتخبص"}
-        bottom={"-60%"}
-        right={"-85%"}
-        arColor={CONSTANTS.blue}
-      />
-    ),
-    ForPiping: (
-      <EngArTitle
-        english={" For Piping"}
-        arabic={"للتزين يا عيني "}
-        bottom={"-60%"}
-        right={"-85%"}
-        arColor={CONSTANTS.pink}
-      />
-    ),
-  };
 
   const getUtensils = () => {
     const AllUtensils = [];
@@ -288,7 +289,7 @@ function Utensils() {
       });
   };
 
-  console.log(categories);
+  // console.log(categories);
 
   // function groupUtensilsByCategory([...utensilsParameter]) {
   function groupUtensilsByCategory(utensilsParameter = []) {

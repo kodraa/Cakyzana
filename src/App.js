@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Home from "./components/Homepage/Home";
 import TestCarousel from "./components/Homepage/Classes/TestCarousel";
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
@@ -15,7 +15,7 @@ import TestDynamicCarousel from "./TestDynamicCarousel";
 import MultipleRowComponent from "./components/globalComponents/MultipleRowComponent";
 import Watch from "./components/Watching/Watch";
 import TestGpt from "./TestGpt";
-import { AuthProvider } from "./AuthContext";
+import { AuthContext, AuthProvider } from "./AuthContext";
 import Profile from "./Profile/Profile";
 
 // todo profile
@@ -92,6 +92,8 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+
+
   const [cart, setCart] = useState({
     total: 0,
     items: [],

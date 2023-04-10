@@ -9,7 +9,7 @@ function TestGpt() {
 
   const gpt = new EasyGpt();
 
-  gpt.setApiKey("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");
+  gpt.setApiKey("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");
 
   const ask = async () => {
     setIsAsking(true);

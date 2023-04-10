@@ -63,10 +63,10 @@ const titles = {
         arabic={"بتغمر الكيك غمر"}
         bottom={"-60%"}
         right={"-85%"}
-        arColor={CONSTANTS.pink}
+        arColor={CONSTANTS.purpleDark}
       />
     ),
-    color: CONSTANTS.pink,
+    color: CONSTANTS.purpleDark,
   },
   Ganache: {
     title: (
@@ -113,8 +113,6 @@ function CategoryComponent(props) {
   useEffect(() => {
     window.scrollTo(0, 0);
   });
-
-  // todo get id from url and get item from db
 
   const { category } = useParams();
   const capitalizedCategory =

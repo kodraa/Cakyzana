@@ -11,7 +11,7 @@ import SignUp from '../SignUp/SignUp'
 function Home() {
   return (
     <>
-        <Navbar isHalfWhite isLogoWhite isCartWhite/>
+        <Navbar isHalfWhite isLogoWhite isCartWhite isWhite={window.innerWidth < 768} />
         <Landing />
         <ThisMonth  />
         <Classes isGrey isWhite/>

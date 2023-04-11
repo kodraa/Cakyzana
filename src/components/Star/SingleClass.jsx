@@ -97,7 +97,7 @@ function SingleClass() {
           <StarSubtitles>
             {/* <Subtitle>Class Section: Cake Recipes</Subtitle> */}
             <Subtitle>Class Section: {itemData?.classSection}</Subtitle>
-            <Subtitle>Class Duration: 75 mins</Subtitle>
+            <Subtitle>Class Duration: {itemData?.duration}</Subtitle>
           </StarSubtitles>
 
           <DescriptionContainer>
@@ -251,5 +251,6 @@ const CTABtn = styled.button`
   border-radius: 32px;
   border: none;
   font-size: 1.2rem;
+  cursor: pointer;
   /* margin-top: 1rem; */
 `;

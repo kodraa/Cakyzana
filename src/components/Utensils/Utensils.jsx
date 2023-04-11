@@ -18,6 +18,8 @@ import DescriptionCard from "../globalComponents/DescriptonCard";
 import UtensilCard from "../globalComponents/UtensilCard";
 import { classesCategories } from "../../data/classes";
 
+// todo swiper in landing,
+
 export const utensilsArray = [
   {
     id: 1,
@@ -202,67 +204,71 @@ export const utensilsArray = [
 ];
 
 const titles = {
-  ForCakes: (
-    <EngArTitle
-      english={"For Cakes"}
-      arabic={"الشكل تحت السيطرة"}
-      bottom={"-75%"}
-      right={"-155%"}
-      arColor={CONSTANTS.pink}
-    />
-  ),
-  ForCoverage: (
-    <EngArTitle
-      english={"For Coverage"}
-      arabic={"متل الكوي والمسح والتعزيل"}
-      bottom={"-75%"}
-      right={"-155%"}
-      arColor={CONSTANTS.blue}
-    />
-  ),
-  ForFondants: (
-    <EngArTitle
-      english={"For Fondants"}
-      arabic={"لعجينة السّكر يا سكّر "}
-      bottom={"-85%"}
-      right={"-110%"}
-      arColor={CONSTANTS.blue}
-    />
-  ),
-  ForMeasuring: (
-    <EngArTitle
-      english={"For Measuring"}
-      arabic={"عالعيار او بتخبص"}
-      bottom={"-60%"}
-      right={"-85%"}
-      arColor={CONSTANTS.blue}
-    />
-  ),
-  ForPiping: (
-    <EngArTitle
-      english={" For Piping"}
-      arabic={"للتزين يا عيني "}
-      bottom={"-60%"}
-      right={"-85%"}
-      arColor={CONSTANTS.pink}
-    />
-  ),
+  ForCakes: {
+    title: (
+      <EngArTitle
+        english={"For Cakes"}
+        arabic={"الشكل تحت السيطرة"}
+        bottom={"-75%"}
+        right={"-155%"}
+        arColor={CONSTANTS.pink}
+      />
+    ),
+    color: CONSTANTS.pink,
+  },
+  ForCoverage: {
+    title: (
+      <EngArTitle
+        english={"For Coverage"}
+        arabic={"متل الكوي والمسح والتعزيل"}
+        bottom={"-75%"}
+        right={"-155%"}
+        arColor={CONSTANTS.blue}
+      />
+    ),
+    color: CONSTANTS.blue
+  },
+  ForFondants: {
+    title: (
+      <EngArTitle
+        english={"For Fondants"}
+        arabic={"لعجينة السّكر يا سكّر "}
+        bottom={"-85%"}
+        right={"-110%"}
+        arColor={CONSTANTS.blue}
+      />
+    ),
+    color: CONSTANTS.blue
+  },
+  ForMeasuring: {
+    title: (
+      <EngArTitle
+        english={"For Measuring"}
+        arabic={"عالعيار او بتخبص"}
+        bottom={"-60%"}
+        right={"-85%"}
+        arColor={CONSTANTS.blue}
+      />
+    ),
+    color: CONSTANTS.blue
+  },
+  ForPiping: {
+    title: (
+      <EngArTitle
+        english={" For Piping"}
+        arabic={"للتزين يا عيني "}
+        bottom={"-60%"}
+        right={"-85%"}
+        arColor={CONSTANTS.purpleSemiActive}
+      />
+    ),
+    color: CONSTANTS.purpleSemiActive
+  },
 };
 
 function Utensils() {
   const [utensilList, setUtensilList] = useState([]);
   const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    getUtensils();
-    db.collection("utensils")
-      .where("category", "==", "ForCakes")
-      .get()
-      .then((querySnapshot) => {
-        const data = querySnapshot.docs.map((doc) => doc.data());
-        console.log(data);
-      });
-  }, []);
 
   const getUtensils = () => {
     const AllUtensils = [];
@@ -335,25 +341,30 @@ function Utensils() {
           Set="4"
           price="40"
         /> */}
-      {categories.map((category) => (
-        <CarouselComponent
-          isGrey
-          title={titles[category.category]}
-          mappedElements={category.items.map((utensil) => {
-            return (
-              <SwiperSlide>
-                <UtensilCard
-                  isGrey
-                  isInCarousel
-                  id={utensil.id}
-                  src={utensil.src}
-                  // cardBgColor={props.cardBgColor}
-                  classTitle={utensil.classTitle}
-                  Description={utensil.Description}
-                  Set="4"
-                  price={utensil.price}
-                />
-                {/* <DescriptionCard
+      {categories.map((category, index) => {
+        const row = Math.floor(index / 3);
+        const bgColor = row % 2 === 0 ? "white" : CONSTANTS.graywhite;
+        const flag = index % 2 === 0;
+        return (
+          <CarouselComponent
+            isGrey={flag}
+            title={titles[category.category].title}
+            mappedElements={category.items.map((utensil) => {
+              return (
+                <SwiperSlide>
+                  <UtensilCard
+                    key={utensil.id}
+                    id={utensil.id}
+                    isGrey={!flag}
+                    isInCarousel
+                    src={utensil.src}
+                    cardBgColor={titles[category.category].color}
+                    classTitle={utensil.classTitle}
+                    Description={utensil.Description}
+                    Set="4"
+                    price={utensil.price}
+                  />
+                  {/* <DescriptionCard
                   isInCarousel
                   key={utensil.id}
                   classTitle={utensil.classTitle}
@@ -364,11 +375,12 @@ function Utensils() {
                   classDur={utensil.classDur}
                   descr={utensil.descr}
                 /> */}
-              </SwiperSlide>
-            );
-          })}
-        />
-      ))}
+                </SwiperSlide>
+              );
+            })}
+          />
+        );
+      })}
 
       <Footer />
     </>

@@ -1,38 +1,111 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components/macro";
 import { CONSTANTS } from "../../global";
 import CardButton from "../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthContext";
+import firebase from "firebase/compat/app";
 
 const UtensilCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
+
+  const { userData, userRef } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (userData?.favUtensils) {
+      setIsLiked(userData.favUtensils.includes(props.id));
+    }
+  }, []);
+
+  const handleFavorite = () => {
+    userRef
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          const favUtensils = doc.data().favUtensils;
+          console.log("favUtensils", favUtensils);
+          if (Array.isArray(favUtensils) && favUtensils.includes(props.id)) {
+            userRef
+              .update({
+                favUtensils: favUtensils.filter((id) => id !== props.id),
+              })
+              .then(() => {
+                console.log(
+                  `Utensil ${props.id} removed from favorites for user ${userData.id}`
+                );
+              })
+              .then(() => {
+                setIsLiked(false);
+              })
+              .catch((error) => {
+                console.error(
+                  `Error removing utensil ${props.id} from favorites for user ${userData.id}:`,
+                  error
+                );
+              });
+          } else {
+            userRef
+              .update({
+                favUtensils: firebase.firestore.FieldValue.arrayUnion(props.id),
+              })
+              .then(() => {
+                console.log(
+                  `Utensil ${props.id} added to favorites for user ${userData.id}`
+                );
+              })
+              .then(() => {
+                setIsLiked(true);
+              })
+              .catch((error) => {
+                console.error(
+                  `Error adding utensil ${props.id} to favorites for user ${userData.id}:`,
+                  error
+                );
+              });
+          }
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  };
 
   return (
     <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
       <CardBody>
         <CardIconDiv>
           {!isLiked ? (
-            <FaRegHeart size={25} style={{ float: "right", marginRight: "25px" }}
-              onClick={(prev) => setIsLiked(!isLiked)} />
-
-
-          ) : (
-
-            <FaHeart
-              style={{ color: "red", border: "none", float: "right", marginRight: "25px" }}
+            <FaRegHeart
               size={25}
-              onClick={(prev) => setIsLiked(!isLiked)}
+              style={{ marginRight: "25px" }}
+              onClick={() => {
+                handleFavorite();
+              }}
+            />
+          ) : (
+            <FaHeart
+              style={{
+                color: "red",
+                border: "none",
+                marginRight: "25px",
+              }}
+              size={25}
+              onClick={() => {
+                handleFavorite();
+              }}
             />
           )}
         </CardIconDiv>
         <CardImage src={props.src} />
         <CardTitle classTitle={props.classTitle}>{props.classTitle}</CardTitle>
         <CardText>
-            <CardTextContent isPadded={props.isPadded}>
-              <BoldText>Description:</BoldText> {props.Description}
-            </CardTextContent>
+          <CardTextContent isPadded={props.isPadded}>
+            <BoldText>Description:</BoldText> {props.Description}
+          </CardTextContent>
           {/* <BoldText>Description:</BoldText> */}
           {/* <CardText Description={props.Description}>{props.Description} </CardText> */}
         </CardText>
@@ -43,9 +116,11 @@ const UtensilCard = (props) => {
         <PriceText price={props.price}>Price: {props.price} $</PriceText>
         <CardButtonDiv>
           <Link id={props.id} to={`/utensil/${props.id}`}>
-            <CardButton cardBgColor={props.cardBgColor} btnText="View More"></CardButton>
+            <CardButton
+              cardBgColor={props.cardBgColor}
+              btnText="View More"
+            ></CardButton>
           </Link>
-
         </CardButtonDiv>
       </CardBody>
     </CardContainer>
@@ -60,18 +135,16 @@ const CardText = styled.span`
   text-align: center;
   padding: 0 7px;
   transition: all 0.5s ease;
+`;
 
-  `;
-  
-  const CardImage = styled.img`
-    width: 70%;
-    margin: 0 auto;
-    height: 40%;
-    object-fit: contain;
-    transition: all 0.5s ease;
+const CardImage = styled.img`
+  width: 70%;
+  margin: 0 auto;
+  height: 40%;
+  object-fit: contain;
+  transition: all 0.5s ease;
+`;
 
-  `;
-  
 const CardContainer = styled.div`
   /* width: 365px;
   height: 600px; */
@@ -83,31 +156,28 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${props => props.isGrey ? 'white' : CONSTANTS.graywhite};
+  background-color: ${(props) =>
+    !props.isGrey ? "white" : CONSTANTS.graywhite};
   color: ${CONSTANTS.grayblack};
   transition: all 0.8s ease;
 
-
-  &:hover   {
+  /* &:hover {
     transform: scale(1.06);
     transition: all 0.7s ease;
-    -webkit-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
-  -moz-box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
-  box-shadow: 1px 12px 12px 1px rgba(0,0,0,0.16);
-  };
+    -webkit-box-shadow: 1px 12px 12px 1px rgba(0, 0, 0, 0.16);
+    -moz-box-shadow: 1px 12px 12px 1px rgba(0, 0, 0, 0.16);
+    box-shadow: 1px 12px 12px 1px rgba(0, 0, 0, 0.16);
+  }
 
-  &:hover ${CardText}{
+  &:hover ${CardText} {
     transform: scale(1);
     transition: all 0.8s ease;
-  };
+  }
 
-  
-  &:hover ${CardImage}{
+  &:hover ${CardImage} {
     transform: scale(1.07);
     transition: all 0.8s ease;
-  };
-
-  
+  } */
 `;
 const CardBody = styled.div`
   width: 100%;
@@ -119,11 +189,21 @@ const CardBody = styled.div`
 
 const CardIconDiv = styled.div`
   width: 100%;
-  position: relative;
-  top: 10;
-  right: 10;
-  margin-top: 2rem
+  /* height: 8%; */
+  height: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* background-color: red; */
 `;
+
+// const CardIconDiv = styled.div`
+//   width: 100%;
+//   position: relative;
+//   top: 10;
+//   right: 10;
+//   margin-top: 2rem;
+// `;
 
 const CardTitle = styled.h4`
   font-size: 24px;
@@ -137,7 +217,7 @@ const CardTitle = styled.h4`
 const CardTextContent = styled.p`
   text-align: center;
   max-width: 100%;
-  padding: ${props => props.isPadded ? '0 12%' : '0'};
+  padding: ${(props) => (props.isPadded ? "0 12%" : "0")};
   margin: 0 0 1rem 0;
 `;
 

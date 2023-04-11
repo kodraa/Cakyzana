@@ -241,6 +241,7 @@ function CategoryComponent(props) {
                           classDur={item.duration}
                           descr={item.description}
                           buttonbgcolor={titles[capitalizedCategory].color}
+                          to={`/singleClass/${item.id}`}
                         />
                       </SwiperSlide>
                     );

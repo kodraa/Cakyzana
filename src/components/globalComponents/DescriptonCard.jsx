@@ -20,28 +20,6 @@ const DescriptionCard = (props) => {
     }
   },[])
 
-  // const handleFavorite = () => {
-  //   userRef
-  //     .update({
-  //       favClasses: firebase.firestore.FieldValue.arrayUnion(props.id),
-  //     })
-  //     .then(() => {
-  //       console.log(
-  //         `Class ${props.id} added to favorites for user ${userData.id}`
-  //       );
-  //     })
-  //     .then(() => {
-  //       setIsLiked(true);
-  //     })
-  //     .catch((error) => {
-  //       console.error(
-  //         `Error adding class ${props.id} to favorites for user ${userData.id}:`,
-  //         error
-  //       );
-  //     });
-  // };
-
-  // console.log("favClasses", favClasses)
   const handleFavorite = () => {
     userRef
       .get()
@@ -96,6 +74,30 @@ const DescriptionCard = (props) => {
         console.log("Error getting document:", error);
       });
   };
+
+  // const handleFavorite = () => {
+  //   userRef
+  //     .update({
+  //       favClasses: firebase.firestore.FieldValue.arrayUnion(props.id),
+  //     })
+  //     .then(() => {
+  //       console.log(
+  //         `Class ${props.id} added to favorites for user ${userData.id}`
+  //       );
+  //     })
+  //     .then(() => {
+  //       setIsLiked(true);
+  //     })
+  //     .catch((error) => {
+  //       console.error(
+  //         `Error adding class ${props.id} to favorites for user ${userData.id}:`,
+  //         error
+  //       );
+  //     });
+  // };
+
+  // console.log("favClasses", favClasses)
+  
 
   return (
     <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>

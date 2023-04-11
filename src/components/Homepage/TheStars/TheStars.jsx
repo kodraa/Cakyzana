@@ -41,6 +41,7 @@ function EducateSection(props) {
                 classTitle={item?.title}
                 classDur={item?.duration}
                 price={item?.price}
+                to={`/singleClass/${item?.id}`}
               />
             </SwiperSlide>
           );

@@ -25,17 +25,19 @@ function Navbar(props) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    auth.signOut().then(() => {
-      console.log("User has been logged out.");
-      setCurrentUser(null);
-      setUserData(null);
-    })
-    .then(() => {
-      navigate("/");
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    auth
+      .signOut()
+      .then(() => {
+        console.log("User has been logged out.");
+        setCurrentUser(null);
+        setUserData(null);
+      })
+      .then(() => {
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -113,9 +115,11 @@ function Navbar(props) {
           <Header isRelative={props.isRelative}>
             <MobileLinksContainer className="left">
               <NavLink onClick={() => setIsMenuOpen((prev) => !prev)}>
+              {/* <NavLink onClick={() => console.log(props.isWhite)}> */}
                 <Img
                   className="bigger"
                   src={props.isWhite ? WhiteBurger : BlackBurger}
+                  // src={WhiteBurger}
                 />
               </NavLink>
               <Dropdown className={isMenuOpen ? "active" : ""}>
@@ -148,7 +152,8 @@ function Navbar(props) {
                       : BlackProfile
                   }
                 />
-                <Dropdown className={isProfileMenuOpen ? "active" : ""}
+                <Dropdown
+                  className={isProfileMenuOpen ? "active" : ""}
                   top={"150%"}
                   left={"-70%"}
                   arrowLeft={"16%"}

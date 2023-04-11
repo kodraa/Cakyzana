@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthContext";
 import { db } from "../firebase";
 import { CONSTANTS, FullScreenSection } from "../global";
 import YourClasses from "./YourClasses";
+import RedeemCode from "./RedeemCode";
 
 
 let mappedElements;
@@ -76,6 +77,7 @@ function Profile() {
         </ContentContainerWrapper>
       </LandingSection>
       <YourClasses />
+      <RedeemCode />
     </>
   );
 }

@@ -10,7 +10,7 @@ import { Link, redirect } from "react-router-dom";
 const Card = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  console.log("item.imagesrc", props.imagesrc);
+  // console.log("item.imagesrc", props.imagesrc);
 
   return (
     <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
@@ -52,7 +52,7 @@ const Card = (props) => {
         </CardText>
         <PriceText>Price: ${props.price}</PriceText>
         <CardButtonDiv>
-          <Link style={{ width: "48%" }} to="/singleClass">
+          <Link style={{ width: "48%" }} to={props.to}>
             <CardButton cardBgColor={CONSTANTS.blue}>View More</CardButton>
           </Link>
         </CardButtonDiv>

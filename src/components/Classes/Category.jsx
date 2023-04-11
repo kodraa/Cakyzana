@@ -72,9 +72,9 @@ const ContentDiv = styled(BasicContentDiv)`
   align-items: center;
 
   @media (max-width: 768px) {
-    height: auto;
+    /* height: auto; */
   }
-`;
+  `;
 
 const ItemsWrapper = styled.div`
   width: 100%;
@@ -88,10 +88,11 @@ const ItemsWrapper = styled.div`
   gap: 8%;
   /* row-gap: 6%; */
   row-gap: 0.7rem;
+  /* background-color: pink; */
 
-  /* @media (max-width: 768px) {
+  @media (max-width: 768px) {
     gap: 10%;
-  } */
+  }
 `;
 
 const CircleLink = styled(Link)`

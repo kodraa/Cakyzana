@@ -226,7 +226,7 @@ const titles = {
         arColor={CONSTANTS.blue}
       />
     ),
-    color: CONSTANTS.blue
+    color: CONSTANTS.blue,
   },
   ForFondants: {
     title: (
@@ -238,7 +238,7 @@ const titles = {
         arColor={CONSTANTS.blue}
       />
     ),
-    color: CONSTANTS.blue
+    color: CONSTANTS.blue,
   },
   ForMeasuring: {
     title: (
@@ -250,7 +250,7 @@ const titles = {
         arColor={CONSTANTS.blue}
       />
     ),
-    color: CONSTANTS.blue
+    color: CONSTANTS.blue,
   },
   ForPiping: {
     title: (
@@ -262,13 +262,17 @@ const titles = {
         arColor={CONSTANTS.purpleSemiActive}
       />
     ),
-    color: CONSTANTS.purpleSemiActive
+    color: CONSTANTS.purpleSemiActive,
   },
 };
 
 function Utensils() {
   const [utensilList, setUtensilList] = useState([]);
   const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getUtensils();
+  }, []);
 
   const getUtensils = () => {
     const AllUtensils = [];

@@ -4,9 +4,16 @@ import { CONSTANTS } from "../../global";
 import Section from "../globalComponents/Section";
 import Navbar from "../globalComponents/Navbar";
 import { CartContext } from "../../context";
+import { AuthContext } from "../../AuthContext";
+import { db, auth } from "../../firebase";
+
+//TODO: Add orders page.
+
 const Cart = (props) => {
+  const { userData } = useContext(AuthContext);
   const [cart, setCart] = useContext(CartContext);
   const [checkout, setCheckout] = useState(false);
+  const [showCongrates, setShowCongrates] = useState(false);
 
   const [subtotal, setSubTotal] = useState(
     cart.items.reduce((accumulator, object) => {
@@ -68,122 +75,262 @@ const Cart = (props) => {
     setGrandTotal(updatedGrandTotal);
   };
 
+  // const handlePlaceOrder = () => {
+  //   const utensils = cart.items
+  //     .filter((item) => item.type === "utensil")
+  //     .map((item) => ({ Item: item, Quantity: item.qty }));
+
+  //   const classes = cart.items
+  //     .filter((item) => item.type === "class")
+  //     .map((item) => ({ Item: item, Quantity: item.qty }));
+
+  //   db.collection("Order")
+  //     .doc()
+  //     .set({
+  //       UserId: userData.id,
+  //       Date: new Date(),
+  //       UserEmail: userData.email,
+  //       classes: classes,
+  //       utensils: utensils,
+  //     })
+  //     .then((docRef) => {
+  //       if (docRef) {
+  //         classes.map((item) => {
+  //           console.log(docRef);
+  //           for (let i = 0; i < item.Quantity; i++) {
+  //             console.log("item", item);
+  //             db.collection("Codes").doc().set({
+  //               UserEmail: userData.email,
+  //               UserId: userData.id,
+  //               DateOfPurchase: new Date(),
+  //               DateOfRedeem: "",
+  //               OrderId: docRef.id,
+  //               Redeemed: false,
+  //               Class: item.Item.title,
+  //               UserRedeemedEmail: "",
+  //             });
+  //           }
+  //         });
+  //       } else {
+  //         console.log("error in doc ref");
+  //       }
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error adding document: ", error);
+  //     });
+
+  //   setCart((prevCart) => ({
+  //     ...prevCart,
+  //     items: [],
+  //   }));
+  // };
+
+  const handlePlaceOrder = async () => {
+    console.log("cart.items", cart.items);
+    const utensils = cart.items
+      .filter((item) => item.type === "utensil")
+      .map((item) => ({ Item: item, Quantity: item.qty }));
+
+    const classes = cart.items
+      .filter((item) => item.type === "class")
+      .map((item) => ({ Item: item, Quantity: item.qty }));
+
+    try {
+      const orderRef = await db.collection("Order").add({
+        UserId: userData.id,
+        Date: new Date(),
+        UserEmail: userData.email,
+        classes: classes,
+        utensils: utensils,
+      });
+
+      const codesPromises = classes.flatMap((item) =>
+        Array.from({ length: item.Quantity }, () => {
+          console.log("item in codes loop", item);
+          db.collection("Codes").add({
+            UserEmail: userData.email,
+            UserId: userData.id,
+            DateOfPurchase: new Date(),
+            DateOfRedeem: "",
+            OrderId: orderRef.id,
+            Redeemed: false,
+            Class: item.Item.id,
+            UserRedeemedEmail: "",
+          });
+        })
+      );
+
+      await Promise.all(codesPromises);
+
+      setCart((prevCart) => ({
+        ...prevCart,
+        items: [],
+      }));
+      console.log("Order added successfully");
+    } catch (error) {
+      console.error("Error adding order: ", error);
+    }
+  };
+
   return (
     <Section>
       <Navbar />
       <Header>{checkout ? "Checkout" : "Your Cart"}</Header>
-      {!checkout ? (
-        <TitleCart checkout={checkout}>
-          <ItemTitle>Item</ItemTitle>
-          <QuantityTitle>Quantity</QuantityTitle>
-          <PriceTitle>Price</PriceTitle>
-        </TitleCart>
-      ) : (
-        <div
-          style={{
-            display: "flex",
-            width: "80%",
-            margin: "auto",
-            flexDirection: "row",
-            alignItems: "right",
-            justifyContent: "flex-end",
-          }}
-        >
-          <h4 style={{ width: "50%", textAlign: "center", padding: 20 }}>
-            Order Summary
-          </h4>
-        </div>
-      )}
+      {cart.items.length > 0 ? (
+        <>
+          {!checkout ? (
+            <TitleCart checkout={checkout}>
+              <ItemTitle>Item</ItemTitle>
+              <QuantityTitle>Quantity</QuantityTitle>
+              <PriceTitle>Price</PriceTitle>
+            </TitleCart>
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                width: "80%",
+                margin: "auto",
+                flexDirection: "row",
+                alignItems: "right",
+                justifyContent: "flex-end",
+              }}
+            >
+              <h4 style={{ width: "50%", textAlign: "center", padding: 20 }}>
+                Order Summary
+              </h4>
+            </div>
+          )}
 
-      <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
-        {checkout && (
-          <div style={{ width: "50%" }}>
-            <InputDiv>
-              <h5>Customer Name</h5>
-            </InputDiv>
-            <InputDivBig>
-              <h5>Address</h5>
-            </InputDivBig>
-            <InputDiv>
-              <h5>Payment</h5>
-            </InputDiv>
-          </div>
-        )}
-        <div style={{ width: checkout ? "50%" : "100%" }}>
-          <CartDiv>
-            <CartContainer>
-              {cart.items.map((item) => {
-                console.log(item);
-                return (
-                  <CartItem checkout={checkout}>
-                    <CartItemImgContainer>
-                      <CartItemImg src={item.image} />
-                    </CartItemImgContainer>
-                    <CartItemName>{item.name}</CartItemName>
-                    <CartItemQuantity>
-                      <span
-                        onClick={() => handleSubtractQuantity(item.id)}
-                        style={{ cursor: "pointer" }}
-                      >
-                        -
-                      </span>{" "}
-                      {item.qty}{" "}
-                      <span
-                        onClick={() => handleIncreaseQuantity(item.id)}
-                        style={{ cursor: "pointer" }}
-                      >
-                        +
-                      </span>
-                    </CartItemQuantity>
-                    <CartItemPrice> {item.price} </CartItemPrice>
+          <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
+            {checkout &&
+              (showCongrates ? (
+                <>
+                  <div
+                    style={{
+                      width: "50%",
+                      backgroundColor: CONSTANTS.purpleActive,
+                    }}
+                  ></div>
+                </>
+              ) : (
+                <div style={{ width: "50%" }}>
+                  <InputDiv>
+                    <h5 style={{ width: "50%" }}>Customer Name</h5>
+                    <h5>{userData.firstName}</h5>
+                  </InputDiv>
+                  <InputDivBig>
+                    <h5>Address</h5>
+                    <h5>{userData.address}</h5>
+                  </InputDivBig>
+                </div>
+              ))}
+            <div style={{ width: checkout ? "50%" : "100%" }}>
+              <CartDiv>
+                <CartContainer>
+                  {cart.items.map((item) => {
+                    console.log("name", item.title);
+
+                    return (
+                      <CartItem checkout={checkout}>
+                        <CartItemImgContainer>
+                          <CartItemImg src={item.image} />
+                        </CartItemImgContainer>
+                        <CartItemName>{item.title}</CartItemName>
+                        <CartItemQuantity>
+                          <span
+                            onClick={() => handleSubtractQuantity(item.id)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            -
+                          </span>{" "}
+                          {item.qty}{" "}
+                          <span
+                            onClick={() => handleIncreaseQuantity(item.id)}
+                            style={{ cursor: "pointer" }}
+                          >
+                            +
+                          </span>
+                        </CartItemQuantity>
+                        <CartItemPrice> {item.price} </CartItemPrice>
+                      </CartItem>
+                    );
+                  })}
+                </CartContainer>
+              </CartDiv>
+
+              <CartLowerDivContainer checkout={checkout}>
+                <CartLowerDiv>
+                  <CartItem lower={false} checkout={checkout}>
+                    <CartItemName>Subtotal</CartItemName>
+                    <CartItemName>{subtotal}$</CartItemName>
                   </CartItem>
-                );
-              })}
-            </CartContainer>
-          </CartDiv>
 
-          <CartLowerDivContainer checkout={checkout}>
-            <CartLowerDiv>
-              <CartItem lower={false} checkout={checkout}>
-                <CartItemName>Subtotal</CartItemName>
-                <CartItemName>{subtotal}$</CartItemName>
-              </CartItem>
+                  <CartItem lower={false} checkout={checkout}>
+                    <CartItemName>Shipping</CartItemName>
+                    <CartItemName>{shipping}$</CartItemName>
+                  </CartItem>
 
-              <CartItem lower={false} checkout={checkout}>
-                <CartItemName>Shipping</CartItemName>
-                <CartItemName>{shipping}$</CartItemName>
-              </CartItem>
+                  <CartItem lower={false} checkout={checkout}>
+                    <CartItemName>Grand Total</CartItemName>
+                    <CartItemName>{grandtotal}$</CartItemName>
+                  </CartItem>
 
-              <CartItem lower={false} checkout={checkout}>
-                <CartItemName>Grand Total</CartItemName>
-                <CartItemName>{grandtotal}$</CartItemName>
-              </CartItem>
-
-              <div
-                style={{
-                  width: "100%",
-                  display: "flex",
-                  justifyContent: "space-between",
-                }}
-              >
-                <CTABtn
-                  goBack={true}
-                  onClick={() => {
-                    checkout
-                      ? setCheckout(false)
-                      : (window.location.href = "/");
-                  }}
-                >
-                  Continue Shopping
-                </CTABtn>
-                <CTABtn onClick={() => setCheckout(true)}>
-                  {checkout ? "Edit Cart" : "Checkout"}
-                </CTABtn>
-              </div>
-            </CartLowerDiv>
-          </CartLowerDivContainer>
-        </div>
-      </div>
+                  <div
+                    style={{
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "space-between",
+                    }}
+                  >
+                    <CTABtn
+                      goBack={true}
+                      onClick={() => {
+                        checkout
+                          ? setCheckout(false)
+                          : (window.location.href = "/");
+                      }}
+                    >
+                      Continue Shopping
+                    </CTABtn>
+                    {/* {!checkout && ( */}
+                    <CTABtn
+                      onClick={() => {
+                        if (cart.items.length !== 0 && checkout === false) {
+                          setCheckout(true);
+                        } else if (
+                          cart.items.length !== 0 &&
+                          checkout === true &&
+                          showCongrates === true
+                        ) {
+                          handlePlaceOrder();
+                          setShowCongrates(true);
+                        } else if (
+                          cart.items.length !== 0 &&
+                          checkout === true
+                        ) {
+                          setShowCongrates(true);
+                        }
+                      }}
+                    >
+                      {checkout
+                        ? showCongrates
+                          ? "Place Order"
+                          : "Proceed Checkout"
+                        : "Checkout"}
+                      {/* showCongrates ? "Proceed Checkout" : "Checkout"} */}
+                    </CTABtn>
+                    {/* )} */}
+                  </div>
+                </CartLowerDiv>
+              </CartLowerDivContainer>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <CartEmpltyText>Cart is Empty</CartEmpltyText>
+        </>
+      )}
     </Section>
   );
 };
@@ -297,6 +444,18 @@ const CartItemName = styled.h3`
   text-align: center;
 `;
 
+const CartEmpltyText = styled.h2`
+  font-size: clamp(0.75rem, 5vw, 1.75rem);
+  font-weight: 600;
+  width: 100%;
+  height: 60%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f92d88;
+`;
+
 const CartItemPrice = styled.h3`
   font-size: 1.2rem;
   font-weight: 400;
@@ -345,6 +504,7 @@ const InputDiv = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 2rem;
+  justify-content: space-between;
 `;
 
 const InputDivBig = styled.div`
@@ -357,4 +517,5 @@ const InputDivBig = styled.div`
   background-color: white;
   border-radius: 10px;
   padding: 5rem 2rem;
+  justify-content: space-between;
 `;

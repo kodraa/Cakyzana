@@ -28,7 +28,7 @@ function SingleClass() {
       if (itemDoc.exists) {
         const itemData = itemDoc.data();
         console.log("itemData", itemData);
-        setItemData(itemData);
+        setItemData({ ...itemData, id: itemDoc.id });
       } else {
         console.log("No such document!");
       }

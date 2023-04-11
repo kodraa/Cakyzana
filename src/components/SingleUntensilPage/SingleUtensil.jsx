@@ -12,15 +12,33 @@ import { keyframes } from "styled-components/macro";
 // TODO add black cart logo
 import { CartContext } from "../../context";
 import Modal from "../Modal_Cart";
+import { db } from "../../firebase";
 
 function SingleUntensil() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  });
-
   const [cart, setCart] = useContext(CartContext);
   const [active, setActive] = useState(true);
   const [addedToCart, SetAddedToCart] = useState(false);
+  const params = useParams();
+  const id = params.id;
+  let utensil = utensils.find((utensil) => utensil.id == id);
+  const [currentUtensil, setCurrentUtensil] = useState(utensil);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const getItemById = async () => {
+      const itemRef = db.collection("Classes").doc(id);
+      const itemDoc = await itemRef.get();
+      if (itemDoc.exists) {
+        const itemData = itemDoc.data();
+        console.log("utensilData", currentUtensil);
+        setCurrentUtensil({ ...itemData, id: itemDoc.id });
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    getItemById();
+  }, [id]);
 
   const handleAddToCart = () => {
     let total_item = cart.items.filter((item) => item.id == currentUtensil.id);
@@ -55,10 +73,6 @@ function SingleUntensil() {
       SetAddedToCart(false);
     }, 2000);
   };
-  const params = useParams();
-  const id = params.id;
-  let utensil = utensils.find((utensil) => utensil.id == id);
-  const [currentUtensil, setCurrentUtensil] = useState(utensil);
   // const nextUtensil = () => {
   //   let nextUtensil = utensils.find(
   //     (utensil) => utensil.id == currentUtensil.id + 1

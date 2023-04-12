@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components/macro";
 import {
   BasicLandingSection,
@@ -15,14 +15,87 @@ import cake3 from "../../designAssets/WatchVideo/cake3.jpg";
 import Comments from "./Comments";
 import Comment from "./Comment";
 import Card from "./Card";
+import { useParams } from "react-router-dom";
+import firebase from "firebase/compat/app";
+import { db } from "../../firebase";
+import { AuthContext } from "../../AuthContext";
+import { combineLatest } from "rxjs";
+import { map } from "rxjs/operators";
 
 // todo make this page responsive
 
 const Watch = (props) => {
+  const { userData } = useContext(AuthContext);
+
+  const { classId } = useParams();
+  const videoRef = useRef(null);
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
-  // const videoRef = useRef(null);
-  const videoRef = useRef(null);
+  const [videosData, setVideosData] = useState([]);
+  const [classData, setClassData] = useState(null);
+  const [commentsData, setCommentsData] = useState([]);
+  const [videoP, setVideoP] = useState();
+
+  useEffect(() => {
+    db.collection("Classes")
+      .doc(classId)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setClassData(doc.data());
+        } else {
+          console.log("No such document!");
+        }
+      })
+      .catch((error) => {
+        console.log("Error getting document:", error);
+      });
+  }, [classId]);
+
+  useEffect(() => {
+    const videos = [];
+    console.log("userData", userData);
+    if (classData) {
+      db.collection("Video")
+        .where(
+          firebase.firestore.FieldPath.documentId(),
+          "in",
+          classData.videos
+        )
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            videos.push({ id: doc.id, ...doc.data() });
+          });
+          setVideosData(videos);
+          // console.log("videos", videos);
+        })
+        .then(() => {
+          const lastWatchedVideoId = userData.classes[classId].lastWatchedVideo;
+          // console.log(
+          //   "lastWatchedVideoId",
+          //   lastWatchedVideoId
+          // );
+          const video = videos.find((video) => {
+            // console.log("video.id", video.id);
+            // console.log(video.id, lastWatchedVideoId, video.id === lastWatchedVideoId);
+            return video.id === lastWatchedVideoId;
+          });
+          // console.log("video", video);
+          setVideoP(video.URL);
+        })
+        .catch((error) => {
+          console.log("Error getting documents: ", error);
+        });
+    }
+  }, [classData]);
+
+  useEffect(() => {
+    videoRef.current?.load();
+    console.log("videoRef.current", videoRef.current);
+    console.log("videoP", videoP);
+  }, [videoP, videoRef]);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -40,18 +113,37 @@ const Watch = (props) => {
     setProgress(progress);
   };
 
-  const [videoP, setVideoP] = useState(vid1);
-
-  useEffect(() => {
-    videoRef.current?.load();
-    console.log("videoRef.current", videoRef.current);
-    console.log("videoP", videoP);
-  }, [videoP, videoRef]);
-
-  const handleVideoChange = newVid => {
+  const handleVideoChange = (newVid) => {
     setVideoP(newVid);
     console.log("newVid", newVid);
-  }
+  };
+
+  const videoData = [
+    {
+      id: "1",
+      title: "Buttercream Tutorial",
+      url: "../../designAssets/WatchVideo/vid1.mp4",
+      extension: "vid1.mp4",
+      vid: vid1,
+      thumbnail: cake1,
+    },
+    {
+      id: "2",
+      title: "Sugar Paper Tutorial",
+      url: "../../designAssets/WatchVideo/vid2.mp4",
+      extension: "vid2.mp4",
+      vid: vid2,
+      thumbnail: cake2,
+    },
+    {
+      id: "3",
+      title: "Piping Tutorial",
+      url: "../../designAssets/WatchVideo/vid3.mp4",
+      extension: "vid3.mp4",
+      vid: vid3,
+      thumbnail: cake3,
+    },
+  ];
 
   return (
     <>
@@ -108,15 +200,49 @@ const Watch = (props) => {
               </ChannelDetail>
             </ChannelInfo>
           </Channel>
-          <button onClick={() => setVideoP(vid1)}>Set video 1</button>
-          <button onClick={() => setVideoP(vid2)}>Set video 2</button>
-          <button onClick={() => setVideoP(vid3)}>Set video 3</button>
-
           <Hr />
-          <Comments />
+          <Comments
+            classId={classId}
+            classData={classData}
+            comments={commentsData}
+            setCommentsData={setCommentsData}
+            userName={userData?.userName}
+            userEmail={userData?.email}
+          />
         </Content>
         <Playlist>
-          <Card type="sm" onClick={handleVideoChange} videoProp={vid2} />
+          {/* {videoData.map((video) => {
+            return (
+              <Card
+                key={video.id}
+                id={video.id}
+                type="sm"
+                onClick={() => handleVideoChange(video.vid)}
+                vid={video.vid}
+                thumbnail={video.thumbnail}
+                title={video.title}
+              />
+            );
+          })} */}
+          {videosData.map((video) => {
+            return (
+              <Card
+                key={video.id}
+                id={video.id}
+                type="sm"
+                onClick={() => handleVideoChange(video.URL)}
+                vid={video.URL}
+                duration={video.Duration}
+                // thumbnail={video.thumbnail}
+                title={video.Title}
+              />
+            );
+          })}
+
+          {/* <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} /> */}
+          {/* <Card type="sm" onClick={handleVideoChange} />
           <Card type="sm" onClick={handleVideoChange} />
           <Card type="sm" onClick={handleVideoChange} />
           <Card type="sm" onClick={handleVideoChange} />
@@ -129,10 +255,7 @@ const Watch = (props) => {
           <Card type="sm" onClick={handleVideoChange} />
           <Card type="sm" onClick={handleVideoChange} />
           <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
+          <Card type="sm" onClick={handleVideoChange} /> */}
         </Playlist>
       </Container>
     </>
@@ -199,6 +322,9 @@ const ChannelDetail = styled.div`
 
 const Playlist = styled.div`
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
 `;
 
 const ChannelName = styled.span`

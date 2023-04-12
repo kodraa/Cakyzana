@@ -4,14 +4,15 @@ import { CONSTANTS } from "../../global";
 import CardButton from "../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 import firebase from "firebase/compat/app";
 
 const UtensilCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  const { userData, userRef } = useContext(AuthContext);
+  const { currentUser, userData, userRef } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userData?.favUtensils) {
@@ -20,6 +21,11 @@ const UtensilCard = (props) => {
   }, []);
 
   const handleFavorite = () => {
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+
     userRef
       .get()
       .then((doc) => {

@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
 
         currentUserRef.get().then((doc) => {
           if (doc.exists) {
-            setUserData({ id: doc.id, ...doc.data()});
+            setUserData({ id: doc.id, ...doc.data() });
           } else {
             console.log("No such document!");
           }
@@ -28,7 +28,7 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ currentUser, userData, userRef }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, userData, setUserData, userRef, setUserRef }}>
       {children}
     </AuthContext.Provider>
   );
@@ -90,4 +90,3 @@ export const AuthProvider = ({ children }) => {
 //     </AuthContext.Provider>
 //   );
 // }
-

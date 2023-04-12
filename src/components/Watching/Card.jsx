@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import vid1 from "../../designAssets/WatchVideo/vid1.mp4";
 import vid2 from "../../designAssets/WatchVideo/vid2.mp4";
 import vid3 from "../../designAssets/WatchVideo/vid3.mp4";
@@ -8,66 +8,56 @@ import cake2 from "../../designAssets/WatchVideo/cake2.jpg";
 import cake3 from "../../designAssets/WatchVideo/cake3.jpg";
 import av1 from "../../designAssets/WatchVideo/av1.png";
 import { Link } from "react-router-dom";
+import { CONSTANTS } from "../../global";
 
 
 // todo fix video src
 
-const Card = ({ type, onClick, videoProp }) => {
+const Card = ({ type, onClick, id, vid, title, duration }) => {
+
+  // get the text in duration before :
+  // duration = "18:00"
+  // duration string = "18"
+  const durationString = duration.split(":")[0];
+
   return (
     <Container type={type}>
-      {videoData.map((video) => (
-        <Wrapper key={video.id} onClick={() => onClick(video.vid)}>
-          <Img type={type} src={video.thumbnail} />
+        <Wrapper key={id} onClick={() => onClick()}>
+          {/* <Img type={type} src={thumbnail} /> */}
           <Details type={type}>
-            <ChannelImage type={type} src={av1} />
+            {/* <ChannelImage type={type} src={av1} /> */}
             <Texts>
-              <Title>{video.title}</Title>
-              <ChannelName> Sawsan Habbal </ChannelName>
-              <Info> 70,000 views * 1 day ago</Info>
+              <Title>{title}</Title>
+              {/* <ChannelName> Sawsan Habbal </ChannelName> */}
+              <Info>{durationString} mins</Info>
             </Texts>
           </Details>
         </Wrapper>
-      ))}
     </Container>
   );
 };
 
 export default Card;
 
-const videoData = [
-  {
-    id: "1",
-    title: "Buttercream Tutorial",
-    url: "../../designAssets/WatchVideo/vid1.mp4",
-    extension: "vid1.mp4",
-    vid: vid1,
-    thumbnail: cake1,
-  },
-  {
-    id: "2",
-    title: "Sugar Paper Tutorial",
-    url: "../../designAssets/WatchVideo/vid2.mp4",
-    extension: "vid2.mp4",
-    vid: vid2,
-    thumbnail: cake2,
-  },
-  {
-    id: "3",
-    title: "Piping Tutorial",
-    url: "../../designAssets/WatchVideo/vid3.mp4",
-    extension: "vid3.mp4",
-    vid: vid3,
-    thumbnail: cake3,
-  },
-];
+
 
 const Container = styled.div`
-  width: ${(props) => props.type !== "sm" && "360px"};
-  margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
+  /* width: ${(props) => props.type !== "sm" && "360px"}; */
+  width: 100%;
+  /* margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")}; */
+  border-top: 1px solid ${CONSTANTS.grayblack};
   cursor: pointer;
   display: ${(props) => props.type === "sm" ? "flex" : "block"};
-  gap: 25px;
   flex-wrap: wrap;
+  padding: 6px 0;
+
+  &:hover {
+    background-color: #d1d7dc;
+  }
+
+  &.active {
+    background-color: #d1d7dc;
+  }
 `;
 const Wrapper = styled.div`
   display: flex;

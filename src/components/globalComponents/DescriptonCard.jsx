@@ -4,7 +4,7 @@ import { CONSTANTS } from "../../global";
 // import CardButton from "../../globalComponents/CardButton";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { FaFontAwesome } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 // import { db } from "../../firebase";
 import firebase from "firebase/compat/app";
@@ -12,21 +12,28 @@ import firebase from "firebase/compat/app";
 const DescriptionCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  const { userData, userRef } = useContext(AuthContext);
+  const { currentUser, userData, setUserData, userRef } = useContext(AuthContext);
+  const context = useContext(AuthContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (userData?.favClasses) {
       setIsLiked(userData.favClasses.includes(props.id));
     }
-  },[])
+  }, [userData]);
 
   const handleFavorite = () => {
+    if (!currentUser) {
+      navigate("/login");
+      return;
+    }
+
     userRef
       .get()
       .then((doc) => {
         if (doc.exists) {
           const favClasses = doc.data().favClasses;
-          console.log("favClasses", favClasses);
+          // console.log("favClasses", favClasses);
           if (Array.isArray(favClasses) && favClasses.includes(props.id)) {
             userRef
               .update({
@@ -34,15 +41,21 @@ const DescriptionCard = (props) => {
               })
               .then(() => {
                 console.log(
-                  `Class ${props.id} removed from favorites for user ${userData.id}`
+                  `Class ${props.id} removed from favorites`
                 );
+                setUserData({
+                  ...userData,
+                  favClasses: userData.favClasses.filter(
+                    (id) => id !== props.id
+                  ),
+                });
               })
               .then(() => {
                 setIsLiked(false);
               })
               .catch((error) => {
                 console.error(
-                  `Error removing class ${props.id} from favorites for user ${userData.id}:`,
+                  `Error removing class ${props.id} from favorites:`,
                   error
                 );
               });
@@ -55,6 +68,10 @@ const DescriptionCard = (props) => {
                 console.log(
                   `Class ${props.id} added to favorites for user ${userData.id}`
                 );
+                setUserData({
+                  ...userData,
+                  favClasses: [...userData.favClasses, props.id],
+                });
               })
               .then(() => {
                 setIsLiked(true);
@@ -97,7 +114,6 @@ const DescriptionCard = (props) => {
   // };
 
   // console.log("favClasses", favClasses)
-  
 
   return (
     <CardContainer isGrey={props.isGrey} isInCarousel={props.isInCarousel}>
@@ -108,7 +124,7 @@ const DescriptionCard = (props) => {
               size={25}
               style={{ marginRight: "25px" }}
               onClick={() => {
-                handleFavorite();                
+                handleFavorite();
               }}
             />
           ) : (

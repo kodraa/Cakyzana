@@ -23,18 +23,17 @@ function EducateSection(props) {
         querySnapshot.forEach((doc) => {
           topClasses.push({ id: doc.id, ...doc.data() });
         });
-        console.log("topClasses", topClasses);
       })
       .then(() => {
         setClassesData(topClasses);
       })
       .then(() => {
         mappedElements = topClasses.map((item) => {
-          console.log("item", item.id);
           return (
             // <SwiperSlide>
             <SwiperSlide key={item?.id}>
               <Card
+                id={item?.id}
                 isGrey
                 isInCarousel
                 imagesrc={item?.image}

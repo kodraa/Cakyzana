@@ -7,6 +7,8 @@ import React from 'react'
 // todo check if user has class
 // todo add class to user's classes
 
+// todo if user goes to watch video's url, check if he has the class, show the video if he does, else redirect to home page
+
 function RedeemCode() {
   return (
     <>

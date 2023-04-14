@@ -18,7 +18,7 @@ const Comments = ({
 
   useEffect(() => {
     if (classData) {
-      console.log("in videos query");
+      // console.log("in videos query");
       db.collection("Classes")
         .doc(classId)
         .collection("Comments")

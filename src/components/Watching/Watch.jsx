@@ -83,26 +83,26 @@ const Watch = (props) => {
           initialProgress.current = getLocalStorage(
             `video-progress-${classId}-${video?.id}`
           );
-          console.log(
-            "local storage initialProgress.current ",
-            initialProgress.current
-          );
+          // console.log(
+          //   "local storage initialProgress.current ",
+          //   initialProgress.current
+          // );
           if (!initialProgress.current) {
             initialProgress.current =
               userData?.classes[classId][video?.id].timeStamp;
-            console.log(
-              "firestore initialProgress.current ",
-              initialProgress.current
-            );
+            // console.log(
+            //   "firestore initialProgress.current ",
+            //   initialProgress.current
+            // );
           }
-          console.log(
-            `initialProgress for video ${video?.id}: ${initialProgress}`
-          );
+          // console.log(
+          //   `initialProgress for video ${video?.id}: ${initialProgress}`
+          // );
           setVideoP(video);
           for (var i in localStorage) {
             // console.log("local storage items " + i + " = " + localStorage[i]);
           }
-          console.log(localStorage);
+          // console.log(localStorage);
         })
         .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -115,10 +115,10 @@ const Watch = (props) => {
     document
       .querySelector("video")
       .addEventListener("contextmenu", (event) => event.preventDefault());
-    console.log(
-      "userData.classes[classId][videoP.id]",
-      userData?.classes[classId][videoP?.id]
-    );
+    // console.log(
+    //   "userData.classes[classId][videoP.id]",
+    //   userData?.classes[classId][videoP?.id]
+    // );
     // console.log("userData.classes[classId][videoP.id]", userData?.classes[classId])
     // console.log("videoRef.current", videoRef.current);
     // console.log("videoP", videoP);
@@ -163,7 +163,7 @@ const Watch = (props) => {
     const duration = videoRef.current.duration;
     const currentTime = videoRef.current.currentTime;
     const newProgress = Math.floor((currentTime / duration) * 100);
-    console.log("newProgress", newProgress);
+    // console.log("newProgress", newProgress);
     setProgress(newProgress);
 
     // setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
@@ -186,7 +186,7 @@ const Watch = (props) => {
     //   }
     // }, 1000);
 
-    console.log("videoRef.current.paused", event.target.paused);
+    // console.log("videoRef.current.paused", event.target.paused);
     // if (event.target.paused) {
     //   clearInterval(intervalId);
     // } else {
@@ -196,7 +196,7 @@ const Watch = (props) => {
           clearInterval(intervalId);
           return;
         }
-        console.log("in setInterval");
+        // console.log("in setInterval");
         const currentTime = event.target.currentTime;
         const duration = event.target.duration;
         const newProgress = Math.floor((currentTime / duration) * 100);
@@ -224,11 +224,11 @@ const Watch = (props) => {
   }
 
   const debouncedSaveProgress = debounce((newProgress) => {
-    console.log(
-      "in debouncedSaveProgress",
-      userData?.classes[classId][videoP?.id].timeStamp
-    );
-    console.log("progress in debouncedSaveProgress", newProgress);
+    // console.log(
+    //   "in debouncedSaveProgress",
+    //   userData?.classes[classId][videoP?.id].timeStamp
+    // );
+    // console.log("progress in debouncedSaveProgress", newProgress);
     userRef
       .update({
         [`classes.${classId}.${videoP?.id}.timeStamp`]: newProgress,
@@ -256,8 +256,8 @@ const Watch = (props) => {
 
   function handlePause(event) {
     clearInterval(intervalId);
-    console.log("videoRef.current.paused", event.target.paused);
-    console.log("intervalId", intervalId);
+    // console.log("videoRef.current.paused", event.target.paused);
+    // console.log("intervalId", intervalId);
   }
 
   const handleLoadedMetadata = () => {
@@ -268,7 +268,7 @@ const Watch = (props) => {
       initialProgress.current > 0
         ? duration * (initialProgress.current / 100)
         : 0;
-    console.log("currentTime", currentTime);
+    // console.log("currentTime", currentTime);
     video.currentTime = currentTime;
   };
 
@@ -279,11 +279,19 @@ const Watch = (props) => {
     );
     if (!initialProgress.current) {
       initialProgress.current = userData?.classes[classId][newVid.id].timeStamp;
-      console.log(
-        "firestore initialProgress.current ",
-        initialProgress.current
-      );
+      // console.log(
+      //   "firestore initialProgress.current ",
+      //   initialProgress.current
+      // );
     }
+    // userData.classes[classId].lastWatchedVideo = newVid.id;
+    userRef
+      .update({
+        [`classes.${classId}.lastWatchedVideo`]: newVid.id,
+      })
+      .catch((error) => {
+        console.error(`Error updating last watched video: ${error}`);
+      });
     // console.log("newVid", newVid);
   };
 

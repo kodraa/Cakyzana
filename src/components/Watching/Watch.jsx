@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components/macro";
+import firebase from "firebase/compat/app";
+import ReactPlayer from "react-player";
 import {
   BasicLandingSection,
   CONSTANTS,
@@ -16,11 +18,10 @@ import Comments from "./Comments";
 import Comment from "./Comment";
 import Card from "./Card";
 import { useParams } from "react-router-dom";
-import firebase from "firebase/compat/app";
 import { db } from "../../firebase";
 import { AuthContext } from "../../AuthContext";
-import { combineLatest } from "rxjs";
-import { map } from "rxjs/operators";
+// import { combineLatest } from "rxjs";
+// import { map } from "rxjs/operators";
 
 // todo make this page responsive
 
@@ -29,6 +30,7 @@ const Watch = (props) => {
 
   const { classId } = useParams();
   const videoRef = useRef(null);
+  const initialProgress = useRef();
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -36,6 +38,8 @@ const Watch = (props) => {
   const [classData, setClassData] = useState(null);
   const [commentsData, setCommentsData] = useState([]);
   const [videoP, setVideoP] = useState();
+
+  const localStorage = window.localStorage;
 
   useEffect(() => {
     db.collection("Classes")
@@ -55,7 +59,6 @@ const Watch = (props) => {
 
   useEffect(() => {
     const videos = [];
-    console.log("userData", userData);
     if (classData) {
       db.collection("Video")
         .where(
@@ -69,21 +72,24 @@ const Watch = (props) => {
             videos.push({ id: doc.id, ...doc.data() });
           });
           setVideosData(videos);
-          // console.log("videos", videos);
         })
         .then(() => {
           const lastWatchedVideoId = userData.classes[classId].lastWatchedVideo;
-          // console.log(
-          //   "lastWatchedVideoId",
-          //   lastWatchedVideoId
-          // );
           const video = videos.find((video) => {
-            // console.log("video.id", video.id);
-            // console.log(video.id, lastWatchedVideoId, video.id === lastWatchedVideoId);
             return video.id === lastWatchedVideoId;
           });
-          // console.log("video", video);
-          setVideoP(video.URL);
+          // const initialProgress = getLocalStorage(`video-progress-${classId}-${video?.id}`)
+          initialProgress.current = getLocalStorage(
+            `video-progress-${classId}-${video?.id}`
+          );
+          console.log(
+            `initialProgress for video ${video?.id}: ${initialProgress}`
+          );
+          setVideoP(video);
+          for (var i in localStorage) {
+            console.log("local storage items " + i + " = " + localStorage[i]);
+          }
+          console.log(localStorage);
         })
         .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -93,9 +99,27 @@ const Watch = (props) => {
 
   useEffect(() => {
     videoRef.current?.load();
-    console.log("videoRef.current", videoRef.current);
-    console.log("videoP", videoP);
+    document
+      .querySelector("video")
+      .addEventListener("contextmenu", (event) => event.preventDefault());
+    console.log("userData.classes[classId][videoP.id]", userData?.classes[classId][videoP?.id])
+    // console.log("userData.classes[classId][videoP.id]", userData?.classes[classId])
+    // console.log("videoRef.current", videoRef.current);
+    // console.log("videoP", videoP);
+    // videoRef.current.seekTo(3, "seconds");
   }, [videoP, videoRef]);
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     const db = firebase.firestore();
+  //     const userRef = db.collection("Users").doc("userId");
+  // userRef.update({
+  //   "classes.classId1.videoId1.timeStamp": progress,
+  // });
+  //     console.log("progress useEffect", progress);
+  //   }, 5000);
+  //   return () => clearInterval(intervalId);
+  // }, [progress]);
 
   const togglePlay = () => {
     if (isPlaying) {
@@ -106,44 +130,67 @@ const Watch = (props) => {
     setIsPlaying(!isPlaying);
   };
 
+  const setLocalStorage = (key, value) => {
+    localStorage.setItem(key, value);
+  };
+
+  function getLocalStorage(token) {
+    const value = localStorage.getItem(token);
+    return value;
+  }
+
+  let intervalId;
+
   const handleProgress = () => {
     const duration = videoRef.current.duration;
     const currentTime = videoRef.current.currentTime;
-    const progress = (currentTime / duration) * 100;
-    setProgress(progress);
+    const newProgress = Math.floor((currentTime / duration) * 100);
+    console.log("newProgress", newProgress);
+    setProgress(newProgress);
+
+    setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
+
+    // clearInterval(intervalId);
+
+    // intervalId = setTimeout(() => {
+    // }, 5000);
+  };
+
+  function handlePlay(event) {
+    intervalId = setInterval(() => {
+      const currentTime = event.target.currentTime;
+      const duration = event.target.duration;
+      const newProgress = Math.floor((currentTime / duration) * 100);
+      if (newProgress >= 95) {
+        clearInterval(intervalId);
+        // handleEnded(event);
+      }
+    }, 1000);
+  }
+
+  function handlePause(event) {
+    clearInterval(intervalId);
+  }
+
+  const handleLoadedMetadata = () => {
+    const video = videoRef.current;
+    const duration = video.duration;
+    // console.log("video.currentTime", video.currentTime);
+    const currentTime =
+      initialProgress.current > 0
+        ? duration * (initialProgress.current / 100)
+        : 0;
+    console.log("currentTime", currentTime);
+    video.currentTime = currentTime;
   };
 
   const handleVideoChange = (newVid) => {
     setVideoP(newVid);
-    console.log("newVid", newVid);
+    initialProgress.current = getLocalStorage(
+      `video-progress-${classId}-${newVid.id}`
+    );
+    // console.log("newVid", newVid);
   };
-
-  const videoData = [
-    {
-      id: "1",
-      title: "Buttercream Tutorial",
-      url: "../../designAssets/WatchVideo/vid1.mp4",
-      extension: "vid1.mp4",
-      vid: vid1,
-      thumbnail: cake1,
-    },
-    {
-      id: "2",
-      title: "Sugar Paper Tutorial",
-      url: "../../designAssets/WatchVideo/vid2.mp4",
-      extension: "vid2.mp4",
-      vid: vid2,
-      thumbnail: cake2,
-    },
-    {
-      id: "3",
-      title: "Piping Tutorial",
-      url: "../../designAssets/WatchVideo/vid3.mp4",
-      extension: "vid3.mp4",
-      vid: vid3,
-      thumbnail: cake3,
-    },
-  ];
 
   return (
     <>
@@ -153,10 +200,16 @@ const Watch = (props) => {
           <VideoWrapper>
             <video
               onTimeUpdate={handleProgress}
+              onLoadedMetadata={handleLoadedMetadata}
               ref={videoRef}
-              key={videoP}
-              src={videoP}
-              id={videoP}
+              key={videoP?.URL}
+              onPause={handlePause}
+              onPlay={handlePlay}
+              // src={`${videoP?.URL}#t=5,7`}
+              // src={`${videoP?.URL}#t=5`}
+              controlsList="nodownload"
+              src={videoP?.URL}
+              id={videoP?.URL}
               controls
               width="100%"
               // height="707"
@@ -165,7 +218,7 @@ const Watch = (props) => {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen={true}
             >
-              <source src={videoP} type="video/mp4" />
+              <source src={videoP?.URL} type="video/mp4" />
             </video>
           </VideoWrapper>
           <Title>How to Make Perfect Frosting Every Time</Title>
@@ -230,11 +283,12 @@ const Watch = (props) => {
                 key={video.id}
                 id={video.id}
                 type="sm"
-                onClick={() => handleVideoChange(video.URL)}
+                onClick={() => handleVideoChange(video)}
                 vid={video.URL}
                 duration={video.Duration}
                 // thumbnail={video.thumbnail}
                 title={video.Title}
+                videoP={videoP}
               />
             );
           })}
@@ -334,3 +388,46 @@ const ChannelName = styled.span`
 const Description = styled.p`
   font-size: 14px;
 `;
+
+const videoData = [
+  {
+    id: "1",
+    title: "Buttercream Tutorial",
+    url: "../../designAssets/WatchVideo/vid1.mp4",
+    extension: "vid1.mp4",
+    vid: vid1,
+    thumbnail: cake1,
+  },
+  {
+    id: "2",
+    title: "Sugar Paper Tutorial",
+    url: "../../designAssets/WatchVideo/vid2.mp4",
+    extension: "vid2.mp4",
+    vid: vid2,
+    thumbnail: cake2,
+  },
+  {
+    id: "3",
+    title: "Piping Tutorial",
+    url: "../../designAssets/WatchVideo/vid3.mp4",
+    extension: "vid3.mp4",
+    vid: vid3,
+    thumbnail: cake3,
+  },
+];
+
+const obj = {
+  classes: {
+    classId1: {
+      videoId1: {
+        timeStamp: "41",
+        isFinished: false,
+      },
+      videoId2: {
+        timeStamp: "32",
+        isFinished: false,
+      },
+      lastWatchedVideo: "videoId2",
+    },
+  },
+};

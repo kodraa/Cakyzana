@@ -27,7 +27,7 @@ const Comments = ({
         .then((querySnapshot) => {
           const comments = [];
           querySnapshot.forEach((doc) => {
-            comments.push(doc.data());
+            comments.push({ id: doc.id, ...doc.data() });
           });
           setCommentsData(comments);
         })
@@ -93,6 +93,7 @@ const Comments = ({
           dateCreated={comment?.dateCreated}
           comment={comment?.content}
           classId={classId}
+          userName={comment?.userName}          
         />
       ))}
       {/* <Comment />

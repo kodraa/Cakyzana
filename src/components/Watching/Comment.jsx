@@ -66,7 +66,7 @@ const Details = styled.div`
 
 const Name = styled.span`
   font-size: 13px;
-  font-weight: 500;
+  font-family: "Century Gothic Bold";
 `;
 
 const Date = styled.span`

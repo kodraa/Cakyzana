@@ -20,13 +20,14 @@ import Card from "./Card";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { AuthContext } from "../../AuthContext";
+import { debounce } from "lodash";
 // import { combineLatest } from "rxjs";
 // import { map } from "rxjs/operators";
 
 // todo make this page responsive
 
 const Watch = (props) => {
-  const { userData } = useContext(AuthContext);
+  const { userRef, userData } = useContext(AuthContext);
 
   const { classId } = useParams();
   const videoRef = useRef(null);
@@ -83,13 +84,25 @@ const Watch = (props) => {
             `video-progress-${classId}-${video?.id}`
           );
           console.log(
+            "local storage initialProgress.current ",
+            initialProgress.current
+          );
+          if (!initialProgress.current) {
+            initialProgress.current =
+              userData?.classes[classId][video?.id].timeStamp;
+            console.log(
+              "firestore initialProgress.current ",
+              initialProgress.current
+            );
+          }
+          console.log(
             `initialProgress for video ${video?.id}: ${initialProgress}`
           );
           setVideoP(video);
           for (var i in localStorage) {
             // console.log("local storage items " + i + " = " + localStorage[i]);
           }
-          // console.log(localStorage);
+          console.log(localStorage);
         })
         .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -133,6 +146,8 @@ const Watch = (props) => {
     setIsPlaying(!isPlaying);
   };
 
+  // console.log(userData)
+
   const setLocalStorage = (key, value) => {
     localStorage.setItem(key, value);
   };
@@ -160,20 +175,89 @@ const Watch = (props) => {
   };
 
   function handlePlay(event) {
-    intervalId = setInterval(() => {
-      const currentTime = event.target.currentTime;
-      const duration = event.target.duration;
-      const newProgress = Math.floor((currentTime / duration) * 100);
-      setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
-      if (newProgress >= 95) {
-        clearInterval(intervalId);
-        // handleEnded(event);
-      }
-    }, 1000);
+    // intervalId = setInterval(() => {
+    //   const currentTime = event.target.currentTime;
+    //   const duration = event.target.duration;
+    //   const newProgress = Math.floor((currentTime / duration) * 100);
+    //   setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
+    //   if (newProgress >= 95) {
+    //     clearInterval(intervalId);
+    //     // handleEnded(event);
+    //   }
+    // }, 1000);
+
+    console.log("videoRef.current.paused", event.target.paused);
+    // if (event.target.paused) {
+    //   clearInterval(intervalId);
+    // } else {
+    if (!intervalId) {
+      intervalId = setInterval(() => {
+        if (event.target.paused) {
+          clearInterval(intervalId);
+          return;
+        }
+        console.log("in setInterval");
+        const currentTime = event.target.currentTime;
+        const duration = event.target.duration;
+        const newProgress = Math.floor((currentTime / duration) * 100);
+        setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
+        if (newProgress >= 95) {
+          clearInterval(intervalId);
+          handleEnded(event);
+        } else {
+          // Save progress to Firebase using the debounce function
+          debouncedSaveProgress(newProgress);
+        }
+      }, 2000);
+    }
+    // }
+  }
+
+  function saveProgress() {
+    userRef
+      .update({
+        [`classes.${classId}.${videoP?.id}.timeStamp`]: progress,
+      })
+      .catch((error) => {
+        console.error(`Error saving progress: ${error}`);
+      });
+  }
+
+  const debouncedSaveProgress = debounce((newProgress) => {
+    console.log(
+      "in debouncedSaveProgress",
+      userData?.classes[classId][videoP?.id].timeStamp
+    );
+    console.log("progress in debouncedSaveProgress", newProgress);
+    userRef
+      .update({
+        [`classes.${classId}.${videoP?.id}.timeStamp`]: newProgress,
+      })
+      .then(() => {
+        console.log("saved progress");
+      });
+  }, 1500);
+
+  function finishVideo() {
+    userRef
+      .update({
+        [`classes.${classId}.${videoP?.id}.isFinished`]: true,
+      })
+      .catch((error) => {
+        console.error(`Error saving progress: ${error}`);
+      });
+  }
+
+  function handleEnded() {
+    saveProgress();
+    finishVideo();
+    clearInterval(intervalId);
   }
 
   function handlePause(event) {
     clearInterval(intervalId);
+    console.log("videoRef.current.paused", event.target.paused);
+    console.log("intervalId", intervalId);
   }
 
   const handleLoadedMetadata = () => {
@@ -193,6 +277,13 @@ const Watch = (props) => {
     initialProgress.current = getLocalStorage(
       `video-progress-${classId}-${newVid.id}`
     );
+    if (!initialProgress.current) {
+      initialProgress.current = userData?.classes[classId][newVid.id].timeStamp;
+      console.log(
+        "firestore initialProgress.current ",
+        initialProgress.current
+      );
+    }
     // console.log("newVid", newVid);
   };
 
@@ -209,6 +300,7 @@ const Watch = (props) => {
               key={videoP?.URL}
               onPause={handlePause}
               onPlay={handlePlay}
+              onEnded={handleEnded}
               // src={`${videoP?.URL}#t=5,7`}
               // src={`${videoP?.URL}#t=5`}
               controlsList="nodownload"

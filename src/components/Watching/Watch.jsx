@@ -87,9 +87,9 @@ const Watch = (props) => {
           );
           setVideoP(video);
           for (var i in localStorage) {
-            console.log("local storage items " + i + " = " + localStorage[i]);
+            // console.log("local storage items " + i + " = " + localStorage[i]);
           }
-          console.log(localStorage);
+          // console.log(localStorage);
         })
         .catch((error) => {
           console.log("Error getting documents: ", error);
@@ -102,7 +102,10 @@ const Watch = (props) => {
     document
       .querySelector("video")
       .addEventListener("contextmenu", (event) => event.preventDefault());
-    console.log("userData.classes[classId][videoP.id]", userData?.classes[classId][videoP?.id])
+    console.log(
+      "userData.classes[classId][videoP.id]",
+      userData?.classes[classId][videoP?.id]
+    );
     // console.log("userData.classes[classId][videoP.id]", userData?.classes[classId])
     // console.log("videoRef.current", videoRef.current);
     // console.log("videoP", videoP);
@@ -148,7 +151,7 @@ const Watch = (props) => {
     console.log("newProgress", newProgress);
     setProgress(newProgress);
 
-    setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
+    // setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
 
     // clearInterval(intervalId);
 
@@ -161,6 +164,7 @@ const Watch = (props) => {
       const currentTime = event.target.currentTime;
       const duration = event.target.duration;
       const newProgress = Math.floor((currentTime / duration) * 100);
+      setLocalStorage(`video-progress-${classId}-${videoP?.id}`, newProgress);
       if (newProgress >= 95) {
         clearInterval(intervalId);
         // handleEnded(event);

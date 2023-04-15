@@ -8,7 +8,6 @@ import { CONSTANTS, FullScreenSection } from "../global";
 import YourClasses from "./YourClasses";
 import RedeemCode from "./RedeemCode";
 
-
 let mappedElements;
 
 function Profile() {

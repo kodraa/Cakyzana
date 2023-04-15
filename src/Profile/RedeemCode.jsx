@@ -7,12 +7,12 @@ import styled from "styled-components/macro";
 // todo check to which class the code points to
 // todo check if user has class
 // todo add class to user's classes
-
 // todo if user goes to watch video's url, check if he has the class, show the video if he does, else redirect to home pag
-import { db, auth } from "../firebase";
-import { Navigate } from "react-router-dom";
 
+import { db, auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 function RedeemCode() {
+  const navigate = useNavigate();
   const [code, setCode] = useState("");
   const [showAlert, setShowAlert] = useState(false);
 
@@ -26,41 +26,52 @@ function RedeemCode() {
         const videos = classData.data().videos;
         let editedVideos = {};
         for (let i = 0; i < videos.length; i++) {
-          editedVideos = Object.assign(editedVideos, {
-            [videos[i]]: { lastWatched: 0, timeStamps: "00:00:00" },
+          // editedVideos = Object.assign(editedVideos, {
+          // editedVideos = Object.assign(
+          Object.assign(editedVideos, {
+            [videos[i]]: { isFinished: false, timeStamps: "0" },
           });
         }
 
-        // const editedVideos = videos.map((video) => {
-        //   return [video.]:{
-        //     lastWatched: 0,
-        //     timeStamps: "00:00:00",
+        console.log("editedVideos", ...Object.entries(editedVideos));
 
-        //   }
+        const newEditedVideos = {};
 
-        //   ;
-        // });
+        Object.entries(editedVideos).map((video) => {
+          console.log("video", {
+            [video[0]]: video[1],
+          });
 
-        videos.map((video) => {
-          db.collection("Users")
-            .doc(userId)
-            .update({
-              classes: {
-                [classId]: {
-                  lastWatched: 0,
-                  editedVideos,
-                },
-              },
-            })
-            .then(() => {
-              db.collection("Codes").doc(code).update({
-                Redeemed: true,
-                UserRedeemedEmail: auth.currentUser.email,
-                DateOfRedeem: new Date(),
-              });
-            })
-            .then(() => <Navigate to="/watching/`${classId}`" />);
+          newEditedVideos[video[0]] = video[1];
+
+          return {
+            [video[0]]: video[1],
+          };
         });
+
+        // console.log("newEditedVideos", { ...newEditedVideos }?.entries);
+        console.log("newEditedVideos", ...Object.entries(newEditedVideos));
+
+        // videos.map((video) => {
+        // });
+        db.collection("Users")
+          .doc(userId)
+          .update({
+            classes: {
+              [classId]: {
+                // ...Object.entries(editedVideos),
+                // ...newEditedVideos,
+              },
+            },
+          })
+          .then(() => {
+            db.collection("Codes").doc(code).update({
+              Redeemed: true,
+              UserRedeemedEmail: auth.currentUser.email,
+              DateOfRedeem: new Date(),
+            });
+          })
+          .then(() => navigate(`/watching/${classId}`));
       } else {
         alert("Code does not exist");
       }

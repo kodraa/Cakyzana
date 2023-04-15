@@ -21,6 +21,7 @@ import { useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { AuthContext } from "../../AuthContext";
 import { debounce } from "lodash";
+import { useNavigate } from "react-router-dom";
 // import { combineLatest } from "rxjs";
 // import { map } from "rxjs/operators";
 
@@ -28,6 +29,7 @@ import { debounce } from "lodash";
 
 const Watch = (props) => {
   const { userRef, userData } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const { classId } = useParams();
   const videoRef = useRef(null);
@@ -76,9 +78,13 @@ const Watch = (props) => {
         })
         .then(() => {
           const lastWatchedVideoId = userData.classes[classId].lastWatchedVideo;
-          const video = videos.find((video) => {
+          let video = videos.find((video) => {
             return video.id === lastWatchedVideoId;
           });
+          if (!video) {
+            video = videos[0];
+          }
+
           // const initialProgress = getLocalStorage(`video-progress-${classId}-${video?.id}`)
           initialProgress.current = getLocalStorage(
             `video-progress-${classId}-${video?.id}`
@@ -87,7 +93,10 @@ const Watch = (props) => {
           //   "local storage initialProgress.current ",
           //   initialProgress.current
           // );
-          if (!initialProgress.current) {
+          if (
+            !initialProgress.current &&
+            userData?.classes[classId][video?.id]?.timeStamp
+          ) {
             initialProgress.current =
               userData?.classes[classId][video?.id].timeStamp;
             // console.log(
@@ -95,6 +104,7 @@ const Watch = (props) => {
             //   initialProgress.current
             // );
           }
+
           // console.log(
           //   `initialProgress for video ${video?.id}: ${initialProgress}`
           // );
@@ -107,6 +117,9 @@ const Watch = (props) => {
         .catch((error) => {
           console.log("Error getting documents: ", error);
         });
+      if (!initialProgress.current) {
+        initialProgress.current = 0;
+      }
     }
   }, [classData]);
 

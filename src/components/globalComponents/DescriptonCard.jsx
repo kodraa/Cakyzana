@@ -12,7 +12,8 @@ import firebase from "firebase/compat/app";
 const DescriptionCard = (props) => {
   const [isLiked, setIsLiked] = useState(false);
 
-  const { currentUser, userData, setUserData, userRef } = useContext(AuthContext);
+  const { currentUser, userData, setUserData, userRef } =
+    useContext(AuthContext);
   const context = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -21,6 +22,15 @@ const DescriptionCard = (props) => {
       setIsLiked(userData.favClasses.includes(props.id));
     }
   }, [userData]);
+
+  // const [test, setTest] = useState([
+  //   {}
+  // ]);
+
+  // setTest(prev => [
+  //   ...prev,
+  //   {}
+  // ])
 
   const handleFavorite = () => {
     if (!currentUser) {
@@ -40,9 +50,7 @@ const DescriptionCard = (props) => {
                 favClasses: favClasses.filter((id) => id !== props.id),
               })
               .then(() => {
-                console.log(
-                  `Class ${props.id} removed from favorites`
-                );
+                console.log(`Class ${props.id} removed from favorites`);
                 setUserData({
                   ...userData,
                   favClasses: userData.favClasses.filter(

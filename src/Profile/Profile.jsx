@@ -13,59 +13,6 @@ let mappedElements;
 function Profile() {
   const { userData } = useContext(AuthContext);
 
-  console.log(userData?.classes);
-
-  // useEffect(() => {
-  //   const classes = userData?.classes;
-  //   if (classes) {
-  //     const classIds = Object.keys(classes);
-  //     console.log(classIds);
-
-  //     const userClasses = [];
-
-  //     classIds.forEach((classId) => {
-  //       db.collection("Classes")
-  //         .doc(classId)
-  //         .get()
-  //         .then((classDoc) => {
-  //           if (classDoc.exists) {
-  //             // Push the class data to the userClasses variable
-  //             userClasses.push({ id: classId, ...classDoc.data()});
-  //           } else {
-  //             console.log("Class document does not exist");
-  //           }
-  //         })
-  //         .then(() => {
-  //           // Set the mappedElements variable to the userClasses variable
-  //           mappedElements = mappedElements = userClasses.map((item) => {
-  //             console.log("item", item.id);
-  //             return (
-  //               <React.Fragment key={item.id}>
-  //                 <SwiperSlide>
-  //                   <DescriptionCard
-  //                     isInCarousel
-  //                     classTitle={item.title}
-  //                     // imagesrc={item.image}
-  //                     // imagesrc={cake1}
-  //                     // imagesrc={item.imagesrc}
-  //                     number={2}
-  //                     classDur={item.duration}
-  //                     descr={item.description}
-  //                     to={`/singleClass/${item.id}`}
-  //                   />
-  //                 </SwiperSlide>
-  //               </React.Fragment>
-  //             );
-  //           });;
-  //           console.log("mappedElements", mappedElements);
-  //         })
-  //         .catch((error) => {
-  //           console.log(error);
-  //         });
-  //     });
-  //   }
-  // }, [userData?.classes]);
-
   return (
     <>
       <LandingSection>
@@ -75,6 +22,7 @@ function Profile() {
           <h1>Hello {userData?.firstName}!</h1>
         </ContentContainerWrapper>
       </LandingSection>
+
       <YourClasses />
       <RedeemCode />
     </>

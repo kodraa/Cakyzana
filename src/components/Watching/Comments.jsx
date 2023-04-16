@@ -126,5 +126,6 @@ const Input = styled.input`
   background-color: transparent;
   outline: none;
   padding: 25px;
-  width: 1000px;
+  /* width: 1000px; */
+  width: 90%;
 `;

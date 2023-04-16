@@ -3,7 +3,6 @@ import styled from "styled-components/macro";
 import backgroundImage from "../../designAssets/SignUp/background2.png";
 import Navbar from "../globalComponents/Navbar";
 import { db, auth } from "../../firebase";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
@@ -88,7 +87,22 @@ function SignUp() {
   return (
     <>
       <Navbar />
-      <Body>
+      <Section>
+        <Subsection>
+          <Title>Sign Up</Title>
+          <Form
+            onSubmit={() => {
+              if (passwordsMatch) {
+                HandleSignUp();
+              }
+            }}
+            action="#"
+          >
+
+          </Form>
+        </Subsection>
+      </Section>
+      {/* <Body>
         <Img src={backgroundImage} />
         <Container>
           <Title>Sign Up</Title>
@@ -236,27 +250,56 @@ function SignUp() {
             </GenderDetails>
           </Form>
         </Container>
-      </Body>
+      </Body> */}
     </>
   );
 }
 
 export default SignUp;
 
-const Container = styled.div`
-  max-width: 900px;
+const Section = styled.section`
+  height: calc(100vh - 90px);
+  transform: translateY(90px);
   width: 100%;
-  padding: 25px 30px;
-  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Title = styled.div`
-  font-size: 55px;
-  font-weight: bolder;
+const Subsection = styled.div`
+  width: 85%;
+  height: 85%;
+  background: url(${backgroundImage}) no-repeat center center fixed;
+  background-size: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: red; */
+`;
+
+const Title = styled.h1`
+  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-family: "Century Gothic Bold";
   text-align: center;
+  color: white;
 `;
 
-const Form = styled.form``;
+// const Container = styled.div`
+//   max-width: 900px;
+//   width: 100%;
+//   padding: 25px 30px;
+//   border-radius: 5px;
+// `;
+
+const Form = styled.form`
+  width: 60%;
+`;
+
+const FormGroup = styled.div`
+  width: 48%;
+  
+`;
 
 const Body = styled.div`
   display: flex;

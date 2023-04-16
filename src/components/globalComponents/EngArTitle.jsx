@@ -23,7 +23,9 @@ const TitleContainer = styled.div`
   color: white;
   /* height: 12rem; */
   height: 18vh;
-  width: 100%;
+  /* width: 100%; */
+  /* width: max-content; */
+  width: min-content;
   display: flex;
   align-items: center;
   transform: ${(props) => props.isTransformed && "translateY(40px)"};

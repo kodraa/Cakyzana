@@ -43,18 +43,14 @@ function CircleElement(props) {
               <img src={props.src} alt="" className="mobile" />
             </Circle>
             <InfoDiv className="info">
-              <h2>Eid Cake Workshop</h2>
+              <h2>{props.title}</h2>
               <div>
-                <p>Date: Saturday, December 3, 2022</p>
-                <p>Time: 11:00 am 2:00 pm</p>
-                <p>Hamra, Beirut - The Olive Grove</p>
+                <p>Date: {props.date}</p>
+                <p>Time: {props.time}</p>
+                <p>{props.location}</p>
               </div>
               <WorkshopDescriptionDiv>
-                <p>
-                  In this workshop you will be learning how to bake a cake and
-                  how to cover it with sugar dough, in addition to 3d techniques
-                  and drawing a 2D character on a sugar dough.
-                </p>
+                <p>{props.description}</p>
               </WorkshopDescriptionDiv>
               <CTAButton>Book a Seat NOW!</CTAButton>
             </InfoDiv>

@@ -17,6 +17,7 @@ import Watch from "./components/Watching/Watch";
 import TestGpt from "./TestGpt";
 import { AuthContext, AuthProvider } from "./AuthContext";
 import Profile from "./Profile/Profile";
+import ComingSoon from "./components/ComingSoon/ComingSoon";
 
 // todo profile
 
@@ -74,6 +75,12 @@ const router = createBrowserRouter([
     path: "/cart",
     element: <CartPage />,
   },
+  {
+    path: "/entrepreneursjourney",
+    element: <ComingSoon />,
+  },
+
+
   {
     path: "/test",
     element: <TestCarousel />,

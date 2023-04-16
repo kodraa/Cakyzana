@@ -30,19 +30,34 @@ function ThisMonth(props) {
   const [workshops, setWorkshops] = useState([]);
 
   useEffect(() => {
+    let workshopsArr = [];
     db.collection("Workshops")
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          workshops.push({ id: doc.id, ...doc.data() });
+          workshopsArr.push({ id: doc.id, ...doc.data() });
         });
       })
       .then(() => {
-        console.log("workshops", workshops);
+        // console.log("workshops", workshopsArr);
+        setWorkshops(workshopsArr);
       })
       .then(() => {
-        mappedElements = workshops.map((item) => {
-          // console.log("item", item.id);
+        mappedElements = workshopsArr.map((item) => {
+          // console.log("item", item)
+          return (
+            <SwiperSlide key={item.id}>
+              <CircleElement
+                date={item.date}
+                description={item.description}
+                id={item.id}
+                src={item.image}
+                location={item.location}
+                time={item.time}
+                title={item.title}
+              />
+            </SwiperSlide>
+          );
         });
       });
   }, []);
@@ -148,7 +163,7 @@ function ThisMonth(props) {
               }}
               modules={[Navigation, EffectCoverflow]}
             >
-              <SwiperSlide>
+              {/* <SwiperSlide>
                 <CircleElement src={cake1} />
               </SwiperSlide>
               <SwiperSlide>
@@ -162,9 +177,14 @@ function ThisMonth(props) {
               </SwiperSlide>
               <SwiperSlide>
                 <CircleElement src={cake5} />
-              </SwiperSlide>
+              </SwiperSlide> */}
+              {mappedElements}
             </Swiper>
-            <Arrow className="right-arrow" src={ArrowRight} />
+            <Arrow
+              // onClick={() => console.log(mappedElements)}
+              className="right-arrow"
+              src={ArrowRight}
+            />
           </>
         ) : (
           <>

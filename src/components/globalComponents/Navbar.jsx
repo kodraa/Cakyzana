@@ -316,7 +316,7 @@ const Dropdown = styled.div`
   position: absolute;
   top: ${(props) => (props.top ? props.top : "100%")};
   left: ${(props) => (props.left ? props.left : "0")};
-  background-color: white;
+  background-color: ${CONSTANTS.graywhite};
   display: flex;
   flex-direction: column;
   align-items: center;

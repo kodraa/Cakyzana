@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import styled from "styled-components/macro";
 import firebase from "firebase/compat/app";
+import { debounce } from "lodash";
 import ReactPlayer from "react-player";
 import {
   BasicLandingSection,
@@ -20,7 +21,8 @@ import Card from "./Card";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { AuthContext } from "../../AuthContext";
-import { debounce } from "lodash";
+import ArrowRight from "../../designAssets/Homepage/Classes/ArrowRight.png";
+import ArrowLeft from "../../designAssets/Homepage/Classes/ArrowLeft.png";
 import { useNavigate } from "react-router-dom";
 // import { combineLatest } from "rxjs";
 // import { map } from "rxjs/operators";
@@ -314,6 +316,7 @@ const Watch = (props) => {
         <Navbar />
         <Content>
           <VideoWrapper>
+            <Arrow src={ArrowLeft} className="left" />
             <video
               onTimeUpdate={handleProgress}
               onLoadedMetadata={handleLoadedMetadata}
@@ -337,6 +340,7 @@ const Watch = (props) => {
             >
               <source src={videoP?.URL} type="video/mp4" />
             </video>
+            <Arrow src={ArrowRight} className="right" />
           </VideoWrapper>
           <Title>How to Make Perfect Frosting Every Time</Title>
           <Details>
@@ -348,7 +352,7 @@ const Watch = (props) => {
               <ChannelDetail>
                 <ChannelName> Sawsan Habbal </ChannelName>
                 <Description>
-                  {" "}
+                  {/* {" "}
                   Are you tired of frosting that's too runny or too sweet? Do
                   you want to learn how to make frosting that's perfectly creamy
                   and delicious every time? Look no further! In this tutorial,
@@ -365,7 +369,10 @@ const Watch = (props) => {
                   taste preferences by adding different flavors and colors. So,
                   if you want to take your baking to the next level, join us in
                   this tutorial and learn how to make perfect frosting every
-                  time.{" "}
+                  time.{" "} */}
+                  {" "}
+                  {classData?.description}
+                  {" "}
                 </Description>
               </ChannelDetail>
             </ChannelInfo>
@@ -381,20 +388,8 @@ const Watch = (props) => {
           />
         </Content>
         <Playlist>
-          {/* {videoData.map((video) => {
-            return (
-              <Card
-                key={video.id}
-                id={video.id}
-                type="sm"
-                onClick={() => handleVideoChange(video.vid)}
-                vid={video.vid}
-                thumbnail={video.thumbnail}
-                title={video.title}
-              />
-            );
-          })} */}
           {videosData.map((video) => {
+          
             return (
               <Card
                 key={video.id}
@@ -409,24 +404,6 @@ const Watch = (props) => {
               />
             );
           })}
-
-          {/* <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} /> */}
-          {/* <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} />
-          <Card type="sm" onClick={handleVideoChange} /> */}
         </Playlist>
       </Container>
     </>
@@ -437,18 +414,44 @@ export default Watch;
 
 const Container = styled.div`
   display: flex;
-  gap: 34px;
+  /* transform: translateY(100px); */
+  /* gap: 34px; */
   margin-top: 160px;
-  padding-left: 100px;
+  /* padding-left: 100px; */
   // width: 2020px;
+  /* background-color: pink; */
 `;
 
 const Content = styled.div`
-  flex: 4;
+  flex-basis: 80%;
+  /* background-color: blue; */
 `;
 
 const VideoWrapper = styled.div`
   display: flex;
+  position: relative;
+
+  video {
+    width: 100%;
+    height: 100%;
+    min-width: 400px;
+  }
+`;
+
+const Arrow = styled.img`
+  width: 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
+  }
 `;
 
 const Title = styled.h1`
@@ -492,7 +495,8 @@ const ChannelDetail = styled.div`
 `;
 
 const Playlist = styled.div`
-  flex: 2;
+  /* flex: 20%; */
+  flex-basis: 17rem;
   display: flex;
   flex-direction: column;
   /* background-color: red; */
@@ -548,3 +552,18 @@ const obj = {
     },
   },
 };
+
+
+{/* {videoData.map((video) => {
+            return (
+              <Card
+                key={video.id}
+                id={video.id}
+                type="sm"
+                onClick={() => handleVideoChange(video.vid)}
+                vid={video.vid}
+                thumbnail={video.thumbnail}
+                title={video.title}
+              />
+            );
+          })} */}

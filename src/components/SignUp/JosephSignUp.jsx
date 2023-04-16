@@ -1,12 +1,11 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components/macro";
 import backgroundImage from "../../designAssets/SignUp/background2.png";
-import { auth } from "../../firebase";
 import Navbar from "../globalComponents/Navbar";
+import { db, auth } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
-function JosephSignUp() {
+function SignUp() {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
@@ -19,54 +18,70 @@ function JosephSignUp() {
     gender: "",
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    if (name === "gender") {
-      setUserInfo({ ...userInfo, gender: value });
-    } else {
-      setUserInfo({ ...userInfo, [name]: value });
-    }
-
-    setUserInfo((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
+  const navigate = useNavigate();
+  const HandleSignUp = () => {
+    auth
+      .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
+      .then((authUser) => {
+        console.log("User is being created");
+        console.log(authUser.user.uid);
+        db.collection("Users").doc(authUser.user.uid).set({
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          userName: userInfo.userName,
+          email: userInfo.email,
+          birthDate: userInfo.birthDate,
+          phoneNumber: userInfo.phoneNumber,
+          gender: userInfo.gender,
+          favClasses: [],
+          favUtensils: [],
+        });
+      })
+      .then(() => {
+        navigate("/login");
+      })
+      .catch(function (error) {
+        switch (error.code) {
+          case "auth/weak-password":
+            alert("The password is too weak.");
+            break;
+          case "auth/email-already-in-use":
+            alert("The email address is already in use.");
+            break;
+          case "auth/invalid-email":
+            alert("The email address is invalid.");
+            break;
+          case "auth/network-request-failed":
+            alert("A network error has occurred.");
+            break;
+          case "auth/internal-error":
+            alert("An internal server error has occurred.");
+            break;
+          case "auth/user-disabled":
+            alert("The user account has been disabled.");
+            break;
+          case "auth/operation-not-allowed":
+            alert(
+              "Email/password accounts are not enabled. Please enable them in the Firebase console."
+            );
+            break;
+          default:
+            alert("An unknown error occurred.");
+        }
+      });
   };
 
-  // const signUp = (userInfo) => {
-  //   const { email, password, firstName, lastName, userName } = userInfo;
-  //   auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then((userCredential) => {
-  //       // Signed up
-  //       const user = userCredential.user;
-  //       console.log(user);
-  //       // Update user profile
-  //       user.updateProfile({
-  //         displayName: `${firstName} ${lastName}`,
-  //       });
-  //       // Update user email
-  //       user.updateEmail(email);
-  //       // Update user username
-  //       user.updateProfile({
-  //         displayName: userName,
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       const errorCode = error.code;
-  //       const errorMessage = error.message;
-  //       console.log(errorCode, errorMessage);
-  //     });
-  // };
+  const handleInputChange = (name, value) => {
+    setUserInfo({ ...userInfo, [name]: value });
+  };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // signUp(userInfo);
-    await createUserWithEmailAndPassword(auth, userInfo.email, userInfo.password);
-    console.log(userInfo);
+  const CheckPassword = (value) => {
+    if (value === userInfo.password) {
+      setPasswordsMatch(true);
+    } else {
+      setPasswordsMatch(false);
+    }
   };
 
   return (
@@ -76,7 +91,14 @@ function JosephSignUp() {
         <Img src={backgroundImage} />
         <Container>
           <Title>Sign Up</Title>
-          <Form onSubmit={handleSubmit} action="#">
+          <Form
+            onSubmit={() => {
+              if (passwordsMatch) {
+                HandleSignUp();
+              }
+            }}
+            action="#"
+          >
             <UserDetails>
               <InputBox>
                 <Details>First Name</Details>
@@ -84,7 +106,9 @@ function JosephSignUp() {
                   type="text"
                   name="firstName"
                   required
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    handleInputChange("firstName", e.target.value)
+                  }
                 ></Input>
               </InputBox>
 
@@ -94,7 +118,9 @@ function JosephSignUp() {
                   type="text"
                   name="phoneNumber"
                   required
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    handleInputChange("phoneNumber", e.target.value)
+                  }
                 ></Input>
               </InputBox>
 
@@ -104,7 +130,9 @@ function JosephSignUp() {
                   type="text"
                   name="lastName"
                   required
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    handleInputChange("lastName", e.target.value)
+                  }
                 ></Input>
               </InputBox>
 
@@ -114,7 +142,9 @@ function JosephSignUp() {
                   type="text"
                   name="userName"
                   required
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    handleInputChange("userName", e.target.value)
+                  }
                 ></Input>
               </InputBox>
 
@@ -124,7 +154,7 @@ function JosephSignUp() {
                   type="text"
                   name="email"
                   required
-                  onChange={handleChange}
+                  onChange={(e) => handleInputChange("email", e.target.value)}
                 ></Input>
               </InputBox>
 
@@ -134,7 +164,9 @@ function JosephSignUp() {
                   type="text"
                   name="password"
                   required
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
                 ></Input>
               </InputBox>
 
@@ -144,7 +176,9 @@ function JosephSignUp() {
                   type="text"
                   name="birthDate"
                   required
-                  onChange={handleChange}
+                  onChange={(e) =>
+                    handleInputChange("birthDate", e.target.value)
+                  }
                 ></Input>
               </InputBox>
 
@@ -154,8 +188,11 @@ function JosephSignUp() {
                   type="text"
                   name="confirmPassword"
                   required
-                  onChange={handleChange}
+                  onChange={(e) => CheckPassword(e.target.value)}
                 ></Input>
+                {passwordsMatch ? null : (
+                  <Details2>Passwords doesnt match</Details2>
+                )}
               </InputBox>
             </UserDetails>
 
@@ -167,7 +204,9 @@ function JosephSignUp() {
                     type="radio"
                     name="gender"
                     value="male"
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleInputChange("gender", e.target.value);
+                    }}
                   />
                   <Gender>Male</Gender>
                 </Label>
@@ -176,11 +215,22 @@ function JosephSignUp() {
                     type="radio"
                     name="gender"
                     value="female"
-                    onChange={handleChange}
+                    onChange={(e) => {
+                      handleInputChange("gender", e.target.value);
+                    }}
                   />
                   <Gender>Female</Gender>
                 </Label>
-                <Button>Submit</Button>
+                <Button
+                  onClick={() => {
+                    if (passwordsMatch) {
+                      HandleSignUp();
+                    }
+                  }}
+                  type="button"
+                >
+                  Submit
+                </Button>
               </Category>
             </GenderDetails>
           </Form>
@@ -190,7 +240,7 @@ function JosephSignUp() {
   );
 }
 
-export default JosephSignUp;
+export default SignUp;
 
 const Container = styled.div`
   max-width: 900px;
@@ -233,6 +283,12 @@ const InputBox = styled.div`
 const Details = styled.span`
   display: block;
   font-size: 20px;
+`;
+
+const Details2 = styled.span`
+  display: block;
+  font-size: 15px;
+  color: red;
 `;
 
 const Input = styled.input`

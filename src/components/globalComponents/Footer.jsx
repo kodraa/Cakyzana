@@ -174,7 +174,7 @@ const NewsletterInput = styled.input`
   width: 100%;
   border-radius: 9999px;
   /* font-size: 0.75rem; */
-  font-size: clamp(0.5rem, 1.75vw, 1.25rem);
+  font-size: clamp(1rem, 1.75vw, 1.25rem);
   border: none;
   outline: none;
   padding-left: 10%;

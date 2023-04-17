@@ -20,13 +20,12 @@ function SingleUntensil() {
   const [addedToCart, SetAddedToCart] = useState(false);
   const params = useParams();
   const id = params.id;
-  let utensil = utensils.find((utensil) => utensil.id == id);
-  const [currentUtensil, setCurrentUtensil] = useState(utensil);
+  const [currentUtensil, setCurrentUtensil] = useState();
 
   useEffect(() => {
     window.scrollTo(0, 0);
     const getItemById = async () => {
-      const itemRef = db.collection("Classes").doc(id);
+      const itemRef = db.collection("utensils").doc(id);
       const itemDoc = await itemRef.get();
       if (itemDoc.exists) {
         const itemData = itemDoc.data();
@@ -113,39 +112,36 @@ function SingleUntensil() {
       <UtensilFlexContainer>
         <LeftFlexChild>
           <LeftChildImgContainer>
-            <Img
-              src={require(`../../designAssets/Utensils/${currentUtensil.image}.png`)}
-              alt="utensil"
-            />
+            <Img src={currentUtensil?.image} alt="utensil" />
           </LeftChildImgContainer>
         </LeftFlexChild>
 
         <RightFlexChild>
-          <UtensilTitle>{currentUtensil.name}</UtensilTitle>
+          <UtensilTitle>{currentUtensil?.name}</UtensilTitle>
 
           <UtensilSubtitles>
             <Price>Price: </Price>
-            <Subtitle>{currentUtensil.price}</Subtitle>
+            <Subtitle>{currentUtensil?.price}</Subtitle>
           </UtensilSubtitles>
 
           <ShapeContainer>
             <BoldText>Shape:</BoldText>
-            <Paragraph>{currentUtensil.shape}</Paragraph>
+            <Paragraph>{currentUtensil?.shape}</Paragraph>
           </ShapeContainer>
 
           <MaterialContainer>
-            <BoldText>Material:x{currentUtensil.material.length}</BoldText>
+            <BoldText>Material:x{currentUtensil?.material.length}</BoldText>
             <ListItems>
-              {currentUtensil.material.map((material) => (
-                <ListItem>{material}</ListItem>
-              ))}
+              <ListItem>{currentUtensil?.material}</ListItem>
             </ListItems>
           </MaterialContainer>
 
           <MaterialContainer>
-            <BoldText>Diemnsions: x{currentUtensil.Dimensions.length}</BoldText>
+            <BoldText>
+              Diemnsions: x{currentUtensil?.Dimensions.length}
+            </BoldText>
             <ListItems>
-              {currentUtensil.Dimensions.map((dimension) => (
+              {currentUtensil?.Dimensions.map((dimension) => (
                 <ListItem>{dimension}</ListItem>
               ))}
             </ListItems>
@@ -154,7 +150,7 @@ function SingleUntensil() {
           <MaterialContainer>
             <BoldText>Packaging</BoldText>
             <ListItems>
-              <ListItem>{currentUtensil.Packaging}</ListItem>
+              <ListItem>{currentUtensil?.Packaging}</ListItem>
             </ListItems>
           </MaterialContainer>
 
@@ -238,7 +234,7 @@ const Img = styled.img`
 `;
 
 const RightFlexChild = styled.div`
-  height: 70%;
+  min-height: 70%;
   width: 35%;
   display: flex;
   flex-direction: column;
@@ -256,6 +252,7 @@ const RightFlexChild = styled.div`
     height: 50%;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-bottom: 1rem;
   }
 `;
 

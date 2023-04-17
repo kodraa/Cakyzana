@@ -9,6 +9,7 @@ import Youtube from "../../designAssets/Footer/YoutubeFooterLogo.png";
 import LinkedIn from "../../designAssets/Footer/LinkedInFooterLogo.png";
 
 // todo fix links
+// todo newsletter
 
 function Footer() {
   return (
@@ -61,7 +62,6 @@ function Footer() {
             <NewsletterInput type="text" placeholder="Enter your email here" />
           </FooterChildContent>
         </FooterFlexChild>
-
       </FooterContent>
     </FooterContainer>
   );

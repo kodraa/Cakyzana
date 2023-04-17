@@ -7,14 +7,18 @@ import {
 } from "../../global";
 import Navbar from "../globalComponents/Navbar";
 import Cake from "../../designAssets/Star/Sample Cake.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { CartContext } from "../../context";
 import Modal from "../Modal_Cart";
+import { AuthContext } from "../../AuthContext";
 
 // TODO add to cart functionality
 
 function SingleClass() {
+  const { currentUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const [itemData, setItemData] = useState(null);
   const [cart, setCart] = useContext(CartContext);
@@ -129,7 +133,11 @@ function SingleClass() {
 
           <CTA>
             <Price>Price: ${itemData?.price}</Price>
-            <CTABtn onClick={handleAddToCart}>Add to Cart</CTABtn>
+            <CTABtn
+              onClick={currentUser ? handleAddToCart : () => navigate("/login")}
+            >
+              Add to Cart
+            </CTABtn>
           </CTA>
         </RightFlexChild>
       </StarFlexContainer>

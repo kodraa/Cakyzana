@@ -185,35 +185,35 @@ const Cart = (props) => {
               <PriceTitle>Price</PriceTitle>
             </TitleCart>
           ) : (
-            <div
-              style={{
-                display: "flex",
-                width: "80%",
-                margin: "auto",
-                flexDirection: "row",
-                alignItems: "right",
-                justifyContent: "flex-end",
-              }}
+            <NewCartContainer
+            // style={{
+            //   display: "flex",
+            //   width: "80%",
+            //   margin: "auto",
+            //   flexDirection: "row",
+            //   alignItems: "right",
+            //   justifyContent: "flex-end",
+            // }}
             >
               <h4 style={{ width: "50%", textAlign: "center", padding: 20 }}>
                 Order Summary
               </h4>
-            </div>
+            </NewCartContainer>
           )}
 
-          <div style={{ display: "flex", flexDirection: "row", gap: "2rem" }}>
+          <NewCheckoutContainer>
             {checkout &&
               (showCongrates ? (
                 <>
-                  <div
-                    style={{
-                      width: "50%",
-                      backgroundColor: CONSTANTS.purpleActive,
-                    }}
-                  ></div>
+                  <CongratsDiv>
+                    <CongratsSubDiv>
+                      <h3>Your order has been placed successfully</h3>
+                      <h2>Thank you for your purchase!</h2>
+                    </CongratsSubDiv>
+                  </CongratsDiv>
                 </>
               ) : (
-                <div style={{ width: "50%" }}>
+                <div className="divInsideCheckoutContainer">
                   <InputDiv>
                     <h5 style={{ width: "50%" }}>Customer Name</h5>
                     <h5>{userData.firstName}</h5>
@@ -224,7 +224,7 @@ const Cart = (props) => {
                   </InputDivBig>
                 </div>
               ))}
-            <div style={{ width: checkout ? "50%" : "100%" }}>
+            <NewCartWrapper checkout={checkout}>
               <CartDiv>
                 <CartContainer>
                   {cart.items.map((item) => {
@@ -323,8 +323,8 @@ const Cart = (props) => {
                   </div>
                 </CartLowerDiv>
               </CartLowerDivContainer>
-            </div>
-          </div>
+            </NewCartWrapper>
+          </NewCheckoutContainer>
         </>
       ) : (
         <>
@@ -336,6 +336,40 @@ const Cart = (props) => {
 };
 
 export default Cart;
+
+const NewCartContainer = styled.div`
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+`;
+
+const NewCartWrapper = styled.div`
+  width: ${({ checkout }) => (checkout ? "50%" : "100%")};
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const NewCheckoutContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+
+  & > .divInsideCheckoutContainer {
+    width: 50%;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 
 const CTABtn = styled.button`
   width: 200px;
@@ -369,15 +403,22 @@ const CartDiv = styled.div`
   align-items: center;
   width: 80%;
   margin: auto;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const TitleCart = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: end;
   width: ${(props) => (props.checkout ? "40%" : "80%")};
   margin: auto;
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const ItemTitle = styled.h4`
@@ -393,6 +434,7 @@ const QuantityTitle = styled.h4`
   width: 20%;
   align-self: center;
   text-align: center;
+  margin-right: 6%;
 `;
 
 const PriceTitle = styled.h4`
@@ -483,6 +525,11 @@ align-items: end; */
   position: relative;
   left: ${(props) => (props.checkout ? "10%" : "50%")};
   /* left: 50%; */
+
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
+  }
 `;
 
 const CartLowerDiv = styled.div`
@@ -492,6 +539,10 @@ const CartLowerDiv = styled.div`
   flex-direction: column;
   justify-content: end;
   margin-top: 2rem;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const InputDiv = styled.div`
@@ -521,17 +572,51 @@ const InputDivBig = styled.div`
 `;
 
 // const obj = {
-  // classes: {
-  //   classId1: {
-  //     videoId1: {
-  //       isFinished: false,
-  //       timeStamp: "67",
-  //     },
-  //     videoId2: {
-  //       isFinished: false,
-  //       timeStamp: "32",
-  //     },
-  //   },
-  //   lastWatchedVideo: "0",
-  // },
+// classes: {
+//   classId1: {
+//     videoId1: {
+//       isFinished: false,
+//       timeStamp: "67",
+//     },
+//     videoId2: {
+//       isFinished: false,
+//       timeStamp: "32",
+//     },
+//   },
+//   lastWatchedVideo: "0",
+// },
 // };
+
+const CongratsDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  background-color: ${CONSTANTS.purpleActive};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const CongratsSubDiv = styled.div`
+  height: 50%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+  /* background-color: white; */
+
+  h3 {
+    font-size: 1.5rem;
+    color: white;
+  }
+
+  h2 {
+    font-size: 2rem;
+    color: ${CONSTANTS.fosfore};
+  }
+`;

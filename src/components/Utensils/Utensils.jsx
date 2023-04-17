@@ -282,7 +282,7 @@ function Utensils() {
       .get()
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          const utensil = doc.data();
+          const utensil = { id: doc.id, ...doc.data() };
           AllUtensils.push(utensil);
         });
         setUtensilList(AllUtensils);
@@ -357,16 +357,16 @@ function Utensils() {
               return (
                 <SwiperSlide>
                   <UtensilCard
-                    key={utensil.id}
-                    id={utensil.id}
+                    key={utensil?.id}
+                    id={utensil?.id}
                     isGrey={!flag}
                     isInCarousel
-                    src={utensil.src}
+                    src={utensil?.image}
                     cardBgColor={titles[category.category].color}
-                    classTitle={utensil.classTitle}
-                    Description={utensil.Description}
+                    classTitle={utensil?.classTitle}
+                    Description={utensil?.Description}
                     Set="4"
-                    price={utensil.price}
+                    price={utensil?.price}
                   />
                   {/* <DescriptionCard
                   isInCarousel

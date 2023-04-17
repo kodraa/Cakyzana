@@ -115,7 +115,7 @@ const Circle = styled.div`
 
   &.mobile {
     aspect-ratio: 1 / 1;
-    max-height: 45.7%;
+    max-height: 42.7%;
   }
 
   /* &[data-index="0"] { */

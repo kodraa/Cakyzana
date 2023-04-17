@@ -43,6 +43,7 @@ function YourClasses() {
                     isInCarousel
                     isGrey
                     classTitle={item.title}
+                    imagesrc={item?.image}
                     // imagesrc={item.image}
                     // imagesrc={cake1}
                     // imagesrc={item.imagesrc}

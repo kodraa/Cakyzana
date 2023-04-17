@@ -4,23 +4,35 @@ import backgroundImage from "../../designAssets/SignUp/background2.png";
 import Navbar from "../globalComponents/Navbar";
 import { db, auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
+import { CONSTANTS } from "../../global";
 
 function SignUp() {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
     lastName: "",
     userName: "",
-    email: "",
-    password: "",
-    birthDate: "",
-    confirmPassword: "",
     phoneNumber: "",
+    email: "",
+    birthDate: "",
+    password: "",
+    confirmPassword: "",
     gender: "",
   });
 
-  const [passwordsMatch, setPasswordsMatch] = useState(true);
   const navigate = useNavigate();
   const HandleSignUp = () => {
+    // check if any attribute in userInfo is empty using object.values.some()
+
+    const flag = Object.values(userInfo).some((value) => {
+      console.log("value", value);
+      return value === "";
+    });
+
+    if (flag === true) {
+      alert("Please fill out all fields");
+      return;
+    }
+
     auth
       .createUserWithEmailAndPassword(userInfo.email, userInfo.password)
       .then((authUser) => {
@@ -76,29 +88,140 @@ function SignUp() {
     setUserInfo({ ...userInfo, [name]: value });
   };
 
-  const CheckPassword = (value) => {
-    if (value === userInfo.password) {
-      setPasswordsMatch(true);
-    } else {
-      setPasswordsMatch(false);
-    }
-  };
-
   return (
     <>
       <Navbar />
       <Section>
         <Subsection>
           <Title>Sign Up</Title>
-          <Form
-            onSubmit={() => {
-              if (passwordsMatch) {
-                HandleSignUp();
-              }
-            }}
-            action="#"
-          >
+          <Form action="#">
+            <FormRow>
+              <FormGroup>
+                <Label>First Name</Label>
+                <Input
+                  type="text"
+                  name="firstName"
+                  required
+                  onChange={(e) =>
+                    handleInputChange("firstName", e.target.value)
+                  }
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Last Name</Label>
+                <Input
+                  type="text"
+                  name="lastName"
+                  required
+                  onChange={(e) =>
+                    handleInputChange("lastName", e.target.value)
+                  }
+                />
+              </FormGroup>
+            </FormRow>
+            <FormRow>
+              <FormGroup>
+                <Label>User Name</Label>
+                <Input
+                  type="text"
+                  autoComplete="off"
+                  name="userName"
+                  required
+                  onChange={(e) =>
+                    handleInputChange("userName", e.target.value)
+                  }
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Phone number</Label>
+                <Input
+                  type="number"
+                  name="phoneNumber"
+                  required
+                  onChange={(e) =>
+                    handleInputChange("phoneNumber", e.target.value)
+                  }
+                />
+              </FormGroup>
+            </FormRow>
+            <FormRow>
+              <FormGroup>
+                <Label>Email Address</Label>
+                <Input
+                  type="email"
+                  autoComplete="email"
+                  name="email"
+                  required
+                  onChange={(e) => handleInputChange("email", e.target.value)}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Birth Date</Label>
+                <Input
+                  type="date"
+                  name="birthDate"
+                  required
+                  onChange={(e) =>
+                    handleInputChange("birthDate", e.target.value)
+                  }
+                />
+              </FormGroup>
+            </FormRow>
+            <FormRow>
+              <FormGroup>
+                <Label>Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  required
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label>Confirm Password</Label>
+                <Input
+                  type="password"
+                  name="confirmPassword"
+                  required
+                  onChange={(e) => {
+                    handleInputChange("confirmPassword", e.target.value);
+                  }}
+                />
+              </FormGroup>
+            </FormRow>
+            {/* form row with label gender, and 2 radio buttons */}
+            <FormRow>
+              <FormGroup className="horizontal gender">
+                <Label>Gender: </Label>
+                <RadioGroup>
+                  <Label>Male</Label>
+                  <Radio
+                    name="gender"
+                    value={"male"}
+                    onChange={() => handleInputChange("gender", "male")}
+                  />
 
+                  <Label>Female</Label>
+                  <Radio
+                    name="gender"
+                    value={"female"}
+                    onChange={() => handleInputChange("gender", "female")}
+                  />
+                </RadioGroup>
+              </FormGroup>
+            </FormRow>
+            <button
+              type="button"
+              onClick={() => {
+                if (userInfo.password === userInfo.confirmPassword) {
+                  HandleSignUp();
+                }
+              }}
+            >
+              submit
+            </button>
           </Form>
         </Subsection>
       </Section>
@@ -268,18 +391,24 @@ const Section = styled.section`
 
 const Subsection = styled.div`
   width: 85%;
-  height: 85%;
+  min-height: 85%;
   background: url(${backgroundImage}) no-repeat center center fixed;
   background-size: contain;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: column;
-  /* background-color: red; */
+
+  /* additional styles for mobile devices */
+  @media only screen and (max-width: 768px) {
+    height: 50%;
+    background-size: cover;
+    background-position: center center;
+  }
 `;
 
 const Title = styled.h1`
-  font-size: clamp(1.5rem, 5vw, 3.5rem);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
   font-family: "Century Gothic Bold";
   text-align: center;
   color: white;
@@ -293,12 +422,89 @@ const Title = styled.h1`
 // `;
 
 const Form = styled.form`
-  width: 60%;
+  /* width: 60%; */
+  width: clamp(300px, 60%, 650px);
+`;
+
+const FormRow = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 `;
 
 const FormGroup = styled.div`
   width: 48%;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &.horizontal {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &.gender {
+    gap: 1.2rem;
+  }
+`;
+
+const Label = styled.label`
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: white;
+`;
+
+const Input = styled.input`
+  width: 100%;
+  padding: 8px 10px;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  padding-left: 15px;
+`;
+
+const RadioGroup = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
+const Radio = styled.input.attrs({ type: "radio" })`
+  width: 20px;
+  height: 20px;
+  border: 2px solid #333;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  /* top: 5px; */
+  outline: none;
+  cursor: pointer;
+  border: 1px solid white;
+  background-color: ${CONSTANTS.purpleActive};
+  accent-color: ${CONSTANTS.purpleDark};
+
+  &:checked {
+    background-color: ${CONSTANTS.purpleActive};
+    accent-color: ${CONSTANTS.purpleDark};
+  }
+
+  &:after {
+    /* content: ""; */
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  &:checked:after {
+    transform: translate(-50%, -50%) scale(1);
+  }
 `;
 
 const Body = styled.div`
@@ -335,16 +541,16 @@ const Details2 = styled.span`
   color: red;
 `;
 
-const Input = styled.input`
-  margin-top: 5px;
-  height: 45px;
-  width: 100%;
-  outline: none;
-  border-radius: 10px;
-  border: 1px solid #fff;
-  padding-left: 15px;
-  font-size: 16px;
-`;
+// const Input = styled.input`
+//   margin-top: 5px;
+//   height: 45px;
+//   width: 100%;
+//   outline: none;
+//   border-radius: 10px;
+//   border: 1px solid #fff;
+//   padding-left: 15px;
+//   font-size: 16px;
+// `;
 
 const GenderDetails = styled.div`
   position: relative;
@@ -363,10 +569,10 @@ const Category = styled.div`
   align-items: center;
 `;
 
-const Label = styled.label`
-  display: flex;
-  align-items: center;
-`;
+// const Label = styled.label`
+//   display: flex;
+//   align-items: center;
+// `;
 
 const Gender = styled.span`
   margin-left: 10px;
@@ -390,11 +596,11 @@ const Button = styled.button`
   }
 `;
 
-const Radio = styled.input`
-  width: 20px;
-  height: 20px;
-  accent-color: purple;
-`;
+// const Radio = styled.input`
+//   width: 20px;
+//   height: 20px;
+//   accent-color: purple;
+// `;
 
 const Img = styled.img`
   position: absolute;

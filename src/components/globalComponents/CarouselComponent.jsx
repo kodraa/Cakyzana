@@ -101,7 +101,7 @@ function CarouselComponent({ title, mappedElements, isGrey }) {
               })} */}
               {mappedElements}
             </Swiper>
-              {/* <button onClick={() => console.log(mappedElements)}>log elements</button> */}
+            {/* <button onClick={() => console.log(mappedElements)}>log elements</button> */}
             <Arrow
               className="right-arrow"
               // onClick={handleNext}
@@ -130,6 +130,9 @@ const ContentDiv = styled(BasicContentDiv)`
 
   & .global-swiper {
     height: 85.02%;
+
+    width: 100%;
+
     /* width: 100%; */
     /* background-color: red; */
   }

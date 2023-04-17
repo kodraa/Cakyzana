@@ -21,6 +21,8 @@ import "swiper/css/effect-coverflow";
 
 let mappedElements;
 
+// todo max number of participants per workshop
+
 function ThisMonth(props) {
   const [counter0, setCounter0] = useState(0);
   const [counter1, setCounter1] = useState(1);
@@ -130,7 +132,7 @@ function ThisMonth(props) {
       <EngArTitle
         english={"This Month"}
         arabic={"اللي سبق شم الحبق"}
-        bottom={"-65%"}
+        bottom={"-45%"}
         right={"-90%"}
         arColor={CONSTANTS.pink}
       />
@@ -152,7 +154,7 @@ function ThisMonth(props) {
                 rotate: 0,
                 stretch: 0,
                 depth: 100,
-                modifier: 1,
+                modifier: 0.95,
                 slideShadows: false,
                 // modifier: 1,
               }}

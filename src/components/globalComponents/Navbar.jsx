@@ -115,7 +115,7 @@ function Navbar(props) {
           <Header isRelative={props.isRelative}>
             <MobileLinksContainer className="left">
               <NavLink onClick={() => setIsMenuOpen((prev) => !prev)}>
-              {/* <NavLink onClick={() => console.log(props.isWhite)}> */}
+                {/* <NavLink onClick={() => console.log(props.isWhite)}> */}
                 <Img
                   className="bigger"
                   src={props.isWhite ? WhiteBurger : BlackBurger}
@@ -191,6 +191,8 @@ function Navbar(props) {
 export default Navbar;
 
 const Header = styled.header`
+  position: relative;
+  z-index: 10000;
   height: 70px;
   width: 87%;
   position: ${(props) => (props.isRelative ? "relative" : "absolute")};
@@ -314,6 +316,7 @@ const styles = {
 
 const Dropdown = styled.div`
   position: absolute;
+  z-index: 10000;
   top: ${(props) => (props.top ? props.top : "100%")};
   left: ${(props) => (props.left ? props.left : "0")};
   background-color: ${CONSTANTS.graywhite};

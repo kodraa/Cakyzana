@@ -209,8 +209,8 @@ const titles = {
       <EngArTitle
         english={"For Cakes"}
         arabic={"الشكل تحت السيطرة"}
-        bottom={"-75%"}
-        right={"-155%"}
+        bottom={"-55%"}
+        right={"-55%"}
         arColor={CONSTANTS.pink}
       />
     ),
@@ -221,8 +221,8 @@ const titles = {
       <EngArTitle
         english={"For Coverage"}
         arabic={"متل الكوي والمسح والتعزيل"}
-        bottom={"-75%"}
-        right={"-155%"}
+        bottom={"-55%"}
+        right={"-55%"}
         arColor={CONSTANTS.blue}
       />
     ),
@@ -286,7 +286,7 @@ function Utensils() {
           AllUtensils.push(utensil);
         });
         setUtensilList(AllUtensils);
-        console.log("All Utensils", AllUtensils);
+        // console.log("All Utensils", AllUtensils);
 
         // const categories = groupUtensilsByCategory();
         // setCategories(categories);
@@ -303,7 +303,7 @@ function Utensils() {
 
   // function groupUtensilsByCategory([...utensilsParameter]) {
   function groupUtensilsByCategory(utensilsParameter = []) {
-    console.log("is being groupped");
+    // console.log("is being groupped");
     const categories = [];
     // utensilList.forEach((utensil) => {
     [...utensilsParameter].forEach((utensil) => {
@@ -316,7 +316,7 @@ function Utensils() {
         categories[categoryIndex].items.push(utensil);
       }
     });
-    console.log("categories", categories);
+    // console.log("categories", categories);
     return categories;
   }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/macro";
 import CakyzanaFooterLogo from "../../designAssets/Footer/CakyzanaFooterLogo.png";
 import { CONSTANTS } from "../../global";
@@ -7,11 +7,24 @@ import Tiktok from "../../designAssets/Footer/TiktokFooterLogo.png";
 import Instagram from "../../designAssets/Footer/InstagramFooterLogo.png";
 import Youtube from "../../designAssets/Footer/YoutubeFooterLogo.png";
 import LinkedIn from "../../designAssets/Footer/LinkedInFooterLogo.png";
-
+import { Link } from "react-router-dom";
+import { auth, db } from "../../firebase";
 // todo fix links
 // todo newsletter
 
 function Footer() {
+  const [email, setEmail] = useState("");
+
+  const handleAddEmail = () => {
+    db.collection("emails")
+      .add({
+        email: email,
+      })
+      .then(() => {
+        alert("Thank you for subscribing to our newsletter!");
+      });
+  };
+
   return (
     <FooterContainer>
       <FooterContent>
@@ -59,7 +72,14 @@ function Footer() {
         <FooterFlexChild>
           <FooterChildContent className="padded">
             <FooterChildTitle>Subscribe to our newsletter</FooterChildTitle>
-            <NewsletterInput type="text" placeholder="Enter your email here" />
+            <NewsletterInput
+              type="text"
+              placeholder="Enter your email here"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <CTAButton onClick={handleAddEmail}>
+              <Bold>Subscribe</Bold>
+            </CTAButton>
           </FooterChildContent>
         </FooterFlexChild>
       </FooterContent>
@@ -181,4 +201,22 @@ const NewsletterInput = styled.input`
   /* padding-top: 3%; */
   display: flex;
   align-items: center;
+`;
+
+const CTAButton = styled(Link)`
+  text-decoration: none;
+  width: 200px;
+  text-align: center;
+  padding: 10px;
+  background-color: ${CONSTANTS.yellow};
+  color: black;
+  border-radius: 32px;
+  border: none;
+  font-size: 18px;
+  margin: 1.2rem 0;
+  cursor: pointer;
+  align-self: center;
+`;
+const Bold = styled.span`
+  font-family: "Century Gothic Bold";
 `;

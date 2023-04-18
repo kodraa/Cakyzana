@@ -14,7 +14,6 @@ const DescriptionCard = (props) => {
 
   const { currentUser, userData, setUserData, userRef } =
     useContext(AuthContext);
-  const context = useContext(AuthContext);
   const navigate = useNavigate();
 
   useEffect(() => {

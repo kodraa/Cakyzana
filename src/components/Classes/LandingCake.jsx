@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import { BasicLandingSection, CONSTANTS } from "../../global";
 import Cake1 from "../../designAssets/Classes/Landing/Cake1.png";
+import { Link } from "react-router-dom";
 
 function LandingCake(props) {
   return (
@@ -17,24 +18,29 @@ function LandingCake(props) {
         </Header>
         <Description>
           <DescriptionText>
-            <Bold>Date: </Bold>{props.Date}
+            <Bold>Date: </Bold>
+            {props.Date}
           </DescriptionText>
           <DescriptionText>
-            <Bold>Time: </Bold>{props.Time}
+            <Bold>Time: </Bold>
+            {props.Time}
           </DescriptionText>
           <DescriptionText>
-            <Bold>Place: </Bold>{props.Place}
+            <Bold>Place: </Bold>
+            {props.Place}
           </DescriptionText>
           <DescriptionText>
-            <Bold>Workshop Fees: </Bold>{props.WorkshopFees}
+            <Bold>Workshop Fees: </Bold>
+            {props.WorkshopFees}
           </DescriptionText>
         </Description>
-        <CTAButton>
+        <CTAButton to={"/workshopform"}>
           <Bold>Book a seat NOW!</Bold>
         </CTAButton>
       </LeftChild>
       <RightChild>
         <Img src={Cake1} />
+        {/* <Img src={props.image} /> */}
       </RightChild>
     </ContentContainer>
   );
@@ -48,6 +54,11 @@ const ContentContainer = styled(BasicLandingSection)`
   align-items: center;
   justify-content: center;
   gap: 11%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+  }
 `;
 
 const FlexChild = styled.div`
@@ -57,6 +68,11 @@ const FlexChild = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 const LeftChild = styled(FlexChild)`
@@ -64,11 +80,19 @@ const LeftChild = styled(FlexChild)`
   gap: 4%;
 `;
 
-const RightChild = styled(FlexChild)``;
+const RightChild = styled(FlexChild)`
+  @media (max-width: 768px) {
+    order: -1;
+  }
+`;
 
 const Img = styled.img`
   width: 100%;
   object-fit: cover;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const Bold = styled.span`
@@ -85,12 +109,14 @@ const Header = styled.div`
 `;
 
 const Title = styled.h2`
-  font-size: 4rem;
+  /* font-size: 4rem; */
+  font-size: clamp(1.75rem, 5vw, 4rem);
   width: 70%;
 `;
 
 const Subtitle = styled.h3`
-  font-size: 2rem;
+  /* font-size: 2rem; */
+  font-size: clamp(1.5rem, 3vw, 2rem);
 `;
 
 const Description = styled.div`
@@ -102,10 +128,12 @@ const Description = styled.div`
 `;
 
 const DescriptionText = styled.p`
-  font-size: 1.75rem;
+  /* font-size: 1.75rem; */
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
 `;
 
-const CTAButton = styled.button`
+const CTAButton = styled(Link)`
+  text-decoration: none;
   width: 200px;
   text-align: center;
   padding: 10px;
@@ -114,5 +142,6 @@ const CTAButton = styled.button`
   border-radius: 32px;
   border: none;
   font-size: 18px;
+  margin: 1.2rem 0;
   cursor: pointer;
 `;

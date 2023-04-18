@@ -18,8 +18,9 @@ import TestGpt from "./TestGpt";
 import { AuthContext, AuthProvider } from "./AuthContext";
 import Profile from "./Profile/Profile";
 import ComingSoon from "./components/ComingSoon/ComingSoon";
+import WorkshopForm from "./components/WorkshopForm";
 
-// todo profile
+// todo gpt chatroom
 
 const router = createBrowserRouter([
   {
@@ -79,7 +80,10 @@ const router = createBrowserRouter([
     path: "/entrepreneursjourney",
     element: <ComingSoon />,
   },
-
+  {
+    path: "/workshopform",
+    element: <WorkshopForm />,
+  },
 
   {
     path: "/test",
@@ -100,8 +104,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-
-
   const [cart, setCart] = useState({
     total: 0,
     items: [],

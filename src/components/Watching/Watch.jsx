@@ -369,10 +369,8 @@ const Watch = (props) => {
                   taste preferences by adding different flavors and colors. So,
                   if you want to take your baking to the next level, join us in
                   this tutorial and learn how to make perfect frosting every
-                  time.{" "} */}
-                  {" "}
-                  {classData?.description}
-                  {" "}
+                  time.{" "} */}{" "}
+                  {classData?.description}{" "}
                 </Description>
               </ChannelDetail>
             </ChannelInfo>
@@ -389,7 +387,6 @@ const Watch = (props) => {
         </Content>
         <Playlist>
           {videosData.map((video) => {
-          
             return (
               <Card
                 key={video.id}
@@ -414,10 +411,10 @@ export default Watch;
 
 const Container = styled.div`
   display: flex;
+  margin-top: 120px;
+  padding-left: 50px;
   /* transform: translateY(100px); */
   /* gap: 34px; */
-  margin-top: 160px;
-  /* padding-left: 100px; */
   // width: 2020px;
   /* background-color: pink; */
 `;
@@ -439,11 +436,13 @@ const VideoWrapper = styled.div`
 `;
 
 const Arrow = styled.img`
-  width: 15px;
+  width: 25px;
   cursor: pointer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
 
   &.left {
     left: 0;
@@ -553,8 +552,8 @@ const obj = {
   },
 };
 
-
-{/* {videoData.map((video) => {
+{
+  /* {videoData.map((video) => {
             return (
               <Card
                 key={video.id}
@@ -566,4 +565,5 @@ const obj = {
                 title={video.title}
               />
             );
-          })} */}
+          })} */
+}

@@ -13,8 +13,6 @@ function YourClasses() {
   const { userData } = useContext(AuthContext);
   const [classesState, setClassesState] = useState([]);
 
-  console.log(userData?.classes);
-
   useEffect(() => {
     const classes = userData?.classes;
     if (classes) {
@@ -69,7 +67,7 @@ function YourClasses() {
     <EngArTitle
       english={"Your Classes"}
       arabic={"محضورة هلأ"}
-      bottom={"-70%"}
+      bottom={"-60%"}
       right={"3%"}
       arColor={CONSTANTS.purpleInactive}
     />

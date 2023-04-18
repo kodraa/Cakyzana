@@ -54,7 +54,7 @@ function CarouselComponent({ title, mappedElements, isGrey }) {
               ref={sliderRef}
               // spaceBetween={50}
               // slidesPerView={3}
-              onSlideChange={() => console.log("slide change")}
+              // onSlideChange={() => console.log("slide change")}
               onSwiper={(swiper) => console.log(swiper)}
               modules={[Navigation]}
               navigation={{
@@ -141,6 +141,7 @@ const ContentDiv = styled(BasicContentDiv)`
 const Arrow = styled.img`
   width: 25px;
   cursor: pointer;
+  text-rendering: auto;
 
   &.left {
     left: 0;

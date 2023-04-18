@@ -6,6 +6,8 @@ import { db, auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { CONSTANTS } from "../../global";
 
+// todo submit button
+
 function SignUp() {
   const [userInfo, setUserInfo] = useState({
     firstName: "",
@@ -21,6 +23,14 @@ function SignUp() {
 
   const navigate = useNavigate();
   const HandleSignUp = () => {
+    const eighteenYearsAgo = new Date();
+    eighteenYearsAgo.setFullYear(eighteenYearsAgo.getFullYear() - 18);
+    const inputDate = new Date(userInfo.birthDate);
+
+    if (inputDate > eighteenYearsAgo) {
+      alert("You must be 18 years or older to sign up");
+      return;
+    }
     // check if any attribute in userInfo is empty using object.values.some()
 
     const flag = Object.values(userInfo).some((value) => {

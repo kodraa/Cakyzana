@@ -16,7 +16,7 @@ import { AuthContext } from "../../AuthContext";
 // TODO add to cart functionality
 
 function SingleClass() {
-  const { currentUser } = useContext(AuthContext);
+  const { currentUser, userData } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -139,6 +139,12 @@ function SingleClass() {
               Add to Cart
             </CTABtn>
           </CTA>
+          {/* {userData && console.log("userData", userData?.classes[id])} */}
+          {userData?.classes[id] && (
+            <CTABtn onClick={() => navigate(`/watching/${id}`)}>
+              Watch Course
+            </CTABtn>
+          )}
         </RightFlexChild>
       </StarFlexContainer>
     </FullScreenSection>

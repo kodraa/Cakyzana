@@ -209,15 +209,15 @@ function CategoryComponent(props) {
                   }}
                   breakpoints={{
                     320: {
-                      slidesPerView: 1,
+                      slidesPerView: 1.1,
                       spaceBetween: 20,
                     },
                     640: {
-                      slidesPerView: 2,
+                      slidesPerView: 2.1,
                       spaceBetween: 50,
                     },
                     768: {
-                      slidesPerView: 2,
+                      slidesPerView: 2.1,
                       spaceBetween: 50,
                     },
                     1024: {

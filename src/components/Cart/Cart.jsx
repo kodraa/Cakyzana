@@ -9,6 +9,8 @@ import { db, auth } from "../../firebase";
 
 //TODO: Add orders page.
 
+// todo: add order status, starting pending
+
 const Cart = (props) => {
   const { userData } = useContext(AuthContext);
   const [cart, setCart] = useContext(CartContext);
@@ -135,13 +137,17 @@ const Cart = (props) => {
       .filter((item) => item.type === "class")
       .map((item) => ({ Item: item, Quantity: item.qty }));
 
+    console.log("utensils", utensils);
+
     try {
       const orderRef = await db.collection("Order").add({
         UserId: userData.id,
-        Date: new Date(),
+        date: new Date(),
         UserEmail: userData.email,
         classes: classes,
         utensils: utensils,
+        total: grandtotal,
+        status: "pending",
       });
 
       const codesPromises = classes.flatMap((item) =>
@@ -151,7 +157,6 @@ const Cart = (props) => {
             UserEmail: userData.email,
             UserId: userData.id,
             DateOfPurchase: new Date(),
-            DateOfRedeem: "",
             OrderId: orderRef.id,
             Redeemed: false,
             Class: item.Item.id,
